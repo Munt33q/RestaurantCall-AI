@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+*.docx
+deployment-secrets.env
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.next/
+.next-local/
