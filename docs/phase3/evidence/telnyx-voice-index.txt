@@ -1,0 +1,218 @@
+﻿# Telnyx Calling: Voice API — Documentation Index
+> Voice API documentation within the Calling section of the Telnyx developer docs (https://developers.telnyx.com).
+> This file: https://developers.telnyx.com/docs/development/llms/calling-voice-api-llms-txt · Root index: https://developers.telnyx.com/llms.txt
+
+## Voice API Fundamentals
+
+- [Getting Started](https://developers.telnyx.com/docs/voice/programmable-voice/voice-api-fundamentals.md): Complete step-by-step guide to get started with Telnyx Voice API, from account creation to making your first call.
+- [Commands and Resources](https://developers.telnyx.com/docs/voice/programmable-voice/voice-api-commands-and-resources.md): Reference of Telnyx Voice API commands and resources — calls, conferences, recordings, transcriptions — with usage patterns and lifecycle examples.
+- [Webhooks](https://developers.telnyx.com/docs/voice/programmable-voice/voice-api-webhooks.md): Reference for Voice API webhook events, payloads, configuration, and delivery behavior.
+- [Sending Commands](https://developers.telnyx.com/docs/voice/programmable-voice/sending-commands.md): Send voice commands to Telnyx Programmable Voice — answer, hangup, transfer, play audio, gather DTMF — with code examples and parameter reference.
+- [Receiving Webhooks](https://developers.telnyx.com/docs/voice/programmable-voice/receiving-webhooks.md): Receive Telnyx Programmable Voice webhooks to drive call flow in real time. Includes event types, payload structure, retries, and SDK examples.
+- [Command Retries](https://developers.telnyx.com/docs/voice/programmable-voice/command-retries.md): Telnyx's Programmable Voice Resources page explain in detail how to
+- [Dials Per Second Limit](https://developers.telnyx.com/docs/voice/programmable-voice/dials-per-second-limit.md): Default 30 dials per second limit for the Voice API Dial command and TeXML's <Dial> verb and REST API, how it's calculated, and how to raise it.
+- [Dial Metrics](https://developers.telnyx.com/docs/voice/programmable-voice/dial-metrics.md): Read your dials-per-second (DPS) history and live rate with GET /v2/dial_metrics, and compare peak DPS with your limit.
+
+## Voice Features
+
+- [Speech-to-Text](https://developers.telnyx.com/docs/voice/programmable-voice/speech-to-text.md): Transcribe Telnyx Programmable Voice calls with the Voice API and TeXML. Includes language selection, real-time vs post-call modes, and code samples.
+- [Text-to-Speech](https://developers.telnyx.com/docs/voice/programmable-voice/tts.md): Use text-to-speech on Telnyx Programmable Voice to speak prompts and dynamic content. Supports AWS Polly, Google, ElevenLabs, Azure, and Telnyx voices.
+- [Call Queueing](https://developers.telnyx.com/docs/voice/programmable-voice/queueing-calls.md): how to use the Telnyx Call Queue API to create and manage call
+- [Answering Machine Detection](https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection.md): Telnyx's Programmable Voice lets you build custom answering machine
+- [Custom Voicemail Greeting](https://developers.telnyx.com/docs/voice/programmable-voice/custom-voicemail-greeting.md): Replace the default voicemail greeting on a Telnyx phone number with your own recorded audio, using the Mission Control Portal or the Voicemail API.
+- [Call Recordings Storage](https://developers.telnyx.com/docs/voice/programmable-voice/storing-call-recordings.md): Telnyx's Programmable Voice gives customers the ability to store
+- [Pay](https://developers.telnyx.com/docs/voice/programmable-voice/pay.md): Accept card and ACH payments over the phone with Telnyx Pay over Voice, which collects details via IVR and keeps them out of recordings and AI assistants.
+- [SIPREC Server Configuration](https://developers.telnyx.com/docs/voice/programmable-voice/siprec-server.md): Configure a Telnyx SIPREC session recording server (SRS) to capture and store VoIP call media for compliance, quality assurance, and call archival.
+- [SIPREC Client](https://developers.telnyx.com/docs/voice/programmable-voice/siprec-client.md): Use the Telnyx SIPREC client to record Voice API and TeXML calls to an external SIPREC server. Includes session setup, metadata, and security options.
+
+## AI Capabilities
+
+- [Gather Using AI](https://developers.telnyx.com/docs/voice/programmable-voice/gather-using-ai.md): Capture caller input with AI on Telnyx Programmable Voice. Use Gather using AI to transcribe speech, classify intent, and branch your IVR dynamically.
+- [Attach an AI Assistant to a Call](https://developers.telnyx.com/docs/voice/programmable-voice/ai-assistant-start.md): Answer inbound calls or place outbound calls with an AI assistant to reduce startup silence, or attach an assistant to an active call.
+- [Dialogflow Integration](https://developers.telnyx.com/docs/voice/programmable-voice/dialogflow-es.md): Telnyx's Dialogflow tutorial will teach you how to create and
+- [Real-Time Media Streaming](https://developers.telnyx.com/docs/voice/programmable-voice/media-streaming.md): Stream call audio in real time over WebSockets with Telnyx Programmable Voice for transcription, AI integration, and bidirectional media.
+- [Conversation Relay](https://developers.telnyx.com/docs/voice/programmable-voice/conversation-relay.md): Use Conversation Relay to connect Telnyx calls to your WebSocket application for real-time speech, DTMF, and text-to-speech control.
+- [Noise Suppression](https://developers.telnyx.com/docs/voice/programmable-voice/noise-suppression.md): Enable AI noise suppression on Telnyx Programmable Voice calls to remove background noise from inbound and outbound audio for clearer conversations.
+- [Deepfake Detection](https://developers.telnyx.com/docs/voice/programmable-voice/deepfake-detection.md): Detect AI-generated voices on live calls with Telnyx's real-time
+
+## Tutorials
+
+- [IVR](https://developers.telnyx.com/docs/voice/programmable-voice/ivr-demo.md): How to build an IVR using Telnyx Voice API. Start building on Telnyx today.
+- [Call Center](https://developers.telnyx.com/docs/voice/programmable-voice/call-center.md): How to build a call center application using Telnyx APIs. Start
+- [Call Tracking](https://developers.telnyx.com/docs/voice/programmable-voice/call-tracking.md): How to build a call tracking application using Telnyx Voice API.
+- [Conferencing](https://developers.telnyx.com/docs/voice/programmable-voice/conferencing-demo.md): How to build a conferencing using Telnyx Voice API. Start building
+
+## Regional & Restrictions
+
+- [Voice API Services in Europe](https://developers.telnyx.com/docs/voice/programmable-voice/voice-api-services-in-europe.md): Telnyx Voice API services in Europe — use European points of presence to reduce latency and meet data residency requirements for EU-based voice apps.
+- [L1 Account Restrictions](https://developers.telnyx.com/docs/voice/programmable-voice/l1-accounts-restirctions.md): Restrictions that apply to Programmable Voice on Telnyx L1 verified accounts — automated speak warnings, call limits, and steps to upgrade verification.
+
+## API Reference (Voice API)
+
+### Call Control Applications
+
+- [List call control applications](https://developers.telnyx.com/api-reference/call-control-applications/list-call-control-applications.md): Return a list of call control applications.
+- [Create a call control application](https://developers.telnyx.com/api-reference/call-control-applications/create-a-call-control-application.md): Creates a call control application, which defines the webhook endpoints and settings used to control calls on associated connections.
+- [Delete a call control application](https://developers.telnyx.com/api-reference/call-control-applications/delete-a-call-control-application.md): Permanently deletes the specified call control application and its webhook configuration.
+- [Retrieve a call control application](https://developers.telnyx.com/api-reference/call-control-applications/retrieve-a-call-control-application.md): Retrieves the details of an existing call control application.
+- [Update a call control application](https://developers.telnyx.com/api-reference/call-control-applications/update-a-call-control-application.md): Updates settings of an existing call control application.
+
+### Call Information
+
+- [List all active calls for given connection](https://developers.telnyx.com/api-reference/call-information/list-all-active-calls-for-given-connection.md): Lists all active calls for given connection. Acceptable connections are either SIP connections with webhook_url or xml_request_url, call control or texml. Retu…
+- [Retrieve a call status](https://developers.telnyx.com/api-reference/call-information/retrieve-a-call-status.md): Returns the status of a call (data is available 10 minutes after call ended).
+- [List dial metrics](https://developers.telnyx.com/api-reference/call-information/list-dial-metrics.md): Returns dials-per-second (DPS) metrics for your account's outbound dials made with the Call Control `Dial` command and TeXML, as time buckets with dial counts,…
+
+### Debugging
+
+- [List call events](https://developers.telnyx.com/api-reference/debugging/list-call-events.md): Filters call events by given filter parameters. Events are ordered by `occurred_at`. If filter for `leg_id` or `application_session_id` is not present, it only…
+
+### Call Commands
+
+- [Dial](https://developers.telnyx.com/api-reference/call-commands/dial.md): Dial a number or SIP URI from a given connection. A successful response will include a `call_leg_id` which can be used to correlate the command with subsequent…
+- [Answer call](https://developers.telnyx.com/api-reference/call-commands/answer-call.md): Answer an incoming call. You must issue this command before executing subsequent commands on an incoming call.
+- [Bridge calls](https://developers.telnyx.com/api-reference/call-commands/bridge-calls.md): Bridge two call control calls.
+- [Start AI Assistant](https://developers.telnyx.com/api-reference/call-commands/start-ai-assistant.md): Start an AI assistant on the call.
+- [Join AI Assistant Conversation](https://developers.telnyx.com/api-reference/call-commands/join-ai-assistant-conversation.md): Add a participant to an existing AI assistant conversation. Use this command to bring an additional call leg into a running AI conversation.
+- [Stop AI Assistant](https://developers.telnyx.com/api-reference/call-commands/stop-ai-assistant.md): Stops the AI assistant currently engaged on the call. The call remains active and can continue with other call control commands.
+- [Add messages to AI Assistant](https://developers.telnyx.com/api-reference/call-commands/add-messages-to-ai-assistant.md): Add messages to the conversation started by an AI assistant on the call.
+- [Start Conversation Relay](https://developers.telnyx.com/api-reference/call-commands/start-conversation-relay.md): Start a Conversation Relay session on an active call. Conversation Relay connects the call audio to your WebSocket so your application can exchange realtime me…
+- [Stop Conversation Relay](https://developers.telnyx.com/api-reference/call-commands/stop-conversation-relay.md): Stop the active Conversation Relay session on a call.
+- [Update client state](https://developers.telnyx.com/api-reference/call-commands/update-client-state.md): Updates the client state associated with the call. Client state is an opaque value echoed back in subsequent webhooks for the call, letting you correlate event…
+- [Enqueue call](https://developers.telnyx.com/api-reference/call-commands/enqueue-call.md): Places the call into a queue, where it waits until it is removed or bridged to another leg. Queue behavior is configured through the request body.
+- [Forking start](https://developers.telnyx.com/api-reference/call-commands/forking-start.md): Call forking allows you to stream the media from a call to a specific target in realtime.
+- [Forking stop](https://developers.telnyx.com/api-reference/call-commands/forking-stop.md): Stop forking a call.
+- [Gather](https://developers.telnyx.com/api-reference/call-commands/gather.md): Gather DTMF signals to build interactive menus.
+- [Gather stop](https://developers.telnyx.com/api-reference/call-commands/gather-stop.md): Stop current gather.
+- [Gather using AI](https://developers.telnyx.com/api-reference/call-commands/gather-using-ai.md): Gather parameters defined in the request payload using a voice assistant.
+- [Gather using audio](https://developers.telnyx.com/api-reference/call-commands/gather-using-audio.md): Play an audio file on the call until the required DTMF signals are gathered to build interactive menus.
+- [Gather using speak](https://developers.telnyx.com/api-reference/call-commands/gather-using-speak.md): Convert text to speech and play it on the call until the required DTMF signals are gathered to build interactive menus.
+- [Hangup call](https://developers.telnyx.com/api-reference/call-commands/hangup-call.md): Hang up the call.
+- [Reject a call](https://developers.telnyx.com/api-reference/call-commands/reject-a-call.md): Reject an incoming call.
+- [Remove call from a queue](https://developers.telnyx.com/api-reference/call-commands/remove-call-from-a-queue.md): Removes the call from the queue it is currently waiting in. The call remains active and can be directed with further call commands.
+- [Process a payment](https://developers.telnyx.com/api-reference/call-commands/process-a-payment.md): Collect payment details from the caller using DTMF and either charge or tokenize the payment method through a configured Pay connector. Pay pauses active call…
+- [Play audio URL](https://developers.telnyx.com/api-reference/call-commands/play-audio-url.md): Play an audio file on the call. If multiple play audio commands are issued consecutively,
+- [Stop audio playback](https://developers.telnyx.com/api-reference/call-commands/stop-audio-playback.md): Stop audio being played on the call.
+- [Recording start](https://developers.telnyx.com/api-reference/call-commands/recording-start.md): Start recording the call. Recording will stop on call hang-up, or can be initiated via the Stop Recording command.
+- [Recording stop](https://developers.telnyx.com/api-reference/call-commands/recording-stop.md): Stop recording the call.
+- [Record resume](https://developers.telnyx.com/api-reference/call-commands/record-resume.md): Resume recording the call.
+- [Record pause](https://developers.telnyx.com/api-reference/call-commands/record-pause.md): Pause recording the call. Recording can be resumed via Resume recording command.
+- [Send DTMF](https://developers.telnyx.com/api-reference/call-commands/send-dtmf.md): Sends DTMF tones from this leg. DTMF tones will be heard by the other end of the call.
+- [SIP Refer a call](https://developers.telnyx.com/api-reference/call-commands/sip-refer-a-call.md): Initiate a SIP Refer on a Call Control call. You can initiate a SIP Refer at any point in the duration of a call.
+- [SIPREC start](https://developers.telnyx.com/api-reference/call-commands/siprec-start.md): Start siprec session to configured in SIPREC connector SRS.
+- [SIPREC stop](https://developers.telnyx.com/api-reference/call-commands/siprec-stop.md): Stop SIPREC session.
+- [Speak text](https://developers.telnyx.com/api-reference/call-commands/speak-text.md): Convert text to speech and play it back on the call. If multiple speak text commands are issued consecutively, the audio files will be placed in a queue awaiti…
+- [Streaming start](https://developers.telnyx.com/api-reference/call-commands/streaming-start.md): Start streaming the media from a call to a specific WebSocket address or Dialogflow connection in near-realtime. Audio will be delivered as base64-encoded RTP…
+- [Streaming stop](https://developers.telnyx.com/api-reference/call-commands/streaming-stop.md): Stop streaming a call to a WebSocket.
+- [Noise Suppression Start (BETA)](https://developers.telnyx.com/api-reference/call-commands/noise-suppression-start-beta.md): Start noise suppression on an active call to reduce background noise. This feature is currently in beta.
+- [Noise Suppression Stop (BETA)](https://developers.telnyx.com/api-reference/call-commands/noise-suppression-stop-beta.md): Stop noise suppression previously started on an active call. This feature is currently in beta.
+- [Switch supervisor role](https://developers.telnyx.com/api-reference/call-commands/switch-supervisor-role.md): Switch the supervisor role for a bridged call. This allows switching between different supervisor modes during an active call
+- [Transcription start](https://developers.telnyx.com/api-reference/call-commands/transcription-start.md): Start real-time transcription. Transcription will stop on call hang-up, or can be initiated via the Transcription stop command.
+- [Transcription stop](https://developers.telnyx.com/api-reference/call-commands/transcription-stop.md): Stops real-time transcription on the call. Transcription webhooks cease once the command takes effect; the call itself is unaffected.
+- [Transfer call](https://developers.telnyx.com/api-reference/call-commands/transfer-call.md): Transfer a call to a new destination. If the transfer is unsuccessful, a `call.hangup` webhook for the other call (Leg B) will be sent indicating that the tran…
+
+### Callbacks
+
+- [Call Answered](https://developers.telnyx.com/api-reference/callbacks/call-answered.md)
+- [Call Conversation Created](https://developers.telnyx.com/api-reference/callbacks/call-conversation-created.md): Emitted when a conversation is created for a call, including when an AI assistant starts automatically after an `answer` command with `assistant.id` or a `dial…
+- [Call Conversation Start Failed](https://developers.telnyx.com/api-reference/callbacks/call-conversation-start-failed.md): Emitted when an AI assistant requested with an `answer` or `dial` command (`assistant.id`) could not be started after the call was answered, for example becaus…
+- [Call Cost](https://developers.telnyx.com/api-reference/callbacks/call-cost.md)
+- [Call Deepfake Detection Error](https://developers.telnyx.com/api-reference/callbacks/call-deepfake-detection-error.md)
+- [Call Deepfake Detection Result](https://developers.telnyx.com/api-reference/callbacks/call-deepfake-detection-result.md)
+- [Call Hold](https://developers.telnyx.com/api-reference/callbacks/call-hold.md)
+- [Call Initiated](https://developers.telnyx.com/api-reference/callbacks/call-initiated.md)
+- [Call Streaming Failed](https://developers.telnyx.com/api-reference/callbacks/call-streaming-failed.md)
+- [Call Streaming Started](https://developers.telnyx.com/api-reference/callbacks/call-streaming-started.md)
+- [Call Streaming Stopped](https://developers.telnyx.com/api-reference/callbacks/call-streaming-stopped.md)
+- [Call Unhold](https://developers.telnyx.com/api-reference/callbacks/call-unhold.md)
+- [Call Bridged](https://developers.telnyx.com/api-reference/callbacks/call-bridged.md)
+- [Call Conversation Ended](https://developers.telnyx.com/api-reference/callbacks/call-conversation-ended.md)
+- [Call Conversation Insights Generated](https://developers.telnyx.com/api-reference/callbacks/call-conversation-insights-generated.md)
+- [Call analyzed](https://developers.telnyx.com/api-reference/callbacks/call-analyzed.md)
+- [Call Enqueued](https://developers.telnyx.com/api-reference/callbacks/call-enqueued.md)
+- [Call Left Queue](https://developers.telnyx.com/api-reference/callbacks/call-left-queue.md)
+- [Call Fork Started](https://developers.telnyx.com/api-reference/callbacks/call-fork-started.md)
+- [Call Fork Stopped](https://developers.telnyx.com/api-reference/callbacks/call-fork-stopped.md)
+- [Call Dtmf Received](https://developers.telnyx.com/api-reference/callbacks/call-dtmf-received.md)
+- [Call Gather Ended](https://developers.telnyx.com/api-reference/callbacks/call-gather-ended.md)
+- [Call AI Gather Ended](https://developers.telnyx.com/api-reference/callbacks/call-ai-gather-ended.md)
+- [Call AI Gather Message History Updated](https://developers.telnyx.com/api-reference/callbacks/call-ai-gather-message-history-updated.md)
+- [Call AI Gather Partial Results](https://developers.telnyx.com/api-reference/callbacks/call-ai-gather-partial-results.md)
+- [Call Playback Ended](https://developers.telnyx.com/api-reference/callbacks/call-playback-ended.md)
+- [Call Playback Started](https://developers.telnyx.com/api-reference/callbacks/call-playback-started.md)
+- [Call Hangup](https://developers.telnyx.com/api-reference/callbacks/call-hangup.md)
+- [Call Recording Saved](https://developers.telnyx.com/api-reference/callbacks/call-recording-saved.md)
+- [Call Payment Completed](https://developers.telnyx.com/api-reference/callbacks/call-payment-completed.md)
+- [Call Payment Progress](https://developers.telnyx.com/api-reference/callbacks/call-payment-progress.md)
+- [Call Speak Ended](https://developers.telnyx.com/api-reference/callbacks/call-speak-ended.md)
+- [Call Recording Error](https://developers.telnyx.com/api-reference/callbacks/call-recording-error.md)
+- [Call Recording Transcription Saved](https://developers.telnyx.com/api-reference/callbacks/call-recording-transcription-saved.md)
+- [Call Refer Completed](https://developers.telnyx.com/api-reference/callbacks/call-refer-completed.md)
+- [Call Refer Failed](https://developers.telnyx.com/api-reference/callbacks/call-refer-failed.md)
+- [Call Refer Started](https://developers.telnyx.com/api-reference/callbacks/call-refer-started.md)
+- [Call Siprec Failed](https://developers.telnyx.com/api-reference/callbacks/call-siprec-failed.md)
+- [Call Siprec Started](https://developers.telnyx.com/api-reference/callbacks/call-siprec-started.md)
+- [Call Siprec Stopped](https://developers.telnyx.com/api-reference/callbacks/call-siprec-stopped.md)
+- [Call Speak Started](https://developers.telnyx.com/api-reference/callbacks/call-speak-started.md)
+- [Transcription](https://developers.telnyx.com/api-reference/callbacks/transcription.md)
+- [Call Machine Detection Ended](https://developers.telnyx.com/api-reference/callbacks/call-machine-detection-ended.md)
+- [Call Machine Greeting Ended](https://developers.telnyx.com/api-reference/callbacks/call-machine-greeting-ended.md)
+- [Call Machine Premium Detection Ended](https://developers.telnyx.com/api-reference/callbacks/call-machine-premium-detection-ended.md)
+- [Call Machine Premium Detection Started](https://developers.telnyx.com/api-reference/callbacks/call-machine-premium-detection-started.md)
+- [Call Machine Premium Greeting Ended](https://developers.telnyx.com/api-reference/callbacks/call-machine-premium-greeting-ended.md)
+- [Call Machine Premium Call Screening Detected](https://developers.telnyx.com/api-reference/callbacks/call-machine-premium-call-screening-detected.md)
+- [Conference Created](https://developers.telnyx.com/api-reference/callbacks/conference-created.md)
+- [Conference Ended](https://developers.telnyx.com/api-reference/callbacks/conference-ended.md)
+- [Conference Floor Changed](https://developers.telnyx.com/api-reference/callbacks/conference-floor-changed.md)
+- [Conference Participant Joined](https://developers.telnyx.com/api-reference/callbacks/conference-participant-joined.md)
+- [Conference Participant Left](https://developers.telnyx.com/api-reference/callbacks/conference-participant-left.md)
+- [Conference Participant Playback Ended](https://developers.telnyx.com/api-reference/callbacks/conference-participant-playback-ended.md)
+- [Conference Participant Playback Started](https://developers.telnyx.com/api-reference/callbacks/conference-participant-playback-started.md)
+- [Conference Participant Speak Ended](https://developers.telnyx.com/api-reference/callbacks/conference-participant-speak-ended.md)
+- [Conference Participant Speak Started](https://developers.telnyx.com/api-reference/callbacks/conference-participant-speak-started.md)
+- [Conference Playback Ended](https://developers.telnyx.com/api-reference/callbacks/conference-playback-ended.md)
+- [Conference Playback Started](https://developers.telnyx.com/api-reference/callbacks/conference-playback-started.md)
+- [Conference Recording Saved](https://developers.telnyx.com/api-reference/callbacks/conference-recording-saved.md)
+- [Conference Speak Ended](https://developers.telnyx.com/api-reference/callbacks/conference-speak-ended.md)
+- [Conference Speak Started](https://developers.telnyx.com/api-reference/callbacks/conference-speak-started.md)
+
+### Conference Commands
+
+- [List conferences](https://developers.telnyx.com/api-reference/conference-commands/list-conferences.md): Lists conferences. Conferences are created on demand, and will expire after all participants have left the conference or after 4 hours regardless of the number…
+- [Create conference](https://developers.telnyx.com/api-reference/conference-commands/create-conference.md): Create a conference from an existing call leg using a `call_control_id` and a conference name. Upon creating the conference, the call will be automatically bri…
+- [Retrieve a conference](https://developers.telnyx.com/api-reference/conference-commands/retrieve-a-conference.md): Returns the details of an existing conference, including its current status.
+- [Hold conference participants](https://developers.telnyx.com/api-reference/conference-commands/hold-conference-participants.md): Hold a list of participants in a conference call
+- [Join a conference](https://developers.telnyx.com/api-reference/conference-commands/join-a-conference.md): Join an existing call leg to a conference. Issue the Join Conference command with the conference ID in the path and the `call_control_id` of the leg you wish t…
+- [Leave a conference](https://developers.telnyx.com/api-reference/conference-commands/leave-a-conference.md): Removes a call leg from a conference and moves it back to parked state.
+- [Mute conference participants](https://developers.telnyx.com/api-reference/conference-commands/mute-conference-participants.md): Mute a list of participants in a conference call
+- [Play audio to conference participants](https://developers.telnyx.com/api-reference/conference-commands/play-audio-to-conference-participants.md): Play audio to all or some participants on a conference call.
+- [Conference recording pause](https://developers.telnyx.com/api-reference/conference-commands/conference-recording-pause.md): Pauses the active recording of the specified conference. Resume it later with the record_resume action.
+- [Conference recording resume](https://developers.telnyx.com/api-reference/conference-commands/conference-recording-resume.md): Resumes a previously paused recording of the specified conference, continuing capture from the point it was paused.
+- [Conference recording start](https://developers.telnyx.com/api-reference/conference-commands/conference-recording-start.md): Start recording the conference. Recording will stop on conference end, or via the Stop Recording command.
+- [Conference recording stop](https://developers.telnyx.com/api-reference/conference-commands/conference-recording-stop.md): Stop recording the conference.
+- [Speak text to conference participants](https://developers.telnyx.com/api-reference/conference-commands/speak-text-to-conference-participants.md): Convert text to speech and play it to all or some participants.
+- [Stop audio being played on the conference](https://developers.telnyx.com/api-reference/conference-commands/stop-audio-being-played-on-the-conference.md): Stop audio being played to all or some participants on a conference call.
+- [Unhold conference participants](https://developers.telnyx.com/api-reference/conference-commands/unhold-conference-participants.md): Unhold a list of participants in a conference call
+- [Unmute conference participants](https://developers.telnyx.com/api-reference/conference-commands/unmute-conference-participants.md): Unmute a list of participants in a conference call
+- [Update conference participant](https://developers.telnyx.com/api-reference/conference-commands/update-conference-participant.md): Update conference participant supervisor_role
+- [End a conference](https://developers.telnyx.com/api-reference/conference-commands/end-a-conference.md): End a conference and terminate all active participants.
+- [Gather DTMF using audio prompt in a conference](https://developers.telnyx.com/api-reference/conference-commands/gather-dtmf-using-audio-prompt-in-a-conference.md): Play an audio file to a specific conference participant and gather DTMF input.
+- [Send DTMF to conference participants](https://developers.telnyx.com/api-reference/conference-commands/send-dtmf-to-conference-participants.md): Send DTMF tones to one or more conference participants.
+- [List conference participants](https://developers.telnyx.com/api-reference/conference-commands/list-conference-participants.md): Returns a paginated list of participants in the specified conference, with support for filtering.
+- [Retrieve a conference participant](https://developers.telnyx.com/api-reference/conference-commands/retrieve-a-conference-participant.md): Retrieve details of a specific conference participant by their ID or label.
+- [Update a conference participant](https://developers.telnyx.com/api-reference/conference-commands/update-a-conference-participant.md): Update properties of a conference participant.
+
+### Pay Connectors
+
+- [Create a Pay connector](https://developers.telnyx.com/api-reference/pay-connectors/create-a-pay-connector.md): Create a generic payment connector in the authenticated organization. The name must be unique in that organization. Authentication supplies ownership; do not s…
+- [List Pay connectors](https://developers.telnyx.com/api-reference/pay-connectors/list-pay-connectors.md): List connectors belonging to the authenticated organization, including connectors created by other users in that organization. Set filter[type]=generic to rest…
+- [Retrieve a Pay connector](https://developers.telnyx.com/api-reference/pay-connectors/retrieve-a-pay-connector.md): Retrieve a connector by name within the authenticated organization. Password and token are omitted. A missing name or a connector owned by another organization…
+- [Update a Pay connector](https://developers.telnyx.com/api-reference/pay-connectors/update-a-pay-connector.md): Update a generic connector by name in the authenticated organization. Both test and live connectors can be updated through the API. Omitted fields remain uncha…
+- [Delete a Pay connector](https://developers.telnyx.com/api-reference/pay-connectors/delete-a-pay-connector.md): Delete a connector by name in the authenticated organization. Both test and live connectors can be deleted. Returns no response body on success; a missing name…
+
+### SIPREC Connectors
+
+- [Create a SIPREC connector](https://developers.telnyx.com/api-reference/siprec-connectors/create-a-siprec-connector.md): Creates a new SIPREC connector configuration.
+- [Retrieve a SIPREC connector](https://developers.telnyx.com/api-reference/siprec-connectors/retrieve-a-siprec-connector.md): Returns details of a stored SIPREC connector.
+- [Update a SIPREC connector](https://developers.telnyx.com/api-reference/siprec-connectors/update-a-siprec-connector.md): Updates a stored SIPREC connector configuration.
+- [Delete a SIPREC connector](https://developers.telnyx.com/api-reference/siprec-connectors/delete-a-siprec-connector.md): Deletes the stored SIPREC connector with the specified connector name.

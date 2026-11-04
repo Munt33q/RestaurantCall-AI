@@ -1,0 +1,22 @@
+{
+  "source": "isolated Playwright Chromium",
+  "base": "http://localhost:3217",
+  "branch": "br-soft-leaf-b87ops6p",
+  "syntheticTenant": "22d74435-6c9b-45b8-a024-5286b94e9ad5",
+  "checks": [
+    "unauthenticated dashboard redirects to login",
+    "invalid login visibly rejected",
+    "staff login and kitchen dashboard",
+    "menu create persists price and stock",
+    "menu availability toggles",
+    "ordering collects two items, name, cash, consent and review before inserting",
+    "explicit confirmation creates correct synthetic cash order",
+    "kitchen confirmed → preparing → ready → completed",
+    "order detail and staff cash receipt",
+    "call history and persisted transcript drawer",
+    "analytics reports synthetic order total",
+    "acceptance tickets isolated from normal kitchen with no prepare action"
+  ],
+  "errors": [],
+  "ok": true
+}

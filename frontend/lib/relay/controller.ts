@@ -1,7 +1,7 @@
 export type Prepared={speech:string;turn:number;preparedToken?:string};
 export type RelayReply={reply:string;turn:number;deliveryId?:string;finished?:boolean;state?:unknown;phase?:string;requiresReadback?:boolean};
 type Dependencies={send:(message:unknown)=>void;prepare:(speech:string,signal:AbortSignal)=>Promise<Prepared>;commit:(prepared:Prepared)=>Promise<RelayReply>;ack:(deliveryId:string,playedText:string)=>Promise<void>;interrupt:(heard:string,deliveryId?:string)=>Promise<void>};
-const normalize=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
+import {playbackMatches} from './playback';
 export class RelayController{
  private cueSent=false;private cuePlayed='';
  private waitTimer:ReturnType<typeof setTimeout>|null=null;
@@ -19,7 +19,7 @@ export class RelayController{
    if(message.value==='on'){this.playing=true;return;}
    if(message.value==='off'){
     this.playing=false;const delivery=this.delivery;const epoch=this.generation;
-    if(delivery&&(normalize(this.played)===normalize(delivery.reply)||this.cueSent&&normalize(this.played)===normalize('Let me check that for you.'+delivery.reply))){
+    if(delivery&&(playbackMatches(this.played,delivery.reply)||this.cueSent&&playbackMatches(this.played,'Let me check that for you.'+delivery.reply))){
      this.delivery=null;if(delivery.requiresReadback)this.retryAfterReadback=true;
      const played=delivery.reply;this.cueSent=false;this.cuePlayed='';if(delivery.deliveryId)this.writes=this.writes.catch(()=>{}).then(()=>this.deps.ack(delivery.deliveryId!,played));
      await this.writes;

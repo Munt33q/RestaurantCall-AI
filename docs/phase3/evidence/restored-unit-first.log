@@ -1,0 +1,78 @@
+✔ only an explicit, unambiguous language preference changes revision (16.4484ms)
+✔ switch preserves checkout fields and unconfirmed language selection is bounded (2.5829ms)
+✔ catalog validates trusted fields, integer money and ordered date intervals (12.4998ms)
+✔ discounts never stack, never discount unrelated items and expire at the boundary (62.1626ms)
+✔ precontext explicitly distinguishes unknown history and bounds trusted sales (3.2334ms)
+✔ credentials are authenticated, purpose separated and attempt/expiry bound (16.9388ms)
+✔ native numeral recovery codes require exact eight digits and separate consent (0.8743ms)
+✔ restored draft revalidates stock and clears payment, consent and review (1.3433ms)
+✔ recovery SMS requires every consent/registration flag and enforces daily cap (0.3315ms)
+✔ assistance needs two uncertain turns or six seconds of proven idle and never interrupts (1.8052ms)
+✔ upsells cap offers, avoid combos/declines and cannot accept an interrupted offer (2.7531ms)
+✔ decline and hesitant filler never change the cart; offered events have durable keys (19.3324ms)
+✔ offer acceptance checks current stock; disabled flags do not create offers (1.0467ms)
+✔ foreign app, outbound initiated and unadmitted directionless answers issue no commands (1.2034ms)
+✔ accepted relay start uses Bella Flux and omits unsupported events; IDs are retry stable (0.5593ms)
+✔ acceptance filter admits no customer session and outage waits for scoped playback end (0.2626ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'configuration_missing',
+  requestId: null
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'configuration_missing'
+}
+✔ health probes select two current available items and reject an insufficient catalog (1.12ms)
+✔ ordinary deterministic menu command needs no model network (7.1063ms)
+✔ recovered Petra photo catalog preserves 74 items, nine categories and documented prices (2.0017ms)
+✔ different Arabic playback cannot authorize a review or end the call (3.1002ms)
+✔ missing Hindi playback cannot authorize a review (0.447ms)
+✔ complete Unicode review is acknowledged after playback ends (0.158ms)
+✔ punctuation-only output cannot authorize checkout (0.1037ms)
+✔ final review uses discounted server quote and requires explicit confirmation (7.7964ms)
+✔ price or inventory version changes force a fresh review before confirmation (0.6637ms)
+✔ shared checkout starts without prior customer consent or payment authority (0.909ms)
+✔ shared quiet-call handling stops after bounded attempts without submission (1.4053ms)
+✔ explicit multilingual confirmation is phase bound and never substring matched (1.26ms)
+✔ native payment and no-notes choices normalize only in their relevant phase (0.14ms)
+✖ shared relay checkout blocks unplayed confirmation and preserves explicit review (5.0849ms)
+✔ provider field diagnostics retain pointers but scrub credentials, bodies and URLs (35.5714ms)
+✔ invalid diagnostic token retains URL length without granting authentication (11.3968ms)
+✔ unowned destination and unprepared application cause zero provider traffic (0.8959ms)
+✔ owned-line probe uses preview authority and always hangs up after a relay failure (3.7938ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 33
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6483.5285
+
+✖ failing tests:
+
+test at tests\sip-trial.test.ts:2:1006
+✖ shared relay checkout blocks unplayed confirmation and preserves explicit review (5.0849ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\sip-trial.test.ts:3:469)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

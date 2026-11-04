@@ -1,0 +1,57 @@
+{
+  "LIVE_VOICE_ENABLED": {
+    "http": 200,
+    "type": "plain",
+    "value": "true"
+  },
+  "AI_FALLBACK_ENABLED": {
+    "http": 200,
+    "type": "plain",
+    "value": "true"
+  },
+  "AI_FALLBACK_MODEL": {
+    "http": 200,
+    "type": "plain",
+    "value": "deepseek-flash"
+  },
+  "AI_PRIMARY_TIMEOUT_MS": {
+    "http": 200,
+    "type": "plain",
+    "value": "3000"
+  },
+  "AI_FALLBACK_TIMEOUT_MS": {
+    "http": 200,
+    "type": "plain",
+    "value": "10000"
+  },
+  "SMS_DELIVERY_ENABLED": {
+    "http": 200,
+    "type": "plain",
+    "value": "false"
+  },
+  "OUTBOUND_UPDATES_ENABLED": {
+    "http": 200,
+    "type": "plain",
+    "value": "true"
+  },
+  "JOB_RECOVERY_SCHEDULE": {
+    "http": 200,
+    "type": "plain",
+    "value": "Daily at 06:00 UTC; immediate dispatch on events"
+  },
+  "RELAY_ENABLED": {
+    "http": 200,
+    "type": "plain",
+    "value": "true"
+  },
+  "AI_MODEL": {
+    "http": 200,
+    "type": "encrypted",
+    "value": "gpt-6-luna"
+  },
+  "AI_PROVIDER": {
+    "http": 200,
+    "type": "sensitive",
+    "value": null
+  }
+}

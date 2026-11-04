@@ -1,0 +1,20 @@
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 508,
+  error: 'timeout',
+  requestId: null
+}
+✔ real HTTP timeout uses independent fallback; cancellation never starts fallback (578.4593ms)
+MODEL_WATCH_PROBE { status: 200, invocation: 'fixture-invocation' }
+✔ relay handler verifies JWT, setup identity, duplicate nonce and full review playback (166.7433ms)
+✔ monitor requires trusted trigger metadata, matching invocation ID and expected schedule name (12.524ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1991.9429

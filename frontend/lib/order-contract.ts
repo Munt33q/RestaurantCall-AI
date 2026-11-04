@@ -10,12 +10,13 @@ export function normalizeLines(lines: Line[]): Line[] {
   }
   return Array.from(quantities, ([menuItemId, quantity]) => ({ menuItemId, quantity }));
 }
-export function nextKitchenStatus(order: { status: string; paymentMethod: string; paymentStatus: string }, next: string) {
+export function nextKitchenStatus(order: { status: string; paymentMethod: string; paymentStatus: string; isTest?:boolean }, next: string) {
+  if (order.isTest) return false;
   if (order.paymentMethod === 'stripe' && order.paymentStatus !== 'paid') return false;
   return ({ confirmed: 'preparing', preparing: 'ready', ready: 'completed' } as Record<string, string>)[order.status] === next;
 }
 export type KitchenOrder = {
- id: string; customerName: string | null; status: string; totalCents: number;
+ id: string; customerName: string | null; status: string; totalCents: number; isTest?:boolean;
  paymentMethod: string; paymentStatus: string; createdAt: string; checkoutUrl: string | null;
  items: { itemName: string; quantity: number; lineTotalCents: number }[];
 };

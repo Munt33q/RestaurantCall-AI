@@ -1,0 +1,22 @@
+[
+  {
+    "probe": "relay-health",
+    "http": 200,
+    "body": "{\"ok\":true,\"transport\":\"conversation-relay\",\"build\":\"duplex-v1\"}"
+  },
+  {
+    "probe": "relay-unauthorized",
+    "http": 401,
+    "body": "Unauthorized"
+  },
+  {
+    "probe": "monitor-get",
+    "http": 405,
+    "body": "Method not allowed"
+  },
+  {
+    "probe": "monitor-untrusted-post",
+    "http": 401,
+    "body": "Unauthorized"
+  }
+]

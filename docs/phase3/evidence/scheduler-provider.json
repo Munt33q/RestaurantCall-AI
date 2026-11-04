@@ -1,0 +1,22 @@
+{
+  "http": 200,
+  "crons": {
+    "enabledAt": 1793540590714,
+    "disabledAt": null,
+    "updatedAt": 1793726888366,
+    "deploymentId": "dpl_4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+    "definitions": [
+      {
+        "host": "restaurant-call-pfp6l2snf-vercel-1a62.vercel.app",
+        "path": "/api/cron/operations",
+        "schedule": "0 6 * * *"
+      },
+      {
+        "host": "restaurant-call-pfp6l2snf-vercel-1a62.vercel.app",
+        "path": "/api/health/model",
+        "schedule": "5 6 * * *"
+      }
+    ]
+  },
+  "framework": "nextjs"
+}

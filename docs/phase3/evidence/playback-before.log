@@ -1,0 +1,65 @@
+✖ different Arabic playback cannot authorize a review or end the call (6.4664ms)
+✖ missing Hindi playback cannot authorize a review (0.4013ms)
+✔ complete Unicode review is acknowledged after playback ends (0.204ms)
+✖ punctuation-only output cannot authorize checkout (0.2439ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 378.4032
+
+✖ failing tests:
+
+test at tests\playback.phase3.test.ts:2:1672
+✖ different Arabic playback cannot authorize a review or end the call (6.4664ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\playback.phase3.test.ts:14:69)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\playback.phase3.test.ts:2:2082
+✖ missing Hindi playback cannot authorize a review (0.4013ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\playback.phase3.test.ts:16:74)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\playback.phase3.test.ts:2:2685
+✖ punctuation-only output cannot authorize checkout (0.2439ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\playback.phase3.test.ts:18:75)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

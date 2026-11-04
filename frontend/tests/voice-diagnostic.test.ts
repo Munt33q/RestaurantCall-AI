@@ -1,0 +1,3 @@
+// Reconstructed from blueprint invalid-signature diagnostic contract.
+import test from 'node:test';import assert from 'node:assert/strict';import {invalidRelayProbeToken} from '../lib/voice-diagnostic';import {mintRelayToken,verifyRelayToken} from '../lib/relay-token';
+test('invalid diagnostic token retains URL length without granting authentication',()=>{process.env.STAFF_SESSION_SECRET='fixture-only-signing-key';const token=mintRelayToken('fixture');const invalid=invalidRelayProbeToken(token);assert.equal(invalid.length,token.length);assert.equal(invalid.split('.').length,3);assert.equal(verifyRelayToken(invalid),null);assert.ok(verifyRelayToken(token));assert.throws(()=>invalidRelayProbeToken('bad'));});

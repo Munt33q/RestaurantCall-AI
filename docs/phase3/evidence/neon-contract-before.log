@@ -1,0 +1,30 @@
+MODEL_WATCH_PROBE { status: 200, invocation: 'fixture-invocation' }
+✔ relay handler verifies JWT, setup identity, duplicate nonce and full review playback (156.7387ms)
+✖ monitor rejects fabricated trigger metadata without an independent secret (7.794ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1522.6806
+
+✖ failing tests:
+
+test at tests\neon-functions.phase3.test.ts:2:4703
+✖ monitor rejects fabricated trigger metadata without an independent secret (7.794ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\neon-functions.phase3.test.ts:28:13)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

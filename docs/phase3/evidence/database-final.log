@@ -1,0 +1,35 @@
+Applied 0001_initial.sql
+Applied 0002_call_sessions.sql
+Applied 0003_ordering_flow.sql
+{
+  severity_local: 'NOTICE',
+  severity: 'NOTICE',
+  code: '42701',
+  message: 'column "last_event_at" of relation "messaging_preferences" already exists, skipping',
+  file: 'tablecmds.c',
+  line: '7688',
+  routine: 'check_for_column_name_collision'
+}
+Applied 0004_restaurant_operations.sql
+Applied 0005_model_monitoring.sql
+Applied 0006_engagement_recovery.sql
+Applied 0007_recovery_dispatch_attempt.sql
+Applied 0008_catalog_sales.sql
+✔ acceptance card rejection and recovery rejection happen before any database access (5.1291ms)
+✔ acceptance orders force cash, no consent/jobs and visible DO NOT PREPARE marking (5712.1706ms)
+✔ unheard receipt creates one warning/event; verified playback creates none (7778.5828ms)
+✔ catalog enforces tenant/version/audit, quote rollback, reviewed archive and free-order semantics (9456.6106ms)
+✔ database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (52767.3093ms)
+✔ recovery database: two distinct items require review and confirmation, concurrent retries reserve once (17637.8194ms)
+✔ recovery is tenant/caller bound, consumed once under concurrency and expires safely (17868.9777ms)
+✔ signed relay claims identity, rejects false Unicode ack and stale reconnect, invalidates interruptions (8062.4024ms)
+✔ status jobs deduplicate, honor revoked consent and reconcile provider delivery without resend (6369.6609ms)
+✔ done events stay done; only safe recent failures retry; stale work requires reconciliation (2887.3338ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55601.5877

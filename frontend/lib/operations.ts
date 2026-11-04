@@ -9,12 +9,12 @@ export async function recordOrderEvent(tx:any,orderId:string,key:string,kind:str
  await tx`INSERT INTO order_events(order_id,event_key,kind,data_json,actor) VALUES(${orderId},${key},${kind},${tx.json(data)},${actor}) ON CONFLICT(order_id,event_key) DO NOTHING`;
 }
 export async function enqueueStatus(tx:any,order:any){
- if(!['confirmed','preparing','ready'].includes(order.status)||!order.notification_consent_at||order.notification_channel==='none')return;
+ if(order.is_test||!['confirmed','preparing','ready'].includes(order.status)||!order.notification_consent_at||order.notification_channel==='none')return;
  if(order.notification_channel==='call'&&order.status!=='ready')return;
  await tx`INSERT INTO notification_jobs(restaurant_id,order_id,event_key,kind,channel,consent_at) VALUES(${order.restaurant_id},${order.id},${`${order.id}:status:${order.status}`},${order.status},${order.notification_channel},${order.notification_consent_at}) ON CONFLICT(event_key) DO NOTHING`;
 }
 export async function enqueuePaymentSms(tx:any,order:any){
- if(!order.payment_sms_consent||!order.payment_sms_consent_at)return;
+ if(order.is_test||!order.payment_sms_consent||!order.payment_sms_consent_at)return;
  await tx`INSERT INTO notification_jobs(restaurant_id,order_id,event_key,kind,channel,consent_at) VALUES(${order.restaurant_id},${order.id},${`${order.id}:payment_link`},'payment_link','sms',${order.payment_sms_consent_at}) ON CONFLICT(event_key) DO NOTHING`;
 }
 function callbackMac(job:string){const s=process.env.STAFF_SESSION_SECRET?.trim();if(!s)throw new Error('Callback signing missing');return crypto.createHmac('sha256',s).update('notification-callback:'+job).digest('base64url');}
@@ -39,6 +39,7 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
   try{
    await sql.begin(async tx=>{
     const [order]=await tx`SELECT * FROM orders WHERE id=${job.order_id} AND restaurant_id=${restaurant} FOR UPDATE`;if(!order)throw new Error('Unknown order');
+    if(order.is_test){await tx`UPDATE notification_jobs SET status='suppressed',last_error='Test order: delivery prohibited',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;return;}
     await tx`SELECT pg_advisory_xact_lock(hashtextextended(${`${restaurant}:${order.customer_phone}`},0))`;
     const [pref]=await tx`SELECT sms_opted_out FROM messaging_preferences WHERE restaurant_id=${restaurant} AND phone=${order.customer_phone??''}`;
     const reason=notificationGate({channel:job.channel,consent:!!job.consent_at&&(job.kind==='payment_link'?order.payment_sms_consent===true&&!!order.payment_sms_consent_at:!!order.notification_consent_at&&order.notification_channel===job.channel),optedOut:pref?.sms_opted_out===true,smsEnabled:process.env.SMS_DELIVERY_ENABLED==='true',callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',phone:order.customer_phone??'',kind:job.kind,orderStatus:order.status});
@@ -100,5 +101,5 @@ export async function operationsSummary(){
 }
 export async function finishCallSession(callId:string,outcome:string){await client()`UPDATE call_sessions SET state='ended',ended_at=COALESCE(ended_at,now()),outcome=COALESCE(outcome,${outcome.slice(0,100)}),updated_at=now() WHERE provider_call_id=${callId} AND restaurant_id=${rid()}`;}
 export async function confirmCashPayment(id:string){
- return client().begin(async tx=>{const [o]=await tx`SELECT * FROM orders WHERE id::text=${id} AND restaurant_id=${rid()} FOR UPDATE`;if(!o)return null;if(!canRecordCashPayment({payment_method:o.payment_method,status:o.status,payment_status:o.payment_status}))throw new Error('Cash collection cannot be recorded for this order');if(o.payment_status==='paid')return {paid:true};await tx`UPDATE orders SET payment_status='paid' WHERE id=${o.id}`;await recordOrderEvent(tx,o.id,'cash_collected','cash_payment_recorded',{amountCents:o.total_cents},process.env.DEMO_STAFF_USERNAME?.trim()||'staff');return {paid:true};});
+ return client().begin(async tx=>{const [o]=await tx`SELECT * FROM orders WHERE id::text=${id} AND restaurant_id=${rid()} FOR UPDATE`;if(!o)return null;if(o.is_test||!canRecordCashPayment({payment_method:o.payment_method,status:o.status,payment_status:o.payment_status}))throw new Error('Cash collection cannot be recorded for this order');if(o.payment_status==='paid')return {paid:true};await tx`UPDATE orders SET payment_status='paid' WHERE id=${o.id}`;await recordOrderEvent(tx,o.id,'cash_collected','cash_payment_recorded',{amountCents:o.total_cents},process.env.DEMO_STAFF_USERNAME?.trim()||'staff');return {paid:true};});
 }

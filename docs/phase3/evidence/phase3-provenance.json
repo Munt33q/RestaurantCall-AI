@@ -1,0 +1,596 @@
+{
+  "generated_at_utc": "2026-11-04T05:20:40.896908+00:00",
+  "checkpoint": "98ecf05",
+  "original_commit_recovered": false,
+  "blueprint_files": 113,
+  "checkpoint_blueprint_matches": 113,
+  "current_blueprint_matches": 105,
+  "intentional_blueprint_deltas": [
+    "frontend/app/api/relay/action/route.ts",
+    "frontend/app/dashboard/page.tsx",
+    "frontend/app/orders/[orderId]/page.tsx",
+    "frontend/app/simulator/page.tsx",
+    "frontend/lib/operations.ts",
+    "frontend/lib/order-contract.ts",
+    "frontend/lib/relay/controller.ts",
+    "frontend/lib/repository.ts"
+  ],
+  "archived_originals_reverified": 157,
+  "historical_missing_paths_reconstructed": 22,
+  "secret_scan": {
+    "supplied_provider_keys_and_cli_token": "no exact matches in changed/new artifacts"
+  },
+  "note": "Manifest excludes itself. Evidence/tooling is reconstructed; baseline originals remain byte-identical. This is not commit 6de7172.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "9a0007c8df7c2f4061df2d6a815b215887a90a6320808a0be3ae347724a1653e",
+      "sha256": "3e79d1bcb6989a76561446f158dd594433412c5765767bfd343136aa747eff1c"
+    },
+    {
+      "path": "docs/DEPLOYMENT_READINESS_PHASE3.md",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "7ddead24ccf6c5b6743400a15e1e072c46389da3e45d0ea4871c1aac86dfbf60"
+    },
+    {
+      "path": "docs/phase3/evidence/blueprint-delta.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "20093ec345cbf17e6808634c69e1d370fdd8a68ccd12eae94d519803bee747cd"
+    },
+    {
+      "path": "docs/phase3/evidence/browser-failure.png",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "2ead5c5c034a86fbb63c14a5c7ad18a2717804cb9c16dbe6a4b12f2245667dc3"
+    },
+    {
+      "path": "docs/phase3/evidence/browser-result.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "09433b1898c6752b7ec25a78e30a2ecb9f155aa92af5f7824f57dd365eeaa9a9"
+    },
+    {
+      "path": "docs/phase3/evidence/browser-run.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "cc2cf143448c78973449348964013a8d9fd5df70b6e1c24d70bf6d0e85b9dd84"
+    },
+    {
+      "path": "docs/phase3/evidence/browser-server.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "1115733458f763fe9104e63c1a90543abd658a28e2111b069a325d97c7d5a867"
+    },
+    {
+      "path": "docs/phase3/evidence/browser-test-orders.png",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "dc758f31931fd15fa95e05d124c4780de5bbf03c2fa2a95928bd3ff89554f846"
+    },
+    {
+      "path": "docs/phase3/evidence/credential-inventory.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "bd6b838eb0dfec00e80b37e93654e46e3431d388e9f0a756d9ace2270a8f0c29"
+    },
+    {
+      "path": "docs/phase3/evidence/current-config.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "f28fb43b9f0ea6b30fb20d59976179a9b8dcc15fa430a16e401e7df7fa155e0d"
+    },
+    {
+      "path": "docs/phase3/evidence/current-model-and-flags.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "acca567a0bc34a9bd064cc86d09a3199adb67eea0ff2c50a73e7a3f6153cdf0b"
+    },
+    {
+      "path": "docs/phase3/evidence/database-affected.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "59bc98c7513fe933548744931829641ac2d7de1adec3fc5299eda078c85eb47e"
+    },
+    {
+      "path": "docs/phase3/evidence/database-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "c3fc43df5625176c3e0573dd1a20cebd2ba17501bd9fe232d75de97a20c0e54f"
+    },
+    {
+      "path": "docs/phase3/evidence/database-first.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "916f78755d90bca925609dc2b36a0e05683eab860f5f55c273572974c0ccc3c5"
+    },
+    {
+      "path": "docs/phase3/evidence/database-second.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "7827b9a377db5f4baa8b954d8c10d6f4356d3a223dc061963de8deaf20d18299"
+    },
+    {
+      "path": "docs/phase3/evidence/disposable-cleanup.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "3af88328fc5f71bd45b979448add75709856c0c932241f303ca2bafed08158c5"
+    },
+    {
+      "path": "docs/phase3/evidence/disposable-database.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "b48fe8a8b3fb4f1d7f8f04ee7a795072c4be0d27bc3f470faa4b4d5c4d7d289d"
+    },
+    {
+      "path": "docs/phase3/evidence/monitor-build-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "6f1f751e61efebb632b6dddf1a107e6c59ad4b491c77427b7fca319fdc93fcdb"
+    },
+    {
+      "path": "docs/phase3/evidence/neon-contract-before.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "248aa75aa28bb1e5f77a5fd375194a330307246958d3beff6246f37b9f7047ef"
+    },
+    {
+      "path": "docs/phase3/evidence/neon-current-functions.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "5b4f68ecfe6dcb9f79d79d4e06bbbfe584bcddb15cd0f8c4c879578a44209794"
+    },
+    {
+      "path": "docs/phase3/evidence/neon-trigger-metadata.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "6d332ceefdaf2260d260dd40056c25f311841243a44e00e0ef65c50087876255"
+    },
+    {
+      "path": "docs/phase3/evidence/neon_triggers.txt",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "89eed0b532aa54a8de5fbf0897f0194d99bc95def492ee6a053bfc4c5306952b"
+    },
+    {
+      "path": "docs/phase3/evidence/next-build-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "43e032cf1e97fd828718b15eb53de93b3d3d7c1fed67eaea893d76d7e1abf4c6"
+    },
+    {
+      "path": "docs/phase3/evidence/next-build.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "43e032cf1e97fd828718b15eb53de93b3d3d7c1fed67eaea893d76d7e1abf4c6"
+    },
+    {
+      "path": "docs/phase3/evidence/playback-before.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "90deef61082e81dd69abda33f612a9e6862dfe28be166b75d6621bb24974d04c"
+    },
+    {
+      "path": "docs/phase3/evidence/provider-contracts.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "1058934d54989c22f00e5290d45750ed060455506976bd71f0ce6332f432188a"
+    },
+    {
+      "path": "docs/phase3/evidence/read-only-runtime.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "c408cea2e4beacf4472c7a107301189507c647c8a4b42624c7e2ababb0d084af"
+    },
+    {
+      "path": "docs/phase3/evidence/recovery-worker-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "a1598f3e862c2ece35c7c91de5630b855d705f123a2ca5ae198ab3a82f8a80de"
+    },
+    {
+      "path": "docs/phase3/evidence/relay-build-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/phase3/evidence/relay-database-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "f7d21d8312f757b934d62dcf98e58ff3a5cc32bf2dd6d6e89b37285d73d79cdc"
+    },
+    {
+      "path": "docs/phase3/evidence/restored-unit-first.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "3630c783e440ed6d7da9c46d7dc1e42c5175abe693d1d6d5e5550a159e4a93d0"
+    },
+    {
+      "path": "docs/phase3/evidence/runtime-contract-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "38acb7c277920e39aad9cf196c7a106562226540549f32f16b398fbaa997eda2"
+    },
+    {
+      "path": "docs/phase3/evidence/scheduler-provider.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "76380e49bd967200889280ad858952fa69fba47cd34d2dc01cf7e9b84daf7f26"
+    },
+    {
+      "path": "docs/phase3/evidence/stripe-hosted-blocker.png",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "aeaa29e489901838687e25c7babd4c22af124165b6a2eb9a4b39b895b6e6756a"
+    },
+    {
+      "path": "docs/phase3/evidence/stripe-local-server.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "eccedd720f720e0e697a63e00116d15c6f867cb332e5665afc26db779a74249b"
+    },
+    {
+      "path": "docs/phase3/evidence/stripe-sandbox-result.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "d941392025933138784db4148b84dafdb83a95170e528e5fd0150aa8f1ca8763"
+    },
+    {
+      "path": "docs/phase3/evidence/stripe-sandbox.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "f21a4563781266750bbdf996a372fe769dadd5e450df2d63b93f67adb9d89b49"
+    },
+    {
+      "path": "docs/phase3/evidence/telnyx-conversation-relay.md",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "badb694f3308a8dfe3d65950382f81dfe70773c685b67c9dae14adfcc9ebf9af"
+    },
+    {
+      "path": "docs/phase3/evidence/telnyx-relay-contract.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "61b80d03ee1ba9a9d63b00b6791d9899c11c725d681d9c40ce2df7852682ff6c"
+    },
+    {
+      "path": "docs/phase3/evidence/telnyx-relay-start.md",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "a989f1f4f78ec7ca53649d69007eafe9783cf9464df7364b6379c0856447833b"
+    },
+    {
+      "path": "docs/phase3/evidence/telnyx-voice-index.txt",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "3821e9dcda53930dda9d6332ba0bb8af21a1ca63a23fac17b66354a75e211b0e"
+    },
+    {
+      "path": "docs/phase3/evidence/telnyx_index.txt",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "da97710f56de17c2a88b1192d98ce3e075be04549aab62e64974a059990a6378"
+    },
+    {
+      "path": "docs/phase3/evidence/typecheck-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "e5046545a3a9fcc0cf6950c9402c78a2b227f07a6a658d2a0c1fbc5f4a194da0"
+    },
+    {
+      "path": "docs/phase3/evidence/typecheck-first.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/phase3/evidence/typecheck-second.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "e5046545a3a9fcc0cf6950c9402c78a2b227f07a6a658d2a0c1fbc5f4a194da0"
+    },
+    {
+      "path": "docs/phase3/evidence/unit-final.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "226352c1e0bd5aeab5a7c2fbaba2763068c2081831a1bf6cc5c634905c40c395"
+    },
+    {
+      "path": "docs/phase3/evidence/unit-first.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "f19436073068eb3dc40e163adf840a71241b22e5b644c3af126a896783485405"
+    },
+    {
+      "path": "frontend/app/api/relay/action/route.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "fe29cecf047d5c48c1afdaa64672417881595573fccedc5710274418628b1d6c",
+      "sha256": "c248bf2d5083ac5aff9b28f6ff82d38a2e38cd55577ca5ec3b00a46dd447c12f"
+    },
+    {
+      "path": "frontend/app/dashboard/page.tsx",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "59cbbf0879ccd324b117a42507c2aaa007620d78a381f47f7888a3a615213b95",
+      "sha256": "ac8c42bd77e848bdbf2aa32f81387a53b4ad2a86b55d4c75fe9eea3434644e30"
+    },
+    {
+      "path": "frontend/app/orders/[orderId]/page.tsx",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "1a84a8abfd47067d3252ab6a11b0bc5f5e6a4c6a98b17c5d44c222bc87c1d353",
+      "sha256": "5cfbe01e394a56ebab7f813becddfb16efd6a369ef4eac10411c68b881f40dd5"
+    },
+    {
+      "path": "frontend/app/simulator/page.tsx",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "14a50559b1c70d95a877084d49811d6b424099f9dcf33057dcfb84f5a3f00175",
+      "sha256": "418fc32812e4978c83cec33b49c77897087f5b5838432ac06d7c845ea20e33c5"
+    },
+    {
+      "path": "frontend/lib/operations.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "b084cdec1dc36f6b79e03f735d0fd71617d10fb3b279d4764431f62724b3705f",
+      "sha256": "19c378255d4bcd6d8ee153591d9d9946958939ac8cfc3935fadfe5710e4580ac"
+    },
+    {
+      "path": "frontend/lib/order-contract.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "76d0be164808d1a88e2005f8ab7bed162ca8e44886a30d8a4c75dc6094aeec97",
+      "sha256": "de4a0d44af7ee11d2f2c37414725d47b168d6610318a66ad3ab04244f38d43cc"
+    },
+    {
+      "path": "frontend/lib/relay/controller.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "42d029cd3c9a52f66e2de5397092eed4e545ec27ffd0d83a2e1a1546fc10afd1",
+      "sha256": "121b663a01ef6546c575ae47b273cdbe7ba2db30337f0c91a6ab527f8b36c37a"
+    },
+    {
+      "path": "frontend/lib/relay/playback.ts",
+      "classification": "new engineering implementation",
+      "checkpoint_sha256": null,
+      "sha256": "6f72e3e350a75217929db75b722c116d0703b75a42e80c8e549af13a788f8a7a"
+    },
+    {
+      "path": "frontend/lib/repository.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "948dc6c885365e22f2592d5e56bf5098b08d798861da9fbc082a89b1f505adfd",
+      "sha256": "d96a2b6f7fb78fa50e805a74fe8f52b8d0e6460006364fbf7ad59ba957eff9a3"
+    },
+    {
+      "path": "frontend/scripts/test.mjs",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "3a8cb0398879f4ca5c95269eaa10d972919e95b6a63c7411c2acf7fae9fd8b71",
+      "sha256": "02e9e63ddcd558b822647ad316c2ce688b34843db0ae23aa23d23822187826d6"
+    },
+    {
+      "path": "frontend/tests/acceptance-order.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "0d501d501f4c98d9f1f5449f78e8e50f6917a35cf7b04ed00a4b5426d8d1483e"
+    },
+    {
+      "path": "frontend/tests/call-language.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "2788c048563a09896e8c1ee7a2d4f20bbf2b439c77d5a1dc87aa35ceed525e4c"
+    },
+    {
+      "path": "frontend/tests/call-receipt.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "1a67ee19c2f2cb917dc7d92f79b86b523236ed5d3d5d58aef24c663d2a03f6aa"
+    },
+    {
+      "path": "frontend/tests/catalog-database.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "5880c72517234f41a0063b4275974fb9c36c925c2a99e9757bb9dd78c8067e35"
+    },
+    {
+      "path": "frontend/tests/catalog-sales.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "a0825960d4e04984b2fbf89dfd712157badfadcb21126a41299da8ea46b4e4cd"
+    },
+    {
+      "path": "frontend/tests/draft-recovery.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "ba65ff6e73641340c7d65b69e3ea9d889034759e8596565e89f6554be272d785"
+    },
+    {
+      "path": "frontend/tests/engagement-policy.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "f1d2a34e695c9eab0a8ca549e3d24bc69d84bde84e1327fb58798713f4f4bd98"
+    },
+    {
+      "path": "frontend/tests/engagement-turn.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "8a8551af0d08a7c240742471cbf7069e7a502c192bff51727720e42a3cddd931"
+    },
+    {
+      "path": "frontend/tests/helpers/postgres.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "e07bdc6d6f8b1fd806ea2e37f00c8db66fae6ef4bd0f2ffdf1078b0fd9b0c2cd"
+    },
+    {
+      "path": "frontend/tests/live-model-chain.test.ts",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "b449a1537c139b5d05c16fb92b4a3266fc269585f19f3f5e88e3cee5b3f2ccb7",
+      "sha256": "70a93a7cee979d96e0be0f52c259f94c85c0b9228ebbb7d62782811fdf5516a9"
+    },
+    {
+      "path": "frontend/tests/live-voice-transport.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "003f40b1b352082fa5e06b74687d65285d343e26b2056ad333ceb5125c5a83ab"
+    },
+    {
+      "path": "frontend/tests/menu-health-probe.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "f70c78ac853fd9c5b88564fdad65edc95fa76a48658aa946e59c23b248974f7c"
+    },
+    {
+      "path": "frontend/tests/model-network.phase3.test.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "3459847120ea7451b706290a78ef87e3ab7598b7990af5481feefab2390014d9"
+    },
+    {
+      "path": "frontend/tests/neon-functions.phase3.test.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "cb52cf60e864337ce2bb988e3197997a7890fa127628bbd6909b0aa36578e038"
+    },
+    {
+      "path": "frontend/tests/petra-photo-menu.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "fc3e66891bbeb85186586234902e5a9f40256636e80d21b76712492b78b4b524"
+    },
+    {
+      "path": "frontend/tests/playback.phase3.test.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "f75dc548574f587d910c402fadbc4702df17e356c69e507eea8fed94080d0333"
+    },
+    {
+      "path": "frontend/tests/recovery-database.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "a0beb5b050e0a862de72510f4760db1adabccffa18409122b8eeb5d4ac246b1e"
+    },
+    {
+      "path": "frontend/tests/relay-database.phase3.test.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "90115429e712c6a8519be8abb64d16dd6bf90256c9770d230799e19c5665e5f5"
+    },
+    {
+      "path": "frontend/tests/sales-quote.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "da0fb25cf3d568eb05dbd4814aef809326185e081cf3bb78963ed85a440b635c"
+    },
+    {
+      "path": "frontend/tests/sip-init.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "0e25cdf210f919f9a9c5257c7f154462637c5dfe0d20e9b1ef31e733535b0f90"
+    },
+    {
+      "path": "frontend/tests/sip-languages.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "20c64c991355ba22d814e8454682a45e376bd9c921fa87320e2de103753ce13c"
+    },
+    {
+      "path": "frontend/tests/sip-trial.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "a5084670ff052f0f3b10e2f552a5f5ffe8a81205e72ed8b97274e6091f4dca0a"
+    },
+    {
+      "path": "frontend/tests/status-notifications-database.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "9c58ab5a0d88f851d7f83560e004448b62da517b9d281554d31702c0f6567312"
+    },
+    {
+      "path": "frontend/tests/telnyx-api-errors.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "f04ac4dded9e6107cdd787864ec094e5003fc959266c0a73e221b03f652582e5"
+    },
+    {
+      "path": "frontend/tests/voice-diagnostic.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "64cdb13a9725c5d1472c7e93f3bce61574d9d6a928b7d40d1f64dc0a06a54c2b"
+    },
+    {
+      "path": "frontend/tests/voice-event-replay.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "a8e29e1ab387a81c28ccca6eff8adda4d30ed5fbd771d0949874f89be3c15dde"
+    },
+    {
+      "path": "frontend/tests/voice-self-probe.test.ts",
+      "classification": "reconstructed historical contract test/helper (not original bytes)",
+      "checkpoint_sha256": null,
+      "sha256": "75c03b8f781282daef841bbe63c9b5ddf5fdeac9b62775c430cad98f81d4fd9d"
+    },
+    {
+      "path": "recovery/phase3/audit.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "a9821a9fc931f6b184649c8c97f2c70a7e413e3f2362e61466d22fedaa510bdb"
+    },
+    {
+      "path": "recovery/phase3/browser.mts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "5d257c3f51571e250390f4f81394e42050480d40ac3ebdd6c12f0083084af0d3"
+    },
+    {
+      "path": "recovery/phase3/cleanup.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "59110563bdb00d6cdd4632735ce1e7a99ed6c4c232d30d1d2949baec1653f790"
+    },
+    {
+      "path": "recovery/phase3/fresh-database.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "ad8ff1551f4a86a5e74e1d8145e704eb924c330ee7704e7a7ed9e0db5dcac9cf"
+    },
+    {
+      "path": "recovery/phase3/provider-audit.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "66738109f1ee4f48706c607d0029dae8cbae8548e6df5abcc1483de5a3417ab1"
+    },
+    {
+      "path": "recovery/phase3/provider-docs.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "1cbdf00c7c7d5db7e77375f3c5e4548023975ab6f72b549f8c1a9b71612b512e"
+    },
+    {
+      "path": "recovery/phase3/provision-test-db.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "bc5ee96a6a1f8ab3f95b0a7e65daa505ee2a5d0a4cb15250eb9c111c900b5acc"
+    },
+    {
+      "path": "recovery/phase3/read-only-runtime.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "4bede6e2b3bb63fa38d8e891338cc5ec65dbc41426061071c79d8e60bd1e60b3"
+    },
+    {
+      "path": "recovery/phase3/run-database.mjs",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "adce464353ef0812dca248206d8cc8411c322439dfe800c87a0c05d1d84abb36"
+    },
+    {
+      "path": "recovery/phase3/run-stripe.py",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "7b9a72564cb1d65bf1173667a10c2064a84ac7e4ad1dc4a479929da0946fa143"
+    },
+    {
+      "path": "recovery/phase3/stripe-sandbox.mts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "d089a8cc9bf964541893a4fa51884b612bea598b52b044a9eabe5658813ee3c5"
+    }
+  ]
+}

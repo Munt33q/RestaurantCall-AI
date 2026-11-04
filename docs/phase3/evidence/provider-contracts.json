@@ -1,0 +1,27 @@
+{
+  "neon_triggers": {
+    "http": 200,
+    "url": "https://neon.com/docs/compute/functions/triggers/overview.md",
+    "bytes": 16574,
+    "relevant_lines": [
+      "- **Headers:** `content-type: application/json`, a W3C [`traceparent`](https://www.w3.org/TR/trace-context/), and `X-Neon-Trigger-Invocation-Id` (equal to the body's `invocation_id`).",
+      "Neon delivers trigger calls to the function's public URL. To confirm a request is a genuine trigger invocation and not an arbitrary caller, check for the `X-Neon-Trigger-Invocation-Id` header: Neon strips any client-supplied `X-Neon-*` header at the edge, so a request that carries one is sent by Neon's trigger system. A handler that only serves triggers can reject requests that lack it, as the [worked handler](https://neon.com/docs/compute/functions/triggers/schedule#write-a-handler-for-the-scheduled-call) does.",
+      "2. Send a `POST` to the local URL plus the trigger's `function_path`, with the same JSON envelope the trigger would send. Include an `X-Neon-Trigger-Invocation-Id` header if your handler checks for it. A schedule replay carries `data.scheduled_at`:",
+      "     -H \"X-Neon-Trigger-Invocation-Id: local-test\" \\",
+      "     -H \"X-Neon-Trigger-Invocation-Id: local-test\" \\",
+      "Handler output appears in the `neon dev` terminal rather than in `neon logs query`. Leave off the `X-Neon-Trigger-Invocation-Id` header to confirm a guarded handler returns `403`. If the handler reads from Object Storage, the bucket and object live on the branch, so deploy first and make sure the object you replay exists there."
+    ]
+  },
+  "telnyx_index": {
+    "http": 200,
+    "url": "https://developers.telnyx.com/llms.txt",
+    "bytes": 18938,
+    "relevant_lines": []
+  },
+  "stripe_test_key": {
+    "http": 200,
+    "valid": true,
+    "account_type": "standard",
+    "charges_enabled": false
+  }
+}

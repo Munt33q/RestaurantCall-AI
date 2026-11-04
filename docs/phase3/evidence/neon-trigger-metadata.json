@@ -1,0 +1,14 @@
+{
+  "http": 200,
+  "triggers": [
+    {
+      "name": "model-health-every-minute",
+      "type": "schedule",
+      "enabled": true,
+      "function_path": "/",
+      "schedule": {
+        "cron": "* * * * *"
+      }
+    }
+  ]
+}

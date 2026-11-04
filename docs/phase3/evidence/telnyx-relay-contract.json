@@ -1,0 +1,17 @@
+[
+  {
+    "source": "https://developers.telnyx.com/docs/voice/programmable-voice/conversation-relay.md",
+    "http": 200,
+    "lines": [
+      "5. Telnyx sends `prompt`, `dtmf`, `interrupt`, and `error` frames as call events occur.",
+      "  \"callSid\": \"v2:T02llQxIyaRkhfRKxgAP8nY511EhFLizdvdUKJiSw8d6A9BborherQ\",",
+      "  \"callControlId\": \"v2:T02llQxIyaRkhfRKxgAP8nY511EhFLizdvdUKJiSw8d6A9BborherQ\",",
+      "When using Programmable Voice, Conversation Relay lifecycle events are delivered to your Call Control webhook URL. When the relay session ends, Telnyx sends:"
+    ]
+  },
+  {
+    "source": "https://developers.telnyx.com/api-reference/call-commands/start-conversation-relay.md",
+    "http": 200,
+    "lines": []
+  }
+]

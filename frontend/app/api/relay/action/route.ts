@@ -10,8 +10,8 @@ import {decideTurn,initialState,type CartState} from '@/lib/voice-engine';
 import {gateRelayCheckout} from '@/lib/relay/checkout';
 import {processBackgroundJobs} from '@/lib/background-jobs';
 import {waitUntil} from '@vercel/functions';
+import {playbackMatches} from '@/lib/relay/playback';
 export const maxDuration=30;
-const clean=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
 export async function POST(request:Request){
  const token=request.headers.get('authorization')?.replace(/^Bearer /,'')??'';const grant=verifyRelayToken(token);
  if(!grant)return new Response('Unauthorized',{status:401});
@@ -66,11 +66,11 @@ export async function POST(request:Request){
     const [row]=await tx`SELECT d.session_id,d.state_json FROM draft_carts d JOIN call_sessions s ON s.id=d.session_id WHERE s.provider_call_id=${grant.callId} AND s.restaurant_id=${restaurantId()} FOR UPDATE OF d`;
     if(!row)throw new Error('Unknown call');const state=row.state_json;if(state.relayActiveNonce!==grant.nonce)throw new Error('RELAY_STALE');
     if(body.action==='ack'){
-     if(state.relayDeliveryId===body.deliveryId&&typeof body.playedText==='string'&&clean(body.playedText)===clean(state.lastReply??'')){
+     if(state.relayDeliveryId===body.deliveryId&&typeof body.playedText==='string'&&playbackMatches(body.playedText,state.lastReply??'')){
       if(state.relayOrderReceiptDeliveryId===body.deliveryId)state.relayCompletionPlayed=true;
       const offer=state.engagement?.upsell?.pending;if(offer)await recordEngagementEvents(tx,row.session_id,[{kind:'upsell_delivered',key:'delivered:'+offer.id,data:{offerId:offer.id}}]);
      }
-     if(state.relayDeliveryId===body.deliveryId&&state.relayRequiresReadback&&typeof body.playedText==='string'&&clean(body.playedText)===clean(state.lastReply??''))state.relayReviewReady=true;
+     if(state.relayDeliveryId===body.deliveryId&&state.relayRequiresReadback&&typeof body.playedText==='string'&&playbackMatches(body.playedText,state.lastReply??''))state.relayReviewReady=true;
     }else{
      state.relayRevision=(state.relayRevision??0)+1;
      if(body.deliveryId&&state.relayDeliveryId===body.deliveryId){state.relayReviewReady=false;if(state.engagement){const pending=state.engagement.upsell.pending;if(pending)await recordEngagementEvents(tx,row.session_id,[{kind:'upsell_interrupted',key:'interrupted:'+pending.id,data:{offerId:pending.id}}]);state.engagement.upsell.interrupted=pending;state.engagement.upsell.pending=undefined;state.engagement.assistance.pending=false;}const heard=typeof body.heard==='string'?body.heard.slice(0,1000):'';state.lastReply=heard;await tx`UPDATE conversation_turns SET content=${heard||'[interrupted before playback]'} WHERE session_id=${row.session_id} AND sequence=${state.relayDeliveryTurn*2+1} AND role='assistant'`;}

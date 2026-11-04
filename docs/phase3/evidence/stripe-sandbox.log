@@ -1,0 +1,65 @@
+{
+  "sandboxOnly": true,
+  "branch": "br-soft-leaf-b87ops6p",
+  "checks": [
+    "real Stripe test-mode Checkout created with correct amount, currency and order binding",
+    "hosted Stripe sandbox Checkout accepted only the published 4242 test card",
+    "completed payment job is idempotent",
+    "missing, body-tampered and stale webhook signatures rejected",
+    "correctly signed amount mismatch cannot mark order paid",
+    "locally signed valid completion applied once across duplicate delivery",
+    "sandbox order without consent produces no notifications"
+  ],
+  "testCardSubmitted": true,
+  "realCardSubmitted": false,
+  "webhookEventOrigin": "locally generated signed fixture, not a Stripe-delivered webhook",
+  "hostedInputFields": [
+    {
+      "name": "email",
+      "id": "email",
+      "type": "text"
+    },
+    {
+      "name": "cardNumber",
+      "id": "cardNumber",
+      "type": "text"
+    },
+    {
+      "name": "cardExpiry",
+      "id": "cardExpiry",
+      "type": "text"
+    },
+    {
+      "name": "cardCvc",
+      "id": "cardCvc",
+      "type": "text"
+    },
+    {
+      "name": "billingName",
+      "id": "billingName",
+      "type": "text"
+    },
+    {
+      "name": "billingPostalCode",
+      "id": "billingPostalCode",
+      "type": "text"
+    },
+    {
+      "name": "enableStripePass",
+      "id": "enableStripePass",
+      "type": "checkbox"
+    },
+    {
+      "name": "phoneNumber",
+      "id": "phoneNumber",
+      "type": "tel"
+    },
+    {
+      "name": "link_pay_token",
+      "id": "",
+      "type": "text"
+    }
+  ],
+  "hostedCheckoutPaid": true,
+  "ok": true
+}

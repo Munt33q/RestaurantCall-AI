@@ -1,0 +1,53 @@
+{
+  "http": 200,
+  "functions": [
+    {
+      "name": "modelwatch",
+      "active_deployment": {
+        "id": 1,
+        "status": "completed",
+        "memory_mib": 2048,
+        "runtime": "nodejs24",
+        "created_at": "2026-11-02T12:31:47.293055Z",
+        "environment": [
+          "APP_URL",
+          "MODEL_MONITOR_SECRET"
+        ]
+      },
+      "current_deployment": {
+        "id": 1,
+        "status": "completed",
+        "memory_mib": 2048,
+        "runtime": "nodejs24",
+        "created_at": "2026-11-02T12:31:47.293055Z",
+        "environment": [
+          "APP_URL",
+          "MODEL_MONITOR_SECRET"
+        ]
+      }
+    },
+    {
+      "name": "restaurantrelay",
+      "active_deployment": {
+        "id": 10,
+        "status": "completed",
+        "memory_mib": 2048,
+        "runtime": "nodejs24",
+        "created_at": "2026-11-03T17:33:01.048290Z",
+        "environment": [
+          "APP_URL"
+        ]
+      },
+      "current_deployment": {
+        "id": 10,
+        "status": "completed",
+        "memory_mib": 2048,
+        "runtime": "nodejs24",
+        "created_at": "2026-11-03T17:33:01.048290Z",
+        "environment": [
+          "APP_URL"
+        ]
+      }
+    }
+  ]
+}

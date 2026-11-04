@@ -1,0 +1,9 @@
+file:///C:/Users/munte/.codex/worktrees/restaurantcall-recovery-phase2/VOXO/recovery/phase3/run-database.mjs:6
+const sql=postgres(state.uri,{max:1,prepare:false});
+          ^
+
+TypeError: postgres is not a function
+    at file:///C:/Users/munte/.codex/worktrees/restaurantcall-recovery-phase2/VOXO/recovery/phase3/run-database.mjs:6:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v26.13.0

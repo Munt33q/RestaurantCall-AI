@@ -1,0 +1,12 @@
+PASS unauthenticated dashboard redirects to login
+PASS invalid login visibly rejected
+PASS staff login and kitchen dashboard
+PASS menu create persists price and stock
+PASS menu availability toggles
+PASS ordering collects two items, name, cash, consent and review before inserting
+PASS explicit confirmation creates correct synthetic cash order
+PASS kitchen confirmed → preparing → ready → completed
+PASS order detail and staff cash receipt
+PASS call history and persisted transcript drawer
+PASS analytics reports synthetic order total
+PASS acceptance tickets isolated from normal kitchen with no prepare action
