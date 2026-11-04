@@ -10,6 +10,7 @@
     "test:unit": "node scripts/test.mjs --unit"
   },
   "dependencies": {
+    "@neon/functions": "0.11.0",
     "@vercel/functions": "^3.10.5",
     "drizzle-orm": "^0.45.4",
     "next": "14.2.35",
