@@ -1,0 +1,195 @@
+[
+  {
+    "name": "search_menu",
+    "description": "Search the live restaurant menu. Use for prices, availability and ingredient questions. Clarify which match the customer wants before modifying cart.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "search_menu"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {
+      "query": {
+        "type": "string",
+        "description": "Customer search text",
+        "required": false
+      }
+    },
+    "status": "preview_only"
+  },
+  {
+    "name": "update_cart",
+    "description": "Add, set quantity or remove a selected menu item by its ID. Always search menu first and use a returned ID.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "update_cart"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {
+      "item_id": {
+        "type": "string",
+        "description": "Exact menu UUID returned by search_menu",
+        "required": true
+      },
+      "operation": {
+        "type": "string",
+        "description": "One of add, set, remove",
+        "required": true
+      },
+      "quantity": {
+        "type": "integer",
+        "description": "Number of items, 1\u201320 except for remove",
+        "required": false
+      }
+    },
+    "status": "preview_only"
+  },
+  {
+    "name": "get_cart",
+    "description": "Retrieve the current preview order cart.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "get_cart"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {},
+    "status": "preview_only"
+  },
+  {
+    "name": "set_customer_details",
+    "description": "Record the pickup name and an explicitly confirmed callback number.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "set_customer_details"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {
+      "customer_name": {
+        "type": "string",
+        "description": "Customer pickup name",
+        "required": true
+      },
+      "customer_phone": {
+        "type": "string",
+        "description": "Callback phone in E.164 format, only if confirmed by customer",
+        "required": false
+      },
+      "name_confirmed": {
+        "type": "boolean",
+        "description": "True only if name confirmed verbally",
+        "required": false
+      }
+    },
+    "status": "preview_only"
+  },
+  {
+    "name": "set_notification_preference",
+    "description": "Record provisional explicit notification preference. Does not activate sending.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "set_notification_preference"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {
+      "channel": {
+        "type": "string",
+        "description": "none, sms, or call",
+        "required": true
+      },
+      "consent": {
+        "type": "boolean",
+        "description": "True only after explicit customer opt-in",
+        "required": true
+      }
+    },
+    "status": "preview_only"
+  },
+  {
+    "name": "review_order",
+    "description": "Retrieve the authoritative preview quote from restaurant pricing and promotion data. Not a committed order.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "review_order"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {},
+    "status": "preview_only"
+  },
+  {
+    "name": "confirm_order",
+    "description": "Preview ONLY, intentionally disabled. Returns CHECKOUT_DISABLED until independent playback evidence and final confirmation are verified.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "confirm_order"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {},
+    "status": "preview_only"
+  },
+  {
+    "name": "get_order_status",
+    "description": "Return status for an existing committed order linked to this conversation, never by arbitrary order ID.",
+    "method": "POST",
+    "url": "https://YOUR_VERIFIED_PREVIEW_DOMAIN/api/elevenlabs/tools",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <SECRET_FROM_ELEVENLABS_SECRETS>"
+    },
+    "body_fixed": {
+      "tool": "get_order_status"
+    },
+    "body_dynamic": {
+      "conversation_id": "{{system__conversation_id}}"
+    },
+    "body_llm_fields": {},
+    "status": "preview_only"
+  }
+]
