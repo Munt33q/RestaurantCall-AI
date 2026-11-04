@@ -1,0 +1,7 @@
+{
+  "branchId": "br-solitary-dream-b82g5d2t",
+  "previous_synthetic_database": "recovery_phase4_1793777388",
+  "fresh_database": "recovery_phase4_1793778153",
+  "production_data_copied": false,
+  "reason": "Full regression fixtures require an empty database; fixed fixture provider IDs collide on reuse."
+}

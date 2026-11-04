@@ -27,7 +27,7 @@ export async function POST(request:Request){
   connectionId:process.env.LIVE_VOICE_APPLICATION_ID??'',number:process.env.TELNYX_PHONE_NUMBER??'',socketUrl:process.env.RELAY_WEBSOCKET_URL??'',secretRef:process.env.ELEVENLABS_TELNYX_SECRET_REF??'',
   acceptancePhone:process.env.LIVE_VOICE_ACCEPTANCE_PHONE?.trim()||undefined,
   admitted:async(id,phone)=>{const [session]=await client()`SELECT id FROM call_sessions WHERE provider_call_id=${id} AND restaurant_id=${restaurantId()} AND caller_phone=${phone} AND state<>'ended' AND expires_at>now()`;return !!session;},
-  open:async(id,phone)=>{await openVoiceSession(id,phone,process.env.PUBLIC_APP_URL!);if(process.env.LIVE_VOICE_ACCEPTANCE_PHONE?.trim()===phone){await client()`UPDATE draft_carts d SET state_json=jsonb_set(d.state_json,'{isAcceptanceTest}','true'::jsonb),updated_at=now() FROM call_sessions s WHERE s.id=d.session_id AND s.provider_call_id=${id} AND s.restaurant_id=${restaurantId()}`;}},token:issueLiveRelayToken,
+  open:async(id,phone)=>{await openVoiceSession(id,phone,process.env.PUBLIC_APP_URL!);if(process.env.LIVE_VOICE_ACCEPTANCE_PHONE?.trim()===phone){await client()`UPDATE draft_carts d SET state_json=jsonb_set(d.state_json,'{isAcceptanceTest}','true'::jsonb),updated_at=now() FROM call_sessions s WHERE s.id=d.session_id AND s.provider_call_id=${id} AND s.restaurant_id=${restaurantId()}`;}},token:id=>issueLiveRelayToken(id,undefined,'call-control'),
   command:async(id,action,payload)=>{await telnyxApi('/calls/'+encodeURIComponent(id)+'/actions/'+action,'POST',payload);},
   ended:async(id,status)=>{
    await applyCallStatus(new URLSearchParams({CallControlId:id,CallStatus:status}));

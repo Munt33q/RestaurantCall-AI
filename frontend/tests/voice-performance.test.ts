@@ -43,7 +43,9 @@ test('explicit compound add bypasses model but ambiguity and modifiers still use
  const state={phase:'ordering',items:[],history:[]};
  const added=await understandVoiceTurn('add two moz sticks and add fies',choices,state);
  assert.equal(calls,0);assert.equal(added.reasoningSource,'app');assert.deepEqual(added.extracted,[{menuItemId:'moz',quantity:2},{menuItemId:'fries',quantity:1}]);
- for(const text of ['add a burger','add fries without salt','do you have fries','add fries and do not add mozzarella sticks'])await understandVoiceTurn(text,choices,state);
- assert.equal(calls,4);
+ const available=await understandVoiceTurn('do you have fries',choices,state);
+ assert.equal(available.reasoningSource,'app');assert.deepEqual(available.offeredItemIds,['fries']);assert.equal(calls,0);
+ for(const text of ['add a burger','add fries without salt','add fries and do not add mozzarella sticks'])await understandVoiceTurn(text,choices,state);
+ assert.equal(calls,3);
  }finally{global.fetch=previous;}
 });

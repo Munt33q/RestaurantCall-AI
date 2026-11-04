@@ -12,7 +12,7 @@ export function authorizeUpsell(current:UpsellState,input:Proposal){
  const eligible=['sides','drinks'].filter(c=>!categories.includes(c)&&!state.offers.some(o=>o.category===c));
  const item=input.menu.find(m=>eligible[0]===m.category?.toLowerCase()&&m.isAvailable&&(m.stockQty===null||m.stockQty>=1))??input.menu.find(m=>eligible.includes(m.category?.toLowerCase()??'')&&m.isAvailable&&(m.stockQty===null||m.stockQty>=1));
  if(!item)return {state,offer};
- const templates:Record<string,string>={en:`Would you like ${item.name} with that?`,es:`¿Le gustaría añadir ${item.name}?`,ar:`هل تريد إضافة ${item.name}؟`,hi:`क्या आप ${item.name} भी लेना चाहेंगे?`};
+ const templates:Record<string,string>={en:`Would you like ${item.name} with that?`,es:`¿Le gustaría añadir ${item.name}?`,ar:`هل تريد إضافة ${item.name}؟`,ur:`کیا آپ اس کے ساتھ ${item.name} لینا چاہیں گے؟`,hi:`क्या आप ${item.name} भी लेना चाहेंगे?`};
  offer={id:input.requestId,itemId:item.id,category:item.category!.toLowerCase(),text:templates[input.language]??templates.en};state.offers.push(offer);state.pending=offer;
  return {state,offer};
 }

@@ -2,10 +2,12 @@ import crypto from 'node:crypto';
 import {client} from './db/client';
 import {restaurantId} from './repository';
 import {signRelayPayload,type RelayGrant} from './relay-token';
-export async function issueLiveRelayToken(callId:string,endedNonce?:string){
+export async function issueLiveRelayToken(callId:string,endedNonce?:string,transport:'call-control'|'texml'='texml'){
  return client().begin(async tx=>{
   const [row]=await tx`SELECT d.session_id,d.state_json FROM draft_carts d JOIN call_sessions s ON s.id=d.session_id WHERE s.provider_call_id=${callId} AND s.restaurant_id=${restaurantId()} AND s.expires_at>now() FOR UPDATE OF d`;
   if(!row)throw new Error('Unknown or expired call');const state=row.state_json;
+  if(state.relayTransport&&state.relayTransport!==transport)throw new Error('Relay transport mismatch');
+  const transportChanged=state.relayTransport!==transport;state.relayTransport=transport;
   const reconnect=!!endedNonce;
   if(endedNonce&&state.relayReplacements?.[endedNonce])return signRelayPayload(state.relayReplacements[endedNonce]);
   if(endedNonce&&state.relayActiveNonce!==endedNonce)throw new Error('Stale relay callback');
@@ -17,6 +19,7 @@ export async function issueLiveRelayToken(callId:string,endedNonce?:string){
    if(reconnect){state.relayReconnects=(state.relayReconnects??0)+1;state.relayReplacements={...(state.relayReplacements??{}),[endedNonce!]:grant};}
    await tx`UPDATE draft_carts SET state_json=${tx.json(state)},updated_at=now() WHERE session_id=${row.session_id}`;
   }
+  else if(transportChanged)await tx`UPDATE draft_carts SET state_json=${tx.json(state)},updated_at=now() WHERE session_id=${row.session_id}`;
   return signRelayPayload(grant);
  });
 }

@@ -1,0 +1,11 @@
+VOICE_CONFIRMATION_REJECTED { reason: 'missing_playback_evidence', turn: 7, phase: 'confirm' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+✔ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (32469.2031ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32786.9464

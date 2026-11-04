@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-11-04T07:59:59.783297+00:00",
+  "branch": "codex/phase4-voice-experience",
+  "remote": "https://github.com/Munt33q/RestaurantCall-AI.git",
+  "vercel_http": 200,
+  "git_create_deployments": "disabled",
+  "production_settings_changed": false,
+  "remote_refs": {
+    "refs/heads/master": "0cdb16ac4a748e9b94bda6a6621c084b2902fbe3",
+    "refs/heads/recovered/restaurant-sales-2026-11-03": "3aa6961b6500abc6a09da2d7cdbd2be6cdc40e72"
+  }
+}

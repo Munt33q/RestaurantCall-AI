@@ -1,0 +1,15 @@
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+✔ signed relay claims identity, rejects false Unicode ack and stale reconnect, invalidates interruptions (8015.0478ms)
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+VOICE_CONFIRMATION_REJECTED { reason: 'missing_playback_evidence', turn: 7, phase: 'confirm' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+✔ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (36497.4681ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36850.4535

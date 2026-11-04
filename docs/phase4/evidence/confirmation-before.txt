@@ -1,0 +1,71 @@
+✖ phase4: repeated affirmative advances after full review without clientSpeaking event (7.8959ms)
+✖ phase4: final playback tokens arriving after speaker-off still acknowledge the review (0.2575ms)
+✔ phase4: speaker-off without complete tokens never acknowledges a review (0.1408ms)
+✖ phase4: explicit final affirmatives are phase-bound and negations stay blocked (1.2088ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 394.7577
+
+✖ failing tests:
+
+test at tests\voice-experience.phase4.test.ts:2:1885
+✖ phase4: repeated affirmative advances after full review without clientSpeaking event (7.8959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\voice-experience.phase4.test.ts:18:44)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\voice-experience.phase4.test.ts:2:2323
+✖ phase4: final playback tokens arriving after speaker-off still acknowledge the review (0.2575ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\voice-experience.phase4.test.ts:23:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\voice-experience.phase4.test.ts:2:3100
+✖ phase4: explicit final affirmatives are phase-bound and negations stay blocked (1.2088ms)
+  AssertionError [ERR_ASSERTION]: place it
+  + actual - expected
+  
+  + undefined
+  - 'confirm'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\voice-experience.phase4.test.ts:30:86)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'confirm',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

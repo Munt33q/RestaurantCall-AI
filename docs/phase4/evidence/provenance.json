@@ -1,0 +1,592 @@
+{
+  "generated_at_utc": "2026-11-04T08:00:34.945435+00:00",
+  "phase4_baseline": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+  "publication_base": "3aa6961b6500abc6a09da2d7cdbd2be6cdc40e72",
+  "outgoing_committed_versions_scanned": [
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": ".gitattributes",
+      "sha256": "35243aa4048f5e9e9a2f26c9738eb229ebb430b6f330b3f5e678ffbeb820bf3c"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "docs/LOCAL_ENGINEERING_AFTER_PUBLICATION.md",
+      "sha256": "1f921d4326de2743c2801947bce75fb71073b49f35a89006fbb52c2882cc411b"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "docs/phase3/evidence/build-after-publication.log",
+      "sha256": "0663499450a84e26ca2597f8478a89ef86f3351a945490229467fc638586a45c"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "docs/phase3/evidence/model-acceptance-preflight.json",
+      "sha256": "04fb7f6da31b870f9a8ff24249cf1e9e33a1cc193c0e2ac8e1adcf2b0915f59c"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "docs/phase3/evidence/phase3-provenance.json",
+      "sha256": "5d1c207c6448e010115bb450982b55cd5409a23ed9bc281d174c1736dd4f6c16"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "docs/phase3/evidence/unit-after-publication.log",
+      "sha256": "d505c33de4c0c4966308bd2eb4c593d050e090f3b4b16ddec42f56ee25e8e415"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "frontend/tests/model-acceptance-harness.test.ts",
+      "sha256": "17eaa15f0fa2c5baba7f05dc8df7bdfa0b4e55cb437e169e62473c0a8571f4a3"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "recovery/phase3/MODEL_ACCEPTANCE.md",
+      "sha256": "e5b2e99df72ed8bb7262a51c822c5e87d5dc2c777528024eb3fbe96e517d9c00"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "recovery/phase3/model-acceptance-contract.ts",
+      "sha256": "5ba00c35d6a9bca80cc2e120953a0eeaa142fd51e4fdeacb6ede00905b8abf30"
+    },
+    {
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "path": "recovery/phase3/model-acceptance.mts",
+      "sha256": "f04254d1c1d54003ca5228a6f0bc12945878e6b53e8f15294e98f37f7c5e1290"
+    }
+  ],
+  "reviewed_synthetic_pattern_exceptions": [
+    {
+      "path": "frontend/tests/model-acceptance-harness.test.ts",
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "kind": "credential-stripping fixture URI without credentials or real endpoint"
+    },
+    {
+      "path": "frontend/tests/model-acceptance-harness.test.ts",
+      "commit": "48d4d27b43d5acfcfb92e7beac8256b166084dea",
+      "kind": "credential-stripping fixture URI without credentials or real endpoint"
+    }
+  ],
+  "recovery_checkpoint": "98ecf05dfe10dc1a39344a64211ff92878190c26",
+  "original_6de7172_recovered": false,
+  "checkpoint_blueprint_files_verified": 113,
+  "archived_originals_byte_identical": 157,
+  "earlier_reports_and_tools_modified": false,
+  "new_supplied_credentials_found": 0,
+  "new_high_confidence_credential_patterns": [],
+  "oversized_new_files": 0,
+  "production_customer_data_included": false,
+  "synthetic_evidence_only": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "35243aa4048f5e9e9a2f26c9738eb229ebb430b6f330b3f5e678ffbeb820bf3c",
+      "sha256": "a588d7ad14c5bb6225d2d671f8c9a05406c8468f4565eab117867f1f285f199a",
+      "bytes": 7366
+    },
+    {
+      "path": "docs/VOICE_EXPERIENCE_PHASE4.md",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "be301774233134b834e6b5d515254c2d49eef5ea3196057fbedc2dddfb183852",
+      "bytes": 14501
+    },
+    {
+      "path": "docs/phase4/evidence/browser-console.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "cc2cf143448c78973449348964013a8d9fd5df70b6e1c24d70bf6d0e85b9dd84",
+      "bytes": 629
+    },
+    {
+      "path": "docs/phase4/evidence/browser-result.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "5e827e1a042079d38a930f8361809eb6921c828c8373014937045586b4092b57",
+      "bytes": 874
+    },
+    {
+      "path": "docs/phase4/evidence/browser-server.log",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "d4054e99303acc2f29efba00faa796c8bcb0545bcf831d9cbdabda6ab84c40f1",
+      "bytes": 136
+    },
+    {
+      "path": "docs/phase4/evidence/browser-test-orders.png",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "2a95c3a7428c3a0d07f4b166d3241a7b885187a2720f3d60d2c9b97b7e463883",
+      "bytes": 74255
+    },
+    {
+      "path": "docs/phase4/evidence/build.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "6aa568851dd5bd8c511a3c84d6df34dfbb1d8258a8bf456778d8b83cc6c57902",
+      "bytes": 4138
+    },
+    {
+      "path": "docs/phase4/evidence/confirmation-after.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "c6408d8e4f649b70cc95c9588bc6cc6f0af347416e6c4bf891d015ec583b13b1",
+      "bytes": 2687
+    },
+    {
+      "path": "docs/phase4/evidence/confirmation-before.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "cb434b29bc8053de23d555b5cc69f870f6b8e2f82d1ae800831a87f33be8f259",
+      "bytes": 2915
+    },
+    {
+      "path": "docs/phase4/evidence/conversations.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "3e92594d31f1e0e234aa0fe98d58b4144969ac247f320c8a652ba222247b28d3",
+      "bytes": 16026
+    },
+    {
+      "path": "docs/phase4/evidence/database-confirmation.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "4898756d791a152c41d118d698f083f2a1ab4ce2204a7ba2945fd5a41e3bf931",
+      "bytes": 422
+    },
+    {
+      "path": "docs/phase4/evidence/database-final-relay.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "a368f6e149c5175fa009f679ec12a3ec20772f60205db1bfbbb77a0741972d73",
+      "bytes": 750
+    },
+    {
+      "path": "docs/phase4/evidence/database-progress.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "c3e24765584f11cb41228e3324249bb8711aa9875fc6539457352f3e566475e1",
+      "bytes": 2793
+    },
+    {
+      "path": "docs/phase4/evidence/database-reused-fixture-collision.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "88fffeb2fe615fe7d8761389daab07d32904f605b4270dd5d5f32b2b927e2600",
+      "bytes": 3146
+    },
+    {
+      "path": "docs/phase4/evidence/database-transport-fixture-lifecycle.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "d6474c0e37bd244481c5c2ef1f54afdb7c261d383b8e558c3b92df1a4eb45ab4",
+      "bytes": 1207
+    },
+    {
+      "path": "docs/phase4/evidence/database.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "e54cb17b7ec9a6942bfdd8980e32a7926fe7a82078109923787a0466219af6ab",
+      "bytes": 2179
+    },
+    {
+      "path": "docs/phase4/evidence/disposable-cleanup.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "b7d390e21624075da6ca785d7c3162ecd3b6c3846039f8e57a64eb213335610e",
+      "bytes": 218
+    },
+    {
+      "path": "docs/phase4/evidence/disposable-database.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "e99218c4b8078dc512ca0f0f41fbd61f08fc7e6f7f3ad2e99af4751bb472a672",
+      "bytes": 186
+    },
+    {
+      "path": "docs/phase4/evidence/focused-progress.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "9c31069321031f36fe4eb088cb36268573013658bf30702f161062319d949f67",
+      "bytes": 10168
+    },
+    {
+      "path": "docs/phase4/evidence/fresh-rerun-database.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "f563eef38815593e1961e33db68740f56ca10b13002a15a9cdc92e07d31340ac",
+      "bytes": 314
+    },
+    {
+      "path": "docs/phase4/evidence/languages.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "e15c7fbbd88da7b47973bfbf9121feb9da7971ce4aee27f51e81af4fab4f1be8",
+      "bytes": 1703
+    },
+    {
+      "path": "docs/phase4/evidence/model-acceptance-exit.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "7a0ae22f4bbd97c1212bda208fc96c52e5471474effd776ac1f11174954ded01",
+      "bytes": 13
+    },
+    {
+      "path": "docs/phase4/evidence/model-acceptance-preflight.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "14cc8794035ff3020eb01a8cb419249b8882f076352aaf36e13e60d07043b980",
+      "bytes": 144
+    },
+    {
+      "path": "docs/phase4/evidence/monitor-build.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "b8c4183a5b5a779cc37078413bc12de9bdfb961321c8207f2906979f0102a5d0",
+      "bytes": 46
+    },
+    {
+      "path": "docs/phase4/evidence/provider-inspection.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "b8cd9c18ce44792052f42d40863acd7e511972b791c0528ede8bb78643913fdb",
+      "bytes": 2050
+    },
+    {
+      "path": "docs/phase4/evidence/publication-preflight.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "773597c46edb39885540020cfe0aa834af111f620e07c736b1ca0ec264afdd5a",
+      "bytes": 474
+    },
+    {
+      "path": "docs/phase4/evidence/relay-build.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/phase4/evidence/relay-language.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "684c395343b219de91ede5e42c160ab80c68020a6d29307e3a59ccfd3ce8b10f",
+      "bytes": 519
+    },
+    {
+      "path": "docs/phase4/evidence/typecheck.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/phase4/evidence/unit-progress.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "61f8d26ebc939b94ad9d304f7a68c0acc49361d1f7152c1bc1b8e9764fff3a49",
+      "bytes": 17499
+    },
+    {
+      "path": "docs/phase4/evidence/unit.txt",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "c5c81b166b49fa673e9828adcae7708ef2075376ec35793958c4cb9ae9859f6a",
+      "bytes": 19735
+    },
+    {
+      "path": "docs/phase4/evidence/verification.json",
+      "classification": "synthetic verification evidence or authored report",
+      "baseline_sha256": null,
+      "sha256": "35582c775ae7e0edea0bdf45f172b49710bad68f06ff61d1a23165bb0a0ddb33",
+      "bytes": 421
+    },
+    {
+      "path": "frontend/.env.example",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "0d4454d50e6c32a16e8ef05a6ef0be7b68f1a466ac02b09010564d89cbd187d8",
+      "sha256": "387084cabbfeb10860f6d05e5d762a2ac34bed391b6fc009d1f8d3036e9012e2",
+      "bytes": 889
+    },
+    {
+      "path": "frontend/app/api/relay/action/route.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "c248bf2d5083ac5aff9b28f6ff82d38a2e38cd55577ca5ec3b00a46dd447c12f",
+      "sha256": "e1f208284f0258bf533f0648ef32ed17ba14a7c5b26dce3cbc3bf39058e40f5a",
+      "bytes": 9821
+    },
+    {
+      "path": "frontend/app/api/telnyx/live-voice/route.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "5c3cc164402ec9947ad371182f390a51b6da99d4f7a0f5446f555a99919cedb0",
+      "sha256": "96d83919f45f099c7425685cce926278d5182df690958d0cf50add012c521c5c",
+      "bytes": 4898
+    },
+    {
+      "path": "frontend/lib/ai-menu.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "43a05ea2f7607bf23748297ee3cea738de25829f1585345a288f90b861a43441",
+      "sha256": "8c4fbf90231947e1c8385d38715b2a78427f6c651e788461cfc47c1b68c37cee",
+      "bytes": 17076
+    },
+    {
+      "path": "frontend/lib/call-language.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "762f3f6fe0d3442b9157a0a720e82f8bc7cb052d3a549198e62774effd6f2656",
+      "sha256": "7f5c696ac81cd6a8b40cc8b4ca817a876387099024c12ad9322dfe7e8bed5b9f",
+      "bytes": 4199
+    },
+    {
+      "path": "frontend/lib/customer-languages.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "ec8aa5cdccf1d2c4b07b69aaa4add3f935fa5be9d7a9c7dd9b0617b49a580066",
+      "sha256": "0721d99973973d3f8812d64cd1ee7f86a5f1ca948c399b23f6a903f9b6b0ce60",
+      "bytes": 5269
+    },
+    {
+      "path": "frontend/lib/engagement/assistance.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "2b16ad5d901ae9281a148c6d1aaf4fde128ef3aebd450380b14378bc479b8851",
+      "sha256": "08c0f44641ab170f00a118fd90f285db8483ae285f48747baeca79d77924edf9",
+      "bytes": 2395
+    },
+    {
+      "path": "frontend/lib/engagement/language.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "5cb7a045026a666c49e5afdad8cbe84e92f3effb48f801e4eeabde83b67754d1",
+      "sha256": "2de9f153020fb19cecc5b89dc7dae5f0400c6a66d78f1048f531eb0324e8ab26",
+      "bytes": 2735
+    },
+    {
+      "path": "frontend/lib/engagement/recovery-store.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "442d835ae69cc2e02b7b9626e5817ece19ca9d6feda9ccf368bfaf143372d870",
+      "sha256": "7fbdce850dff05cec10d3fa5dc063c86c02d5593076dc0b829440f37e3258dac",
+      "bytes": 9900
+    },
+    {
+      "path": "frontend/lib/engagement/turn.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "138ea8f040b8d21b78f37e55883b6fc34e781155fd62611ff66caf16d624cd2b",
+      "sha256": "1fee9170c34b70b19b8f354b0314da10c6ab07a3aa4ca8df5eb4f34a2e608f33",
+      "bytes": 6348
+    },
+    {
+      "path": "frontend/lib/engagement/upsell.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "acf13668a5fda559d5616a977bed069cfe35904d660c317c45d90cd2cd04163d",
+      "sha256": "11efc67235515e6fdd1d73a5beae73176d9ffd0f6f636d39ffb6541adc474d2e",
+      "bytes": 2651
+    },
+    {
+      "path": "frontend/lib/live-voice-profile.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "456a966e2d71639c268eeff065eeafd4212379ac7e445272a9c484a3ab4d4033",
+      "sha256": "daeda1af13ddf2775278a76c99d94aaddc7f1b2021d9ad227a0212e3400e40a1",
+      "bytes": 1291
+    },
+    {
+      "path": "frontend/lib/live-voice-transport.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "0c1dd9bc2d91a95c2055f6613668cac9bcf92ec195504d88d84e7afadc3475a8",
+      "sha256": "230b826c9c16445e66985af312c2491ad0f627dddff7cf95673839905a8f6ae2",
+      "bytes": 5197
+    },
+    {
+      "path": "frontend/lib/menu-advisor.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "5da245a608bd570584c6479d4c783fe6f7a767a00860897551eb2e51d4eec3f6",
+      "sha256": "1f68f86046d89d6f2aebe4b8c1b3e389743ebeeee74b23b3e30d51b1ff673e47",
+      "bytes": 5015
+    },
+    {
+      "path": "frontend/lib/relay-session.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "040d1539e788904711ae18b3e13c7a9b000a6cc3ea9401c581ee1d18f3b8557a",
+      "sha256": "dac0ab5f8e395e63b27a35f6cc6e1532b3a5dd4d0e4834983839265853d7d263",
+      "bytes": 1987
+    },
+    {
+      "path": "frontend/lib/relay/checkout.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "182d721067c4d9dbbf0e44f18b8072a0d9215aded94bdf6b916bffd2e57a79e2",
+      "sha256": "caca65cc514c8f0af84e4494ad26947ad18dd47e813b91c01cf62f543021183e",
+      "bytes": 729
+    },
+    {
+      "path": "frontend/lib/relay/controller.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "121b663a01ef6546c575ae47b273cdbe7ba2db30337f0c91a6ab527f8b36c37a",
+      "sha256": "765578d3ac287fdcf67c6cd91ef8be686411869598fe0e8bdd1d55784207599c",
+      "bytes": 7534
+    },
+    {
+      "path": "frontend/lib/relay/languages.ts",
+      "classification": "new Phase 4 engineering implementation",
+      "baseline_sha256": null,
+      "sha256": "eb9955484fe605a4945a0af4f15a2e7e4cf4f2cd32e895903816b1a709e5192a",
+      "bytes": 2866
+    },
+    {
+      "path": "frontend/lib/repository.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "d96a2b6f7fb78fa50e805a74fe8f52b8d0e6460006364fbf7ad59ba957eff9a3",
+      "sha256": "8327f9abfe3a5493434ecdd4f661dc61af0189f39ea7ff7767d500cba20ed146",
+      "bytes": 21578
+    },
+    {
+      "path": "frontend/lib/voice-copy.ts",
+      "classification": "new Phase 4 engineering implementation",
+      "baseline_sha256": null,
+      "sha256": "0fd4b2e306d3284b7273f01bf712587a2701341ceca1ad543b8f65e040572ba3",
+      "bytes": 31191
+    },
+    {
+      "path": "frontend/lib/voice-engine.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "f21ce55e08ca8cbcbc74c0cfb8c4864cdd49b0fb7cd901384ca6a9b858b1c26d",
+      "sha256": "a490e54d3dedc863f0d7b4e10579bf0abd9f26b9373567b3f395b41377bc3d61",
+      "bytes": 16273
+    },
+    {
+      "path": "frontend/lib/voice-intents.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "32f63b9b479ac85b27887a9c32ee309397f4724dd0a34f54c72a94e2b8fdfcf4",
+      "sha256": "8007b2a1076262a2a568f97ecccd6a6d6419f59222a80776e6670f7d51d925f4",
+      "bytes": 5758
+    },
+    {
+      "path": "frontend/tests/conversation-polish.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": "6056448f1cfffdf00d074a2aa8987d3cba4b6e65bc475a50887678e89af248a4",
+      "sha256": "0dfb7bc2330ecc6c599f9a641eb3942ee37f8af2026eaa9321d46201df44ac9a",
+      "bytes": 5311
+    },
+    {
+      "path": "frontend/tests/languages.phase4.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": null,
+      "sha256": "de5a7b9670f77e1b3bb57d1e91a02a29ed289d9e5cb7868411336c0f0905b236",
+      "bytes": 11759
+    },
+    {
+      "path": "frontend/tests/model-acceptance-harness.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": "17eaa15f0fa2c5baba7f05dc8df7bdfa0b4e55cb437e169e62473c0a8571f4a3",
+      "sha256": "35ea57f5f861ba10569a978c2f2aae9f46770d04fedaaabda68ec6668df1fe5e",
+      "bytes": 7130
+    },
+    {
+      "path": "frontend/tests/model-timeout.phase4.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": null,
+      "sha256": "cec132d4fb1511f1aab567210dd8b4e7985e3fcf409cc6c40dde4e62c8623a74",
+      "bytes": 2309
+    },
+    {
+      "path": "frontend/tests/relay-database.phase4.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": null,
+      "sha256": "07072ce0a2ebeeeeb6179303f42027e6d779f1b93bc04649555c8f1092bbe390",
+      "bytes": 5946
+    },
+    {
+      "path": "frontend/tests/relay-language.phase4.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": null,
+      "sha256": "51ba75c4af270da12763caef628ca99f7dffbba47694f5d317565d3ed0a23699",
+      "bytes": 2770
+    },
+    {
+      "path": "frontend/tests/voice-experience.phase4.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": null,
+      "sha256": "fd169182d03ce9bc1436b682a08104d5c03b3f6065f9e6a31897478d63b09510",
+      "bytes": 7531
+    },
+    {
+      "path": "frontend/tests/voice-performance.test.ts",
+      "classification": "new or updated regression contract, not historical original bytes",
+      "baseline_sha256": "af40346c7ad6b58abc0747626a434e9f71ed218f6aa25f3f4cf0e95d71bbdc20",
+      "sha256": "5b019d51dc41a13767de6cff4805e808568e394f87b2078fb8e4655f44d82b9a",
+      "bytes": 6019
+    },
+    {
+      "path": "recovery/phase4/audit.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "0637611401c910453d6de58eee77f02e7f7b39772777d9092d993c8c3758d9d8",
+      "bytes": 6204
+    },
+    {
+      "path": "recovery/phase4/browser.mts",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "60e15f5f7ccea862954b801b3a087cfd233a87e77f5efba2980ca7c6919023ea",
+      "bytes": 9459
+    },
+    {
+      "path": "recovery/phase4/cleanup.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "6bdcf399ef908b990e6ba02ec861d0f0d964d2ef38c6ce1baef1a40517db9c24",
+      "bytes": 1131
+    },
+    {
+      "path": "recovery/phase4/conversations.mts",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "3649848359f9f25d3d3b8e3ca1e73189eb8ec67929f86733f8332bfdf9355b24",
+      "bytes": 4902
+    },
+    {
+      "path": "recovery/phase4/fresh-database.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "0768fbdca2535f7cd8767f8c0d55a53fd0237bb8b8d56715385adef023276e00",
+      "bytes": 1621
+    },
+    {
+      "path": "recovery/phase4/inspect-providers.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "ba028a8cacc512efb607c2bb384c44f2763e115b201ecd81cc7420ea59dc17d8",
+      "bytes": 3562
+    },
+    {
+      "path": "recovery/phase4/provision-test-db.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "5de44a6dca23501da58e2ae3705a749171a05b08e60d32dc5a4b047569bda4d2",
+      "bytes": 2177
+    },
+    {
+      "path": "recovery/phase4/publication-preflight.py",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "4062e94d240797641f4b19c9b8307f65c0289c248648b5f1dfadcb755c0b4c04",
+      "bytes": 1297
+    },
+    {
+      "path": "recovery/phase4/run-database.mjs",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "c4cb6f2f984eac5141069a1eb7c33affd3523cce07b391a949ee46be6c35fbf9",
+      "bytes": 2165
+    },
+    {
+      "path": "recovery/phase4/verify.mjs",
+      "classification": "new verification/support tool; not recovered original source",
+      "baseline_sha256": null,
+      "sha256": "446f8cc161516fc995ed9bf898399c1c16c1f16584ad34294e0c06b3e3ef0725",
+      "bytes": 1872
+    },
+    {
+      "path": "relay/index.ts",
+      "classification": "Phase 4 engineering modification",
+      "baseline_sha256": "8acd5e6af439a580d47592f48a8d00cab65f884b2662646b28f77f1b9cb92149",
+      "sha256": "14f1eed0546804aee231e8138aeef3dc49ad36aa6faa9af7c0adeaf2f1086460",
+      "bytes": 6974
+    }
+  ]
+}

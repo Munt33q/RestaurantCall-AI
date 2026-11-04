@@ -1,3 +1,4 @@
+import {voiceCopy} from './voice-copy';
 import {languageQuestion} from './call-language';
 import {callerOrderHistory} from './caller-history';import {callPrecontext} from './call-precontext';import {listPromotions} from './catalog-store';
 import {catalogRow,promotionRow,catalogAudit} from './catalog-store';
@@ -7,7 +8,8 @@ import {recoveryEnabled,recoveryCode,recoveryConsent,recoveryDeliveryReady,resum
 import {salesSummary} from './sales-context';
 import crypto from 'node:crypto';
 import {recordOrderEvent,enqueueStatus} from './operations';
-import {gateRelayCheckout} from './relay/checkout';
+import {gateRelayCheckout,type CheckoutResult} from './relay/checkout';
+import type {EngagementEvent} from './engagement/turn';
 import {client} from './db/client';
 import {normalizeLines,nextKitchenStatus,type Line} from './order-contract';
 import {initialState,decideTurn,cartQuote,readback,type CartState,type MenuEntry} from './voice-engine';
@@ -74,7 +76,7 @@ export async function insertOrder(tx:any,input:{sessionId:string;customerName:st
  await enqueueStatus(tx,order);
  return order;
 }
-export async function processVoiceTurn(input:{providerCallId:string;phone?:string;speech:string;turn:number;base:string;extracted?:Line[];interpretedSpeech?:string;operation?:'set';menuCategory?:string;assistantReply?:string;offeredItemIds?:string[];relay?:{revision:number;requestId:string;nonce:string}}):Promise<{xml:string;orderId:string|null;reply?:string;turn?:number;deliveryId?:string;finished?:boolean;phase?:string;requiresReadback?:boolean}>{
+export async function processVoiceTurn(input:{providerCallId:string;phone?:string;speech:string;turn:number;base:string;extracted?:Line[];interpretedSpeech?:string;operation?:'set';menuCategory?:string;assistantReply?:string;offeredItemIds?:string[];relay?:{revision:number;requestId:string;nonce:string}}):Promise<{xml:string;orderId:string|null;reply?:string;turn?:number;deliveryId?:string;finished?:boolean;phase?:string;requiresReadback?:boolean;languagePreference?:CartState['languagePreference'];languageSelectionRequired?:boolean}>{
  return client().begin(async tx=>{
   const [session]=await tx`SELECT * FROM call_sessions WHERE provider_call_id=${input.providerCallId} AND restaurant_id=${restaurantId()} FOR UPDATE`;
   if(!session)throw new Error('Unknown call session');
@@ -100,7 +102,7 @@ export async function processVoiceTurn(input:{providerCallId:string;phone?:strin
   const restored=code?await resumeRecovery(tx,session,cart.state_json,code,menu):null;
   const recoveryRequest=input.relay?recoveryConsent(input.speech):null;
   const consent=acceptanceTest?null:recoveryRequest===false?false:recoveryEnabled()&&cart.state_json.phase==='ordering'?recoveryRequest:null;
-  const result=restored??(consent!==null?{state:structuredClone(cart.state_json) as CartState,reply:consent?(cart.state_json.items.length===0?'Please add an item before saving a draft. No recovery text will be sent.':recoveryDeliveryReady()?'If we disconnect, I will request one recovery text to the number you are calling from. The draft is not a placed order.':'Recovery texts are currently unavailable. No recovery text will be sent. You can ask staff for help with a saved draft.'):'No recovery text will be sent.',submit:false,endCall:false,engagementEvents:[]}:engagementTurn(cart.state_json as CartState,input.speech,menu,restaurant.tax_rate_bps,{appSpeech:!!input.relay,assistance:process.env.HESITATION_ASSIST_ENABLED==='true',upsell:process.env.UPSELL_ENABLED==='true',metrics:process.env.ENGAGEMENT_METRICS_ENABLED==='true'||recoveryEnabled(),turn:input.turn,interpretedSpeech:input.interpretedSpeech,extracted:input.extracted,operation:input.operation,menuCategory:input.menuCategory,assistantReply:input.assistantReply,offeredItemIds:input.offeredItemIds}));
+  const result:CheckoutResult&{engagementEvents:EngagementEvent[]}=restored??(consent!==null?{state:structuredClone(cart.state_json) as CartState,reply:consent?(cart.state_json.items.length===0?'Please add an item before saving a draft. No recovery text will be sent.':recoveryDeliveryReady()?'If we disconnect, I will request one recovery text to the number you are calling from. The draft is not a placed order.':'Recovery texts are currently unavailable. No recovery text will be sent. You can ask staff for help with a saved draft.'):'No recovery text will be sent.',submit:false,endCall:false,engagementEvents:[]}:engagementTurn(cart.state_json as CartState,input.speech,menu,restaurant.tax_rate_bps,{appSpeech:!!input.relay,assistance:process.env.HESITATION_ASSIST_ENABLED==='true',upsell:process.env.UPSELL_ENABLED==='true',metrics:process.env.ENGAGEMENT_METRICS_ENABLED==='true'||recoveryEnabled(),turn:input.turn,interpretedSpeech:input.interpretedSpeech,extracted:input.extracted,operation:input.operation,menuCategory:input.menuCategory,assistantReply:input.assistantReply,offeredItemIds:input.offeredItemIds}));
   result.state.isAcceptanceTest=acceptanceTest;
   if(acceptanceTest&&result.submit&&result.state.paymentMethod!=='cash'){result.submit=false;result.state.phase='payment';result.reply='This controlled acceptance test uses cash only and will not charge a card. Please say cash at pickup.';}
   if(input.relay)gateRelayCheckout(result,cart.state_json.relayReviewReady===true,menu,restaurant.tax_rate_bps);
@@ -108,20 +110,23 @@ export async function processVoiceTurn(input:{providerCallId:string;phone?:strin
   if(result.submit){
    // Savepoint keeps a stock conflict from losing the conversational response.
    try{const order=await tx.savepoint(async stx=>insertOrder(stx,{sessionId:session.id,customerName:result.state.customerName,customerPhone:session.caller_phone,paymentMethod:result.state.paymentMethod!,items:result.state.items,notificationChannel:result.state.notificationChannel,notificationConsent:result.state.notificationConsent,paymentLinkSmsConsent:result.state.paymentLinkSmsConsent,notes:result.state.notes,isTest:result.state.isAcceptanceTest===true,expectedQuote:result.state.quoteKey?JSON.parse(result.state.quoteKey)[1]:cartQuote(result.state,menu,restaurant.tax_rate_bps)}));
-    orderId=order.id;result.reply=order.is_test?`Acceptance test order ${order.id.slice(0,8)} is recorded in the portal. This is a test; the kitchen must not prepare it. No card was charged. Thank you.`:order.total_cents===0?`Order ${order.id.slice(0,8)} is confirmed and sent to the kitchen. No payment is due. Thank you.`:order.payment_method==='cash'?`Order ${order.id.slice(0,8)} is confirmed and sent to the kitchen. Pay cash at pickup. Thank you.`:`Order ${order.id.slice(0,8)} is awaiting payment. ${result.state.paymentLinkSmsConsent?'We will request a text with your payment link.':'Please ask the restaurant for your secure payment link; no text was requested.'} The kitchen starts after payment. If the text does not arrive, please contact the restaurant.`;
-   }catch(error){if(error instanceof Error&&error.message==='QUOTE_CHANGED'){result.state.phase='confirm';result.state.quoteKey=undefined;result.state.relayReviewReady=false;result.reply='The price has changed. '+readback(result.state,menu,restaurant.tax_rate_bps);result.submit=false;}else {if(!(error instanceof Error)||!error.message.endsWith(' is unavailable'))throw error;result.state.phase='ordering';result.reply='An item is no longer available in that quantity. Please say start over and choose again.';result.submit=false;}}
+    orderId=order.id;const copy=(key:Parameters<typeof voiceCopy>[1])=>voiceCopy(result.state.languagePreference?.language,key,order.id.slice(0,8));
+    result.reply=order.is_test?`Acceptance test order ${order.id.slice(0,8)} is recorded in the portal. This is a test; the kitchen must not prepare it. No card was charged. Thank you.`:order.total_cents===0?copy('freeReceipt'):order.payment_method==='cash'?copy('cashReceipt'):[copy('pendingReceipt'),copy(result.state.paymentLinkSmsConsent?'textRequested':'askLink'),copy('kitchenAfterPayment')].join(' ');
+    result.state.orderReceipt=result.reply;
+   }catch(error){if(error instanceof Error&&error.message==='QUOTE_CHANGED'){result.state.phase='confirm';result.state.quoteKey=undefined;result.state.relayReviewReady=false;result.reply=voiceCopy(result.state.languagePreference?.language,'changed')+' '+readback(result.state,menu,restaurant.tax_rate_bps);result.submit=false;result.reviewRequired=true;result.checkoutRejection='quote_changed';}else {if(!(error instanceof Error)||!error.message.endsWith(' is unavailable'))throw error;result.state.phase='ordering';result.reply='An item is no longer available in that quantity. Please say start over and choose again.';result.submit=false;}}
   }
+  if(result.checkoutRejection)console.warn('VOICE_CONFIRMATION_REJECTED',{reason:result.checkoutRejection,turn:input.turn,phase:result.state.phase});
   const next=cart.version+1;
   result.state.lastReply=result.reply;if(result.endCall)(result.state as any).relayEndRequested=true;
   const deliveryId=input.relay?crypto.randomUUID():undefined;
-  if(input.relay&&orderId){(result.state as any).relayOrderReceiptDeliveryId=deliveryId;(result.state as any).relayCompletionPlayed=false;}
-  const requiresReadback=Boolean(input.relay&&result.state.phase==='confirm'&&!input.assistantReply&&result.reply.includes('Say confirm to place this order'));
+  if(input.relay&&(orderId||result.state.phase==='complete'&&result.state.orderReceipt)){(result.state as any).relayOrderReceiptDeliveryId=deliveryId;(result.state as any).relayCompletionPlayed=false;}
+  const requiresReadback=Boolean(input.relay&&result.state.phase==='confirm'&&result.reviewRequired===true);
   if(input.relay){
    result.state.relayReviewReady=result.state.phase==='confirm'&&!requiresReadback&&result.state.quoteKey===cart.state_json.quoteKey&&cart.state_json.relayReviewReady===true;
    result.state.relayRevision=cart.state_json.relayRevision??0;result.state.relayDeliveryId=deliveryId;result.state.relayDeliveryTurn=input.turn;result.state.relayRequiresReadback=requiresReadback;
   }
   const xml=voiceXml(result.reply,input.base,next,result.submit||result.endCall);
-  const response={xml,orderId,reply:result.reply,turn:next,deliveryId,requiresReadback,finished:result.submit||result.endCall||result.state.phase==='complete',phase:result.state.phase};
+  const response={xml,orderId,reply:result.reply,languagePreference:result.state.languagePreference,languageSelectionRequired:process.env.LANGUAGE_PREFERENCE_ENABLED==='true'&&!result.state.languagePreference?.confirmed,turn:next,deliveryId,requiresReadback,finished:result.submit||result.endCall||result.state.phase==='complete',phase:result.state.phase};
   if(input.relay){const saved={...(cart.state_json.relayResponses??{}),[String(input.turn)]:{revision:input.relay.revision,requestId:input.relay.requestId,result:response}};(result.state as any).relayResponses=Object.fromEntries(Object.entries(saved).slice(-3));}
   await tx`UPDATE draft_carts SET state_json=${tx.json(result.state)},items_json=${JSON.stringify(result.state.items)},customer_name=${result.state.customerName||null},customer_phone=${session.caller_phone},confirmation_state=${result.submit?'confirmed':'unconfirmed'},version=${next},updated_at=now() WHERE session_id=${session.id}`;
   await recordEngagementEvents(tx,session.id,result.engagementEvents);

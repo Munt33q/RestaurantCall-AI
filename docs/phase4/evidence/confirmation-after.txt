@@ -1,0 +1,42 @@
+✔ relay credentials are scoped to one call, expire, and cannot be forged (9.049ms)
+✔ interruption discards a stale reply and partial prompts never commit (4.1372ms)
+✔ a final transcript is processed once and playback acknowledgment follows actual end of speech (1.5422ms)
+✔ an interrupted readback is not acknowledged as completed (0.198ms)
+✔ final submission is blocked until the complete current review was played (29.3069ms)
+✔ relay XML keeps listening during playback and never uses Gather (3.7517ms)
+✔ barge-in dispatches invalidation immediately while commit is pending (1.3642ms)
+✔ a repeated final cannot add twice after a speaker event or delay (0.1626ms)
+✔ old completion cannot end a newer interrupted conversation (0.5354ms)
+✔ the same phrase can be retried after preparation fails or is interrupted (1.3741ms)
+✔ total and tax questions use the current quote and preserve checkout phase without AI (2.613ms)
+✔ name is read back for explicit confirmation and by-card progresses without the model (4.9095ms)
+✔ two explicit shorthand items cannot silently lose the second model omission (0.4807ms)
+✔ hello and model failures continue the current checkout prompt instead of a generic greeting (0.5077ms)
+✔ a speaker-start notification alone cannot erase the pending review or prevent hangup (1.313ms)
+✔ a repeated confirm after an interrupted review can advance after complete playback (0.1957ms)
+✔ answering a menu question at payment keeps the payment follow-up (0.1142ms)
+✔ complete model quantities survive compound-item reconciliation (19.8691ms)
+✔ questions cannot become pickup names and Bill remains a valid name (1.1697ms)
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test',
+  ok: false,
+  ms: 0,
+  error: 'invalid_model_output'
+}
+✔ a caller can repeat confirm while the played-review acknowledgment is in flight (2.0829ms)
+✔ presence checks cannot be captured as pickup names (0.2817ms)
+✔ an omitted item with an invalid spoken quantity cannot crash reconciliation (0.6425ms)
+✔ duplicate speech at name collection repeats the name prompt instead of an item prompt (0.1761ms)
+✔ phase4: repeated affirmative advances after full review without clientSpeaking event (2.283ms)
+✔ phase4: final playback tokens arriving after speaker-off still acknowledge the review (0.2272ms)
+✔ phase4: speaker-off without complete tokens never acknowledges a review (0.1303ms)
+✔ phase4: explicit final affirmatives are phase-bound and negations stay blocked (1.3304ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 238.5241

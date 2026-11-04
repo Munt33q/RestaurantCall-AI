@@ -1,0 +1,14 @@
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+✔ phase4 relay keypad selection sends STT and TTS switch before translated speech (173.6591ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 305.5251

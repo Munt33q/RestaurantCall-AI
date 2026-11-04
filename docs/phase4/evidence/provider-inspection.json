@@ -1,0 +1,62 @@
+{
+  "checked_at_utc": "2026-11-04T07:17:26.327345+00:00",
+  "vercel": {
+    "http": 200,
+    "createDeployments": "disabled",
+    "disableRepositoryDispatchEvents": null
+  },
+  "configuration": {
+    "AI_MODEL": "encrypted_not_readable",
+    "AI_FALLBACK_MODEL": "deepseek-flash",
+    "AI_BASE_URL": "",
+    "ELEVENLABS_VOICE_ID": "hpp4J3VqNfWAUOO0d1Us",
+    "ELEVENLABS_VOICE_NAME": "not_returned",
+    "LANGUAGE_PREFERENCE_ENABLED": "not_returned",
+    "ELEVENLABS_VOICE_PREFERENCE": "not_returned"
+  },
+  "credential_access": {
+    "AI_API_KEY": "not_available_or_masked",
+    "DEEPSEEK_API_KEY": "not_available_or_masked",
+    "TELNYX_API_KEY": "not_available_or_masked",
+    "XI_API_KEY": "not_available_or_masked",
+    "ELEVENLABS_API_KEY": "not_available_or_masked"
+  },
+  "elevenlabs": {
+    "account_catalogue": "not_verified_no_usable_key",
+    "brittany_id": null,
+    "synthesized_samples": false
+  },
+  "documentation": [
+    {
+      "name": "relay-guide",
+      "url": "https://developers.telnyx.com/docs/voice/programmable-voice/conversation-relay.md",
+      "http": 200,
+      "sha256": "e42cbd68968743d276489c1b4b45675b28c36ccaf8a5526f5244d44a91bd4f59",
+      "bytes": 15278
+    },
+    {
+      "name": "relay-start",
+      "url": "https://developers.telnyx.com/api-reference/call-commands/start-conversation-relay.md",
+      "http": 200,
+      "sha256": "6f323002a317dc8e912c1a4c433d11a08ea5db9138ab3a1d7b7153725fa1aed3",
+      "bytes": 46692
+    },
+    {
+      "name": "tts-sukhan",
+      "url": "https://developers.telnyx.com/docs/voice/tts/providers/telnyx/sukhan.md",
+      "http": 200,
+      "sha256": "de75ce129cddce5f53df07bf01a0a1fd723e120f4c8cb084fa5741536e680f4d",
+      "bytes": 2885
+    },
+    {
+      "name": "deepgram-models",
+      "url": "https://developers.deepgram.com/docs/models-languages-overview",
+      "http": 403
+    },
+    {
+      "name": "eleven-models",
+      "url": "https://elevenlabs.io/docs/overview/models",
+      "http": 403
+    }
+  ]
+}

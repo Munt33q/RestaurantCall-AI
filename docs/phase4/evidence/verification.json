@@ -1,0 +1,30 @@
+{
+  "runtime": "v26.13.0",
+  "results": [
+    {
+      "step": "unit",
+      "status": 0,
+      "ms": 4554
+    },
+    {
+      "step": "typecheck",
+      "status": 0,
+      "ms": 2979
+    },
+    {
+      "step": "build",
+      "status": 0,
+      "ms": 11509
+    },
+    {
+      "step": "relay-build",
+      "status": 0,
+      "ms": 81
+    },
+    {
+      "step": "monitor-build",
+      "status": 0,
+      "ms": 60
+    }
+  ]
+}

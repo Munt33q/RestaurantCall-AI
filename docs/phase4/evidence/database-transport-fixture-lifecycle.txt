@@ -1,0 +1,25 @@
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+✔ signed relay claims identity, rejects false Unicode ack and stale reconnect, invalidates interruptions (8105.7992ms)
+✔ phase4 relay grants bind the durable transport and reject a cross-transport retry (4062.7241ms)
+✖ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (3.4747ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8423.2245
+
+✖ failing tests:
+
+test at tests\relay-database.phase4.test.ts:2:2953
+✖ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (3.4747ms)
+  Error: write CONNECTION_ENDED ep-royal-mode-b8f3jizx.c-14.us-east-1.aws.neon.tech:5432
+      at located (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\postgres\src\query.js:285:24) {
+    code: 'CONNECTION_ENDED',
+    errno: 'CONNECTION_ENDED',
+    address: 'ep-royal-mode-b8f3jizx.c-14.us-east-1.aws.neon.tech',
+    port: 5432
+  }

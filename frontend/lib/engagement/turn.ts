@@ -1,3 +1,5 @@
+import {languageAvailable} from '../relay/languages';
+import {voiceCopy} from '../voice-copy';
 import {preferenceTurn} from '../call-language';
 import {normalizeCheckoutLanguage} from '../customer-languages';
 import {engagementLanguage,engagementCopy} from './language';
@@ -10,7 +12,7 @@ export type EngagementEvent={kind:string;key:string;data:Record<string,unknown>}
 type Options={metrics?:boolean;appSpeech:boolean;assistance:boolean;upsell:boolean;turn:number;interpretedSpeech?:string;extracted?:Line[];operation?:'set';menuCategory?:string;assistantReply?:string;offeredItemIds?:string[]};
 export function engagementTurn(current:CartState,speech:string,menu:MenuEntry[],tax:number,options:Options){
  let state=structuredClone(current);const events:EngagementEvent[]=[];
- if(process.env.LANGUAGE_PREFERENCE_ENABLED==='true'||state.languagePreference){const preferred=preferenceTurn(state,speech);state=preferred.state;if(preferred.reply)return {state,reply:preferred.reply,submit:false,endCall:preferred.endCall,engagementEvents:events};}
+ if(process.env.LANGUAGE_PREFERENCE_ENABLED==='true'||state.languagePreference){const preferred=preferenceTurn(state,speech);if(preferred.state.languagePreference?.confirmed&&preferred.state.languagePreference.language!==state.languagePreference?.language&&preferred.state.languagePreference.language!=='en'&&(!options.appSpeech||state.relayTransport!=='call-control'||!languageAvailable(preferred.state.languagePreference.language)))return {state,reply:voiceCopy(state.languagePreference?.language,'unsupported'),submit:false,endCall:false,engagementEvents:events};if(state.languagePreference?.confirmed&&state.languagePreference.revision!==preferred.state.languagePreference?.revision){preferred.state.relayReviewReady=false;preferred.state.quoteKey=undefined;}state=preferred.state;if(preferred.reply)return {state,reply:preferred.reply,submit:false,endCall:preferred.endCall,engagementEvents:events};}
  const active=options.appSpeech&&(options.assistance||options.upsell||options.metrics);
  if(!active)return {...decideTurn(state,options.interpretedSpeech??speech,menu,tax,options.extracted,options.operation,options.menuCategory,options),engagementEvents:events};
  state.engagement??={assistance:initialAssistance(),upsell:initialUpsell(),language:state.languagePreference?.language??'en'};

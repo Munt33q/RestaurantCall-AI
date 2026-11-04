@@ -1,0 +1,25 @@
+✔ phase4 en: spoken and keypad selection, stable preference and localized cash checkout (21.259ms)
+✔ phase4 en: card and notification permissions remain explicit (0.702ms)
+✔ phase4 es: spoken and keypad selection, stable preference and localized cash checkout (0.7773ms)
+✔ phase4 es: card and notification permissions remain explicit (0.3628ms)
+✔ phase4 ar: spoken and keypad selection, stable preference and localized cash checkout (3.2732ms)
+✔ phase4 ar: card and notification permissions remain explicit (0.3188ms)
+✔ phase4 ur: spoken and keypad selection, stable preference and localized cash checkout (25.9229ms)
+✔ phase4 ur: card and notification permissions remain explicit (0.306ms)
+✔ phase4 hi: spoken and keypad selection, stable preference and localized cash checkout (0.4994ms)
+✔ phase4 hi: card and notification permissions remain explicit (0.3146ms)
+✔ phase4 Unicode catalog aliases and compound quantities work without a model (2.9146ms)
+✔ phase4 unclear selections are bounded and switches cannot silently select Urdu as Hindi (0.5165ms)
+✔ phase4 unsupported provider languages preserve the cart and prior language (0.6226ms)
+✔ phase4 language profile drives both synthesis and recognition and rejects English Flux for Urdu (0.2999ms)
+✔ phase4 Brittany is never guessed or silently substituted; Bella rollback remains exact (0.272ms)
+✔ phase4 review metadata is independent of English wording (0.2787ms)
+✔ phase4 native menu and availability questions use verified catalog facts in the chosen language (2.4129ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 266.0878

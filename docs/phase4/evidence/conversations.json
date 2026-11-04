@@ -1,0 +1,478 @@
+{
+  "source": "synthetic text/relay simulation",
+  "actualSTT": false,
+  "actualTTS": false,
+  "actualModel": false,
+  "actualPSTN": false,
+  "productionWrites": false,
+  "latencyScope": "in-process deterministic turns; excludes network, database, model, recognition and synthesis",
+  "medianMs": 0.107,
+  "maxMs": 23.392,
+  "scenarios": [
+    {
+      "language": "en",
+      "transcript": [
+        {
+          "role": "caller",
+          "text": "two Classic Burger and one Crispy Fries"
+        },
+        {
+          "role": "assistant",
+          "text": "Added 2 Classic Burger, 1 Crispy Fries. Anything else?"
+        },
+        {
+          "role": "caller",
+          "text": "done"
+        },
+        {
+          "role": "assistant",
+          "text": "What name should I put on the order? You can say it or spell it."
+        },
+        {
+          "role": "caller",
+          "text": "Alex"
+        },
+        {
+          "role": "assistant",
+          "text": "I heard Alex, spelled A, L, E, X. Is that name correct? Say yes, or tell me the correct name."
+        },
+        {
+          "role": "caller",
+          "text": "yes"
+        },
+        {
+          "role": "assistant",
+          "text": "Would you like to pay cash at pickup or by card?"
+        },
+        {
+          "role": "caller",
+          "text": "cash"
+        },
+        {
+          "role": "assistant",
+          "text": "For order updates, would you like texts, a call when ready, or no updates? Say text, call, or none."
+        },
+        {
+          "role": "caller",
+          "text": "none"
+        },
+        {
+          "role": "assistant",
+          "text": "Any notes or special requests for the kitchen? You can say no notes."
+        },
+        {
+          "role": "caller",
+          "text": "no notes"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, your order is 2 Classic Burger, 1 Crispy Fries. Total including tax is $24.35. Payment cash at pickup. No order update messages. Say confirm to place this order, change order to edit, or cancel."
+        },
+        {
+          "role": "caller",
+          "text": "place it"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, your order is 2 Classic Burger, 1 Crispy Fries. Total including tax is $24.35. Payment cash at pickup. No order update messages. Say confirm to place this order, change order to edit, or cancel."
+        },
+        {
+          "role": "caller",
+          "text": "place it"
+        },
+        {
+          "role": "assistant",
+          "text": "Order SYNTHETIC-001 is confirmed and sent to the kitchen. Pay cash at pickup. Thank you."
+        }
+      ],
+      "localTurnMs": [
+        17.564,
+        0.944,
+        1.625,
+        0.175,
+        0.421,
+        0.197,
+        0.486,
+        0.344,
+        0.248
+      ],
+      "simulatedOrderCommits": 1,
+      "rejections": [
+        "missing_playback_evidence",
+        "playback_tokens_missing"
+      ]
+    },
+    {
+      "language": "es",
+      "transcript": [
+        {
+          "role": "caller",
+          "text": "dos hamburguesa y una papas"
+        },
+        {
+          "role": "assistant",
+          "text": "Añadido: 2 Classic Burger, 1 Crispy Fries. ¿Algo más?"
+        },
+        {
+          "role": "caller",
+          "text": "eso es todo"
+        },
+        {
+          "role": "assistant",
+          "text": "¿A qué nombre pongo el pedido? Puede decirlo o deletrearlo."
+        },
+        {
+          "role": "caller",
+          "text": "Alex"
+        },
+        {
+          "role": "assistant",
+          "text": "Escuché Alex, deletreado A, L, E, X. ¿Es correcto? Diga sí o el nombre correcto."
+        },
+        {
+          "role": "caller",
+          "text": "sí"
+        },
+        {
+          "role": "assistant",
+          "text": "¿Pagará en efectivo al recoger o con tarjeta?"
+        },
+        {
+          "role": "caller",
+          "text": "efectivo"
+        },
+        {
+          "role": "assistant",
+          "text": "¿Quiere SMS, una llamada cuando esté listo o ningún aviso? Diga mensaje, llamada o ninguno."
+        },
+        {
+          "role": "caller",
+          "text": "no"
+        },
+        {
+          "role": "assistant",
+          "text": "¿Alguna nota para la cocina? Puede decir sin notas."
+        },
+        {
+          "role": "caller",
+          "text": "sin notas"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, su pedido es 2 Classic Burger, 1 Crispy Fries. El total con impuestos es $24.35. Pago en efectivo al recoger. Sin mensajes de actualización. Diga confirmar para enviar este pedido, cambiar pedido para editar o cancelar."
+        },
+        {
+          "role": "caller",
+          "text": "es correcto"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, su pedido es 2 Classic Burger, 1 Crispy Fries. El total con impuestos es $24.35. Pago en efectivo al recoger. Sin mensajes de actualización. Diga confirmar para enviar este pedido, cambiar pedido para editar o cancelar."
+        },
+        {
+          "role": "caller",
+          "text": "es correcto"
+        },
+        {
+          "role": "assistant",
+          "text": "El pedido SYNTHETIC-001 está confirmado y enviado a cocina. Pague en efectivo al recoger. Gracias."
+        }
+      ],
+      "localTurnMs": [
+        0.22,
+        0.142,
+        0.137,
+        0.093,
+        0.078,
+        0.079,
+        0.105,
+        0.157,
+        0.12
+      ],
+      "simulatedOrderCommits": 1,
+      "rejections": [
+        "missing_playback_evidence",
+        "playback_tokens_missing"
+      ]
+    },
+    {
+      "language": "ar",
+      "transcript": [
+        {
+          "role": "caller",
+          "text": "اثنان برجر و واحد بطاطا"
+        },
+        {
+          "role": "assistant",
+          "text": "تمت إضافة 2 Classic Burger, 1 Crispy Fries. هل تريد شيئاً آخر؟"
+        },
+        {
+          "role": "caller",
+          "text": "انتهيت"
+        },
+        {
+          "role": "assistant",
+          "text": "بأي اسم أسجل الطلب؟ يمكنك قوله أو تهجئته."
+        },
+        {
+          "role": "caller",
+          "text": "Alex"
+        },
+        {
+          "role": "assistant",
+          "text": "سمعت Alex، وتهجئته A, L, E, X. هل الاسم صحيح؟ قل نعم أو اذكر الاسم الصحيح."
+        },
+        {
+          "role": "caller",
+          "text": "نعم"
+        },
+        {
+          "role": "assistant",
+          "text": "هل ستدفع نقداً عند الاستلام أم بالبطاقة؟"
+        },
+        {
+          "role": "caller",
+          "text": "نقداً"
+        },
+        {
+          "role": "assistant",
+          "text": "للتحديثات، هل تفضل رسالة، اتصالاً عند جاهزية الطلب، أم بدون تحديثات؟"
+        },
+        {
+          "role": "caller",
+          "text": "لا"
+        },
+        {
+          "role": "assistant",
+          "text": "هل لديك ملاحظات للمطبخ؟ يمكنك قول لا ملاحظات."
+        },
+        {
+          "role": "caller",
+          "text": "لا ملاحظات"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex، طلبك هو 2 Classic Burger, 1 Crispy Fries. الإجمالي شامل الضريبة $24.35. الدفع نقداً عند الاستلام. بدون رسائل تحديث. قل تأكيد الطلب لإرساله، تعديل الطلب لتغييره، أو إلغاء الطلب."
+        },
+        {
+          "role": "caller",
+          "text": "نفذ الطلب"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex، طلبك هو 2 Classic Burger, 1 Crispy Fries. الإجمالي شامل الضريبة $24.35. الدفع نقداً عند الاستلام. بدون رسائل تحديث. قل تأكيد الطلب لإرساله، تعديل الطلب لتغييره، أو إلغاء الطلب."
+        },
+        {
+          "role": "caller",
+          "text": "نفذ الطلب"
+        },
+        {
+          "role": "assistant",
+          "text": "تم تأكيد الطلب SYNTHETIC-001 وإرساله للمطبخ. ادفع نقداً عند الاستلام. شكراً."
+        }
+      ],
+      "localTurnMs": [
+        23.392,
+        0.878,
+        0.269,
+        0.075,
+        0.064,
+        0.069,
+        0.073,
+        0.107,
+        0.148
+      ],
+      "simulatedOrderCommits": 1,
+      "rejections": [
+        "missing_playback_evidence",
+        "playback_tokens_missing"
+      ]
+    },
+    {
+      "language": "ur",
+      "transcript": [
+        {
+          "role": "caller",
+          "text": "دو برگر اور ایک فرائز"
+        },
+        {
+          "role": "assistant",
+          "text": "شامل کر دیا: 2 Classic Burger, 1 Crispy Fries۔ کچھ اور؟"
+        },
+        {
+          "role": "caller",
+          "text": "یہ سب ہے"
+        },
+        {
+          "role": "assistant",
+          "text": "آرڈر کس نام سے لکھوں؟ آپ نام بتا سکتے ہیں یا ہجے کر سکتے ہیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "Alex"
+        },
+        {
+          "role": "assistant",
+          "text": "میں نے Alex سنا، ہجے A, L, E, X۔ کیا نام درست ہے؟ ہاں کہیں یا درست نام بتائیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "جی ہاں"
+        },
+        {
+          "role": "assistant",
+          "text": "آپ آرڈر لیتے وقت نقد دیں گے یا کارڈ سے ادائیگی کریں گے؟"
+        },
+        {
+          "role": "caller",
+          "text": "نقد"
+        },
+        {
+          "role": "assistant",
+          "text": "آرڈر کی اطلاع پیغام سے، تیار ہونے پر کال سے، یا کوئی اطلاع نہیں؟ پیغام، کال یا کوئی نہیں کہیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "نہیں"
+        },
+        {
+          "role": "assistant",
+          "text": "باورچی خانے کے لیے کوئی ہدایت؟ آپ کہہ سکتے ہیں کوئی ہدایت نہیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "کوئی ہدایت نہیں"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex، آپ کا آرڈر ہے 2 Classic Burger, 1 Crispy Fries۔ ٹیکس سمیت کل رقم $24.35 ہے۔ ادائیگی آرڈر لیتے وقت نقد۔ آرڈر کی اطلاع کے پیغامات نہیں۔ یہ آرڈر درج کرنے کے لیے تصدیق کریں، ترمیم کے لیے آرڈر بدلیں، یا منسوخ کریں کہیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "آرڈر درج کریں"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex، آپ کا آرڈر ہے 2 Classic Burger, 1 Crispy Fries۔ ٹیکس سمیت کل رقم $24.35 ہے۔ ادائیگی آرڈر لیتے وقت نقد۔ آرڈر کی اطلاع کے پیغامات نہیں۔ یہ آرڈر درج کرنے کے لیے تصدیق کریں، ترمیم کے لیے آرڈر بدلیں، یا منسوخ کریں کہیں۔"
+        },
+        {
+          "role": "caller",
+          "text": "آرڈر درج کریں"
+        },
+        {
+          "role": "assistant",
+          "text": "آرڈر SYNTHETIC-001 کی تصدیق ہو گئی اور باورچی خانے کو بھیج دیا۔ لیتے وقت نقد دیں۔ شکریہ۔"
+        }
+      ],
+      "localTurnMs": [
+        0.162,
+        0.089,
+        0.083,
+        0.058,
+        0.067,
+        0.067,
+        0.067,
+        0.108,
+        0.097
+      ],
+      "simulatedOrderCommits": 1,
+      "rejections": [
+        "missing_playback_evidence",
+        "playback_tokens_missing"
+      ]
+    },
+    {
+      "language": "hi",
+      "transcript": [
+        {
+          "role": "caller",
+          "text": "दो बर्गर और एक फ्राइज"
+        },
+        {
+          "role": "assistant",
+          "text": "जोड़ दिया: 2 Classic Burger, 1 Crispy Fries। कुछ और?"
+        },
+        {
+          "role": "caller",
+          "text": "बस इतना ही"
+        },
+        {
+          "role": "assistant",
+          "text": "ऑर्डर किस नाम से लिखूँ? आप नाम बता सकते हैं या अक्षर बोल सकते हैं।"
+        },
+        {
+          "role": "caller",
+          "text": "Alex"
+        },
+        {
+          "role": "assistant",
+          "text": "मैंने Alex सुना, अक्षर A, L, E, X। क्या नाम सही है? हाँ कहें या सही नाम बताएँ।"
+        },
+        {
+          "role": "caller",
+          "text": "हाँ"
+        },
+        {
+          "role": "assistant",
+          "text": "आप लेते समय नकद देंगे या कार्ड से भुगतान करेंगे?"
+        },
+        {
+          "role": "caller",
+          "text": "नकद"
+        },
+        {
+          "role": "assistant",
+          "text": "आर्डर की जानकारी संदेश से, तैयार होने पर कॉल से, या कोई सूचना नहीं? संदेश, कॉल या कोई नहीं कहें।"
+        },
+        {
+          "role": "caller",
+          "text": "नहीं"
+        },
+        {
+          "role": "assistant",
+          "text": "रसोई के लिए कोई निर्देश? आप कह सकते हैं कोई नोट नहीं।"
+        },
+        {
+          "role": "caller",
+          "text": "कोई नोट नहीं"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, आपका ऑर्डर है 2 Classic Burger, 1 Crispy Fries। कर सहित कुल राशि $24.35 है। भुगतान लेते समय नकद। ऑर्डर की जानकारी के संदेश नहीं। यह ऑर्डर भेजने के लिए पुष्टि करें, बदलने के लिए ऑर्डर बदलें, या रद्द करें कहें।"
+        },
+        {
+          "role": "caller",
+          "text": "कर दीजिए"
+        },
+        {
+          "role": "assistant",
+          "text": "Alex, आपका ऑर्डर है 2 Classic Burger, 1 Crispy Fries। कर सहित कुल राशि $24.35 है। भुगतान लेते समय नकद। ऑर्डर की जानकारी के संदेश नहीं। यह ऑर्डर भेजने के लिए पुष्टि करें, बदलने के लिए ऑर्डर बदलें, या रद्द करें कहें।"
+        },
+        {
+          "role": "caller",
+          "text": "कर दीजिए"
+        },
+        {
+          "role": "assistant",
+          "text": "ऑर्डर SYNTHETIC-001 की पुष्टि हो गई और रसोई को भेज दिया। लेते समय नकद दें। धन्यवाद।"
+        }
+      ],
+      "localTurnMs": [
+        0.131,
+        0.089,
+        0.07,
+        0.058,
+        0.057,
+        0.064,
+        0.061,
+        0.107,
+        0.091
+      ],
+      "simulatedOrderCommits": 1,
+      "rejections": [
+        "missing_playback_evidence",
+        "playback_tokens_missing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+✔ acceptance card rejection and recovery rejection happen before any database access (1.1036ms)
+✔ acceptance orders force cash, no consent/jobs and visible DO NOT PREPARE marking (5526.6415ms)
+✔ unheard receipt creates one warning/event; verified playback creates none (7599.7683ms)
+✔ catalog enforces tenant/version/audit, quote rollback, reviewed archive and free-order semantics (9292.4861ms)
+✖ database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (34488.3766ms)
+✔ recovery database: two distinct items require review and confirmation, concurrent retries reserve once (17369.5172ms)
+✔ recovery is tenant/caller bound, consumed once under concurrency and expires safely (17132.1551ms)
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+✔ signed relay claims identity, rejects false Unicode ack and stale reconnect, invalidates interruptions (8063.9273ms)
+VOICE_CONFIRMATION_REJECTED { reason: 'missing_playback_evidence', turn: 7, phase: 'confirm' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+✔ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (32787.8167ms)
+✖ status jobs deduplicate, honor revoked consent and reconcile provider delivery without resend (5779.2543ms)
+✔ done events stay done; only safe recent failures retry; stale work requires reconciliation (2926.3491ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34866.0198
+
+✖ failing tests:
+
+test at tests\database.integration.test.ts:2:1175
+✖ database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (34488.3766ms)
+  Error [PostgresError]: duplicate key value violates unique constraint "orders_checkout_unique"
+      at located (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\postgres\src\query.js:285:24) {
+    severity_local: 'ERROR',
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (checkout_session_id)=(cs_fixture) already exists.',
+    schema_name: 'public',
+    table_name: 'orders',
+    constraint_name: 'orders_checkout_unique',
+    file: 'nbtinsert.c',
+    line: '667',
+    routine: '_bt_check_unique'
+  }
+
+test at tests\status-notifications-database.test.ts:2:1105
+✖ status jobs deduplicate, honor revoked consent and reconcile provider delivery without resend (5779.2543ms)
+  Error [PostgresError]: duplicate key value violates unique constraint "notification_provider_unique"
+      at located (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\postgres\src\query.js:285:24) {
+    severity_local: 'ERROR',
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (provider_id)=(fixture-provider) already exists.',
+    schema_name: 'public',
+    table_name: 'notification_jobs',
+    constraint_name: 'notification_provider_unique',
+    file: 'nbtinsert.c',
+    line: '667',
+    routine: '_bt_check_unique'
+  }

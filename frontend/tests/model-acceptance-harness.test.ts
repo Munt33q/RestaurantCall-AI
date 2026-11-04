@@ -65,5 +65,5 @@ test('synthetic acceptance matrix runs through actual interpretation and cart va
    const evaluated=evaluateAcceptance(c,result,next,'flatrouter');assert.deepEqual(evaluated.failures,[],c.id);
   }
   assert.equal(calls,9);
- }finally{global.fetch=old;for(const key of keys){if(saved[key]===undefined)delete process.env[key];else process.env[key]=saved[key];}}
+ }finally{global.fetch=old;for(const key of keys){if(saved[key]===undefined)delete process.env[key];else Object.assign(process.env,{[key]:saved[key]});}}
 });

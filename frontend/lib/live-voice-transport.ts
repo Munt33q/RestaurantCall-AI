@@ -1,3 +1,5 @@
+import {languageQuestion} from './call-language';
+import {speechProfiles} from './relay/languages';
 import crypto from 'node:crypto';
 import {liveVoiceProfile} from './live-voice-profile';
 
@@ -42,11 +44,14 @@ export async function handleLiveVoiceEvent(event:VoiceEvent,deps:VoiceDependenci
  // Stable command IDs make Telnyx webhook retries safe without losing failed commands.
  if(event.event_type==='call.initiated'){await deps.command(id,'answer',{command_id:commandId});return {received:true};}
  url.searchParams.set('token',await deps.token(id));
+ const profiles=process.env.LANGUAGE_PREFERENCE_ENABLED==='true'?speechProfiles():[];
+ const profile=liveVoiceProfile();
  try{await deps.command(id,'conversation_relay_start',{
   command_id:commandId,url:url.toString(),
-  voice:`ElevenLabs.${liveVoiceProfile().model}.${liveVoiceProfile().id}`,
+  voice:`ElevenLabs.${profile.model}.${profile.id}`,
   voice_settings:{type:'elevenlabs',api_key_ref:deps.secretRef},
-  language:'en',greeting:deps.acceptancePhone?'RestaurantCall AI. This is the final live-order acceptance test. Test orders reach the portal but must not be prepared. How can I help you?':'RestaurantCall AI. How can I help you today? How are you doing?',
+  ...(profiles.length?{languages:profiles.map(({evidenceRef,...entry})=>({...entry,voice_settings:entry.tts_provider==='elevenlabs'?{type:'elevenlabs',api_key_ref:deps.secretRef}:{type:entry.tts_provider}}))}:{}),
+  language:'en',greeting:deps.acceptancePhone?'RestaurantCall AI. This is the final live-order acceptance test. Test orders reach the portal but must not be prepared. How can I help you?':process.env.LANGUAGE_PREFERENCE_ENABLED==='true'?languageQuestion:'RestaurantCall AI. How can I help you today? How are you doing?',
   transcription_engine:'Deepgram',transcription_engine_config:{transcription_model:'deepgram/flux',interim_results:true,eot_threshold:0.7,eager_eot_threshold:0.4},
   interruptible:'speech',interruptible_greeting:'speech',dtmf_detection:true,
   // Call Control rejects the TeXML-only events attribute (422 /events).

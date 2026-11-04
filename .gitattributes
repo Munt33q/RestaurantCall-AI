@@ -166,3 +166,11 @@ relay/package.json -text
 /docs/LOCAL_ENGINEERING_AFTER_PUBLICATION.md -text whitespace=cr-at-eol
 /frontend/lib/relay/playback.ts -text whitespace=cr-at-eol
 /frontend/tests/** -text whitespace=cr-at-eol
+
+# Phase 4 deltas preserve reviewed bytes independently of the recovered ledger.
+/docs/phase4/** -text -whitespace
+/recovery/phase4/** -text -whitespace
+/frontend/lib/voice-copy.ts -text
+/frontend/lib/relay/languages.ts -text
+/docs/VOICE_EXPERIENCE_PHASE4.md -text
+/frontend/.env.example -text

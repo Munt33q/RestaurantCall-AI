@@ -1,0 +1,1 @@
+Acceptance configuration rejected. Set only the required dedicated ACCEPTANCE_* provider key, HTTPS base URL and model. No requests were made.

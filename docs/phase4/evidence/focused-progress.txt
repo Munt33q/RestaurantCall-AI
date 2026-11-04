@@ -1,0 +1,161 @@
+✖ phase4 en: spoken and keypad selection, stable preference and localized cash checkout (5.1827ms)
+✔ phase4 en: card and notification permissions remain explicit (15.8956ms)
+✖ phase4 es: spoken and keypad selection, stable preference and localized cash checkout (0.2748ms)
+✔ phase4 es: card and notification permissions remain explicit (0.5409ms)
+✖ phase4 ar: spoken and keypad selection, stable preference and localized cash checkout (3.8519ms)
+✔ phase4 ar: card and notification permissions remain explicit (0.5095ms)
+✖ phase4 ur: spoken and keypad selection, stable preference and localized cash checkout (0.1989ms)
+✔ phase4 ur: card and notification permissions remain explicit (0.433ms)
+✖ phase4 hi: spoken and keypad selection, stable preference and localized cash checkout (0.2268ms)
+✔ phase4 hi: card and notification permissions remain explicit (0.4534ms)
+✔ phase4 Unicode catalog aliases and compound quantities work without a model (22.8185ms)
+✔ phase4 unclear selections are bounded and switches cannot silently select Urdu as Hindi (0.2252ms)
+✔ phase4 unsupported provider languages preserve the cart and prior language (0.6533ms)
+✔ phase4 language profile drives both synthesis and recognition and rejects English Flux for Urdu (0.3345ms)
+✔ phase4 Brittany is never guessed or silently substituted; Bella rollback remains exact (0.2983ms)
+✔ phase4 review metadata is independent of English wording (0.6106ms)
+✔ phase4: repeated affirmative advances after full review without clientSpeaking event (2.2239ms)
+✔ phase4: final playback tokens arriving after speaker-off still acknowledge the review (0.2095ms)
+✔ phase4: speaker-off without complete tokens never acknowledges a review (0.1185ms)
+✔ phase4: explicit final affirmatives are phase-bound and negations stay blocked (1.3636ms)
+✔ phase4: duplicate simultaneous confirmations consume only one acknowledged review boundary (0.2223ms)
+✔ phase4: failed backend acknowledgement cannot end a call or grant readiness (0.7255ms)
+✔ phase4: missing and mismatched playback receive distinct non-sensitive diagnostics (0.2951ms)
+✔ phase4: interrupted review cannot be revived by delayed playback tokens (0.1782ms)
+✔ phase4: unavailable playback evidence triggers a new tracked review on caller retry (0.2128ms)
+✔ phase4: missing review and unrecognized intent have separate rejection reasons (4.9486ms)
+✔ phase4: completed-order retries preserve the original receipt after an interrupted receipt (0.1205ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'truncated_response',
+  status: 200,
+  requestId: null
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'truncated_response'
+}
+✔ voice requests explicitly select low reasoning without incompatible temperature (18.2507ms)
+✔ short model references are mapped back to real menu IDs (1.2865ms)
+✔ voice payload keeps menu facts and state with smaller prompt and bounded recent context (2.0649ms)
+✔ truncated provider output cannot become a spoken answer or cart edit (0.9129ms)
+✔ explicit compound add bypasses model but ambiguity and modifiers still use reasoning (8.9972ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 27
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 269.4385
+
+✖ failing tests:
+
+test at tests\languages.phase4.test.ts:2:3339
+✖ phase4 en: spoken and keypad selection, stable preference and localized cash checkout (5.1827ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\$24\.36/. Input:
+  
+  'Subtotal is $22.50. Tax at 8.25 percent is $1.85. Total including tax is $24.35. What else would you like? Say checkout when you are ready to finish.'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\languages.phase4.test.ts:21:60)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Subtotal is $22.50. Tax at 8.25 percent is $1.85. Total including tax is $24.35. What else would you like? Say checkout when you are ready to finish.',
+    expected: /\$24\.36/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\languages.phase4.test.ts:2:3339
+✖ phase4 es: spoken and keypad selection, stable preference and localized cash checkout (0.2748ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\$24\.36/. Input:
+  
+  'El subtotal es $22.50. El impuesto del 8.25 por ciento es $1.85. El total con impuestos es $24.35. ¿Algo más? Diga finalizar pedido cuando termine.'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\languages.phase4.test.ts:21:60)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'El subtotal es $22.50. El impuesto del 8.25 por ciento es $1.85. El total con impuestos es $24.35. ¿Algo más? Diga finalizar pedido cuando termine.',
+    expected: /\$24\.36/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\languages.phase4.test.ts:2:3339
+✖ phase4 ar: spoken and keypad selection, stable preference and localized cash checkout (3.8519ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\$24\.36/. Input:
+  
+  'المجموع قبل الضريبة $22.50. الضريبة بنسبة 8.25 بالمئة هي $1.85. الإجمالي شامل الضريبة $24.35. هل تريد شيئاً آخر؟ قل انتهيت عندما تكون جاهزاً.'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\languages.phase4.test.ts:21:60)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'المجموع قبل الضريبة $22.50. الضريبة بنسبة 8.25 بالمئة هي $1.85. الإجمالي شامل الضريبة $24.35. هل تريد شيئاً آخر؟ قل انتهيت عندما تكون جاهزاً.',
+    expected: /\$24\.36/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\languages.phase4.test.ts:2:3339
+✖ phase4 ur: spoken and keypad selection, stable preference and localized cash checkout (0.1989ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\$24\.36/. Input:
+  
+  'ٹیکس سے پہلے رقم $22.50 ہے۔ 8.25 فیصد ٹیکس $1.85 ہے۔ ٹیکس سمیت کل رقم $24.35 ہے۔ کچھ اور چاہیے؟ مکمل ہونے پر یہ سب ہے کہیں۔'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\languages.phase4.test.ts:21:60)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ٹیکس سے پہلے رقم $22.50 ہے۔ 8.25 فیصد ٹیکس $1.85 ہے۔ ٹیکس سمیت کل رقم $24.35 ہے۔ کچھ اور چاہیے؟ مکمل ہونے پر یہ سب ہے کہیں۔',
+    expected: /\$24\.36/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\languages.phase4.test.ts:2:3339
+✖ phase4 hi: spoken and keypad selection, stable preference and localized cash checkout (0.2268ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /\$24\.36/. Input:
+  
+  'कर से पहले राशि $22.50 है। 8.25 प्रतिशत कर $1.85 है। कर सहित कुल राशि $24.35 है। कुछ और चाहिए? पूरा होने पर बस इतना ही कहें।'
+  
+      at TestContext.<anonymous> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\tests\languages.phase4.test.ts:21:60)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'कर से पहले राशि $22.50 है। 8.25 प्रतिशत कर $1.85 है। कर सहित कुल राशि $24.35 है। कुछ और चाहिए? पूरा होने पर बस इतना ही कहें।',
+    expected: /\$24\.36/,
+    operator: 'match',
+    diff: 'simple'
+  }
