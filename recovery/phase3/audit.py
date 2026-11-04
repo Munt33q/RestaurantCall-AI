@@ -3,7 +3,8 @@ import collections,datetime,hashlib,json,subprocess,os,re,zipfile,xml.etree.Elem
 from pathlib import Path
 root=Path.cwd();dest=root/'docs/phase3/evidence';checkpoint='98ecf05'
 def sha(b):return hashlib.sha256(b).hexdigest()
-changed=subprocess.check_output(['git','diff','--name-only',checkpoint],text=True).splitlines()
+changed=subprocess.check_output(['git','diff','--no-renames','--name-only',checkpoint],text=True).splitlines()
+deleted=set(subprocess.check_output(['git','diff','--no-renames','--name-only','--diff-filter=D',checkpoint],text=True).splitlines())
 base_paths=set(subprocess.check_output(['git','ls-tree','-r','--name-only',checkpoint],text=True).splitlines())
 new=subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines()
 ledger=json.loads(Path('recovery/blueprint-ledger.json').read_text())['files'];comparison=[]
@@ -26,6 +27,7 @@ missing=json.loads(Path('docs/recovery-phase2/evidence/historical-test-source-co
 file_rows=[]
 for name in sorted(set(changed+new)):
  if name=='docs/phase3/evidence/phase3-provenance.json':continue
+ if name in deleted:continue # A removed tracked cache can still exist locally as an ignored file.
  p=Path(name)
  if not p.is_file():continue
  before=baseline_bytes[name] if name in base_paths else None
@@ -41,6 +43,7 @@ secrets=re.findall(r'\b(?:sk_test_|sk_live_|napi_)[A-Za-z0-9_-]+',text)
 auth=Path(os.environ['APPDATA'])/'com.vercel.cli/Data/auth.json';secrets.append(json.loads(auth.read_text(encoding='utf-8-sig'))['token'])
 leaks=[r['path'] for r in file_rows if any(s.encode() in Path(r['path']).read_bytes() for s in secrets)]
 assert not leaks,'Credential matches in changed artifacts: '+repr(leaks)
-result={'generated_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'checkpoint':checkpoint,'original_commit_recovered':False,'blueprint_files':len(comparison),'checkpoint_blueprint_matches':sum(r['checkpoint_matches_blueprint'] for r in comparison),'current_blueprint_matches':sum(r['current_matches_blueprint'] for r in comparison),'intentional_blueprint_deltas':[r['path'] for r in comparison if not r['current_matches_blueprint']],'archived_originals_reverified':len(archived),'historical_missing_paths_reconstructed':len(missing),'secret_scan':{'supplied_provider_keys_and_cli_token':'no exact matches in changed/new artifacts'},'note':'Manifest excludes itself. Evidence/tooling is reconstructed; baseline originals remain byte-identical. This is not commit 6de7172.','files':file_rows}
+assert all(name.startswith('.npm-cache/') for name in deleted),'Unexpected removal of checkpoint source'
+result={'generated_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'checkpoint':checkpoint,'original_commit_recovered':False,'blueprint_files':len(comparison),'checkpoint_blueprint_matches':sum(r['checkpoint_matches_blueprint'] for r in comparison),'current_blueprint_matches':sum(r['current_matches_blueprint'] for r in comparison),'intentional_blueprint_deltas':[r['path'] for r in comparison if not r['current_matches_blueprint']],'archived_originals_reverified':len(archived),'historical_missing_paths_reconstructed':len(missing),'publication_cache_removals':len(deleted),'secret_scan':{'supplied_provider_keys_and_cli_token':'no exact matches in changed/new artifacts'},'note':'Manifest excludes itself and removed tracked cache files even when retained locally. Evidence/tooling is reconstructed; baseline originals remain byte-identical. This is not commit 6de7172.','files':file_rows}
 dest.joinpath('phase3-provenance.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8');dest.joinpath('blueprint-delta.json').write_text(json.dumps(comparison,indent=2)+'\n',encoding='utf8')
 print(json.dumps({k:v for k,v in result.items() if k!='files'},indent=2))

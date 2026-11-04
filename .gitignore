@@ -13,3 +13,6 @@ node_modules/
 # Isolated recovery build outputs
 /relay/dist/
 /monitor/dist/
+
+# Local package-manager cache; inherited history is retained unchanged.
+.npm-cache/

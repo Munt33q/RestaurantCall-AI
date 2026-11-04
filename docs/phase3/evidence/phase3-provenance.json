@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-04T05:20:40.896908+00:00",
+  "generated_at_utc": "2026-11-04T05:44:37.753432+00:00",
   "checkpoint": "98ecf05",
   "original_commit_recovered": false,
   "blueprint_files": 113,
@@ -17,22 +17,35 @@
   ],
   "archived_originals_reverified": 157,
   "historical_missing_paths_reconstructed": 22,
+  "publication_cache_removals": 99,
   "secret_scan": {
     "supplied_provider_keys_and_cli_token": "no exact matches in changed/new artifacts"
   },
-  "note": "Manifest excludes itself. Evidence/tooling is reconstructed; baseline originals remain byte-identical. This is not commit 6de7172.",
+  "note": "Manifest excludes itself and removed tracked cache files even when retained locally. Evidence/tooling is reconstructed; baseline originals remain byte-identical. This is not commit 6de7172.",
   "files": [
     {
       "path": ".gitattributes",
       "classification": "modified recovered source",
       "checkpoint_sha256": "9a0007c8df7c2f4061df2d6a815b215887a90a6320808a0be3ae347724a1653e",
-      "sha256": "3e79d1bcb6989a76561446f158dd594433412c5765767bfd343136aa747eff1c"
+      "sha256": "b0a6b098565dfdeac08219e0d52ed45e191459ac935eecce146701810e3f35ee"
+    },
+    {
+      "path": ".gitignore",
+      "classification": "modified recovered source",
+      "checkpoint_sha256": "c860a6e17de6309e466f66ebef91fcc437616256315a0066372254ac20e1a51f",
+      "sha256": "e0c90b14c0fb8a8cf55e6eb2cbe2534cd8c250cf9cd4ef676c53920222f0fbe5"
     },
     {
       "path": "docs/DEPLOYMENT_READINESS_PHASE3.md",
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
       "sha256": "7ddead24ccf6c5b6743400a15e1e072c46389da3e45d0ea4871c1aac86dfbf60"
+    },
+    {
+      "path": "docs/PUBLICATION_REVIEW.md",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "6af9585e7cd04efdd569d09f5e8c20cf17bb1712ef875269faddb698ce92e155"
     },
     {
       "path": "docs/phase3/evidence/blueprint-delta.json",
@@ -92,7 +105,7 @@
       "path": "docs/phase3/evidence/database-affected.log",
       "classification": "new report or observed verification evidence",
       "checkpoint_sha256": null,
-      "sha256": "59bc98c7513fe933548744931829641ac2d7de1adec3fc5299eda078c85eb47e"
+      "sha256": "07b5a8673f06da20b2e2ce06f0da5ebcb1dc73fe4215e41fc8634b03128cf345"
     },
     {
       "path": "docs/phase3/evidence/database-final.log",
@@ -530,7 +543,7 @@
       "path": "recovery/phase3/audit.py",
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
-      "sha256": "a9821a9fc931f6b184649c8c97f2c70a7e413e3f2362e61466d22fedaa510bdb"
+      "sha256": "8489ad8ef17d0bb70aa45dbc9639ef88cbb81c867d58475048243184548afd1d"
     },
     {
       "path": "recovery/phase3/browser.mts",
