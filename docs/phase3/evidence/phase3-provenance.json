@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-04T05:44:37.753432+00:00",
+  "generated_at_utc": "2026-11-04T05:58:31.923468+00:00",
   "checkpoint": "98ecf05",
   "original_commit_recovered": false,
   "blueprint_files": 113,
@@ -27,7 +27,7 @@
       "path": ".gitattributes",
       "classification": "modified recovered source",
       "checkpoint_sha256": "9a0007c8df7c2f4061df2d6a815b215887a90a6320808a0be3ae347724a1653e",
-      "sha256": "b0a6b098565dfdeac08219e0d52ed45e191459ac935eecce146701810e3f35ee"
+      "sha256": "35243aa4048f5e9e9a2f26c9738eb229ebb430b6f330b3f5e678ffbeb820bf3c"
     },
     {
       "path": ".gitignore",
@@ -40,6 +40,12 @@
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
       "sha256": "7ddead24ccf6c5b6743400a15e1e072c46389da3e45d0ea4871c1aac86dfbf60"
+    },
+    {
+      "path": "docs/LOCAL_ENGINEERING_AFTER_PUBLICATION.md",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "1f921d4326de2743c2801947bce75fb71073b49f35a89006fbb52c2882cc411b"
     },
     {
       "path": "docs/PUBLICATION_REVIEW.md",
@@ -82,6 +88,12 @@
       "classification": "new report or observed verification evidence",
       "checkpoint_sha256": null,
       "sha256": "dc758f31931fd15fa95e05d124c4780de5bbf03c2fa2a95928bd3ff89554f846"
+    },
+    {
+      "path": "docs/phase3/evidence/build-after-publication.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "0663499450a84e26ca2597f8478a89ef86f3351a945490229467fc638586a45c"
     },
     {
       "path": "docs/phase3/evidence/credential-inventory.json",
@@ -136,6 +148,12 @@
       "classification": "new report or observed verification evidence",
       "checkpoint_sha256": null,
       "sha256": "b48fe8a8b3fb4f1d7f8f04ee7a795072c4be0d27bc3f470faa4b4d5c4d7d289d"
+    },
+    {
+      "path": "docs/phase3/evidence/model-acceptance-preflight.json",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "04fb7f6da31b870f9a8ff24249cf1e9e33a1cc193c0e2ac8e1adcf2b0915f59c"
     },
     {
       "path": "docs/phase3/evidence/monitor-build-final.log",
@@ -306,6 +324,12 @@
       "sha256": "e5046545a3a9fcc0cf6950c9402c78a2b227f07a6a658d2a0c1fbc5f4a194da0"
     },
     {
+      "path": "docs/phase3/evidence/unit-after-publication.log",
+      "classification": "new report or observed verification evidence",
+      "checkpoint_sha256": null,
+      "sha256": "d505c33de4c0c4966308bd2eb4c593d050e090f3b4b16ddec42f56ee25e8e415"
+    },
+    {
       "path": "docs/phase3/evidence/unit-final.log",
       "classification": "new report or observed verification evidence",
       "checkpoint_sha256": null,
@@ -450,6 +474,12 @@
       "sha256": "f70c78ac853fd9c5b88564fdad65edc95fa76a48658aa946e59c23b248974f7c"
     },
     {
+      "path": "frontend/tests/model-acceptance-harness.test.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "17eaa15f0fa2c5baba7f05dc8df7bdfa0b4e55cb437e169e62473c0a8571f4a3"
+    },
+    {
       "path": "frontend/tests/model-network.phase3.test.ts",
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
@@ -540,6 +570,12 @@
       "sha256": "75c03b8f781282daef841bbe63c9b5ddf5fdeac9b62775c430cad98f81d4fd9d"
     },
     {
+      "path": "recovery/phase3/MODEL_ACCEPTANCE.md",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "e5b2e99df72ed8bb7262a51c822c5e87d5dc2c777528024eb3fbe96e517d9c00"
+    },
+    {
       "path": "recovery/phase3/audit.py",
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
@@ -562,6 +598,18 @@
       "classification": "reconstructed verification/support",
       "checkpoint_sha256": null,
       "sha256": "ad8ff1551f4a86a5e74e1d8145e704eb924c330ee7704e7a7ed9e0db5dcac9cf"
+    },
+    {
+      "path": "recovery/phase3/model-acceptance-contract.ts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "5ba00c35d6a9bca80cc2e120953a0eeaa142fd51e4fdeacb6ede00905b8abf30"
+    },
+    {
+      "path": "recovery/phase3/model-acceptance.mts",
+      "classification": "reconstructed verification/support",
+      "checkpoint_sha256": null,
+      "sha256": "f04254d1c1d54003ca5228a6f0bc12945878e6b53e8f15294e98f37f7c5e1290"
     },
     {
       "path": "recovery/phase3/provider-audit.py",
