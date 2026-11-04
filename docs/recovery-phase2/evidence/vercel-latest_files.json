@@ -1,0 +1,2017 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "name": "src",
+      "type": "directory",
+      "mode": 16749,
+      "children": [
+        {
+          "name": "frontend",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "app",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "analytics",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "9608ce20967d1434ab9368f02eafca966448c8e8"
+                    }
+                  ]
+                },
+                {
+                  "name": "api",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "analytics",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "c2c2525b47f896065464c4e2fd7fbcc0b0d53c3f"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "calls",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "[callId]",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "8d1dfb802549d387244f784e92db30c682d4e36b"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "bdd52e854afc64040ab2617c84985015c98a5aad"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "catalog-import",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "8b0836f86fcb275a8c5db691ab04df683a5b1e2e"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "conversation",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "preview",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "5f2d5d76a9ac28cde5e64c51c0c48ffea1865f85"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "cron",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "operations",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "394ffe305a4d0cb03041a10ecb5b3c29b6354864"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "demo",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "cb58409d90aa9fe2f90afbdd81304aed1be30256"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "drafts",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "a9b33e05b92c551695d97921400849416278674b"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "health",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "model-diagnostic",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "2e33078d6ecd55c7936afd3f94e4901ee024210d"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "model",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "1a5056048e31e9879750f61dabbc4e7bdbd859aa"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "b388066c7b2771124329549cef31549f2c496302"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "integrations",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "c0451f898ee51d05b657a7feff44e5a98933c0b4"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "jobs",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "785dd558aad971bb9d3cb9b1d86baf126373a79d"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "login",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "7725e8f205c580eb8f31ffcc9d7baad571709061"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "menu",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "[itemId]",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "74ee8c60a0291c2e87293ae91f94f2f462439b31"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "9faea1ec85878493e70ad2e44d26c90ef093134e"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "model-status",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "48d216d47e9aecc4b20264f7869be2ac295a2fdd"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "notifications",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "ready-call",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "2459c27b7c9675447a2099a2629a7420250bc133"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "orders",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "[orderId]",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "payment",
+                              "type": "directory",
+                              "mode": 16749,
+                              "children": [
+                                {
+                                  "name": "route.ts",
+                                  "type": "file",
+                                  "mode": 33206,
+                                  "uid": "86765c16f3b9bb0d5f70b5affa136090a7653d78"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "61933db06de1f4ed35a819851ee10b27c63b5127"
+                            },
+                            {
+                              "name": "status",
+                              "type": "directory",
+                              "mode": 16749,
+                              "children": [
+                                {
+                                  "name": "route.ts",
+                                  "type": "file",
+                                  "mode": 33206,
+                                  "uid": "62248136262ba266c8dbd2ffb4ff7f8a1071ac01"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "bae6509a22d6f51b0deef0e1b309592f0de2c234"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "promotions",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "a4509e2c7e329ea788de66be60d2376eb3e1ee05"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "recovery",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "code",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "f7e53b85663fd9f8fa400f1333e73307b00b2b3f"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "relay",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "action",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "be3ed1dc58f831224cd44a6dd17259289c1a21b5"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "keys",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "4432b2146b177e5ba32c1e43949c72f88de04fe8"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "test",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "c57dc1cd0c92fb14ae952d06ff12ce2e17e0f3fb"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "sip",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "catalog",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "8331946200c048041db3f68394fb7f16bf597f4f"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "stripe",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "webhook",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "35589895b2a80038db62466b46eb5e649d8eba8d"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "telnyx",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "call-status",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "4bb46a497b8296a900cc0136af84d922176e23c7"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "gather",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "34a4fccbcfd46d92a6939dd3bc9953ad17de0d27"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "live-voice",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "625c6a032b28ef1e73e0a46b42f7afd080203568"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "messaging",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "537ab19cbad166e708548a2489ece0ef712b8122"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "relay-ended",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "d7708c6525b6ac5cef3a440702287dfa530400ea"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "voice",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "1715542d77bcd32d055c5fca71f5cf40e024d3af"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "track",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "[token]",
+                          "type": "directory",
+                          "mode": 16749,
+                          "children": [
+                            {
+                              "name": "route.ts",
+                              "type": "file",
+                              "mode": 33206,
+                              "uid": "3ede32a1dcb948d9302ee6de57a2462e2f8c0318"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "voice-deployment",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "299f41eefaa17543dbabc5c8d2ba2265b25b23c5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "calls",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "1c154ceb9dbc5b7c3724564977599be9b668e553"
+                    }
+                  ]
+                },
+                {
+                  "name": "dashboard",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "122e7dac18b4060ca126459b49204f12e009f74f"
+                    }
+                  ]
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "ad289eebff07f310c011dd72100ee907e1fe5b94"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "17515a140372bc2cb91cde70cecb8ecc100caa82"
+                },
+                {
+                  "name": "login",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "7ca213cb409811cc988097937a40186ec01b594a"
+                    }
+                  ]
+                },
+                {
+                  "name": "menu",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "b75b30e588c66b51265bfd57c74d4c0c82745c34"
+                    }
+                  ]
+                },
+                {
+                  "name": "orders",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "[orderId]",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "page.tsx",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "834e0ed792929f75eb58295f8fb8984c790b95c5"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "258fcd50fffde4cbf7bfcb007f0097ad840d53c9"
+                },
+                {
+                  "name": "pay",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "[token]",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "route.ts",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "3f485e5971d4fee8ea31066b399d3da6d5d24c5d"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "payment-result",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "f95e344ef26d1ed6a07812ddc2a0f64e2051104f"
+                    }
+                  ]
+                },
+                {
+                  "name": "recover",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "[token]",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "RecoveryForm.tsx",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "76250fc6df5014f5ac1bffe58b2b567356bde7c4"
+                        },
+                        {
+                          "name": "page.tsx",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "ffc2e325dafd721ad008be7732c070ef4418f341"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "simulator",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "page.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "0afd3793f143fb5e02131a1acd29f3b43a09cf0c"
+                    }
+                  ]
+                },
+                {
+                  "name": "track",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "[token]",
+                      "type": "directory",
+                      "mode": 16749,
+                      "children": [
+                        {
+                          "name": "page.tsx",
+                          "type": "file",
+                          "mode": 33206,
+                          "uid": "8b472bce8ae93f94049f19a744f4317af6bca81e"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "layout.tsx",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "a563743b6b8dcb3936c436636e784576cb5a5ac6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "AppHeader.tsx",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "0709cb16bacde100c80b2f017551d693b31f5744"
+                },
+                {
+                  "name": "CatalogManager.tsx",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "d3ac5bcba75af84d674d99694e455cd8ec787759"
+                },
+                {
+                  "name": "Icon.tsx",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "59fe966df0e7a6c4e66870a393214697abcb665d"
+                }
+              ]
+            },
+            {
+              "name": "data",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "petra-hattiesburg-draft.json",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "a93464181245fc5a118170e34ad3c8bc464773e1"
+                },
+                {
+                  "name": "petra-hattiesburg-photos.json",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "56e3307036f77e674a1acf81ffcc9150f1ac5374"
+                }
+              ]
+            },
+            {
+              "name": "drizzle",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "0001_initial.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "4e121c61388e13d60f2cc297a15c655d378909dc"
+                },
+                {
+                  "name": "0002_call_sessions.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "c6f359575b6dc6f87071bb141aec51dc19522957"
+                },
+                {
+                  "name": "0003_ordering_flow.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "2d0f061401089d5e743713d61932f0b66714bc7c"
+                },
+                {
+                  "name": "0004_restaurant_operations.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "945520b7c68893efd7c4ce8c8799a70db627c32b"
+                },
+                {
+                  "name": "0005_model_monitoring.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "b8adfa16f0abf8bab4a3d67e3a79e10b6eb8b0b3"
+                },
+                {
+                  "name": "0006_engagement_recovery.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "c77e3db2f0f49a076122a908f37517df92b846f5"
+                },
+                {
+                  "name": "0007_recovery_dispatch_attempt.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "533d7a2d8a025bc358dbeec8aa54e710cc2518db"
+                },
+                {
+                  "name": "0008_catalog_sales.sql",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "8067c70a6fe2700b093f6bab18e20898eaa1499a"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "ai-menu.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "b45a111b78f68a9465061be6f5469badcb8c98a7"
+                },
+                {
+                  "name": "auth.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "6ec0da4b8b524cb1173104a3536e875052743cb7"
+                },
+                {
+                  "name": "background-jobs.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "c126ce51eddb87273b379d9c2e973fe005130aee"
+                },
+                {
+                  "name": "call-language.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "f134c89bf486b57388454f0936eb441319f9aef4"
+                },
+                {
+                  "name": "call-precontext.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "ccc395028bcf04f07f1bf85ccf6522c5df35dab0"
+                },
+                {
+                  "name": "call-receipt.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "38f97ade7315b8b8f92cb47e128eeaef06d749ad"
+                },
+                {
+                  "name": "caller-history.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "30b26726ab1e8b86c7e16aa6c43cc4845c7da261"
+                },
+                {
+                  "name": "catalog-api.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "28eff25495c4474a72ba76d23001e66f6acf98ad"
+                },
+                {
+                  "name": "catalog-import.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "8b85abc3cf880cea75ed19210018b0b2abd80b89"
+                },
+                {
+                  "name": "catalog-policy.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "56f7a192b53d820812831f12adb9162f4008df27"
+                },
+                {
+                  "name": "catalog-store.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "2a5b3d85d22926a68a92f49501a4f64a87743ebb"
+                },
+                {
+                  "name": "customer-languages.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "a747691ab05179b01ceeba38b1750520570bcec7"
+                },
+                {
+                  "name": "db",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "client.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "a30ad4b9269b6840587197ea3bb4bebc401ee916"
+                    },
+                    {
+                      "name": "index.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "a59822935c35f3a20f163576f3a708093e7aa4d9"
+                    },
+                    {
+                      "name": "schema.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "85f8a9385cba47503a4e806e6df35975f3633d2c"
+                    }
+                  ]
+                },
+                {
+                  "name": "engagement",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "assistance.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "c32afc196f8e7650eb916222911758b0c1b4ce2b"
+                    },
+                    {
+                      "name": "language.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "eb599e877f55eaab5976f9a7a48f464023417435"
+                    },
+                    {
+                      "name": "metrics.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "cf179c49128600e2bb12d7c1d54b8b15197a9d2e"
+                    },
+                    {
+                      "name": "recovery-contract.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "7ead3ebdce2aa4081e98a1d8fe600edb767d4bef"
+                    },
+                    {
+                      "name": "recovery-store.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "b30ae56daf97d390f208c177573cb683ed719d68"
+                    },
+                    {
+                      "name": "recovery-worker.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "f4955e697706c9581c0532342c910cbe7f6bd7f5"
+                    },
+                    {
+                      "name": "turn.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "cf3834b6a1e0da4b1091a36123ae3b2db615a3cb"
+                    },
+                    {
+                      "name": "upsell.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "9c998c3e92db483e48e514b8ef06ddde0d628b98"
+                    }
+                  ]
+                },
+                {
+                  "name": "live-voice-profile.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "82292c15ccb55a262fdf7df4a0fce9e33507c256"
+                },
+                {
+                  "name": "live-voice-transport.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "41317c0fdd785fb8cd08ef79c38e1dc99ab3cd25"
+                },
+                {
+                  "name": "menu-advisor.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "3524b5c9c65d2a4f49e9645ae05e8b05af382992"
+                },
+                {
+                  "name": "menu-health-probe.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "68cef542992183585997a62ff5a5a58fd3005109"
+                },
+                {
+                  "name": "model-client.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "8b7aa7c2887f3a8cf17396fe42ba451d32178417"
+                },
+                {
+                  "name": "model-monitor.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "732defa5dff6b2c5e4c4cbe2e997b9d4246bb151"
+                },
+                {
+                  "name": "model-policy.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "693df1a9b23fbb0b3cb7c1bbaa4df04c5c8b0f9c"
+                },
+                {
+                  "name": "notification-contract.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "f97335b921b07be70d70b9821cc1008cb0a57c9c"
+                },
+                {
+                  "name": "operations.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "7c8a1c99aa92a462a1217166e5e62c57087986a6"
+                },
+                {
+                  "name": "order-contract.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "6ec765ab5a8c233ff7e6a52ef4a55d45692eac18"
+                },
+                {
+                  "name": "payment-contract.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "bb6196a592f34d1bb0377968eb831b0957c1b0d5"
+                },
+                {
+                  "name": "payments.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "6dabafb7e44f7ebdd6e4d22b089caa7f8ccf02cc"
+                },
+                {
+                  "name": "pricing.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "5a79703dce6f25ff16f080c7c68d096b72816c13"
+                },
+                {
+                  "name": "provider-events.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "72ee039f6fdd2c82d79877f3a020544152dbaa2a"
+                },
+                {
+                  "name": "ready-call.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "253d2422f2ba9d57e5a0ff65c189f1fe86805b9e"
+                },
+                {
+                  "name": "relay-session.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "e3da68a414ad897829b25731a81e11c2d5e5ad28"
+                },
+                {
+                  "name": "relay-token.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "1067087e3d7abd34244996d09aa24b7f739707ac"
+                },
+                {
+                  "name": "relay-xml.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "1c0aa47aae38ad82c6b59eaf86b8bc7c27a8ebe6"
+                },
+                {
+                  "name": "relay",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "checkout.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "37c993e8eb6b1c8e1c5eb9a73a47ba7694a334fe"
+                    },
+                    {
+                      "name": "controller.ts",
+                      "type": "file",
+                      "mode": 33206,
+                      "uid": "03db7b99e7c1af2a350bd5b3d52644eb19cae904"
+                    }
+                  ]
+                },
+                {
+                  "name": "repository.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "13dd35cec5279d76cc330565be9175ec03ef0cd8"
+                },
+                {
+                  "name": "sales-context.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "871e6b5043e73fd0a0f31ed79148aba9dc76f0bd"
+                },
+                {
+                  "name": "staff-session.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "672206650d081d066932e97f4299bbe697bdcb7c"
+                },
+                {
+                  "name": "telnyx-api.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "4c602d6d1587a8f1c6a6af11c267628e0c26ea65"
+                },
+                {
+                  "name": "telnyx.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "e72e373585adaf14980af7146a2f483e1394aa88"
+                },
+                {
+                  "name": "tracking-token.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "2a47d184eef9551b51ea57e201da777421d29b2e"
+                },
+                {
+                  "name": "voice-catalog.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "f76059988ac9f21534edc47cd1a7a0aa761eb596"
+                },
+                {
+                  "name": "voice-diagnostic.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "09a621e1ef92266db3480351e47276f65c09d3c1"
+                },
+                {
+                  "name": "voice-engine.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "3daee09f9be14df8ee4a7ce1929abc225307baab"
+                },
+                {
+                  "name": "voice-event-replay.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "9d8253ee7ce958f491f864c359a433007086db8a"
+                },
+                {
+                  "name": "voice-intents.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "9eb45375e21f9d1e08526fa399236b42269344a6"
+                },
+                {
+                  "name": "voice-self-probe.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "f16c5a241f50474a6c69bf5c374b69c3765e276f"
+                },
+                {
+                  "name": "voice-xml.ts",
+                  "type": "file",
+                  "mode": 33206,
+                  "uid": "02ccb746272f36e7304c6bb94315ae0335380875"
+                }
+              ]
+            },
+            {
+              "name": "next-env.d.ts",
+              "type": "file",
+              "mode": 33206,
+              "uid": "68380a26d094bb3b37470b0182d9ff4015b14854"
+            },
+            {
+              "name": "next.config.js",
+              "type": "file",
+              "mode": 33206,
+              "uid": "61c969b99e9f0d4d51d4e6577c0b2146c0417903"
+            },
+            {
+              "name": "package-lock.json",
+              "type": "file",
+              "mode": 33206,
+              "uid": "b809d899a27209de05b8b2a9c520250a3818ba3c"
+            },
+            {
+              "name": "package.json",
+              "type": "file",
+              "mode": 33206,
+              "uid": "510a80f20d437a318b8ee1fb3c12a478bc0965a9"
+            },
+            {
+              "name": "tsconfig.json",
+              "type": "file",
+              "mode": 33206,
+              "uid": "a9ea65505d0f3391587a4cafe394b62e1dee0106"
+            },
+            {
+              "name": "vercel.json",
+              "type": "file",
+              "mode": 33206,
+              "uid": "b676ea568f6c967d3afa89bedd8c5287bf2fe29f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "out",
+      "type": "directory",
+      "mode": 16749,
+      "children": [
+        {
+          "name": "index",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "analytics",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "analytics.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "calls",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "calls.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "dashboard",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "dashboard.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "index.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "login",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "login.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "menu",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "menu.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "payment-result",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "payment-result.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "simulator",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "simulator.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+        },
+        {
+          "name": "_not-found",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+        },
+        {
+          "name": "_not-found.rsc",
+          "type": "lambda",
+          "mode": 49590,
+          "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+        },
+        {
+          "name": "orders",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "[orderId]",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            },
+            {
+              "name": "[orderId].rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            }
+          ]
+        },
+        {
+          "name": "recover",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "[token]",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            },
+            {
+              "name": "[token].rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            }
+          ]
+        },
+        {
+          "name": "track",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "[token]",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            },
+            {
+              "name": "[token].rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+            }
+          ]
+        },
+        {
+          "name": "api",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "analytics",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "analytics.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "calls",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "calls.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "calls",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "[callId]",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "[callId].rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                }
+              ]
+            },
+            {
+              "name": "catalog-import",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "catalog-import.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "demo",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "demo.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "drafts",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "drafts.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "health",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "health.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "login",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "login.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "menu",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "menu.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "menu",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "[itemId]",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "[itemId].rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                }
+              ]
+            },
+            {
+              "name": "model-status",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "model-status.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "orders",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "orders.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "orders",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "[orderId]",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "[orderId].rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "[orderId]",
+                  "type": "directory",
+                  "mode": 16749,
+                  "children": [
+                    {
+                      "name": "payment",
+                      "type": "lambda",
+                      "mode": 49590,
+                      "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                    },
+                    {
+                      "name": "payment.rsc",
+                      "type": "lambda",
+                      "mode": 49590,
+                      "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                    },
+                    {
+                      "name": "status",
+                      "type": "lambda",
+                      "mode": 49590,
+                      "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                    },
+                    {
+                      "name": "status.rsc",
+                      "type": "lambda",
+                      "mode": 49590,
+                      "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "promotions",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "promotions.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "recovery",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "code",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "code.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                }
+              ]
+            },
+            {
+              "name": "relay",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "keys",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "keys.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "test",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "test.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "action",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "action.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                }
+              ]
+            },
+            {
+              "name": "sip",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "catalog",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "catalog.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                }
+              ]
+            },
+            {
+              "name": "telnyx",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "call-status",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "call-status.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "messaging",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "messaging.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "relay-ended",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "relay-ended.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "voice",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "voice.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "gather",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "gather.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "live-voice",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "live-voice.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                }
+              ]
+            },
+            {
+              "name": "track",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "[token]",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                },
+                {
+                  "name": "[token].rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+                }
+              ]
+            },
+            {
+              "name": "conversation",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "preview",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "preview.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                }
+              ]
+            },
+            {
+              "name": "integrations",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+            },
+            {
+              "name": "integrations.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+            },
+            {
+              "name": "notifications",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "ready-call",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                },
+                {
+                  "name": "ready-call.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+                }
+              ]
+            },
+            {
+              "name": "cron",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "operations",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                },
+                {
+                  "name": "operations.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                }
+              ]
+            },
+            {
+              "name": "health",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "model",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                },
+                {
+                  "name": "model-diagnostic",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                },
+                {
+                  "name": "model-diagnostic.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                },
+                {
+                  "name": "model.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                }
+              ]
+            },
+            {
+              "name": "jobs",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+            },
+            {
+              "name": "jobs.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+            },
+            {
+              "name": "stripe",
+              "type": "directory",
+              "mode": 16749,
+              "children": [
+                {
+                  "name": "webhook",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                },
+                {
+                  "name": "webhook.rsc",
+                  "type": "lambda",
+                  "mode": 49590,
+                  "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+                }
+              ]
+            },
+            {
+              "name": "voice-deployment",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+            },
+            {
+              "name": "voice-deployment.rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+            }
+          ]
+        },
+        {
+          "name": "pay",
+          "type": "directory",
+          "mode": 16749,
+          "children": [
+            {
+              "name": "[token]",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            },
+            {
+              "name": "[token].rsc",
+              "type": "lambda",
+              "mode": 49590,
+              "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3279 @@
+{
+  "mode": "schema-structure",
+  "tables": [
+    "app_migrations",
+    "call_sessions",
+    "calls",
+    "catalog_audit",
+    "catalog_imports",
+    "conversation_turns",
+    "draft_carts",
+    "engagement_events",
+    "menu_items",
+    "messaging_preferences",
+    "model_call_events",
+    "model_health_status",
+    "model_incidents",
+    "model_provider_state",
+    "notification_jobs",
+    "order_events",
+    "order_items",
+    "orders",
+    "payment_jobs",
+    "promotions",
+    "provider_receipts",
+    "recovery_attempts",
+    "restaurants",
+    "voice_requests",
+    "webhook_events"
+  ],
+  "migrations": [
+    {
+      "name": "0001_initial.sql",
+      "sha256": "848441b56341c8931f89946cfd21079fcf17dafe5e6b5e888f2574c5464cc77b",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0002_call_sessions.sql",
+      "sha256": "d40acd90dc2be0ed3a2d2566cd3c933fb55d93750236a68e9f6ff5c50e8a06ef",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0003_ordering_flow.sql",
+      "sha256": "7b31f614586fa876855912e743641d5928f1ff33c44edf19e5edf8ed25af4624",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0004_restaurant_operations.sql",
+      "sha256": "ef1decede835cabada1a473fd4049bd3535c14062c7173a2298168abede06ffd",
+      "applied_at": "2026-11-01T23:56:05.109Z"
+    },
+    {
+      "name": "0005_model_monitoring.sql",
+      "sha256": "dc7335d6c38a537fd2a176340e63d6038dc377523a5bebcc29f728537efa3228",
+      "applied_at": "2026-11-02T12:28:27.804Z"
+    },
+    {
+      "name": "0006_engagement_recovery.sql",
+      "sha256": "5f833af4bb45f1d40d5bcfca705c50b89a72f12d0f0064d7ca103a932846caf0",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    },
+    {
+      "name": "0007_recovery_dispatch_attempt.sql",
+      "sha256": "a56a2523e298bdb6af8d7f4848ec0e47ceaeb413c66e84879746227daf6f1af9",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    },
+    {
+      "name": "0008_catalog_sales.sql",
+      "sha256": "0420f8657e782bd8bb3368b841f14725ed3b481802d9cdb39e111e2d4fb5a225",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "app_migrations",
+      "column_name": "name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "app_migrations",
+      "column_name": "sha256",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "app_migrations",
+      "column_name": "applied_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "provider_call_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "caller_phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "state",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'active'::text"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "expires_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "ended_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "call_sessions",
+      "column_name": "outcome",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "calls",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "calls",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "calls",
+      "column_name": "telnyx_call_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "calls",
+      "column_name": "caller_phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "calls",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'active'::text"
+    },
+    {
+      "table_name": "calls",
+      "column_name": "started_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "calls",
+      "column_name": "ended_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": "nextval('catalog_audit_id_seq'::regclass)"
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "subject_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "kind",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "data_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "actor",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'staff'::text"
+    },
+    {
+      "table_name": "catalog_audit",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "source",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "items_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'draft'::text"
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "catalog_imports",
+      "column_name": "published_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "sequence",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "role",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "content",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "conversation_turns",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "items_json",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'[]'::text"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "customer_name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "customer_phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "confirmation_state",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'unconfirmed'::text"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "state_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{\"items\": [], \"phase\": \"ordering\", \"customerName\": \"\", \"paymentMethod\": null}'::jsonb"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recoverable_until",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_caller_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_token_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_token_cipher",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_code_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_code_until",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_code_issues",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_consent_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_language",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'en'::text"
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovery_resumed_session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "draft_carts",
+      "column_name": "recovered_from_session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": "nextval('engagement_events_id_seq'::regclass)"
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "event_key",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "kind",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "data_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{}'::jsonb"
+    },
+    {
+      "table_name": "engagement_events",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "category",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "description",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "price_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "is_available",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "stock_qty",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "item_number",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "archived",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "special",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "special_starts_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "special_ends_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "aliases",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'[]'::jsonb"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "tags",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'[]'::jsonb"
+    },
+    {
+      "table_name": "menu_items",
+      "column_name": "version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "messaging_preferences",
+      "column_name": "phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "messaging_preferences",
+      "column_name": "sms_opted_out",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "column_name": "last_event_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "'-infinity'::timestamp with time zone"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": "nextval('model_call_events_id_seq'::regclass)"
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "provider",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "model",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "ok",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "error_code",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "http_status",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "elapsed_ms",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_call_events",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "model_health_status",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_health_status",
+      "column_name": "checked_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "model_health_status",
+      "column_name": "ok",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_health_status",
+      "column_name": "result_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": "nextval('model_incidents_id_seq'::regclass)"
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "provider",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "failure_count",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "last_error",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "opened_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "model_incidents",
+      "column_name": "resolved_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "model_provider_state",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_provider_state",
+      "column_name": "provider",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "model_provider_state",
+      "column_name": "open_until",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "model_provider_state",
+      "column_name": "last_success_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "order_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "event_key",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "kind",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "channel",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'pending'::text"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "consent_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "attempts",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "next_attempt_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "locked_until",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "provider_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "last_error",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "recipient_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "draft_session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "notification_jobs",
+      "column_name": "submission_attempted_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": "nextval('order_events_id_seq'::regclass)"
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "order_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "event_key",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "kind",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "actor",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'system'::text"
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "data_json",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'{}'::jsonb"
+    },
+    {
+      "table_name": "order_events",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "order_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "menu_item_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "item_name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "quantity",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "unit_price_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "line_total_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "substituted_for",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "order_items",
+      "column_name": "substitution_approved",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "call_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "customer_name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "customer_phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'confirmed'::text"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "payment_method",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "payment_status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'unpaid'::text"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "subtotal_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "tax_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "total_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "stock_reserved",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "notes",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "confirmed_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "checkout_session_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "checkout_url",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "sms_status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'not_requested'::text"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "notification_channel",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'none'::text"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "notification_consent_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "payment_sms_consent",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "payment_sms_consent_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "tracking_version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "discount_cents",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "orders",
+      "column_name": "pricing_snapshot",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "orders",
+      "column_name": "is_test",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "false"
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "order_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'pending'::text"
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "attempts",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "next_attempt_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "locked_until",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "last_error",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "payment_jobs",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "title",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "note",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "kind",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "value",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "item_ids",
+      "data_type": "jsonb",
+      "udt_name": "jsonb",
+      "is_nullable": "NO",
+      "column_default": "'[]'::jsonb"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "active",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "is_nullable": "NO",
+      "column_default": "true"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "starts_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "ends_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "version",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "table_name": "promotions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "provider_receipts",
+      "column_name": "event_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "provider_receipts",
+      "column_name": "provider_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "provider_receipts",
+      "column_name": "status",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "provider_receipts",
+      "column_name": "occurred_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "provider_receipts",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "column_name": "restaurant_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "recovery_attempts",
+      "column_name": "caller_hash",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "recovery_attempts",
+      "column_name": "day",
+      "data_type": "date",
+      "udt_name": "date",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_DATE"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "column_name": "failures",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0"
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()"
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "name",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "phone",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "tax_rate_bps",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "825"
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "catalog_revision",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "1"
+    },
+    {
+      "table_name": "restaurants",
+      "column_name": "public_note",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text"
+    },
+    {
+      "table_name": "voice_requests",
+      "column_name": "session_id",
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "voice_requests",
+      "column_name": "turn",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "voice_requests",
+      "column_name": "response_xml",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "voice_requests",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    },
+    {
+      "table_name": "webhook_events",
+      "column_name": "event_id",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "webhook_events",
+      "column_name": "provider",
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "table_name": "webhook_events",
+      "column_name": "received_at",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()"
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "app_migrations",
+      "conname": "app_migrations_applied_at_not_null",
+      "definition": "NOT NULL applied_at"
+    },
+    {
+      "table_name": "app_migrations",
+      "conname": "app_migrations_name_not_null",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "app_migrations",
+      "conname": "app_migrations_pkey",
+      "definition": "PRIMARY KEY (name)"
+    },
+    {
+      "table_name": "app_migrations",
+      "conname": "app_migrations_sha256_not_null",
+      "definition": "NOT NULL sha256"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_expires_at_not_null",
+      "definition": "NOT NULL expires_at"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_provider_call_id_key",
+      "definition": "UNIQUE (provider_call_id)"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_provider_call_id_not_null",
+      "definition": "NOT NULL provider_call_id"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_state_not_null",
+      "definition": "NOT NULL state"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "call_sessions",
+      "conname": "call_sessions_version_not_null",
+      "definition": "NOT NULL version"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_started_at_not_null",
+      "definition": "NOT NULL started_at"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_telnyx_call_id_key",
+      "definition": "UNIQUE (telnyx_call_id)"
+    },
+    {
+      "table_name": "calls",
+      "conname": "calls_telnyx_call_id_not_null",
+      "definition": "NOT NULL telnyx_call_id"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_actor_not_null",
+      "definition": "NOT NULL actor"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_data_json_not_null",
+      "definition": "NOT NULL data_json"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_kind_not_null",
+      "definition": "NOT NULL kind"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "catalog_audit",
+      "conname": "catalog_audit_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_items_json_not_null",
+      "definition": "NOT NULL items_json"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_source_not_null",
+      "definition": "NOT NULL source"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_status_check",
+      "definition": "CHECK ((status = ANY (ARRAY['draft'::text, 'published'::text])))"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "catalog_imports",
+      "conname": "catalog_imports_version_not_null",
+      "definition": "NOT NULL version"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_content_not_null",
+      "definition": "NOT NULL content"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_role_not_null",
+      "definition": "NOT NULL role"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_sequence_not_null",
+      "definition": "NOT NULL sequence"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_session_id_fkey",
+      "definition": "FOREIGN KEY (session_id) REFERENCES call_sessions(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_session_id_not_null",
+      "definition": "NOT NULL session_id"
+    },
+    {
+      "table_name": "conversation_turns",
+      "conname": "conversation_turns_session_id_sequence_key",
+      "definition": "UNIQUE (session_id, sequence)"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_confirmation_state_not_null",
+      "definition": "NOT NULL confirmation_state"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_items_json_not_null",
+      "definition": "NOT NULL items_json"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_pkey",
+      "definition": "PRIMARY KEY (session_id)"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_recovered_from_session_id_fkey",
+      "definition": "FOREIGN KEY (recovered_from_session_id) REFERENCES call_sessions(id)"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_recovery_code_issues_not_null",
+      "definition": "NOT NULL recovery_code_issues"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_recovery_language_not_null",
+      "definition": "NOT NULL recovery_language"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_recovery_resumed_session_id_fkey",
+      "definition": "FOREIGN KEY (recovery_resumed_session_id) REFERENCES call_sessions(id)"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_session_id_fkey",
+      "definition": "FOREIGN KEY (session_id) REFERENCES call_sessions(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_session_id_not_null",
+      "definition": "NOT NULL session_id"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_state_json_not_null",
+      "definition": "NOT NULL state_json"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "draft_carts",
+      "conname": "draft_carts_version_not_null",
+      "definition": "NOT NULL version"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_data_json_not_null",
+      "definition": "NOT NULL data_json"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_event_key_not_null",
+      "definition": "NOT NULL event_key"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_kind_not_null",
+      "definition": "NOT NULL kind"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_session_id_event_key_key",
+      "definition": "UNIQUE (session_id, event_key)"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_session_id_fkey",
+      "definition": "FOREIGN KEY (session_id) REFERENCES call_sessions(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "engagement_events",
+      "conname": "engagement_events_session_id_not_null",
+      "definition": "NOT NULL session_id"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_aliases_not_null",
+      "definition": "NOT NULL aliases"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_archived_not_null",
+      "definition": "NOT NULL archived"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_category_not_null",
+      "definition": "NOT NULL category"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_is_available_not_null",
+      "definition": "NOT NULL is_available"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_name_not_null",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_price_cents_check",
+      "definition": "CHECK ((price_cents >= 0))"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_price_cents_not_null",
+      "definition": "NOT NULL price_cents"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_special_not_null",
+      "definition": "NOT NULL special"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_stock_qty_check",
+      "definition": "CHECK ((stock_qty >= 0))"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_tags_not_null",
+      "definition": "NOT NULL tags"
+    },
+    {
+      "table_name": "menu_items",
+      "conname": "menu_items_version_not_null",
+      "definition": "NOT NULL version"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_last_event_at_not_null",
+      "definition": "NOT NULL last_event_at"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_phone_not_null",
+      "definition": "NOT NULL phone"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_pkey",
+      "definition": "PRIMARY KEY (restaurant_id, phone)"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_sms_opted_out_not_null",
+      "definition": "NOT NULL sms_opted_out"
+    },
+    {
+      "table_name": "messaging_preferences",
+      "conname": "messaging_preferences_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_elapsed_ms_not_null",
+      "definition": "NOT NULL elapsed_ms"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_model_not_null",
+      "definition": "NOT NULL model"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_ok_not_null",
+      "definition": "NOT NULL ok"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_provider_not_null",
+      "definition": "NOT NULL provider"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "model_call_events",
+      "conname": "model_call_events_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_checked_at_not_null",
+      "definition": "NOT NULL checked_at"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_ok_not_null",
+      "definition": "NOT NULL ok"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_pkey",
+      "definition": "PRIMARY KEY (restaurant_id)"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "model_health_status",
+      "conname": "model_health_status_result_json_not_null",
+      "definition": "NOT NULL result_json"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_failure_count_not_null",
+      "definition": "NOT NULL failure_count"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_last_error_not_null",
+      "definition": "NOT NULL last_error"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_opened_at_not_null",
+      "definition": "NOT NULL opened_at"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_provider_not_null",
+      "definition": "NOT NULL provider"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "model_incidents",
+      "conname": "model_incidents_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "model_provider_state",
+      "conname": "model_provider_state_pkey",
+      "definition": "PRIMARY KEY (restaurant_id, provider)"
+    },
+    {
+      "table_name": "model_provider_state",
+      "conname": "model_provider_state_provider_not_null",
+      "definition": "NOT NULL provider"
+    },
+    {
+      "table_name": "model_provider_state",
+      "conname": "model_provider_state_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "model_provider_state",
+      "conname": "model_provider_state_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_attempts_not_null",
+      "definition": "NOT NULL attempts"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_channel_check",
+      "definition": "CHECK ((channel = ANY (ARRAY['sms'::text, 'call'::text])))"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_channel_not_null",
+      "definition": "NOT NULL channel"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_draft_session_id_fkey",
+      "definition": "FOREIGN KEY (draft_session_id) REFERENCES draft_carts(session_id)"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_event_key_key",
+      "definition": "UNIQUE (event_key)"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_event_key_not_null",
+      "definition": "NOT NULL event_key"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_kind_check",
+      "definition": "CHECK ((kind = ANY (ARRAY['confirmed'::text, 'preparing'::text, 'ready'::text, 'payment_link'::text, 'draft_recovery'::text])))"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_kind_not_null",
+      "definition": "NOT NULL kind"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_next_attempt_at_not_null",
+      "definition": "NOT NULL next_attempt_at"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_order_id_fkey",
+      "definition": "FOREIGN KEY (order_id) REFERENCES orders(id)"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_status_check",
+      "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'dispatching'::text, 'submitted'::text, 'delivered'::text, 'failed'::text, 'uncertain'::text, 'suppressed'::text])))"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_subject_check",
+      "definition": "CHECK ((((kind = 'draft_recovery'::text) AND (order_id IS NULL) AND (draft_session_id IS NOT NULL) AND (channel = 'sms'::text)) OR ((kind <> 'draft_recovery'::text) AND (order_id IS NOT NULL) AND (draft_session_id IS NULL))))"
+    },
+    {
+      "table_name": "notification_jobs",
+      "conname": "notification_jobs_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_actor_not_null",
+      "definition": "NOT NULL actor"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_data_json_not_null",
+      "definition": "NOT NULL data_json"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_event_key_not_null",
+      "definition": "NOT NULL event_key"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_kind_not_null",
+      "definition": "NOT NULL kind"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_order_id_event_key_key",
+      "definition": "UNIQUE (order_id, event_key)"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_order_id_fkey",
+      "definition": "FOREIGN KEY (order_id) REFERENCES orders(id)"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_order_id_not_null",
+      "definition": "NOT NULL order_id"
+    },
+    {
+      "table_name": "order_events",
+      "conname": "order_events_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_item_name_not_null",
+      "definition": "NOT NULL item_name"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_line_total_cents_check",
+      "definition": "CHECK ((line_total_cents >= 0))"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_line_total_cents_not_null",
+      "definition": "NOT NULL line_total_cents"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_menu_item_id_fkey",
+      "definition": "FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_menu_item_id_not_null",
+      "definition": "NOT NULL menu_item_id"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_order_id_fkey",
+      "definition": "FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_order_id_not_null",
+      "definition": "NOT NULL order_id"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_quantity_check",
+      "definition": "CHECK ((quantity > 0))"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_quantity_not_null",
+      "definition": "NOT NULL quantity"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_substitution_approved_not_null",
+      "definition": "NOT NULL substitution_approved"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_unit_price_cents_check",
+      "definition": "CHECK ((unit_price_cents >= 0))"
+    },
+    {
+      "table_name": "order_items",
+      "conname": "order_items_unit_price_cents_not_null",
+      "definition": "NOT NULL unit_price_cents"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_call_id_fkey",
+      "definition": "FOREIGN KEY (call_id) REFERENCES calls(id)"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_call_id_key",
+      "definition": "UNIQUE (call_id)"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_discount_cents_check",
+      "definition": "CHECK ((discount_cents >= 0))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_discount_cents_not_null",
+      "definition": "NOT NULL discount_cents"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_is_test_not_null",
+      "definition": "NOT NULL is_test"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_notification_channel_check",
+      "definition": "CHECK ((notification_channel = ANY (ARRAY['none'::text, 'sms'::text, 'call'::text])))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_notification_channel_not_null",
+      "definition": "NOT NULL notification_channel"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_payment_method_check",
+      "definition": "CHECK ((payment_method = ANY (ARRAY['cash'::text, 'stripe'::text])))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_payment_method_not_null",
+      "definition": "NOT NULL payment_method"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_payment_sms_consent_not_null",
+      "definition": "NOT NULL payment_sms_consent"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_payment_status_not_null",
+      "definition": "NOT NULL payment_status"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_session_id_fkey",
+      "definition": "FOREIGN KEY (session_id) REFERENCES call_sessions(id)"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_sms_status_not_null",
+      "definition": "NOT NULL sms_status"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_stock_reserved_not_null",
+      "definition": "NOT NULL stock_reserved"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_subtotal_cents_check",
+      "definition": "CHECK ((subtotal_cents >= 0))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_subtotal_cents_not_null",
+      "definition": "NOT NULL subtotal_cents"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_tax_cents_check",
+      "definition": "CHECK ((tax_cents >= 0))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_tax_cents_not_null",
+      "definition": "NOT NULL tax_cents"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_total_cents_check",
+      "definition": "CHECK ((total_cents >= 0))"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_total_cents_not_null",
+      "definition": "NOT NULL total_cents"
+    },
+    {
+      "table_name": "orders",
+      "conname": "orders_tracking_version_not_null",
+      "definition": "NOT NULL tracking_version"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_attempts_not_null",
+      "definition": "NOT NULL attempts"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_next_attempt_at_not_null",
+      "definition": "NOT NULL next_attempt_at"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_order_id_fkey",
+      "definition": "FOREIGN KEY (order_id) REFERENCES orders(id)"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_order_id_not_null",
+      "definition": "NOT NULL order_id"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_pkey",
+      "definition": "PRIMARY KEY (order_id)"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "payment_jobs",
+      "conname": "payment_jobs_updated_at_not_null",
+      "definition": "NOT NULL updated_at"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_active_not_null",
+      "definition": "NOT NULL active"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_check",
+      "definition": "CHECK (((value >= 0) AND ((kind <> 'percent'::text) OR (value <= 10000)) AND ((kind <> 'note'::text) OR (value = 0))))"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_check1",
+      "definition": "CHECK (((ends_at IS NULL) OR (starts_at IS NULL) OR (ends_at > starts_at)))"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_item_ids_not_null",
+      "definition": "NOT NULL item_ids"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_kind_check",
+      "definition": "CHECK ((kind = ANY (ARRAY['percent'::text, 'fixed'::text, 'note'::text])))"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_kind_not_null",
+      "definition": "NOT NULL kind"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_note_not_null",
+      "definition": "NOT NULL note"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_title_not_null",
+      "definition": "NOT NULL title"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_value_not_null",
+      "definition": "NOT NULL value"
+    },
+    {
+      "table_name": "promotions",
+      "conname": "promotions_version_not_null",
+      "definition": "NOT NULL version"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_event_id_not_null",
+      "definition": "NOT NULL event_id"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_occurred_at_not_null",
+      "definition": "NOT NULL occurred_at"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_pkey",
+      "definition": "PRIMARY KEY (event_id)"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_provider_id_not_null",
+      "definition": "NOT NULL provider_id"
+    },
+    {
+      "table_name": "provider_receipts",
+      "conname": "provider_receipts_status_not_null",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_caller_hash_not_null",
+      "definition": "NOT NULL caller_hash"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_day_not_null",
+      "definition": "NOT NULL day"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_failures_check",
+      "definition": "CHECK ((failures >= 0))"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_failures_not_null",
+      "definition": "NOT NULL failures"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_pkey",
+      "definition": "PRIMARY KEY (restaurant_id, caller_hash, day)"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_restaurant_id_fkey",
+      "definition": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)"
+    },
+    {
+      "table_name": "recovery_attempts",
+      "conname": "recovery_attempts_restaurant_id_not_null",
+      "definition": "NOT NULL restaurant_id"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_catalog_revision_not_null",
+      "definition": "NOT NULL catalog_revision"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_id_not_null",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_name_not_null",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_pkey",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_public_note_not_null",
+      "definition": "NOT NULL public_note"
+    },
+    {
+      "table_name": "restaurants",
+      "conname": "restaurants_tax_rate_bps_not_null",
+      "definition": "NOT NULL tax_rate_bps"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_created_at_not_null",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_pkey",
+      "definition": "PRIMARY KEY (session_id, turn)"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_response_xml_not_null",
+      "definition": "NOT NULL response_xml"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_session_id_fkey",
+      "definition": "FOREIGN KEY (session_id) REFERENCES call_sessions(id)"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_session_id_not_null",
+      "definition": "NOT NULL session_id"
+    },
+    {
+      "table_name": "voice_requests",
+      "conname": "voice_requests_turn_not_null",
+      "definition": "NOT NULL turn"
+    },
+    {
+      "table_name": "webhook_events",
+      "conname": "webhook_events_event_id_not_null",
+      "definition": "NOT NULL event_id"
+    },
+    {
+      "table_name": "webhook_events",
+      "conname": "webhook_events_pkey",
+      "definition": "PRIMARY KEY (event_id)"
+    },
+    {
+      "table_name": "webhook_events",
+      "conname": "webhook_events_provider_not_null",
+      "definition": "NOT NULL provider"
+    },
+    {
+      "table_name": "webhook_events",
+      "conname": "webhook_events_received_at_not_null",
+      "definition": "NOT NULL received_at"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "app_migrations",
+      "indexname": "app_migrations_pkey",
+      "indexdef": "CREATE UNIQUE INDEX app_migrations_pkey ON public.app_migrations USING btree (name)"
+    },
+    {
+      "tablename": "call_sessions",
+      "indexname": "call_sessions_expiry_idx",
+      "indexdef": "CREATE INDEX call_sessions_expiry_idx ON public.call_sessions USING btree (expires_at)"
+    },
+    {
+      "tablename": "call_sessions",
+      "indexname": "call_sessions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX call_sessions_pkey ON public.call_sessions USING btree (id)"
+    },
+    {
+      "tablename": "call_sessions",
+      "indexname": "call_sessions_provider_call_id_key",
+      "indexdef": "CREATE UNIQUE INDEX call_sessions_provider_call_id_key ON public.call_sessions USING btree (provider_call_id)"
+    },
+    {
+      "tablename": "calls",
+      "indexname": "calls_pkey",
+      "indexdef": "CREATE UNIQUE INDEX calls_pkey ON public.calls USING btree (id)"
+    },
+    {
+      "tablename": "calls",
+      "indexname": "calls_telnyx_call_id_key",
+      "indexdef": "CREATE UNIQUE INDEX calls_telnyx_call_id_key ON public.calls USING btree (telnyx_call_id)"
+    },
+    {
+      "tablename": "catalog_audit",
+      "indexname": "catalog_audit_pkey",
+      "indexdef": "CREATE UNIQUE INDEX catalog_audit_pkey ON public.catalog_audit USING btree (id)"
+    },
+    {
+      "tablename": "catalog_imports",
+      "indexname": "catalog_imports_pkey",
+      "indexdef": "CREATE UNIQUE INDEX catalog_imports_pkey ON public.catalog_imports USING btree (id)"
+    },
+    {
+      "tablename": "conversation_turns",
+      "indexname": "conversation_turns_pkey",
+      "indexdef": "CREATE UNIQUE INDEX conversation_turns_pkey ON public.conversation_turns USING btree (id)"
+    },
+    {
+      "tablename": "conversation_turns",
+      "indexname": "conversation_turns_session_id_sequence_key",
+      "indexdef": "CREATE UNIQUE INDEX conversation_turns_session_id_sequence_key ON public.conversation_turns USING btree (session_id, sequence)"
+    },
+    {
+      "tablename": "draft_carts",
+      "indexname": "draft_carts_pkey",
+      "indexdef": "CREATE UNIQUE INDEX draft_carts_pkey ON public.draft_carts USING btree (session_id)"
+    },
+    {
+      "tablename": "draft_carts",
+      "indexname": "draft_recovery_active_code",
+      "indexdef": "CREATE UNIQUE INDEX draft_recovery_active_code ON public.draft_carts USING btree (recovery_caller_hash, recovery_code_hash) WHERE (recovery_code_hash IS NOT NULL)"
+    },
+    {
+      "tablename": "draft_carts",
+      "indexname": "draft_recovery_caller",
+      "indexdef": "CREATE INDEX draft_recovery_caller ON public.draft_carts USING btree (recovery_caller_hash, recovery_code_hash)"
+    },
+    {
+      "tablename": "draft_carts",
+      "indexname": "draft_recovery_token",
+      "indexdef": "CREATE UNIQUE INDEX draft_recovery_token ON public.draft_carts USING btree (recovery_token_hash) WHERE (recovery_token_hash IS NOT NULL)"
+    },
+    {
+      "tablename": "engagement_events",
+      "indexname": "engagement_events_pkey",
+      "indexdef": "CREATE UNIQUE INDEX engagement_events_pkey ON public.engagement_events USING btree (id)"
+    },
+    {
+      "tablename": "engagement_events",
+      "indexname": "engagement_events_session_id_event_key_key",
+      "indexdef": "CREATE UNIQUE INDEX engagement_events_session_id_event_key_key ON public.engagement_events USING btree (session_id, event_key)"
+    },
+    {
+      "tablename": "engagement_events",
+      "indexname": "engagement_events_time",
+      "indexdef": "CREATE INDEX engagement_events_time ON public.engagement_events USING btree (created_at, kind)"
+    },
+    {
+      "tablename": "menu_items",
+      "indexname": "menu_item_number_unique",
+      "indexdef": "CREATE UNIQUE INDEX menu_item_number_unique ON public.menu_items USING btree (restaurant_id, item_number)"
+    },
+    {
+      "tablename": "menu_items",
+      "indexname": "menu_items_pkey",
+      "indexdef": "CREATE UNIQUE INDEX menu_items_pkey ON public.menu_items USING btree (id)"
+    },
+    {
+      "tablename": "messaging_preferences",
+      "indexname": "messaging_preferences_pkey",
+      "indexdef": "CREATE UNIQUE INDEX messaging_preferences_pkey ON public.messaging_preferences USING btree (restaurant_id, phone)"
+    },
+    {
+      "tablename": "model_call_events",
+      "indexname": "model_call_events_pkey",
+      "indexdef": "CREATE UNIQUE INDEX model_call_events_pkey ON public.model_call_events USING btree (id)"
+    },
+    {
+      "tablename": "model_call_events",
+      "indexname": "model_events_window",
+      "indexdef": "CREATE INDEX model_events_window ON public.model_call_events USING btree (restaurant_id, provider, created_at DESC)"
+    },
+    {
+      "tablename": "model_health_status",
+      "indexname": "model_health_status_pkey",
+      "indexdef": "CREATE UNIQUE INDEX model_health_status_pkey ON public.model_health_status USING btree (restaurant_id)"
+    },
+    {
+      "tablename": "model_incidents",
+      "indexname": "model_incidents_pkey",
+      "indexdef": "CREATE UNIQUE INDEX model_incidents_pkey ON public.model_incidents USING btree (id)"
+    },
+    {
+      "tablename": "model_incidents",
+      "indexname": "model_one_active_incident",
+      "indexdef": "CREATE UNIQUE INDEX model_one_active_incident ON public.model_incidents USING btree (restaurant_id, provider) WHERE (resolved_at IS NULL)"
+    },
+    {
+      "tablename": "model_provider_state",
+      "indexname": "model_provider_state_pkey",
+      "indexdef": "CREATE UNIQUE INDEX model_provider_state_pkey ON public.model_provider_state USING btree (restaurant_id, provider)"
+    },
+    {
+      "tablename": "notification_jobs",
+      "indexname": "notification_jobs_due",
+      "indexdef": "CREATE INDEX notification_jobs_due ON public.notification_jobs USING btree (next_attempt_at) WHERE (status = 'pending'::text)"
+    },
+    {
+      "tablename": "notification_jobs",
+      "indexname": "notification_jobs_event_key_key",
+      "indexdef": "CREATE UNIQUE INDEX notification_jobs_event_key_key ON public.notification_jobs USING btree (event_key)"
+    },
+    {
+      "tablename": "notification_jobs",
+      "indexname": "notification_jobs_pkey",
+      "indexdef": "CREATE UNIQUE INDEX notification_jobs_pkey ON public.notification_jobs USING btree (id)"
+    },
+    {
+      "tablename": "notification_jobs",
+      "indexname": "notification_provider_unique",
+      "indexdef": "CREATE UNIQUE INDEX notification_provider_unique ON public.notification_jobs USING btree (provider_id) WHERE (provider_id IS NOT NULL)"
+    },
+    {
+      "tablename": "order_events",
+      "indexname": "order_events_order_id_event_key_key",
+      "indexdef": "CREATE UNIQUE INDEX order_events_order_id_event_key_key ON public.order_events USING btree (order_id, event_key)"
+    },
+    {
+      "tablename": "order_events",
+      "indexname": "order_events_pkey",
+      "indexdef": "CREATE UNIQUE INDEX order_events_pkey ON public.order_events USING btree (id)"
+    },
+    {
+      "tablename": "order_events",
+      "indexname": "order_events_timeline",
+      "indexdef": "CREATE INDEX order_events_timeline ON public.order_events USING btree (order_id, created_at)"
+    },
+    {
+      "tablename": "order_items",
+      "indexname": "order_items_pkey",
+      "indexdef": "CREATE UNIQUE INDEX order_items_pkey ON public.order_items USING btree (id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_call_id_key",
+      "indexdef": "CREATE UNIQUE INDEX orders_call_id_key ON public.orders USING btree (call_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_checkout_unique",
+      "indexdef": "CREATE UNIQUE INDEX orders_checkout_unique ON public.orders USING btree (checkout_session_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_pkey",
+      "indexdef": "CREATE UNIQUE INDEX orders_pkey ON public.orders USING btree (id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "orders_session_unique",
+      "indexdef": "CREATE UNIQUE INDEX orders_session_unique ON public.orders USING btree (session_id)"
+    },
+    {
+      "tablename": "orders",
+      "indexname": "phone_order_history",
+      "indexdef": "CREATE INDEX phone_order_history ON public.orders USING btree (restaurant_id, customer_phone, created_at) WHERE ((session_id IS NOT NULL) AND (is_test = false))"
+    },
+    {
+      "tablename": "payment_jobs",
+      "indexname": "payment_jobs_pending",
+      "indexdef": "CREATE INDEX payment_jobs_pending ON public.payment_jobs USING btree (next_attempt_at) WHERE (status = 'pending'::text)"
+    },
+    {
+      "tablename": "payment_jobs",
+      "indexname": "payment_jobs_pkey",
+      "indexdef": "CREATE UNIQUE INDEX payment_jobs_pkey ON public.payment_jobs USING btree (order_id)"
+    },
+    {
+      "tablename": "promotions",
+      "indexname": "promotions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX promotions_pkey ON public.promotions USING btree (id)"
+    },
+    {
+      "tablename": "promotions",
+      "indexname": "promotions_restaurant",
+      "indexdef": "CREATE INDEX promotions_restaurant ON public.promotions USING btree (restaurant_id)"
+    },
+    {
+      "tablename": "provider_receipts",
+      "indexname": "provider_receipts_pkey",
+      "indexdef": "CREATE UNIQUE INDEX provider_receipts_pkey ON public.provider_receipts USING btree (event_id)"
+    },
+    {
+      "tablename": "provider_receipts",
+      "indexname": "provider_receipts_provider",
+      "indexdef": "CREATE INDEX provider_receipts_provider ON public.provider_receipts USING btree (provider_id)"
+    },
+    {
+      "tablename": "recovery_attempts",
+      "indexname": "recovery_attempts_pkey",
+      "indexdef": "CREATE UNIQUE INDEX recovery_attempts_pkey ON public.recovery_attempts USING btree (restaurant_id, caller_hash, day)"
+    },
+    {
+      "tablename": "restaurants",
+      "indexname": "restaurants_pkey",
+      "indexdef": "CREATE UNIQUE INDEX restaurants_pkey ON public.restaurants USING btree (id)"
+    },
+    {
+      "tablename": "voice_requests",
+      "indexname": "voice_requests_pkey",
+      "indexdef": "CREATE UNIQUE INDEX voice_requests_pkey ON public.voice_requests USING btree (session_id, turn)"
+    },
+    {
+      "tablename": "webhook_events",
+      "indexname": "webhook_events_pkey",
+      "indexdef": "CREATE UNIQUE INDEX webhook_events_pkey ON public.webhook_events USING btree (event_id)"
+    }
+  ]
+}

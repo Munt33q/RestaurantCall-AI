@@ -1,0 +1,15 @@
+{
+  "next-build": {
+    "exit_code": 0,
+    "log": "next-build.log"
+  },
+  "relay-build": {
+    "exit_code": 0,
+    "log": "relay-build.log",
+    "working_directory": "repository root"
+  },
+  "monitor-build": {
+    "exit_code": 0,
+    "log": "monitor-build.log"
+  }
+}

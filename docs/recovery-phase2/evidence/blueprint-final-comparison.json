@@ -1,0 +1,685 @@
+{
+  "source_document_sha256": "582ea4b42d7d8d8300d86c252a5b3fb07e2887a9bbd38cf4b132061cc6ad2b56",
+  "total": 113,
+  "matched": 113,
+  "files": [
+    {
+      "path": "frontend/app/analytics/page.tsx",
+      "expected_sha256": "799c945c0c924010296844c1220f61b0ca1f5f41005eec0df426e419befd207b",
+      "actual_sha256": "799c945c0c924010296844c1220f61b0ca1f5f41005eec0df426e419befd207b",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/analytics/route.ts",
+      "expected_sha256": "ea43d62f2ea2d7b2174eeda3d92ba31acb974a26a9de5a9e24292550e49a4e6c",
+      "actual_sha256": "ea43d62f2ea2d7b2174eeda3d92ba31acb974a26a9de5a9e24292550e49a4e6c",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/calls/[callId]/route.ts",
+      "expected_sha256": "8824b3c7b213104d22677600608a815df80ef6ac7e98157519e5430a53fc04b0",
+      "actual_sha256": "8824b3c7b213104d22677600608a815df80ef6ac7e98157519e5430a53fc04b0",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/calls/route.ts",
+      "expected_sha256": "74607701674faa71e0b097597d5588790d22ec9a1a944811500ec81b856dc440",
+      "actual_sha256": "74607701674faa71e0b097597d5588790d22ec9a1a944811500ec81b856dc440",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/catalog-import/route.ts",
+      "expected_sha256": "dddb652f5180009ad67ddf9f8cc8d410014d58392b917b7a64f9584246cc78b2",
+      "actual_sha256": "dddb652f5180009ad67ddf9f8cc8d410014d58392b917b7a64f9584246cc78b2",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/conversation/preview/route.ts",
+      "expected_sha256": "29099dab79e5c346fcba4b59b356aa927c8ebdd3ffdbd3ac060cb6dffba9bdc3",
+      "actual_sha256": "29099dab79e5c346fcba4b59b356aa927c8ebdd3ffdbd3ac060cb6dffba9bdc3",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/cron/operations/route.ts",
+      "expected_sha256": "aa7b2533cf86894efffcc16f2cd6f37d00c0ad5abb19d4b16ff179e9a06b67be",
+      "actual_sha256": "aa7b2533cf86894efffcc16f2cd6f37d00c0ad5abb19d4b16ff179e9a06b67be",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/demo/route.ts",
+      "expected_sha256": "65ac8f7945dfca1209db37297103a40d701418c88708d71625a2c3f6c44275a0",
+      "actual_sha256": "65ac8f7945dfca1209db37297103a40d701418c88708d71625a2c3f6c44275a0",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/drafts/route.ts",
+      "expected_sha256": "263a605c12729819af42797d910d4c4049d5839d15c2115c50fdf93e20d74d33",
+      "actual_sha256": "263a605c12729819af42797d910d4c4049d5839d15c2115c50fdf93e20d74d33",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/health/model/route.ts",
+      "expected_sha256": "1172ca79cff28e4e3c6dd2cf734123eec66e7e3e184478c68949653cd2c42757",
+      "actual_sha256": "1172ca79cff28e4e3c6dd2cf734123eec66e7e3e184478c68949653cd2c42757",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/health/model-diagnostic/route.ts",
+      "expected_sha256": "401ee95380b7bf61f838f64af9c6c4ea4bdcdad83e404a52cff51460b30066c5",
+      "actual_sha256": "401ee95380b7bf61f838f64af9c6c4ea4bdcdad83e404a52cff51460b30066c5",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/health/route.ts",
+      "expected_sha256": "00a29b723c67da52208ca4dec1a41c77c70873a021fc0b4eb983dc4e39b87af5",
+      "actual_sha256": "00a29b723c67da52208ca4dec1a41c77c70873a021fc0b4eb983dc4e39b87af5",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/integrations/route.ts",
+      "expected_sha256": "0ceca3a96eeebcfc8dba5a1969d987d89cda762a9f9b9912b9817a51fc246f6e",
+      "actual_sha256": "0ceca3a96eeebcfc8dba5a1969d987d89cda762a9f9b9912b9817a51fc246f6e",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/jobs/route.ts",
+      "expected_sha256": "a050caad6e78b3fc161357670e00e8c6c92ece9140a184f2263cfc8625193924",
+      "actual_sha256": "a050caad6e78b3fc161357670e00e8c6c92ece9140a184f2263cfc8625193924",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/login/route.ts",
+      "expected_sha256": "3218391a28b9f712cd4e679e47cd25e07b0773b5aa1be355a756dc2fdd35be4d",
+      "actual_sha256": "3218391a28b9f712cd4e679e47cd25e07b0773b5aa1be355a756dc2fdd35be4d",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/menu/[itemId]/route.ts",
+      "expected_sha256": "16237d0ce1bda00c83b0c541936323df2bfd9b77853d83f6b8a0cb56aecdd5e1",
+      "actual_sha256": "16237d0ce1bda00c83b0c541936323df2bfd9b77853d83f6b8a0cb56aecdd5e1",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/menu/route.ts",
+      "expected_sha256": "b5b288ad586d61bf9633c1ac8c0befc074803659e7043b7301e28ec73968cb08",
+      "actual_sha256": "b5b288ad586d61bf9633c1ac8c0befc074803659e7043b7301e28ec73968cb08",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/model-status/route.ts",
+      "expected_sha256": "2945a500be5213399139a14174cf717b7e05331a9dbd3ab7b320f3cae6dcf4ec",
+      "actual_sha256": "2945a500be5213399139a14174cf717b7e05331a9dbd3ab7b320f3cae6dcf4ec",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/notifications/ready-call/route.ts",
+      "expected_sha256": "01cd34c2e4d3a6853eb899e5152ae281ed6a732fb9e6579ebe9780e1f99a4bfb",
+      "actual_sha256": "01cd34c2e4d3a6853eb899e5152ae281ed6a732fb9e6579ebe9780e1f99a4bfb",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/orders/[orderId]/payment/route.ts",
+      "expected_sha256": "01f46337fdf5f954a7192ffa50f0da18f8c5d633190278ad45d03cee3f56a55e",
+      "actual_sha256": "01f46337fdf5f954a7192ffa50f0da18f8c5d633190278ad45d03cee3f56a55e",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/orders/[orderId]/route.ts",
+      "expected_sha256": "b94e15b6eb234030e98772f14626e5ae3e0587820a0ec0ac412dcb715bcb8fa4",
+      "actual_sha256": "b94e15b6eb234030e98772f14626e5ae3e0587820a0ec0ac412dcb715bcb8fa4",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/orders/[orderId]/status/route.ts",
+      "expected_sha256": "ffe913ace29e77f85be91219a0769344b1d48b9b3a589587d993dad67b604b6a",
+      "actual_sha256": "ffe913ace29e77f85be91219a0769344b1d48b9b3a589587d993dad67b604b6a",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/orders/route.ts",
+      "expected_sha256": "0d8f3214fb616e31a70bd89c038966f8d52f545309b22dba302f4efb055cf759",
+      "actual_sha256": "0d8f3214fb616e31a70bd89c038966f8d52f545309b22dba302f4efb055cf759",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/promotions/route.ts",
+      "expected_sha256": "5c6baae5aaa1911e7eaa69e90a94af04336c7540e6601eb23425fdf24e7f7171",
+      "actual_sha256": "5c6baae5aaa1911e7eaa69e90a94af04336c7540e6601eb23425fdf24e7f7171",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/recovery/code/route.ts",
+      "expected_sha256": "5160c176a468cbf7071506be49a58fa3c7e5a94101603fefefc1c49563ee0221",
+      "actual_sha256": "5160c176a468cbf7071506be49a58fa3c7e5a94101603fefefc1c49563ee0221",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/relay/action/route.ts",
+      "expected_sha256": "fe29cecf047d5c48c1afdaa64672417881595573fccedc5710274418628b1d6c",
+      "actual_sha256": "fe29cecf047d5c48c1afdaa64672417881595573fccedc5710274418628b1d6c",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/relay/keys/route.ts",
+      "expected_sha256": "a404a3cdbf82519e8be805eb6a39ef63e7f6cd571a3d2724cac03f3e3f0aa6bf",
+      "actual_sha256": "a404a3cdbf82519e8be805eb6a39ef63e7f6cd571a3d2724cac03f3e3f0aa6bf",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/relay/test/route.ts",
+      "expected_sha256": "57c8519a7e57037c4fd242af746e02af11f98bbb60911bca22f95a366829d3e9",
+      "actual_sha256": "57c8519a7e57037c4fd242af746e02af11f98bbb60911bca22f95a366829d3e9",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/sip/catalog/route.ts",
+      "expected_sha256": "2e0124d64032285bcae23b81214646d5b0acf572440c3cd39066b2dd3a6a0c87",
+      "actual_sha256": "2e0124d64032285bcae23b81214646d5b0acf572440c3cd39066b2dd3a6a0c87",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/stripe/webhook/route.ts",
+      "expected_sha256": "de0763d37622da3139dcfd857e489a1d1c43d1b59f9cf76d75beaa4a082b795b",
+      "actual_sha256": "de0763d37622da3139dcfd857e489a1d1c43d1b59f9cf76d75beaa4a082b795b",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/call-status/route.ts",
+      "expected_sha256": "89725ae2f3ea35dfa1fe7af6190cd5579e18eafe993f8b4c02413583c038a6c4",
+      "actual_sha256": "89725ae2f3ea35dfa1fe7af6190cd5579e18eafe993f8b4c02413583c038a6c4",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/gather/route.ts",
+      "expected_sha256": "0825c543453c60b7b55dc4af54c63e6f64d515a6652998115140eaecbf44456a",
+      "actual_sha256": "0825c543453c60b7b55dc4af54c63e6f64d515a6652998115140eaecbf44456a",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/live-voice/route.ts",
+      "expected_sha256": "5c3cc164402ec9947ad371182f390a51b6da99d4f7a0f5446f555a99919cedb0",
+      "actual_sha256": "5c3cc164402ec9947ad371182f390a51b6da99d4f7a0f5446f555a99919cedb0",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/messaging/route.ts",
+      "expected_sha256": "65f51c68e81adbe70bf35b9d5061d9fbdf0d3b29e825d012dbb1db662a396834",
+      "actual_sha256": "65f51c68e81adbe70bf35b9d5061d9fbdf0d3b29e825d012dbb1db662a396834",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/relay-ended/route.ts",
+      "expected_sha256": "d3fc9c0921546b2755c3d04cde31244f0934a05976890d07ce9d9213cfb8e8d6",
+      "actual_sha256": "d3fc9c0921546b2755c3d04cde31244f0934a05976890d07ce9d9213cfb8e8d6",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/telnyx/voice/route.ts",
+      "expected_sha256": "53e282cbcafc3b3d6406ebca31075b1cedc08d0f0e40b1e26970b59ea27e27a0",
+      "actual_sha256": "53e282cbcafc3b3d6406ebca31075b1cedc08d0f0e40b1e26970b59ea27e27a0",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/track/[token]/route.ts",
+      "expected_sha256": "8cbb15fdbbb0d21d19b49c78390e64c54963a59e54ce669e1e321bc3dda960f1",
+      "actual_sha256": "8cbb15fdbbb0d21d19b49c78390e64c54963a59e54ce669e1e321bc3dda960f1",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/api/voice-deployment/route.ts",
+      "expected_sha256": "fdb30d42aa1c3ace65457e726898743f0e6dee1bf976f1e7433e8657a630de22",
+      "actual_sha256": "fdb30d42aa1c3ace65457e726898743f0e6dee1bf976f1e7433e8657a630de22",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/calls/page.tsx",
+      "expected_sha256": "66a0a96e0c23800c7d6f1bcbc18d265cebb79492fc0558b8d88bba79bf291f54",
+      "actual_sha256": "66a0a96e0c23800c7d6f1bcbc18d265cebb79492fc0558b8d88bba79bf291f54",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/dashboard/page.tsx",
+      "expected_sha256": "59cbbf0879ccd324b117a42507c2aaa007620d78a381f47f7888a3a615213b95",
+      "actual_sha256": "59cbbf0879ccd324b117a42507c2aaa007620d78a381f47f7888a3a615213b95",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/layout.tsx",
+      "expected_sha256": "70b6e43dc10e455504962f05a4250681c3ac27f980828f7c8934b59b3d96677c",
+      "actual_sha256": "70b6e43dc10e455504962f05a4250681c3ac27f980828f7c8934b59b3d96677c",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/login/page.tsx",
+      "expected_sha256": "c7085ae11c39a83bbea3b6d82c4ce9609dc25b54aa39f35dbbb434643af9fc68",
+      "actual_sha256": "c7085ae11c39a83bbea3b6d82c4ce9609dc25b54aa39f35dbbb434643af9fc68",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/menu/page.tsx",
+      "expected_sha256": "855e180f9d8b432e1756c11d23f08ce12e04523d7a3e3664f0701c8538d0da7b",
+      "actual_sha256": "855e180f9d8b432e1756c11d23f08ce12e04523d7a3e3664f0701c8538d0da7b",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/orders/[orderId]/page.tsx",
+      "expected_sha256": "1a84a8abfd47067d3252ab6a11b0bc5f5e6a4c6a98b17c5d44c222bc87c1d353",
+      "actual_sha256": "1a84a8abfd47067d3252ab6a11b0bc5f5e6a4c6a98b17c5d44c222bc87c1d353",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/page.tsx",
+      "expected_sha256": "1a504b203372bf801947305cb0234a6a80e4c012bef7dff5742ac63222c40670",
+      "actual_sha256": "1a504b203372bf801947305cb0234a6a80e4c012bef7dff5742ac63222c40670",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/pay/[token]/route.ts",
+      "expected_sha256": "3745fb01d643f6d4f9b2360619944ca7b585f7f24274142cc250002bb0ce5a0c",
+      "actual_sha256": "3745fb01d643f6d4f9b2360619944ca7b585f7f24274142cc250002bb0ce5a0c",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/payment-result/page.tsx",
+      "expected_sha256": "5ea9389487180000a8026b6ea8a40b62e29ea73837e6addd70da50c4a6e0290a",
+      "actual_sha256": "5ea9389487180000a8026b6ea8a40b62e29ea73837e6addd70da50c4a6e0290a",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/recover/[token]/RecoveryForm.tsx",
+      "expected_sha256": "8c25b8ed4dd3412e58724f8dd922753f35e900b75d2e08ed41159f792346b47c",
+      "actual_sha256": "8c25b8ed4dd3412e58724f8dd922753f35e900b75d2e08ed41159f792346b47c",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/recover/[token]/page.tsx",
+      "expected_sha256": "07e0ea9afc0727c98ed89aa82f2e13d748fc2fc67d4ab60336909f21368688a7",
+      "actual_sha256": "07e0ea9afc0727c98ed89aa82f2e13d748fc2fc67d4ab60336909f21368688a7",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/simulator/page.tsx",
+      "expected_sha256": "14a50559b1c70d95a877084d49811d6b424099f9dcf33057dcfb84f5a3f00175",
+      "actual_sha256": "14a50559b1c70d95a877084d49811d6b424099f9dcf33057dcfb84f5a3f00175",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/track/[token]/page.tsx",
+      "expected_sha256": "4336042b4b7b576e33089a81cc010816911f05b41df8ed94c7426314068d92de",
+      "actual_sha256": "4336042b4b7b576e33089a81cc010816911f05b41df8ed94c7426314068d92de",
+      "matches": true
+    },
+    {
+      "path": "frontend/app/track/layout.tsx",
+      "expected_sha256": "95eed398bf91684c83de5e632aaf828be5445f681b8a17a4cea73911db02a0c9",
+      "actual_sha256": "95eed398bf91684c83de5e632aaf828be5445f681b8a17a4cea73911db02a0c9",
+      "matches": true
+    },
+    {
+      "path": "frontend/components/AppHeader.tsx",
+      "expected_sha256": "58434ff3fe6a93eedc233c164bc7ba9c7f6ed37cfa0d5a3d84f5de1448bedd37",
+      "actual_sha256": "58434ff3fe6a93eedc233c164bc7ba9c7f6ed37cfa0d5a3d84f5de1448bedd37",
+      "matches": true
+    },
+    {
+      "path": "frontend/components/CatalogManager.tsx",
+      "expected_sha256": "2a5417d92a05f9c36834f116724afdc55118db8a5573324d82524e8e19b37779",
+      "actual_sha256": "2a5417d92a05f9c36834f116724afdc55118db8a5573324d82524e8e19b37779",
+      "matches": true
+    },
+    {
+      "path": "frontend/components/Icon.tsx",
+      "expected_sha256": "a44951031dba75ece978c0080523258b952d7f379280eb75f04d2181c0887d02",
+      "actual_sha256": "a44951031dba75ece978c0080523258b952d7f379280eb75f04d2181c0887d02",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/ai-menu.ts",
+      "expected_sha256": "43a05ea2f7607bf23748297ee3cea738de25829f1585345a288f90b861a43441",
+      "actual_sha256": "43a05ea2f7607bf23748297ee3cea738de25829f1585345a288f90b861a43441",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/auth.ts",
+      "expected_sha256": "454eb3a774cf3400e0f1056c7c0df3dc9bea56cd9b28054ac6e983c2909507d8",
+      "actual_sha256": "454eb3a774cf3400e0f1056c7c0df3dc9bea56cd9b28054ac6e983c2909507d8",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/background-jobs.ts",
+      "expected_sha256": "b93fec0ebdc051b97bacce89a44bb1d128fc926139a5f312f0262a47933a934d",
+      "actual_sha256": "b93fec0ebdc051b97bacce89a44bb1d128fc926139a5f312f0262a47933a934d",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/call-language.ts",
+      "expected_sha256": "762f3f6fe0d3442b9157a0a720e82f8bc7cb052d3a549198e62774effd6f2656",
+      "actual_sha256": "762f3f6fe0d3442b9157a0a720e82f8bc7cb052d3a549198e62774effd6f2656",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/call-precontext.ts",
+      "expected_sha256": "68105b4e92ac8bf60bf920d70f5787ba9a9c6ad64330ee6cae5d8d6a2af71c41",
+      "actual_sha256": "68105b4e92ac8bf60bf920d70f5787ba9a9c6ad64330ee6cae5d8d6a2af71c41",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/call-receipt.ts",
+      "expected_sha256": "43af77ec9062dfa1f0b436763962f328536f769249642961ba0b83c5c9b8587b",
+      "actual_sha256": "43af77ec9062dfa1f0b436763962f328536f769249642961ba0b83c5c9b8587b",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/caller-history.ts",
+      "expected_sha256": "49c65044d8442f1d410e251fb5652be6374706e6ca34df89931f73a0875b06e5",
+      "actual_sha256": "49c65044d8442f1d410e251fb5652be6374706e6ca34df89931f73a0875b06e5",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/catalog-api.ts",
+      "expected_sha256": "f58cc00f5922d78b2d49da047f4f642d012eeb772c171d7a69cc0410fc00e6c5",
+      "actual_sha256": "f58cc00f5922d78b2d49da047f4f642d012eeb772c171d7a69cc0410fc00e6c5",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/catalog-import.ts",
+      "expected_sha256": "e10a5f4b0a3e63d6cdbefd3293dffb56885dcbb1ce228cef76fcdae3a6fe86b5",
+      "actual_sha256": "e10a5f4b0a3e63d6cdbefd3293dffb56885dcbb1ce228cef76fcdae3a6fe86b5",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/catalog-policy.ts",
+      "expected_sha256": "6ba29ca726d37952ee770586c0bbbe1dce59dde98127e205e170d476acf5200c",
+      "actual_sha256": "6ba29ca726d37952ee770586c0bbbe1dce59dde98127e205e170d476acf5200c",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/catalog-store.ts",
+      "expected_sha256": "acc0c85288393f32eb9a3571298fc1c1ed832f3a86c379c6fb3095c26569cc1f",
+      "actual_sha256": "acc0c85288393f32eb9a3571298fc1c1ed832f3a86c379c6fb3095c26569cc1f",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/customer-languages.ts",
+      "expected_sha256": "ec8aa5cdccf1d2c4b07b69aaa4add3f935fa5be9d7a9c7dd9b0617b49a580066",
+      "actual_sha256": "ec8aa5cdccf1d2c4b07b69aaa4add3f935fa5be9d7a9c7dd9b0617b49a580066",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/db/client.ts",
+      "expected_sha256": "7eba24ce09da9276785e9710ab0344ea1b3d83ff147022f46fd33a527dff87e0",
+      "actual_sha256": "7eba24ce09da9276785e9710ab0344ea1b3d83ff147022f46fd33a527dff87e0",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/db/index.ts",
+      "expected_sha256": "97178ef1e115681462fe4251734d6060e9ff169779f703a1dda44d43ec75048c",
+      "actual_sha256": "97178ef1e115681462fe4251734d6060e9ff169779f703a1dda44d43ec75048c",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/db/schema.ts",
+      "expected_sha256": "4158be55b0ce4cb434b5e28509318a2393669b84950640aa2106d7a9b9d287f3",
+      "actual_sha256": "4158be55b0ce4cb434b5e28509318a2393669b84950640aa2106d7a9b9d287f3",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/assistance.ts",
+      "expected_sha256": "2b16ad5d901ae9281a148c6d1aaf4fde128ef3aebd450380b14378bc479b8851",
+      "actual_sha256": "2b16ad5d901ae9281a148c6d1aaf4fde128ef3aebd450380b14378bc479b8851",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/language.ts",
+      "expected_sha256": "5cb7a045026a666c49e5afdad8cbe84e92f3effb48f801e4eeabde83b67754d1",
+      "actual_sha256": "5cb7a045026a666c49e5afdad8cbe84e92f3effb48f801e4eeabde83b67754d1",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/metrics.ts",
+      "expected_sha256": "d699bbff9ff0bdd50987f8933e69772fc4ce1103f3846bd75675da56984beaf4",
+      "actual_sha256": "d699bbff9ff0bdd50987f8933e69772fc4ce1103f3846bd75675da56984beaf4",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/recovery-contract.ts",
+      "expected_sha256": "924ea1ba46594838cce15507ee2bc91f6f17c5c88520e8183b89776990cb07a9",
+      "actual_sha256": "924ea1ba46594838cce15507ee2bc91f6f17c5c88520e8183b89776990cb07a9",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/recovery-store.ts",
+      "expected_sha256": "442d835ae69cc2e02b7b9626e5817ece19ca9d6feda9ccf368bfaf143372d870",
+      "actual_sha256": "442d835ae69cc2e02b7b9626e5817ece19ca9d6feda9ccf368bfaf143372d870",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/recovery-worker.ts",
+      "expected_sha256": "127cc6904fc33bff23494586e1089c9088fe33524c1215875edfbc3c979136fd",
+      "actual_sha256": "127cc6904fc33bff23494586e1089c9088fe33524c1215875edfbc3c979136fd",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/turn.ts",
+      "expected_sha256": "138ea8f040b8d21b78f37e55883b6fc34e781155fd62611ff66caf16d624cd2b",
+      "actual_sha256": "138ea8f040b8d21b78f37e55883b6fc34e781155fd62611ff66caf16d624cd2b",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/engagement/upsell.ts",
+      "expected_sha256": "acf13668a5fda559d5616a977bed069cfe35904d660c317c45d90cd2cd04163d",
+      "actual_sha256": "acf13668a5fda559d5616a977bed069cfe35904d660c317c45d90cd2cd04163d",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/live-voice-profile.ts",
+      "expected_sha256": "456a966e2d71639c268eeff065eeafd4212379ac7e445272a9c484a3ab4d4033",
+      "actual_sha256": "456a966e2d71639c268eeff065eeafd4212379ac7e445272a9c484a3ab4d4033",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/live-voice-transport.ts",
+      "expected_sha256": "0c1dd9bc2d91a95c2055f6613668cac9bcf92ec195504d88d84e7afadc3475a8",
+      "actual_sha256": "0c1dd9bc2d91a95c2055f6613668cac9bcf92ec195504d88d84e7afadc3475a8",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/menu-advisor.ts",
+      "expected_sha256": "5da245a608bd570584c6479d4c783fe6f7a767a00860897551eb2e51d4eec3f6",
+      "actual_sha256": "5da245a608bd570584c6479d4c783fe6f7a767a00860897551eb2e51d4eec3f6",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/menu-health-probe.ts",
+      "expected_sha256": "fe71ba3ef9a55921182b95e23d286bffb82157ea86566bcb9cb0d03dd2c9316a",
+      "actual_sha256": "fe71ba3ef9a55921182b95e23d286bffb82157ea86566bcb9cb0d03dd2c9316a",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/model-client.ts",
+      "expected_sha256": "6e8953431e41a97900d5e27a146b77276075948fd7913768a01f8bc8a0fde8b1",
+      "actual_sha256": "6e8953431e41a97900d5e27a146b77276075948fd7913768a01f8bc8a0fde8b1",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/model-monitor.ts",
+      "expected_sha256": "3f1f9d812e99b522f018ba5c98755051dde1377d2e3deb1695cbf56dae4bf856",
+      "actual_sha256": "3f1f9d812e99b522f018ba5c98755051dde1377d2e3deb1695cbf56dae4bf856",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/model-policy.ts",
+      "expected_sha256": "bd627a4816edad1f22f765bec92f906d5e370ebc8a9ed261ec2d159dd97b7f27",
+      "actual_sha256": "bd627a4816edad1f22f765bec92f906d5e370ebc8a9ed261ec2d159dd97b7f27",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/notification-contract.ts",
+      "expected_sha256": "00937df0b192f54a87a22bfebd5f863499d8fc2ab24a5448aa5d27c7f1d3e106",
+      "actual_sha256": "00937df0b192f54a87a22bfebd5f863499d8fc2ab24a5448aa5d27c7f1d3e106",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/operations.ts",
+      "expected_sha256": "b084cdec1dc36f6b79e03f735d0fd71617d10fb3b279d4764431f62724b3705f",
+      "actual_sha256": "b084cdec1dc36f6b79e03f735d0fd71617d10fb3b279d4764431f62724b3705f",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/order-contract.ts",
+      "expected_sha256": "76d0be164808d1a88e2005f8ab7bed162ca8e44886a30d8a4c75dc6094aeec97",
+      "actual_sha256": "76d0be164808d1a88e2005f8ab7bed162ca8e44886a30d8a4c75dc6094aeec97",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/payment-contract.ts",
+      "expected_sha256": "3c447e21a291d50dc38e22d2436f3a6d17e8095c5329f67bbf210340555d2d38",
+      "actual_sha256": "3c447e21a291d50dc38e22d2436f3a6d17e8095c5329f67bbf210340555d2d38",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/payments.ts",
+      "expected_sha256": "8d87248f0841569d0643a67cf812b46d1a3e8009972213dfe1b06276f556fe4c",
+      "actual_sha256": "8d87248f0841569d0643a67cf812b46d1a3e8009972213dfe1b06276f556fe4c",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/pricing.ts",
+      "expected_sha256": "666b84b38708c071812238b833c1a366c57d7605d623d6b4dec6c55951e70469",
+      "actual_sha256": "666b84b38708c071812238b833c1a366c57d7605d623d6b4dec6c55951e70469",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/provider-events.ts",
+      "expected_sha256": "d529be65dbf837d91744524b56a2252a4ddba9388a71c2f61c03525880662314",
+      "actual_sha256": "d529be65dbf837d91744524b56a2252a4ddba9388a71c2f61c03525880662314",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/ready-call.ts",
+      "expected_sha256": "5122d7ecceac4de6d10c8b8affd91acc10707d68fa87f1ca09b77ec65cfc1fc8",
+      "actual_sha256": "5122d7ecceac4de6d10c8b8affd91acc10707d68fa87f1ca09b77ec65cfc1fc8",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/relay/checkout.ts",
+      "expected_sha256": "182d721067c4d9dbbf0e44f18b8072a0d9215aded94bdf6b916bffd2e57a79e2",
+      "actual_sha256": "182d721067c4d9dbbf0e44f18b8072a0d9215aded94bdf6b916bffd2e57a79e2",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/relay/controller.ts",
+      "expected_sha256": "42d029cd3c9a52f66e2de5397092eed4e545ec27ffd0d83a2e1a1546fc10afd1",
+      "actual_sha256": "42d029cd3c9a52f66e2de5397092eed4e545ec27ffd0d83a2e1a1546fc10afd1",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/relay-session.ts",
+      "expected_sha256": "040d1539e788904711ae18b3e13c7a9b000a6cc3ea9401c581ee1d18f3b8557a",
+      "actual_sha256": "040d1539e788904711ae18b3e13c7a9b000a6cc3ea9401c581ee1d18f3b8557a",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/relay-token.ts",
+      "expected_sha256": "9e55c12cbe7085a7ddfc236dd309149b2b49c132d781ca36ed089e120b6d5d56",
+      "actual_sha256": "9e55c12cbe7085a7ddfc236dd309149b2b49c132d781ca36ed089e120b6d5d56",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/relay-xml.ts",
+      "expected_sha256": "e8dd7c698a1afcbd25a0a3484452b935437fa67c724d151ffd02dc3f158374c6",
+      "actual_sha256": "e8dd7c698a1afcbd25a0a3484452b935437fa67c724d151ffd02dc3f158374c6",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/repository.ts",
+      "expected_sha256": "948dc6c885365e22f2592d5e56bf5098b08d798861da9fbc082a89b1f505adfd",
+      "actual_sha256": "948dc6c885365e22f2592d5e56bf5098b08d798861da9fbc082a89b1f505adfd",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/sales-context.ts",
+      "expected_sha256": "9a764a55163701bc27d7541422bb42987fc897163ae811a7dbfb160c8da43958",
+      "actual_sha256": "9a764a55163701bc27d7541422bb42987fc897163ae811a7dbfb160c8da43958",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/staff-session.ts",
+      "expected_sha256": "ba59f43b03daa95b3e37bb51751d944534f4a2b9e5ff119b360fbd022b2f62b7",
+      "actual_sha256": "ba59f43b03daa95b3e37bb51751d944534f4a2b9e5ff119b360fbd022b2f62b7",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/telnyx-api.ts",
+      "expected_sha256": "938792ec68a6bdea69ef3d6c6025ac336ae40ae41ac5d3b8e10c1ae1027c3ec2",
+      "actual_sha256": "938792ec68a6bdea69ef3d6c6025ac336ae40ae41ac5d3b8e10c1ae1027c3ec2",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/telnyx.ts",
+      "expected_sha256": "7eaf04c7885dc76d642d24c03bb061e69d18525ba53ed38101f117a5d3b468b4",
+      "actual_sha256": "7eaf04c7885dc76d642d24c03bb061e69d18525ba53ed38101f117a5d3b468b4",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/tracking-token.ts",
+      "expected_sha256": "848e02c5d2f712ae7ef3bab35dac6c25e651877a54573d8c97c9c56148dc64a2",
+      "actual_sha256": "848e02c5d2f712ae7ef3bab35dac6c25e651877a54573d8c97c9c56148dc64a2",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-catalog.ts",
+      "expected_sha256": "9991965c20c8339670ccd03939df050d2979e1b01596882a16bd05d3c2c5993f",
+      "actual_sha256": "9991965c20c8339670ccd03939df050d2979e1b01596882a16bd05d3c2c5993f",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-diagnostic.ts",
+      "expected_sha256": "498a5e4f8f332c85ec4a128129eb03074970df3316968119141530bc779ce92c",
+      "actual_sha256": "498a5e4f8f332c85ec4a128129eb03074970df3316968119141530bc779ce92c",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-engine.ts",
+      "expected_sha256": "f21ce55e08ca8cbcbc74c0cfb8c4864cdd49b0fb7cd901384ca6a9b858b1c26d",
+      "actual_sha256": "f21ce55e08ca8cbcbc74c0cfb8c4864cdd49b0fb7cd901384ca6a9b858b1c26d",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-event-replay.ts",
+      "expected_sha256": "6a5790c2b7a79c30b6599c21b1c6bbf9dfa79999c6356c173821f695517c67d4",
+      "actual_sha256": "6a5790c2b7a79c30b6599c21b1c6bbf9dfa79999c6356c173821f695517c67d4",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-intents.ts",
+      "expected_sha256": "32f63b9b479ac85b27887a9c32ee309397f4724dd0a34f54c72a94e2b8fdfcf4",
+      "actual_sha256": "32f63b9b479ac85b27887a9c32ee309397f4724dd0a34f54c72a94e2b8fdfcf4",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-self-probe.ts",
+      "expected_sha256": "86d716c48d6f933fc32bb0e88ed344c196753352b45c83a9b9abee24f59977e6",
+      "actual_sha256": "86d716c48d6f933fc32bb0e88ed344c196753352b45c83a9b9abee24f59977e6",
+      "matches": true
+    },
+    {
+      "path": "frontend/lib/voice-xml.ts",
+      "expected_sha256": "e2910e45f98b520a2b9b8db796b108c0fb4b1d81ccf6ab1eb43273947a51e403",
+      "actual_sha256": "e2910e45f98b520a2b9b8db796b108c0fb4b1d81ccf6ab1eb43273947a51e403",
+      "matches": true
+    },
+    {
+      "path": "monitor/index.ts",
+      "expected_sha256": "bb29c3e14e51a51ef6b0779ce0fafd7ec6e70af0e2677d05a9d6760c7367216f",
+      "actual_sha256": "bb29c3e14e51a51ef6b0779ce0fafd7ec6e70af0e2677d05a9d6760c7367216f",
+      "matches": true
+    },
+    {
+      "path": "relay/index.ts",
+      "expected_sha256": "8acd5e6af439a580d47592f48a8d00cab65f884b2662646b28f77f1b9cb92149",
+      "actual_sha256": "8acd5e6af439a580d47592f48a8d00cab65f884b2662646b28f77f1b9cb92149",
+      "matches": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "historical_path": "/workspace/scratch/97a636ad2eaa/restaurant-sales",
+  "original_git_object": "6de7172bae4e5c805c67c03265f4335aa3244e8b",
+  "result": "No supported original cloud workspace mount/export was available in this session; source recovered separately from deployment uploads and blueprint.",
+  "observations_from_phase2_tool_history": [
+    "No historical checkout in current task attachments before recovery worktree creation.",
+    "ChatGPT and archived ChatGPT history listing unavailable for signed-in account.",
+    "Original local Codex thread 01a194a1-bfe9-7fd0-9fa0-380b3a99e669 contains older baseline work.",
+    "Archived local takeover thread 01a1a43f-0fd2-73d3-802a-8fdb62892c5e identifies an already audited blueprint-derived experiment.",
+    "Browser automation failed during initialization; no conclusion about Edge authentication."
+  ],
+  "limits": "This does not prove the original cloud workspace was deleted. No exhaustive drive or GitHub scan was repeated. Phase-one shared history was successfully read through HTTP; see original docs/CHATGPT_PROJECT_HISTORY.md."
+}

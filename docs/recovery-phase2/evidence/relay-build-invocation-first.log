@@ -1,0 +1,23 @@
+X [ERROR] Could not resolve "relay/index.ts"
+
+C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1752
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 1 error:
+error: Could not resolve "relay/index.ts"
+    at failureErrorWithLog (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1752:15)
+    at C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1211:25
+    at C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1163:52
+    at buildResponseToResult (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1209:7)
+    at C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:1236:16
+    at responseCallbacks.<computed> (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:886:9)
+    at handleIncomingPacket (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:941:12)
+    at Socket.readFromStdout (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\esbuild\lib\main.js:864:7)
+    at Socket.emit (node:events:514:20)
+    at addChunk (node:internal/streams/readable:605:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v26.13.0

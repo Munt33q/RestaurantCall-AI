@@ -1,0 +1,72 @@
+{
+  "mode": "production-metadata",
+  "tables": [
+    "app_migrations",
+    "call_sessions",
+    "calls",
+    "catalog_audit",
+    "catalog_imports",
+    "conversation_turns",
+    "draft_carts",
+    "engagement_events",
+    "menu_items",
+    "messaging_preferences",
+    "model_call_events",
+    "model_health_status",
+    "model_incidents",
+    "model_provider_state",
+    "notification_jobs",
+    "order_events",
+    "order_items",
+    "orders",
+    "payment_jobs",
+    "promotions",
+    "provider_receipts",
+    "recovery_attempts",
+    "restaurants",
+    "voice_requests",
+    "webhook_events"
+  ],
+  "migrations": [
+    {
+      "name": "0001_initial.sql",
+      "sha256": "848441b56341c8931f89946cfd21079fcf17dafe5e6b5e888f2574c5464cc77b",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0002_call_sessions.sql",
+      "sha256": "d40acd90dc2be0ed3a2d2566cd3c933fb55d93750236a68e9f6ff5c50e8a06ef",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0003_ordering_flow.sql",
+      "sha256": "7b31f614586fa876855912e743641d5928f1ff33c44edf19e5edf8ed25af4624",
+      "applied_at": "2026-11-01T15:48:05.448Z"
+    },
+    {
+      "name": "0004_restaurant_operations.sql",
+      "sha256": "ef1decede835cabada1a473fd4049bd3535c14062c7173a2298168abede06ffd",
+      "applied_at": "2026-11-01T23:56:05.109Z"
+    },
+    {
+      "name": "0005_model_monitoring.sql",
+      "sha256": "dc7335d6c38a537fd2a176340e63d6038dc377523a5bebcc29f728537efa3228",
+      "applied_at": "2026-11-02T12:28:27.804Z"
+    },
+    {
+      "name": "0006_engagement_recovery.sql",
+      "sha256": "5f833af4bb45f1d40d5bcfca705c50b89a72f12d0f0064d7ca103a932846caf0",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    },
+    {
+      "name": "0007_recovery_dispatch_attempt.sql",
+      "sha256": "a56a2523e298bdb6af8d7f4848ec0e47ceaeb413c66e84879746227daf6f1af9",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    },
+    {
+      "name": "0008_catalog_sales.sql",
+      "sha256": "0420f8657e782bd8bb3368b841f14725ed3b481802d9cdb39e111e2d4fb5a225",
+      "applied_at": "2026-11-03T10:54:57.475Z"
+    }
+  ]
+}

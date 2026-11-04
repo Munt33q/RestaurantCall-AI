@@ -1,0 +1,64 @@
+{
+  "status": 200,
+  "data": {
+    "functions": [
+      {
+        "id": "modelwatch",
+        "slug": "modelwatch",
+        "name": "modelwatch",
+        "invocation_url": "https://br-patient-flower-b8mm4pad-modelwatch.compute.c-14.us-east-1.aws.neon.tech/",
+        "current_deployment": {
+          "id": 1,
+          "status": "completed",
+          "memory_mib": 2048,
+          "runtime": "nodejs24",
+          "created_at": "2026-11-02T12:31:47.293055Z",
+          "environment": [
+            "APP_URL",
+            "MODEL_MONITOR_SECRET"
+          ]
+        },
+        "active_deployment": {
+          "id": 1,
+          "status": "completed",
+          "memory_mib": 2048,
+          "runtime": "nodejs24",
+          "created_at": "2026-11-02T12:31:47.293055Z",
+          "environment": [
+            "APP_URL",
+            "MODEL_MONITOR_SECRET"
+          ]
+        },
+        "created_at": "2026-11-02T12:31:47.177047Z"
+      },
+      {
+        "id": "restaurantrelay",
+        "slug": "restaurantrelay",
+        "name": "restaurantrelay",
+        "invocation_url": "https://br-patient-flower-b8mm4pad-restaurantrelay.compute.c-14.us-east-1.aws.neon.tech/",
+        "current_deployment": {
+          "id": 10,
+          "status": "completed",
+          "memory_mib": 2048,
+          "runtime": "nodejs24",
+          "created_at": "2026-11-03T17:33:01.048290Z",
+          "environment": [
+            "APP_URL"
+          ]
+        },
+        "active_deployment": {
+          "id": 10,
+          "status": "completed",
+          "memory_mib": 2048,
+          "runtime": "nodejs24",
+          "created_at": "2026-11-03T17:33:01.048290Z",
+          "environment": [
+            "APP_URL"
+          ]
+        },
+        "created_at": "2026-11-01T19:16:34.797513Z"
+      }
+    ],
+    "pagination": {}
+  }
+}

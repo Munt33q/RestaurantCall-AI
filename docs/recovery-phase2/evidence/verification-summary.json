@@ -1,0 +1,42 @@
+{
+  "blueprint_files": 113,
+  "blueprint_matches": 113,
+  "vercel_original_files_preserved": 156,
+  "active_exact_vercel_files": 153,
+  "blueprint_exact_extractions": 1,
+  "historical_test_fixture_adaptations": 2,
+  "unit": {
+    "cases": 108,
+    "passed": 106,
+    "failed": 0,
+    "database_skips": 2
+  },
+  "disposable_neon_integration": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "database-integration-final-guarded.log"
+  },
+  "local_http_smoke": {
+    "exit_code": 0,
+    "evidence": "local-http-smoke-result.json"
+  },
+  "builds": {
+    "next-build": {
+      "exit_code": 0,
+      "log": "next-build.log"
+    },
+    "relay-build": {
+      "exit_code": 0,
+      "log": "relay-build.log",
+      "working_directory": "repository root"
+    },
+    "monitor-build": {
+      "exit_code": 0,
+      "log": "monitor-build.log"
+    }
+  },
+  "disposable_branch_deleted": true,
+  "production_deployed": false,
+  "original_git_commit_recovered": false
+}

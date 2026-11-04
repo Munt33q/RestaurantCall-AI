@@ -1,0 +1,10 @@
+{
+  "typecheck": {
+    "exit_code": 0,
+    "log": "typecheck-final.log"
+  },
+  "unit": {
+    "exit_code": 0,
+    "log": "unit-final.log"
+  }
+}

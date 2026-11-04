@@ -9,3 +9,7 @@ __pycache__/
 node_modules/
 .next/
 .next-local/
+
+# Isolated recovery build outputs
+/relay/dist/
+/monitor/dist/

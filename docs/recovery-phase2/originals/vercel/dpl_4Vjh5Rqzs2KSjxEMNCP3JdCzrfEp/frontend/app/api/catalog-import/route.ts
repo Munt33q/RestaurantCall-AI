@@ -1,0 +1,3 @@
+import {staffAuthorized,sameOrigin} from '@/lib/auth';import {catalogImports,stagePetra,publishCatalog} from '@/lib/catalog-import';import {catalogError} from '@/lib/catalog-api';
+export const dynamic='force-dynamic';export async function GET(){if(!staffAuthorized())return new Response('Unauthorized',{status:401});try{return Response.json(await catalogImports(),{headers:{'Cache-Control':'no-store'}});}catch(e){return catalogError(e);}}
+export async function POST(req:Request){if(!staffAuthorized()||!sameOrigin(req))return new Response('Unauthorized',{status:401});try{const b=await req.json();return Response.json(b.action==='stage'?await stagePetra():await publishCatalog(b.id,b.version,b.items,b.reviewed===true,b.replace===true));}catch(e){return catalogError(e);}}

@@ -1,0 +1,2 @@
+import {staffAuthorized,sameOrigin} from '@/lib/auth';import {confirmCashPayment} from '@/lib/operations';
+export async function POST(request:Request,{params}:{params:{orderId:string}}){if(!staffAuthorized()||!sameOrigin(request))return new Response('Unauthorized',{status:401});try{const result=await confirmCashPayment(params.orderId);return result?Response.json(result):new Response('Not found',{status:404});}catch{return Response.json({error:'Cash collection cannot be recorded for this order'},{status:400});}}

@@ -1,0 +1,24 @@
+import {client} from './db/client';import {validateCatalogItem,validatePromotion,uuid,type Promotion} from './catalog-policy';
+const rid=()=>{const id=process.env.RESTAURANT_ID?.trim();if(!uuid(id))throw Error('Restaurant not configured');return id;};
+export const catalogRow=(r:any)=>({id:r.id,name:r.name,category:r.category,description:r.description??'',priceCents:r.price_cents,stockQty:r.stock_qty,itemNumber:r.item_number,isAvailable:r.is_available,archived:r.archived,special:r.special,specialStartsAt:r.special_starts_at?new Date(r.special_starts_at).toISOString():null,specialEndsAt:r.special_ends_at?new Date(r.special_ends_at).toISOString():null,aliases:r.aliases??[],tags:r.tags??[],version:r.version});
+export const promotionRow=(r:any):Promotion=>({id:r.id,title:r.title,note:r.note,kind:r.kind,value:r.value,itemIds:r.item_ids,active:r.active,startsAt:r.starts_at?new Date(r.starts_at).toISOString():null,endsAt:r.ends_at?new Date(r.ends_at).toISOString():null,version:r.version});
+export async function listStaffCatalog(sql=client()){return (await sql`SELECT * FROM menu_items WHERE restaurant_id=${rid()} ORDER BY item_number NULLS LAST,name`).map(catalogRow);}
+export async function listPromotions(sql:any=client()){return (await sql`SELECT * FROM promotions WHERE restaurant_id=${rid()} ORDER BY created_at,id`).map(promotionRow);}
+export async function catalogAudit(tx:any,kind:string,id:string,data:unknown){await tx`INSERT INTO catalog_audit(restaurant_id,subject_id,kind,data_json) VALUES(${rid()},${id},${kind},${tx.json(data)})`;await tx`UPDATE restaurants SET catalog_revision=catalog_revision+1 WHERE id=${rid()}`;}
+export async function saveCatalogItem(input:any,id?:string,version?:number,sql:any=client()){
+ const item=validateCatalogItem(input);if(id&&(!uuid(id)||!Number.isInteger(version)))throw Error('Version required');
+ return sql.begin(async(tx:any)=>{
+ await tx`SELECT id FROM restaurants WHERE id=${rid()} FOR UPDATE`;
+ if(id){const [current]=await tx`SELECT version FROM menu_items WHERE id=${id} AND restaurant_id=${rid()} FOR UPDATE`;if(!current)throw Error('Not found');if(current.version!==version)throw Error('STALE');}
+ const [row]=id?await tx`UPDATE menu_items SET name=${item.name},category=${item.category},description=${item.description},price_cents=${item.priceCents},stock_qty=${item.stockQty},item_number=${item.itemNumber},is_available=${item.isAvailable},archived=${item.archived},special=${item.special},special_starts_at=${item.specialStartsAt},special_ends_at=${item.specialEndsAt},aliases=${tx.json(item.aliases)},tags=${tx.json(item.tags)},version=version+1 WHERE id=${id} AND restaurant_id=${rid()} RETURNING *`:await tx`INSERT INTO menu_items(restaurant_id,name,category,description,price_cents,stock_qty,item_number,is_available,archived,special,special_starts_at,special_ends_at,aliases,tags) VALUES(${rid()},${item.name},${item.category},${item.description},${item.priceCents},${item.stockQty},${item.itemNumber},${item.isAvailable},${item.archived},${item.special},${item.specialStartsAt},${item.specialEndsAt},${tx.json(item.aliases)},${tx.json(item.tags)}) RETURNING *`;
+ await catalogAudit(tx,id?'item_updated':'item_created',row.id,{...item,version:row.version});return catalogRow(row);
+ });
+}
+export async function savePromotion(input:any,id?:string,version?:number,sql:any=client()){
+ const p=validatePromotion(input);if(id&&(!uuid(id)||!Number.isInteger(version)))throw Error('Version required');
+ return sql.begin(async(tx:any)=>{await tx`SELECT id FROM restaurants WHERE id=${rid()} FOR UPDATE`;
+ if(p.itemIds.length){const rows=await tx`SELECT id FROM menu_items WHERE restaurant_id=${rid()} AND id=ANY(${p.itemIds}::uuid[])`;if(rows.length!==p.itemIds.length)throw Error('Invalid promotion scope');}
+ if(id){const [old]=await tx`SELECT version FROM promotions WHERE id=${id} AND restaurant_id=${rid()} FOR UPDATE`;if(!old)throw Error('Not found');if(old.version!==version)throw Error('STALE');}
+ const [row]=id?await tx`UPDATE promotions SET title=${p.title},note=${p.note},kind=${p.kind},value=${p.value},item_ids=${tx.json(p.itemIds)},active=${p.active},starts_at=${p.startsAt},ends_at=${p.endsAt},version=version+1 WHERE id=${id} AND restaurant_id=${rid()} RETURNING *`:await tx`INSERT INTO promotions(restaurant_id,title,note,kind,value,item_ids,active,starts_at,ends_at) VALUES(${rid()},${p.title},${p.note},${p.kind},${p.value},${tx.json(p.itemIds)},${p.active},${p.startsAt},${p.endsAt}) RETURNING *`;
+ await catalogAudit(tx,'promotion_saved',row.id,p);return promotionRow(row);});
+}

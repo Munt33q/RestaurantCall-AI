@@ -1,0 +1,28 @@
+âœ– database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (35357.9906ms)
+âœ” recovery database: two distinct items require review and confirmation, concurrent retries reserve once (17702.9402ms)
+â„¹ tests 2
+â„¹ suites 0
+â„¹ pass 1
+â„¹ fail 1
+â„¹ cancelled 0
+â„¹ skipped 0
+â„¹ todo 0
+â„¹ duration_ms 37023.0522
+
+âœ– failing tests:
+
+test at tests\database.integration.test.ts:2:1175
+âœ– database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (35357.9906ms)
+  Error [PostgresError]: duplicate key value violates unique constraint "orders_checkout_unique"
+      at located (C:\Users\munte\.codex\worktrees\restaurantcall-recovery-phase2\VOXO\frontend\node_modules\postgres\src\query.js:285:24) {
+    severity_local: 'ERROR',
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (checkout_session_id)=(cs_fixture) already exists.',
+    schema_name: 'public',
+    table_name: 'orders',
+    constraint_name: 'orders_checkout_unique',
+    file: 'nbtinsert.c',
+    line: '667',
+    routine: '_bt_check_unique'
+  }

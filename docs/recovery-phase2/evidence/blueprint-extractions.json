@@ -1,0 +1,10 @@
+[
+  {
+    "path": "relay/index.ts",
+    "classification": "exact blueprint extraction",
+    "blueprint_sha256": "8acd5e6af439a580d47592f48a8d00cab65f884b2662646b28f77f1b9cb92149",
+    "sha256": "8acd5e6af439a580d47592f48a8d00cab65f884b2662646b28f77f1b9cb92149",
+    "matches_blueprint": true,
+    "source_document_sha256": "582ea4b42d7d8d8300d86c252a5b3fb07e2887a9bbd38cf4b132061cc6ad2b56"
+  }
+]

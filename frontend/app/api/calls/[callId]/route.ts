@@ -1,0 +1,2 @@
+import {staffAuthorized} from '@/lib/auth';import {callDetail} from '@/lib/operations';export const dynamic='force-dynamic';
+export async function GET(_r:Request,{params}:{params:{callId:string}}){if(!staffAuthorized())return new Response('Unauthorized',{status:401});const data=await callDetail(params.callId);return data?Response.json(data,{headers:{'Cache-Control':'no-store'}}):new Response('Not found',{status:404});}

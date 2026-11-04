@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"ok\":true,\"statuses\":{\"ordersUnauthenticated\":401,\"relayUnauthenticated\":401,\"voiceUnsigned\":401,\"loginForeignOrigin\":403,\"login\":303},\"signedVoiceAndGather\":true,\"concurrentConfirmationCopies\":3,\"ordersCreated\":1,\"distinctItems\":2,\"totalCents\":1946,\"stockReservedOnce\":true,\"health\":{\"status\":503,\"databaseReady\":true,\"restaurantReady\":true,\"providerCredentialsConfigured\":false}}\n",
+  "stderr": ""
+}

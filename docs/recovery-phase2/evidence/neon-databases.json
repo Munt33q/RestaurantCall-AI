@@ -1,0 +1,23 @@
+{
+  "status": 200,
+  "data": {
+    "databases": [
+      {
+        "id": 1146914,
+        "branch_id": "br-patient-flower-b8mm4pad",
+        "name": "CALLAI",
+        "owner_name": "neondb_owner",
+        "created_at": "2026-11-01T11:33:46Z",
+        "updated_at": "2026-11-01T11:33:46Z"
+      },
+      {
+        "id": 1137729,
+        "branch_id": "br-patient-flower-b8mm4pad",
+        "name": "neondb",
+        "owner_name": "neondb_owner",
+        "created_at": "2026-11-01T00:54:15Z",
+        "updated_at": "2026-11-01T00:54:15Z"
+      }
+    ]
+  }
+}

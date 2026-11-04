@@ -1,0 +1,37 @@
+{
+  "status": 201,
+  "data": {
+    "database": {
+      "id": 1208163,
+      "branch_id": "br-wandering-grass-b87yx3w5",
+      "name": "recovery_phase2_final",
+      "owner_name": "neondb_owner",
+      "created_at": "2026-11-04T04:03:15Z",
+      "updated_at": "2026-11-04T04:03:15Z"
+    },
+    "operations": [
+      {
+        "id": "fb72ca0b-0bb8-4f74-a0b4-b00e551aca51",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "endpoint_id": "ep-wandering-scene-b8p2fl31",
+        "action": "apply_config",
+        "status": "running",
+        "failures_count": 0,
+        "created_at": "2026-11-04T04:03:15Z",
+        "updated_at": "2026-11-04T04:03:15Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "49358476-6c69-4273-98b1-ea2577bf5c6f",
+        "project_id": "dawn-haze-46256314",
+        "action": "epc_sync",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T04:03:15Z",
+        "updated_at": "2026-11-04T04:03:15Z",
+        "total_duration_ms": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+import RecoveryForm from './RecoveryForm';import {recoveryEnabled} from '@/lib/engagement/recovery-store';
+export const dynamic='force-dynamic';export const metadata={title:'Recover a saved draft | RestaurantCall AI',robots:{index:false,follow:false},referrer:'no-referrer'};
+export default function RecoveryPage({params}:{params:{token:string}}){return <main className="wrap"><section className="panel"><h1>Recover a saved draft</h1><p>This is an unplaced draft, not an order or a payment request.</p>{recoveryEnabled()?<RecoveryForm token={params.token}/>:<p>Draft recovery is not available. Please contact the restaurant for help.</p>}</section></main>;}

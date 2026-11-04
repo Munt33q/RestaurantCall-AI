@@ -1,0 +1,13 @@
+import crypto from 'node:crypto';import {initialState,type CartState,type MenuEntry} from '../voice-engine';import {normalizeLines} from '../order-contract';
+export const DRAFT_TTL_MS=24*60*60*1000;
+export function recoveryGate(d:{expiresAt:number;claimed:boolean;committed:boolean;callerHash:string;expectedHash:string;failures:number},now:number){return !Number.isFinite(d.expiresAt)||d.expiresAt<=now||d.claimed||d.committed||!d.callerHash||d.callerHash!==d.expectedHash||d.failures>=5?'Draft recovery unavailable':null;}
+export function freshRecoveryState(old:CartState,menu:MenuEntry[]){
+ const state:CartState={...initialState(),customerName:old.customerName,notes:old.notes?.slice(0,500),notesCollected:false,nameConfirmed:false};
+ const lines=normalizeLines(old.items);for(const line of lines){const item=menu.find(m=>m.id===line.menuItemId);if(!item?.isAvailable)continue;const quantity=Math.min(line.quantity,item.stockQty??line.quantity);if(quantity>0)state.items.push({...line,quantity});}
+ return {state,changed:JSON.stringify(lines)!==JSON.stringify(state.items)};
+}
+function secretKey(secret:string){if(secret.length<32)throw Error('Recovery secret must be at least 32 characters');return crypto.createHash('sha256').update(secret).digest();}
+export function credentialHash(value:string,secret:string,purpose:'token'|'code'|'phone'){return crypto.createHmac('sha256',secretKey(secret)).update(purpose+':'+value).digest('hex');}
+export function sealCredential(value:string,secret:string){const iv=crypto.randomBytes(12),c=crypto.createCipheriv('aes-256-gcm',secretKey(secret),iv);const encrypted=Buffer.concat([c.update(value,'utf8'),c.final()]);return [iv,c.getAuthTag(),encrypted].map(b=>b.toString('base64url')).join('.');}
+export function openCredential(value:string,secret:string){const parts=value.split('.');if(parts.length!==3||parts.some(p=>!/^[-_A-Za-z0-9]+$/.test(p)))throw Error('Invalid recovery credential');const [iv,tag,encrypted]=parts.map(p=>Buffer.from(p,'base64url'));const d=crypto.createDecipheriv('aes-256-gcm',secretKey(secret),iv);d.setAuthTag(tag);return Buffer.concat([d.update(encrypted),d.final()]).toString('utf8');}
+export function recoverySmsGate(i:{consent:boolean;smsEnabled:boolean;registered:boolean;recoveryEnabled:boolean;optedOut:boolean;phone:string;sentToday:number;expired:boolean;claimed:boolean;committed:boolean}){if(!i.consent||i.optedOut||i.expired||i.claimed||i.committed||!/^\+[1-9]\d{7,14}$/.test(i.phone))return 'Recovery suppressed';if(!i.smsEnabled||!i.registered||!i.recoveryEnabled)return 'Recovery delivery disabled';return i.sentToday>=1?'Daily recovery limit reached':null;}

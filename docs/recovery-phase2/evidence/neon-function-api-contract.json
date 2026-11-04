@@ -1,0 +1,254 @@
+{
+  "source": "https://neon.com/api_spec/release/v2.json",
+  "paths": {
+    "/projects/{project_id}/branches/{branch_id}/functions": {
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "description": "The Neon project ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        },
+        {
+          "name": "branch_id",
+          "in": "path",
+          "description": "The Neon branch ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        }
+      ],
+      "get": {
+        "summary": "List functions on the branch",
+        "description": "Lists functions on the specified branch.\n\n**Note**: This endpoint is currently in Beta.\n",
+        "tags": [
+          "Functions"
+        ],
+        "x-stability-level": "beta",
+        "operationId": "listProjectBranchFunctions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CursorParam"
+          },
+          {
+            "name": "limit",
+            "description": "Specify a value from 1 to 1000 to limit number of functions in the response",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of functions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/NeonFunctionsListResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CursorPaginationResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/projects/{project_id}/branches/{branch_id}/functions/{slug}": {
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "description": "The Neon project ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        },
+        {
+          "name": "branch_id",
+          "in": "path",
+          "description": "The Neon branch ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        },
+        {
+          "name": "slug",
+          "in": "path",
+          "description": "The function slug",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9]{1,20}$"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get function details",
+        "description": "Returns the function identified by its slug.\n\n**Note**: This endpoint is currently in Beta.\n",
+        "tags": [
+          "Functions"
+        ],
+        "x-stability-level": "beta",
+        "operationId": "getProjectBranchFunction",
+        "responses": {
+          "200": {
+            "description": "The function details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NeonFunctionResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/GeneralError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a function",
+        "description": "Updates the function's mutable metadata \u2014 currently only the display\n`name`. A string sets the display name; `null` clears it, after which\nthe function's `name` falls back to its slug. Leading and trailing\nwhitespace is trimmed; a whitespace-only name is rejected. Acts only\non a function owned by the branch: a slug that is only inherited from\nan ancestor branch returns 404 \u2014 rename it on the branch that owns\nit. Like every other change on a branch, a rename is isolated per\nbranch: a branch forked before the rename keeps the name it had at\nfork time.\n\n**Note**: This endpoint is currently in Beta.\n",
+        "tags": [
+          "Functions"
+        ],
+        "x-stability-level": "beta",
+        "operationId": "updateProjectBranchFunction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NeonFunctionUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated function",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NeonFunctionResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/GeneralError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a function on the branch",
+        "description": "Deletes the function identified by its slug.\n\n**Note**: This endpoint is currently in Beta.\n",
+        "tags": [
+          "Functions"
+        ],
+        "x-stability-level": "beta",
+        "operationId": "deleteProjectBranchFunction",
+        "responses": {
+          "204": {
+            "description": "Function deleted"
+          },
+          "default": {
+            "$ref": "#/components/responses/GeneralError"
+          }
+        }
+      }
+    },
+    "/projects/{project_id}/branches/{branch_id}/functions/{slug}/deployments": {
+      "parameters": [
+        {
+          "name": "project_id",
+          "in": "path",
+          "description": "The Neon project ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        },
+        {
+          "name": "branch_id",
+          "in": "path",
+          "description": "The Neon branch ID",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,60}$"
+          }
+        },
+        {
+          "name": "slug",
+          "in": "path",
+          "description": "The function slug",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9]{1,20}$"
+          }
+        }
+      ],
+      "post": {
+        "summary": "Deploy code to a function",
+        "description": "Creates a deployment for the function. Supply any subset of zip,\nenvironment, and runtime; omitted fields inherit the\nfunction's latest version. At least one field must be supplied. The\nfirst deployment of a function must include zip. The newest deployment\nbecomes active.\n\n**Note**: This endpoint is currently in Beta.\n",
+        "tags": [
+          "Functions"
+        ],
+        "x-stability-level": "beta",
+        "operationId": "createProjectBranchFunctionDeployment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/FunctionDeployRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created deployment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NeonFunctionDeploymentResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/GeneralError"
+          }
+        }
+      }
+    }
+  },
+  "documented_source_download": false,
+  "documented_prior_deployment_listing": false
+}

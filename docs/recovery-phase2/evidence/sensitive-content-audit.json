@@ -1,0 +1,6 @@
+{
+  "files_checked": 383,
+  "known_provider_credential_matches": [],
+  "production_customer_rows_retrieved": 0,
+  "scope": "All recovery documentation, source, preserved originals and tooling; excludes dependencies/build outputs. Exact in-memory credential checks; production SQL limited to schema/migration metadata."
+}

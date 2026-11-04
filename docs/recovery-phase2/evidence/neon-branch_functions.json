@@ -1,0 +1,6 @@
+{
+  "status": 404,
+  "data": {
+    "message": "this route does not exist"
+  }
+}

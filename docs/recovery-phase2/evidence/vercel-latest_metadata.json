@@ -1,0 +1,250 @@
+{
+  "status": 200,
+  "data": {
+    "alias": [
+      "restaurant-call-ai.vercel.app",
+      "restaurant-call-ai-vercel-1a62.vercel.app"
+    ],
+    "aliasAssigned": true,
+    "aliasError": null,
+    "automaticAliases": [
+      "restaurant-call-ai-vercel-1a62.vercel.app"
+    ],
+    "bootedAt": 1793726842465,
+    "buildingAt": 1793726844023,
+    "buildSkipped": false,
+    "buildContainerFinishedAt": 1793726904485,
+    "createdAt": 1793726842465,
+    "creator": {
+      "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+      "username": "munteeqahmadmanzoor-3088"
+    },
+    "deletedAt": null,
+    "duration": {
+      "startTime": 1793726844023,
+      "endTime": 1793726904485,
+      "endTimeCapped": 1793726904485,
+      "timeToReady": 43903,
+      "timeToContainerExit": 60462,
+      "timeToContainerExitCapped": 60462,
+      "timeForBilling": 120000,
+      "cpuTimeForBilling": 240000
+    },
+    "id": "dpl_4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+    "initReadyAt": 1793726887926,
+    "name": "restaurant-call-ai",
+    "meta": {
+      "githubCommitAuthorName": "Unknown",
+      "githubCommitAuthorEmail": "Unknown",
+      "githubCommitMessage": "Remove invalid events field blocking Call Control relay start",
+      "githubCommitOrg": "Munt33q",
+      "githubCommitRef": "feat/restaurant-sales-operations",
+      "githubCommitRepo": "RestaurantCall-AI",
+      "githubCommitSha": "8d8781dd0ff9ff9165e7729626358d1017c2d5bb",
+      "githubDeployment": "1",
+      "githubOrg": "Munt33q",
+      "githubRepo": "RestaurantCall-AI",
+      "lambdaRuntimeStats": "{\"nodejs\":5}"
+    },
+    "originCacheRegion": "iad1",
+    "project": {
+      "id": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "name": "restaurant-call-ai",
+      "framework": "nextjs"
+    },
+    "public": false,
+    "ready": 1793726887926,
+    "readyState": "READY",
+    "readySubstate": "PROMOTED",
+    "regions": [
+      "iad1"
+    ],
+    "status": "READY",
+    "target": "production",
+    "team": {
+      "id": "team_jApqiQb5LcH7ezTGwK1D9IMg",
+      "name": "VERCEL",
+      "slug": "vercel-1a62"
+    },
+    "type": "LAMBDAS",
+    "url": "restaurant-call-pfp6l2snf-vercel-1a62.vercel.app",
+    "version": 2,
+    "previewCommentsEnabled": true,
+    "oidcTokenClaims": {
+      "sub": "owner:vercel-1a62:project:restaurant-call-ai:environment:production",
+      "iss": "https://oidc.vercel.com/vercel-1a62",
+      "scope": "owner:vercel-1a62:project:restaurant-call-ai:environment:production",
+      "aud": "https://vercel.com/vercel-1a62",
+      "owner": "vercel-1a62",
+      "owner_id": "team_jApqiQb5LcH7ezTGwK1D9IMg",
+      "project": "restaurant-call-ai",
+      "project_id": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "deployment_id": "dpl_4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+      "environment": "production",
+      "plan": "hobby"
+    },
+    "lambdas": [
+      {
+        "id": "bld_7kmpr1r09",
+        "createdAt": 1793726842302,
+        "entrypoint": ".",
+        "readyState": "READY",
+        "readyStateAt": 1793726842302,
+        "output": [
+          {
+            "path": "__fn_team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8__",
+            "functionName": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+          },
+          {
+            "path": "__fn_team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9__",
+            "functionName": "team_jApqiQb5LcH7ezTGwK1D9IMg-bd1e14c24253be2d6c19b9e318afe603d9"
+          },
+          {
+            "path": "__fn_team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142__",
+            "functionName": "team_jApqiQb5LcH7ezTGwK1D9IMg-a9c1e8af46fd7efcd3db20812833526142"
+          },
+          {
+            "path": "__fn_team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404__",
+            "functionName": "team_jApqiQb5LcH7ezTGwK1D9IMg-3fa1e3fd544057f46ca03e2d8c869ae404"
+          },
+          {
+            "path": "__fn_team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487__",
+            "functionName": "team_jApqiQb5LcH7ezTGwK1D9IMg-6ba170ade7a24f31d8a2401bb793c55487"
+          }
+        ]
+      }
+    ],
+    "aliasAssignedAt": 1793726888164,
+    "build": {
+      "env": "[REDACTED]"
+    },
+    "builds": [],
+    "createdIn": "sfo1",
+    "crons": [
+      {
+        "path": "/api/cron/operations",
+        "schedule": "0 6 * * *"
+      },
+      {
+        "path": "/api/health/model",
+        "schedule": "5 6 * * *"
+      }
+    ],
+    "env": "[REDACTED]",
+    "functions": null,
+    "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+    "isInConcurrentBuildsQueue": false,
+    "isInSystemBuildsQueue": false,
+    "ownerId": "team_jApqiQb5LcH7ezTGwK1D9IMg",
+    "plan": "hobby",
+    "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+    "resourceConfig": {
+      "buildMachine": {
+        "defaultPurchaseType": "basic",
+        "machineSelectionType": "fixed",
+        "purchaseType": "basic",
+        "selectionSource": "plan-default",
+        "cores": 2,
+        "memory": 8192
+      }
+    },
+    "projectSettings": {
+      "buildCommand": "npm run build",
+      "devCommand": null,
+      "framework": "nextjs",
+      "commandForIgnoringBuildStep": null,
+      "installCommand": "npm ci",
+      "outputDirectory": null,
+      "speedInsights": {
+        "id": "NOpdW2AdknEXSwul3w7YE3ymx6U",
+        "hasData": false
+      },
+      "webAnalytics": {
+        "id": "FT93eOjTba8Oi845kK4cccccB"
+      },
+      "nodeVersion": "26.x"
+    },
+    "routes": null,
+    "gitRepo": {
+      "path": "Munt33q/RestaurantCall-AI",
+      "defaultBranch": "master",
+      "name": "RestaurantCall-AI",
+      "org": "Munt33q",
+      "private": false,
+      "repo": "RestaurantCall-AI",
+      "repoOwnerId": 190789723,
+      "repoId": 1441765038,
+      "type": "github",
+      "ownerType": "user"
+    },
+    "images": {
+      "domains": [],
+      "sizes": [
+        640,
+        750,
+        828,
+        1080,
+        1200,
+        1920,
+        2048,
+        3840,
+        16,
+        32,
+        48,
+        64,
+        96,
+        128,
+        256,
+        384
+      ],
+      "remotePatterns": [],
+      "minimumCacheTTL": 60,
+      "formats": [
+        "image/webp"
+      ],
+      "dangerouslyAllowSVG": false,
+      "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+      "contentDispositionType": "inline"
+    },
+    "config": {
+      "version": 1,
+      "secureComputePrimaryRegion": null,
+      "secureComputeFallbackRegion": null,
+      "functionTimeout": 300,
+      "functionType": "fluid",
+      "functionMemoryType": "standard",
+      "isUsingActiveCPU": true,
+      "resourceConfig": {
+        "buildMachine": {
+          "defaultPurchaseType": "basic",
+          "machineSelectionType": "fixed",
+          "purchaseType": "basic",
+          "selectionSource": "plan-default",
+          "cores": 2,
+          "memory": 8192
+        },
+        "buildQueue": {
+          "configuration": "SKIP_NAMESPACE_QUEUE"
+        }
+      }
+    },
+    "attribution": {
+      "commitMeta": {
+        "isVerified": false
+      }
+    },
+    "buildCacheSummary": {
+      "version": 1,
+      "restore": {
+        "status": "hit",
+        "source": "branch"
+      },
+      "save": {
+        "saved": true,
+        "compressedSizeBytes": 142761984,
+        "cacheLimitBytes": 1610612736,
+        "fileCount": 14188
+      }
+    }
+  }
+}

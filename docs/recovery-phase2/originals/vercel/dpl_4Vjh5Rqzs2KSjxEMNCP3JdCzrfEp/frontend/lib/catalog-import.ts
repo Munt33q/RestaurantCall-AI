@@ -1,0 +1,14 @@
+import {client} from './db/client';import {validateCatalogItem,uuid} from './catalog-policy';import {catalogAudit} from './catalog-store';import petra from '../data/petra-hattiesburg-photos.json';
+const rid=()=>{const id=process.env.RESTAURANT_ID;if(!uuid(id))throw Error('Restaurant not configured');return id;};
+export async function stagePetra(sql:any=client()){const [row]=await sql`INSERT INTO catalog_imports(restaurant_id,source,items_json) VALUES(${rid()},${JSON.stringify({sources:[petra.yelpUrl],warning:petra.notice,source:petra.source,sourceImages:petra.sourceImages})},${sql.json(petra.items.map(i=>({...i,isAvailable:false})))}) RETURNING *`;return row;}
+export async function catalogImports(sql:any=client()){return sql`SELECT * FROM catalog_imports WHERE restaurant_id=${rid()} ORDER BY created_at DESC LIMIT 10`;}
+export async function publishCatalog(id:string,version:number,items:any[],reviewed:boolean,replace:boolean,sql:any=client()){
+ if(!uuid(id)||!Number.isInteger(version)||!reviewed||!Array.isArray(items)||!items.length||items.length>500)throw Error('Review all prices, item numbers and availability before publishing');
+ const valid=items.map(validateCatalogItem),numbers=valid.map(i=>i.itemNumber).filter(n=>n!==null);if(new Set(numbers).size!==numbers.length)throw Error('Duplicate item numbers');
+ return sql.begin(async(tx:any)=>{await tx`SELECT id FROM restaurants WHERE id=${rid()} FOR UPDATE`;const [draft]=await tx`SELECT * FROM catalog_imports WHERE id=${id} AND restaurant_id=${rid()} FOR UPDATE`;if(!draft)throw Error('Not found');if(draft.version!==version||draft.status!=='draft')throw Error('STALE');
+ // Replace means archive current items. Their IDs and order snapshots survive; their numbers stay reserved.
+ const [largest]=await tx`SELECT COALESCE(max(item_number),0)::int AS n FROM menu_items WHERE restaurant_id=${rid()}`;
+ if(replace)await tx`UPDATE menu_items SET archived=true,version=version+1 WHERE restaurant_id=${rid()} AND archived=false`;
+ for(let i=0;i<valid.length;i++){const v=valid[i];const number=largest.n+i+1;await tx`INSERT INTO menu_items(restaurant_id,name,category,description,price_cents,stock_qty,item_number,is_available,archived,special,special_starts_at,special_ends_at,aliases,tags) VALUES(${rid()},${v.name},${v.category},${v.description},${v.priceCents},${v.stockQty},${number},${v.isAvailable},${v.archived},${v.special},${v.specialStartsAt},${v.specialEndsAt},${tx.json(v.aliases)},${tx.json(v.tags)})`;}
+ await tx`UPDATE catalog_imports SET items_json=${tx.json(valid)},status='published',version=version+1,published_at=now() WHERE id=${id}`;await catalogAudit(tx,'catalog_published',id,{items:valid.length,replace,source:draft.source,pricesReviewed:true,numbersAssignedFrom:largest.n+1});return {published:true,count:valid.length,numbersAssignedFrom:largest.n+1};});
+}

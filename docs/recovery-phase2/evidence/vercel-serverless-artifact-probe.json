@@ -1,0 +1,15 @@
+{
+  "file": {
+    "path": "out/index",
+    "uid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8",
+    "type": "lambda"
+  },
+  "status": 404,
+  "data": {
+    "error": {
+      "code": "not_found",
+      "message": "File not found: team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8",
+      "fid": "team_jApqiQb5LcH7ezTGwK1D9IMg-96eb8f49837a5fba13174324ba0ac7f8c8"
+    }
+  }
+}

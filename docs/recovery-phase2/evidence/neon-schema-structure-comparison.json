@@ -1,0 +1,6 @@
+{
+  "tables": true,
+  "columns": true,
+  "constraints": true,
+  "indexes": true
+}

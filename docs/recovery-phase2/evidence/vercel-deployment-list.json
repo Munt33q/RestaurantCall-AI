@@ -1,0 +1,1776 @@
+{
+  "status": 200,
+  "deployments": [
+    {
+      "uid": "dpl_4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-pfp6l2snf-vercel-1a62.vercel.app",
+      "created": 1793726842465,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/4Vjh5Rqzs2KSjxEMNCP3JdCzrfEp",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Remove invalid events field blocking Call Control relay start",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "8d8781dd0ff9ff9165e7729626358d1017c2d5bb",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793726888164,
+      "isRollbackCandidate": true,
+      "createdAt": 1793726842465,
+      "buildingAt": 1793726844023,
+      "ready": 1793726887926,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_CsvgEiBkGFSKRMEWaHnsqmkqPe6S",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-bvzqe8cw2-vercel-1a62.vercel.app",
+      "created": 1793726705221,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/CsvgEiBkGFSKRMEWaHnsqmkqPe6S",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Add bounded owned-line relay diagnostic with preview authority",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "1ec3721fbed86be2184b565a9f90522d440cb6aa",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793726748092,
+      "isRollbackCandidate": true,
+      "createdAt": 1793726705221,
+      "buildingAt": 1793726706688,
+      "ready": 1793726747904,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2g6Hstesm8j2ZnBALXSp6NQCCBhF",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-inq2q9dxm-vercel-1a62.vercel.app",
+      "created": 1793725780276,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2g6Hstesm8j2ZnBALXSp6NQCCBhF",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Match original relay URL and greeting in safe request probe",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "828458d",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793725848361,
+      "isRollbackCandidate": false,
+      "createdAt": 1793725780276,
+      "buildingAt": 1793725781729,
+      "ready": 1793725848135,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_3teNmshBqr2chrhMY2FXtbqrSVGG",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-dzds353yz-vercel-1a62.vercel.app",
+      "created": 1793725252084,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/3teNmshBqr2chrhMY2FXtbqrSVGG",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Preserve safe Telnyx rejection diagnostics for ended-call probe",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "d97ac1b",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793725327422,
+      "isRollbackCandidate": false,
+      "createdAt": 1793725252084,
+      "buildingAt": 1793725282622,
+      "ready": 1793725327143,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_FfjFYW6dsUDWd76DH3HDySyjnY1D",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-fk41iw9m7-vercel-1a62.vercel.app",
+      "created": 1793717198009,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/FfjFYW6dsUDWd76DH3HDySyjnY1D",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Verify admitted inbound session for Telnyx answered events",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "7533659",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793717244953,
+      "isRollbackCandidate": false,
+      "createdAt": 1793717198009,
+      "buildingAt": 1793717200006,
+      "ready": 1793717244714,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_6GQQv4imo5v6LazoinbBWcURgHKw",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-n62s8aosa-vercel-1a62.vercel.app",
+      "created": 1793716816276,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/6GQQv4imo5v6LazoinbBWcURgHKw",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Stage Bella voice with durable call events and receipt safeguards",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "751d1f4",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793716863131,
+      "isRollbackCandidate": false,
+      "createdAt": 1793716816276,
+      "buildingAt": 1793716817713,
+      "ready": 1793716862903,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_EU9WHik57snmLWoHZi8QKbHa6Pxu",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-mn0bse87v-vercel-1a62.vercel.app",
+      "created": 1793715355328,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/EU9WHik57snmLWoHZi8QKbHa6Pxu",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Prepare Sarah provider bridge with retry-safe provisioning and outage handling; default off",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "db987ae",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793715411157,
+      "isRollbackCandidate": false,
+      "createdAt": 1793715355328,
+      "buildingAt": 1793715357065,
+      "ready": 1793715410937,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2rxz6tuo17dnRs6hBB7C1MARNMLw",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-fxvxozb7u-vercel-1a62.vercel.app",
+      "created": 1793714730192,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2rxz6tuo17dnRs6hBB7C1MARNMLw",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Prepare default-off Sarah live voice transport and provider readiness",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "db987ae",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793714779206,
+      "isRollbackCandidate": false,
+      "createdAt": 1793714730192,
+      "buildingAt": 1793714731486,
+      "ready": 1793714779005,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_DmRtgtDLkU85pXoztz2tv5p3Y9Xq",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-9wco7n0hr-vercel-1a62.vercel.app",
+      "created": 1793703701465,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/DmRtgtDLkU85pXoztz2tv5p3Y9Xq",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Deploy Petra photo menu and menu-independent health probe",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "9601e4c",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793703747473,
+      "isRollbackCandidate": false,
+      "createdAt": 1793703701465,
+      "buildingAt": 1793703703348,
+      "ready": 1793703747272,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_Njc23b1jFMSaVkctd2ZCrNtL3KCR",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-r5oy9pb7g-vercel-1a62.vercel.app",
+      "created": 1793703389967,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/Njc23b1jFMSaVkctd2ZCrNtL3KCR",
+      "attribution": {
+        "commitMeta": {
+          "isVerified": false
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Unknown",
+        "githubCommitAuthorEmail": "Unknown",
+        "githubCommitMessage": "Use supplied Petra menu photos for website catalog",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "feat/restaurant-sales-operations",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "c518c41",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "sourceCommit": "c518c41",
+        "release": "Petra supplied photo menu and staff portal",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793703440838,
+      "isRollbackCandidate": false,
+      "createdAt": 1793703389967,
+      "buildingAt": 1793703391302,
+      "ready": 1793703440602,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_F39g5YUs7fv3GexGLbmGozyuGhLN",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-lx32ghjjo-vercel-1a62.vercel.app",
+      "created": 1793631243407,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/F39g5YUs7fv3GexGLbmGozyuGhLN",
+      "meta": {
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793631278223,
+      "isRollbackCandidate": false,
+      "createdAt": 1793631243407,
+      "buildingAt": 1793631244170,
+      "ready": 1793631277973,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_4369n6FzdJaBPLX5eBfLUdVZSC6L",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-k9t7g2fcc-vercel-1a62.vercel.app",
+      "created": 1793631055323,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/4369n6FzdJaBPLX5eBfLUdVZSC6L",
+      "meta": {
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793631087587,
+      "isRollbackCandidate": false,
+      "createdAt": 1793631055323,
+      "buildingAt": 1793631056295,
+      "ready": 1793631087370,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_GwimKhmmDkMtjkueaGLT1JVf1xUw",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-nln16ybyt-vercel-1a62.vercel.app",
+      "created": 1793622836606,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/GwimKhmmDkMtjkueaGLT1JVf1xUw",
+      "meta": {
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793622876689,
+      "isRollbackCandidate": false,
+      "createdAt": 1793622836606,
+      "buildingAt": 1793622837957,
+      "ready": 1793622876470,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_EGpGeXFCD1jMtQxpfrV7QjaBuaoz",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-hhvoe27ix-vercel-1a62.vercel.app",
+      "created": 1793602661027,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/EGpGeXFCD1jMtQxpfrV7QjaBuaoz",
+      "meta": {
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793602691435,
+      "isRollbackCandidate": false,
+      "createdAt": 1793602661027,
+      "buildingAt": 1793602662012,
+      "ready": 1793602691197,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_Gthq7tSGpT4yNn4rV5RprA6CZrw9",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-plzc6k9um-vercel-1a62.vercel.app",
+      "created": 1793578651938,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/Gthq7tSGpT4yNn4rV5RprA6CZrw9",
+      "meta": {
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793578684055,
+      "isRollbackCandidate": false,
+      "createdAt": 1793578651938,
+      "buildingAt": 1793578653450,
+      "ready": 1793578683783,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2UrSfuvyW1i5m5D9gassherxPap2",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-ey80we8hn-vercel-1a62.vercel.app",
+      "created": 1793577925118,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2UrSfuvyW1i5m5D9gassherxPap2",
+      "meta": {
+        "purpose": "Enable consented ready calls after callback verification and finish operations portal",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793577971723,
+      "isRollbackCandidate": false,
+      "createdAt": 1793577925118,
+      "buildingAt": 1793577926143,
+      "ready": 1793577971478,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_AjBfZK798c1qFLfVzfM6eavGbvaZ",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-nyruflsx3-vercel-1a62.vercel.app",
+      "created": 1793577541062,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/AjBfZK798c1qFLfVzfM6eavGbvaZ",
+      "meta": {
+        "sourceCommit": "8be400e",
+        "purpose": "Restaurant operations on existing Hobby plan",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793577577986,
+      "isRollbackCandidate": false,
+      "createdAt": 1793577541062,
+      "buildingAt": 1793577542018,
+      "ready": 1793577577805,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_53HWF4ey7bT6tN7e2KWcZiGLcmVg",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-ea0g9oo8w-vercel-1a62.vercel.app",
+      "created": 1793577450454,
+      "state": "ERROR",
+      "readyState": "ERROR",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/53HWF4ey7bT6tN7e2KWcZiGLcmVg",
+      "meta": {
+        "sourceCommit": "aad5814",
+        "purpose": "Deploy consented operations with delivery disabled during verification",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasAssigned": null,
+      "isRollbackCandidate": false,
+      "createdAt": 1793577450454,
+      "buildingAt": 1793577451584,
+      "ready": 1793577484173,
+      "errorCode": "cron_jobs_limits_reached",
+      "errorMessage": "Hobby accounts are limited to daily cron jobs. This cron expression (* * * * *) would run more than once per day. Upgrade to the Pro plan to unlock all Cron Jobs features on Vercel.",
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_AuGcGZ4WNmtFbfgPqdY65F9KbW3A",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-1a0fpl28j-vercel-1a62.vercel.app",
+      "created": 1793574898507,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/AuGcGZ4WNmtFbfgPqdY65F9KbW3A",
+      "meta": {
+        "sourceCommit": "2c80693",
+        "purpose": "Finalize caller regression fixes with presence and quantity safeguards",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793574936580,
+      "isRollbackCandidate": false,
+      "createdAt": 1793574898507,
+      "buildingAt": 1793574900002,
+      "ready": 1793574936374,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_G8t6H7rELzpjDdoSv2bpXq8WUbd4",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-nz9n7k66f-vercel-1a62.vercel.app",
+      "created": 1793574769234,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/G8t6H7rELzpjDdoSv2bpXq8WUbd4",
+      "meta": {
+        "sourceCommit": "1b48bed",
+        "purpose": "Fix real caller totals tax compound orders and checkout stalls",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793574807481,
+      "isRollbackCandidate": false,
+      "createdAt": 1793574769234,
+      "buildingAt": 1793574770461,
+      "ready": 1793574807214,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_8JFWiEojf8uHsnknGJtrreVWaC74",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-hjuzox7rj-vercel-1a62.vercel.app",
+      "created": 1793561384589,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/8JFWiEojf8uHsnknGJtrreVWaC74",
+      "meta": {
+        "purpose": "Enable full-duplex incoming calling after deployed WebSocket checks",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793561421000,
+      "isRollbackCandidate": false,
+      "createdAt": 1793561384589,
+      "buildingAt": 1793561385469,
+      "ready": 1793561420776,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_7hafr5vVpooGQdBfJMZ97hkDmsy7",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-3fi1irtbs-vercel-1a62.vercel.app",
+      "created": 1793561257656,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/7hafr5vVpooGQdBfJMZ97hkDmsy7",
+      "meta": {
+        "sourceCommit": "a5e07a7",
+        "purpose": "Duplex endpoints staged with incoming relay disabled",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793561292058,
+      "isRollbackCandidate": false,
+      "createdAt": 1793561257656,
+      "buildingAt": 1793561258633,
+      "ready": 1793561291843,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_E8XgBpB39pUUUDthHTFCTmhWBh8Q",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-l0zemcoov-vercel-1a62.vercel.app",
+      "created": 1793559140136,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/E8XgBpB39pUUUDthHTFCTmhWBh8Q",
+      "meta": {
+        "sourceCommit": "4aceff7",
+        "purpose": "Faster OpenAI GPT-6 Luna via FlatRouter as requested",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793559171595,
+      "isRollbackCandidate": false,
+      "createdAt": 1793559140136,
+      "buildingAt": 1793559141074,
+      "ready": 1793559171398,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2osQTeP2optdTazkK87jm94SQxpV",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-399tr5br6-vercel-1a62.vercel.app",
+      "created": 1793558800253,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2osQTeP2optdTazkK87jm94SQxpV",
+      "meta": {
+        "sourceCommit": "4aceff7",
+        "purpose": "Explicit Sol low reasoning with reduced voice latency",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793558831966,
+      "isRollbackCandidate": false,
+      "createdAt": 1793558800253,
+      "buildingAt": 1793558801123,
+      "ready": 1793558831683,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_DspFMjCBQapLwMQTDCExpVJm1aM3",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-n901qblq7-vercel-1a62.vercel.app",
+      "created": 1793558576082,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/DspFMjCBQapLwMQTDCExpVJm1aM3",
+      "meta": {
+        "sourceCommit": "d22c7dd",
+        "purpose": "Reasoning diagnostics and latency benchmarking",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793558609419,
+      "isRollbackCandidate": false,
+      "createdAt": 1793558576082,
+      "buildingAt": 1793558576963,
+      "ready": 1793558609202,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_BN4yA9hobLac2Wrkx86pgSauVewX",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-qhqktshjt-vercel-1a62.vercel.app",
+      "created": 1793556685223,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/BN4yA9hobLac2Wrkx86pgSauVewX",
+      "meta": {
+        "sourceCommit": "0521bd1",
+        "purpose": "Model-first dialogue with real-provider preview checks",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793556718862,
+      "isRollbackCandidate": false,
+      "createdAt": 1793556685223,
+      "buildingAt": 1793556686130,
+      "ready": 1793556718642,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_42iRVNYEqbBCLCa4z4FpxgmTwsyY",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-4idbq8sta-vercel-1a62.vercel.app",
+      "created": 1793556007307,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/42iRVNYEqbBCLCa4z4FpxgmTwsyY",
+      "meta": {
+        "sourceCommit": "369b4b4",
+        "purpose": "Same-kind alternatives and menu questions",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793556041815,
+      "isRollbackCandidate": false,
+      "createdAt": 1793556007307,
+      "buildingAt": 1793556008635,
+      "ready": 1793556041610,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_8UtDRmsZZTUmkqADNNQSciEW9Jxb",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-jh2v4sjxm-vercel-1a62.vercel.app",
+      "created": 1793555919887,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/8UtDRmsZZTUmkqADNNQSciEW9Jxb",
+      "meta": {
+        "sourceCommit": "9d56156",
+        "purpose": "Grounded menu availability and similar-item suggestions",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793555953571,
+      "isRollbackCandidate": false,
+      "createdAt": 1793555919887,
+      "buildingAt": 1793555920912,
+      "ready": 1793555953365,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_GMofXPEN6jpJ9t74m5gGh1FPRCoJ",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-7gtbz86e8-vercel-1a62.vercel.app",
+      "created": 1793555273221,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/GMofXPEN6jpJ9t74m5gGh1FPRCoJ",
+      "meta": {
+        "sourceCommit": "3235cbf",
+        "purpose": "Contextual AI interpretation and natural neural speech",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793555315968,
+      "isRollbackCandidate": false,
+      "createdAt": 1793555273221,
+      "buildingAt": 1793555274262,
+      "ready": 1793555315741,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_9TmWPeSAoPFqCzucsBtawcUAHL8T",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-8lo7ou0rd-vercel-1a62.vercel.app",
+      "created": 1793554701946,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/9TmWPeSAoPFqCzucsBtawcUAHL8T",
+      "meta": {
+        "sourceCommit": "40de68c",
+        "purpose": "Live uncached menu availability",
+        "lambdaRuntimeStats": "{\"nodejs\":5}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793554734675,
+      "isRollbackCandidate": false,
+      "createdAt": 1793554701946,
+      "buildingAt": 1793554702887,
+      "ready": 1793554734458,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_B32gssVpiJpBq1RS9cQCYX1fzjqu",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-b1l97cu94-vercel-1a62.vercel.app",
+      "created": 1793554610876,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/B32gssVpiJpBq1RS9cQCYX1fzjqu",
+      "meta": {
+        "sourceCommit": "e3103e8",
+        "purpose": "Incoming order flow and categorized demo menu",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793554643935,
+      "isRollbackCandidate": false,
+      "createdAt": 1793554610876,
+      "buildingAt": 1793554611788,
+      "ready": 1793554643730,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2xFg9eSu9v62To5cFgvYm3nPzQTf",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-fpsuf46l1-vercel-1a62.vercel.app",
+      "created": 1793553645839,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2xFg9eSu9v62To5cFgvYm3nPzQTf",
+      "meta": {
+        "sourceCommit": "6959d8b",
+        "purpose": "Staff order-ready phone notification",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793553681494,
+      "isRollbackCandidate": false,
+      "createdAt": 1793553645839,
+      "buildingAt": 1793553646863,
+      "ready": 1793553681235,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_2WD35GwZT4N1vNSqCKiHGxVvkNMP",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-ngkhqu0uj-vercel-1a62.vercel.app",
+      "created": 1793552263756,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/2WD35GwZT4N1vNSqCKiHGxVvkNMP",
+      "meta": {
+        "sourceCommit": "AI-timeout-fix",
+        "purpose": "Complete approved AI and SMS setup",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793552299876,
+      "isRollbackCandidate": false,
+      "createdAt": 1793552263756,
+      "buildingAt": 1793552265091,
+      "ready": 1793552299533,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_GrEeSscqZdbzUBW8YguHokCgJEyR",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-909hupwti-vercel-1a62.vercel.app",
+      "created": 1793552013535,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/GrEeSscqZdbzUBW8YguHokCgJEyR",
+      "meta": {
+        "sourceCommit": "42aa306",
+        "purpose": "Activate corrected AI credential",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793552049391,
+      "isRollbackCandidate": false,
+      "createdAt": 1793552013535,
+      "buildingAt": 1793552014465,
+      "ready": 1793552049178,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_5HDMvQHqxfn3zZrmNJ4cv7NovjKM",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-e1hb215cs-vercel-1a62.vercel.app",
+      "created": 1793550309325,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/5HDMvQHqxfn3zZrmNJ4cv7NovjKM",
+      "meta": {
+        "sourceCommit": "42aa306",
+        "purpose": "Verified ordering and payment recovery diagnostics",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793550340757,
+      "isRollbackCandidate": false,
+      "createdAt": 1793550309325,
+      "buildingAt": 1793550310276,
+      "ready": 1793550340498,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_9Zm2yT5Ks5B1RyJurdwtcg5cvFoP",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-htgg228og-vercel-1a62.vercel.app",
+      "created": 1793549804134,
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/9Zm2yT5Ks5B1RyJurdwtcg5cvFoP",
+      "meta": {
+        "sourceCommit": "3cb86b3",
+        "purpose": "Complete persistent ordering flow",
+        "lambdaRuntimeStats": "{\"nodejs\":6}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793549842625,
+      "isRollbackCandidate": false,
+      "createdAt": 1793549804134,
+      "buildingAt": 1793549805109,
+      "ready": 1793549842431,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_8eajAVhkvvTL9YFxSVDTs7jk9Rv9",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-kg02d4oih-vercel-1a62.vercel.app",
+      "created": 1793544214288,
+      "source": "cli",
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/8eajAVhkvvTL9YFxSVDTs7jk9Rv9",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Update Telnyx webhook verification and call persistence",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "0cdb16ac4a748e9b94bda6a6621c084b2902fbe3",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "gitRootDirectory": "",
+        "lambdaRuntimeStats": "{\"nodejs\":3}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793544379742,
+      "isRollbackCandidate": false,
+      "createdAt": 1793544214288,
+      "buildingAt": 1793544316878,
+      "ready": 1793544379541,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_CE7kdYwMdgMx91uVZx41Jx5emhCq",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-4e8tuhkh8-vercel-1a62.vercel.app",
+      "created": 1793544203566,
+      "source": "git",
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088",
+        "githubLogin": "Munt33q"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/CE7kdYwMdgMx91uVZx41Jx5emhCq",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Update Telnyx webhook verification and call persistence",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "0cdb16ac4a748e9b94bda6a6621c084b2902fbe3",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "githubRepoOwnerType": "User",
+        "githubCommitRepoId": "1441765038",
+        "githubRepoId": "1441765038",
+        "githubRepoVisibility": "public",
+        "githubHost": "github.com",
+        "githubCommitAuthorLogin": "Munt33q",
+        "githubCommitVerification": "unverified",
+        "repoPushedAt": "1793544199000",
+        "branchAlias": "restaurant-call-ai-git-master-vercel-1a62.vercel.app",
+        "lambdaRuntimeStats": "{\"nodejs\":3}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793544254878,
+      "isRollbackCandidate": false,
+      "createdAt": 1793544203566,
+      "buildingAt": 1793544206073,
+      "ready": 1793544254669,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_ApPJtHnyvA1eem4fWWEJwxCGgsUX",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-c2mjml591-vercel-1a62.vercel.app",
+      "created": 1793541363790,
+      "source": "cli",
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/ApPJtHnyvA1eem4fWWEJwxCGgsUX",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Externalize server-only dependencies from Next webpack",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "c93c3d06feb3e66ee20b8309c6b78393e23c857c",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "gitRootDirectory": "",
+        "lambdaRuntimeStats": "{\"nodejs\":3}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793541388637,
+      "isRollbackCandidate": false,
+      "createdAt": 1793541363790,
+      "buildingAt": 1793541364926,
+      "ready": 1793541388434,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_D1HXimsG2FmZFqYg5cyeAGwyZ6ke",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-5wk2hxda3-vercel-1a62.vercel.app",
+      "created": 1793540564069,
+      "source": "cli",
+      "state": "READY",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/D1HXimsG2FmZFqYg5cyeAGwyZ6ke",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Externalize server-only dependencies from Next webpack",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "c93c3d06feb3e66ee20b8309c6b78393e23c857c",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "gitRootDirectory": "",
+        "lambdaRuntimeStats": "{\"nodejs\":3}"
+      },
+      "target": "production",
+      "aliasError": null,
+      "aliasAssigned": 1793540590610,
+      "isRollbackCandidate": false,
+      "createdAt": 1793540564069,
+      "buildingAt": 1793540565169,
+      "ready": 1793540590404,
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_H7rwv1LqJNFFEy2GEAXtzzrz88uX",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-13oqkbquc-vercel-1a62.vercel.app",
+      "created": 1793540195350,
+      "source": "redeploy",
+      "state": "ERROR",
+      "readyState": "ERROR",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088",
+        "githubLogin": "Munt33q"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/H7rwv1LqJNFFEy2GEAXtzzrz88uX",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Externalize server-only dependencies from Next webpack",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "c93c3d06feb3e66ee20b8309c6b78393e23c857c",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "githubRepoOwnerType": "User",
+        "githubCommitRepoId": "1441765038",
+        "githubRepoId": "1441765038",
+        "githubHost": "github.com",
+        "githubCommitAuthorLogin": "Munt33q",
+        "repoPushedAt": "1793540143000",
+        "branchAlias": "restaurant-call-ai-git-master-vercel-1a62.vercel.app",
+        "action": "redeploy",
+        "originalDeploymentId": "dpl_B38LQezw5D6bPhnUxSdSTYsubJm1",
+        "githubRepoVisibility": "public",
+        "githubCommitVerification": "unverified"
+      },
+      "target": "production",
+      "aliasAssigned": null,
+      "isRollbackCandidate": false,
+      "createdAt": 1793540195350,
+      "buildingAt": 1793540196225,
+      "ready": 1793540219497,
+      "errorCode": "NEXT_OUTPUT_DIR_MISSING",
+      "errorMessage": "The Next.js output directory \".next\" was not found at \"/vercel/path0/frontend/.next\". This is usually caused by one of the following:\n\n1. The \"Output Directory\" setting in your project is misconfigured. Check your project settings and ensure the output directory matches your Next.js configuration.\n\n2. If using Turborepo, ensure your task outputs include the Next.js build directory. Add \".next/**\" to the \"outputs\" array in your turbo.json for the build task.\n\n3. The build command did not complete successfully. Check the build logs above for errors.",
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_B38LQezw5D6bPhnUxSdSTYsubJm1",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-n3v243cc0-vercel-1a62.vercel.app",
+      "created": 1793540148653,
+      "source": "git",
+      "state": "ERROR",
+      "readyState": "ERROR",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088",
+        "githubLogin": "Munt33q"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/B38LQezw5D6bPhnUxSdSTYsubJm1",
+      "attribution": {
+        "commitMeta": {
+          "name": "Munt33q",
+          "email": "Munt33q@users.noreply.github.com",
+          "isVerified": false
+        },
+        "gitUser": {
+          "id": 190789723,
+          "login": "Munt33q",
+          "type": "user",
+          "provider": "github"
+        },
+        "vercelUser": {
+          "id": "sHn8oNagRIU1x8YaCvIUEUho",
+          "username": "munteeqahmadmanzoor-3088",
+          "teamRoles": [
+            "OWNER"
+          ]
+        }
+      },
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Externalize server-only dependencies from Next webpack",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "c93c3d06feb3e66ee20b8309c6b78393e23c857c",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "githubRepoOwnerType": "User",
+        "githubCommitRepoId": "1441765038",
+        "githubRepoId": "1441765038",
+        "githubRepoVisibility": "public",
+        "githubHost": "github.com",
+        "githubCommitAuthorLogin": "Munt33q",
+        "githubCommitVerification": "unverified",
+        "repoPushedAt": "1793540143000",
+        "branchAlias": "restaurant-call-ai-git-master-vercel-1a62.vercel.app"
+      },
+      "target": "production",
+      "aliasAssigned": null,
+      "isRollbackCandidate": false,
+      "createdAt": 1793540148653,
+      "buildingAt": 1793540150259,
+      "ready": 1793540172872,
+      "errorCode": "NEXT_OUTPUT_DIR_MISSING",
+      "errorMessage": "The Next.js output directory \".next\" was not found at \"/vercel/path0/frontend/.next\". This is usually caused by one of the following:\n\n1. The \"Output Directory\" setting in your project is misconfigured. Check your project settings and ensure the output directory matches your Next.js configuration.\n\n2. If using Turborepo, ensure your task outputs include the Next.js build directory. Add \".next/**\" to the \"outputs\" array in your turbo.json for the build task.\n\n3. The build command did not complete successfully. Check the build logs above for errors.",
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_GfSDvfMaz5cBC93XLACMnCrtmYHn",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-p3vkhnrbb-vercel-1a62.vercel.app",
+      "created": 1793539874095,
+      "state": "ERROR",
+      "readyState": "ERROR",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088",
+        "githubLogin": "Munt33q"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/GfSDvfMaz5cBC93XLACMnCrtmYHn",
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Initial RestaurantCall AI application",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "e85c1c6bb61678aea0288a309120b3ec8f2bf87a",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "githubRepoOwnerType": "User",
+        "githubCommitRepoId": "1441765038",
+        "githubRepoId": "1441765038",
+        "githubRepoVisibility": "public",
+        "githubHost": "github.com",
+        "githubCommitAuthorLogin": "Munt33q",
+        "githubCommitVerification": "unverified",
+        "branchAlias": "restaurant-call-ai-git-master-vercel-1a62.vercel.app"
+      },
+      "target": "production",
+      "aliasAssigned": null,
+      "isRollbackCandidate": false,
+      "createdAt": 1793539874095,
+      "buildingAt": 1793539875089,
+      "ready": 1793539887062,
+      "errorCode": "lint_or_type_error",
+      "errorMessage": "Command \"npm run build\" exited with 1",
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    },
+    {
+      "uid": "dpl_3JhGKCQEuwGTbEbXBNXjjd8cWivm",
+      "name": "restaurant-call-ai",
+      "projectId": "prj_yivvHgKOBtNoQEN9eKhgKXToVSva",
+      "url": "restaurant-call-hnnutold4-vercel-1a62.vercel.app",
+      "created": 1793539220853,
+      "source": "cli",
+      "state": "ERROR",
+      "readyState": "ERROR",
+      "type": "LAMBDAS",
+      "creator": {
+        "uid": "sHn8oNagRIU1x8YaCvIUEUho",
+        "email": "munteeqahmadmanzoor@gmail.com",
+        "username": "munteeqahmadmanzoor-3088"
+      },
+      "inspectorUrl": "https://vercel.com/vercel-1a62/restaurant-call-ai/3JhGKCQEuwGTbEbXBNXjjd8cWivm",
+      "meta": {
+        "githubCommitAuthorName": "Munt33q",
+        "githubCommitAuthorEmail": "Munt33q@users.noreply.github.com",
+        "githubCommitMessage": "Initial RestaurantCall AI application",
+        "githubCommitOrg": "Munt33q",
+        "githubCommitRef": "master",
+        "githubCommitRepo": "RestaurantCall-AI",
+        "githubCommitSha": "e85c1c6bb61678aea0288a309120b3ec8f2bf87a",
+        "githubDeployment": "1",
+        "githubOrg": "Munt33q",
+        "githubRepo": "RestaurantCall-AI",
+        "gitDirty": "1",
+        "gitRootDirectory": "frontend"
+      },
+      "target": "production",
+      "aliasAssigned": null,
+      "isRollbackCandidate": false,
+      "createdAt": 1793539220853,
+      "buildingAt": 1793539405691,
+      "ready": 1793539428301,
+      "errorCode": "lint_or_type_error",
+      "errorMessage": "Command \"npm run build\" exited with 1",
+      "projectSettings": {
+        "commandForIgnoringBuildStep": null
+      }
+    }
+  ],
+  "pagination": {
+    "count": 44,
+    "next": null,
+    "prev": 1793726842465
+  }
+}

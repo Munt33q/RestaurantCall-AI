@@ -1,0 +1,3 @@
+import {customerOrder} from '@/lib/operations';
+export const dynamic='force-dynamic';
+export async function GET(_request:Request,{params}:{params:{token:string}}){const o=await customerOrder(params.token);if(!o)return new Response('Link invalid or expired',{status:404});const {checkout_url,checkout_session_id,tracking_version,...safe}=o;return Response.json({...safe,canPay:o.status==='awaiting_payment'&&o.payment_status==='pending'&&!!checkout_url&&Date.now()-new Date(o.created_at).getTime()<3600000},{headers:{'Cache-Control':'no-store','Referrer-Policy':'no-referrer','X-Robots-Tag':'noindex'}});}

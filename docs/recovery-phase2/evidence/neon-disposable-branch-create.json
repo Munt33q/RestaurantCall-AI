@@ -1,0 +1,211 @@
+{
+  "request": {
+    "branch": {
+      "name": "codex-recovery-phase2-20261103",
+      "parent_id": "br-patient-flower-b8mm4pad",
+      "init_source": "schema-only"
+    },
+    "endpoints": [
+      {
+        "type": "read_write",
+        "autoscaling_limit_min_cu": 0.25,
+        "autoscaling_limit_max_cu": 0.25
+      }
+    ]
+  },
+  "status": 201,
+  "data": {
+    "branch": {
+      "id": "br-wandering-grass-b87yx3w5",
+      "project_id": "dawn-haze-46256314",
+      "name": "codex-recovery-phase2-20261103",
+      "slug": "br-wandering-grass-b87yx3w5",
+      "project_slug": "dawn-haze-46256314",
+      "current_state": "init",
+      "pending_state": "ready",
+      "state_changed_at": "2026-11-04T03:32:36Z",
+      "creation_source": "console",
+      "primary": false,
+      "default": false,
+      "protected": false,
+      "cpu_used_sec": 0,
+      "compute_time_seconds": 0,
+      "active_time_seconds": 0,
+      "written_data_bytes": 0,
+      "data_transfer_bytes": 0,
+      "created_at": "2026-11-04T03:32:36Z",
+      "updated_at": "2026-11-04T03:32:36Z",
+      "init_source": "parent-schema"
+    },
+    "endpoints": [
+      {
+        "host": "ep-wandering-scene-b8p2fl31.c-14.us-east-1.aws.neon.tech",
+        "hosts": {
+          "read_write_host": "ep-wandering-scene-b8p2fl31.c-14.us-east-1.aws.neon.tech",
+          "read_write_pooled_host": "ep-wandering-scene-b8p2fl31-pooler.c-14.us-east-1.aws.neon.tech"
+        },
+        "id": "ep-wandering-scene-b8p2fl31",
+        "slug": "ep-wandering-scene-b8p2fl31",
+        "branch_slug": "br-wandering-grass-b87yx3w5",
+        "project_slug": "dawn-haze-46256314",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "autoscaling_limit_min_cu": 0.25,
+        "autoscaling_limit_max_cu": 0.25,
+        "region_id": "aws-us-east-1",
+        "type": "read_write",
+        "current_state": "init",
+        "pending_state": "active",
+        "group": {
+          "size": {
+            "min": 1,
+            "max": 1
+          },
+          "allow_readable_secondaries": false,
+          "computes": [
+            {
+              "binding_id": "l64",
+              "current_state": "init",
+              "pending_state": "active",
+              "role": "read_write",
+              "compute_host": "ep-wandering-scene-b8p2fl31-l64.c-14.us-east-1.aws.neon.tech",
+              "compute_pooled_host": "ep-wandering-scene-b8p2fl31-l64-pooler.c-14.us-east-1.aws.neon.tech",
+              "created_at": "2026-11-04T03:32:36Z",
+              "updated_at": "2026-11-04T03:32:36Z"
+            }
+          ]
+        },
+        "settings": {},
+        "pooler_enabled": false,
+        "pooler_mode": "transaction",
+        "disabled": false,
+        "passwordless_access": true,
+        "creation_source": "console",
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "proxy_host": "c-14.us-east-1.aws.neon.tech",
+        "suspend_timeout_seconds": 0,
+        "provisioner": "k8s-neonvm"
+      }
+    ],
+    "operations": [
+      {
+        "id": "1c9f78ab-48f8-49a1-b4b2-3173ab231820",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "action": "create_branch",
+        "status": "running",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "8f55809a-1b29-4e8f-a368-800322f0e0ed",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "action": "timeline_update_protected_config",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "e543c07d-7989-4b86-b176-1291d579cd29",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "endpoint_id": "ep-wandering-scene-b8p2fl31",
+        "action": "start_compute",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "f0eb4ad7-efea-4140-b001-13602673f276",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-patient-flower-b8mm4pad",
+        "endpoint_id": "ep-little-shape-b8qzyzgp",
+        "action": "start_compute",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "d3e0c75d-0122-44cf-80bc-7ac21afcc8a8",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "endpoint_id": "ep-wandering-scene-b8p2fl31",
+        "action": "apply_schema_from_branch",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "9c640ae8-129f-48d3-8962-690978e7b132",
+        "project_id": "dawn-haze-46256314",
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "action": "sync_dbs_and_roles_from_compute",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "ffcaf3ec-6c3c-41de-ac24-621333cc2763",
+        "project_id": "dawn-haze-46256314",
+        "action": "epc_sync",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      },
+      {
+        "id": "30993c9a-31bb-4c4c-a5c9-527d0bfc9bb9",
+        "project_id": "dawn-haze-46256314",
+        "action": "epc_sync",
+        "status": "scheduling",
+        "failures_count": 0,
+        "created_at": "2026-11-04T03:32:36Z",
+        "updated_at": "2026-11-04T03:32:36Z",
+        "total_duration_ms": 0
+      }
+    ],
+    "roles": [
+      {
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "name": "neondb_owner",
+        "protected": false,
+        "authentication_method": "password",
+        "created_at": "2026-11-01T00:54:15Z",
+        "updated_at": "2026-11-01T00:54:15Z"
+      }
+    ],
+    "databases": [
+      {
+        "id": 1207827,
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "name": "CALLAI",
+        "owner_name": "neondb_owner",
+        "created_at": "2026-11-01T11:33:46Z",
+        "updated_at": "2026-11-01T11:33:46Z"
+      },
+      {
+        "id": 1207828,
+        "branch_id": "br-wandering-grass-b87yx3w5",
+        "name": "neondb",
+        "owner_name": "neondb_owner",
+        "created_at": "2026-11-01T00:54:15Z",
+        "updated_at": "2026-11-01T00:54:15Z"
+      }
+    ]
+  }
+}
