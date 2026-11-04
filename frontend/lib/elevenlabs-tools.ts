@@ -51,33 +51,42 @@ export async function runElevenLabsTool(body:ToolInput){
   const state:any=draft.state_json??{};state.items=readItems(state);
   const save=async()=>{state.relayReviewReady=false;state.elevenlabsPreviewOnly=true;await tx`UPDATE draft_carts SET state_json=${tx.json(state)},customer_name=${state.customerName||null},customer_phone=${state.customerPhone||null},version=version+1,updated_at=now() WHERE session_id=${session.id}`;};
   if(body.tool==='update_cart'){
-   if(!uuid(body.item_id??''))throw new ToolError(400,'Valid item_id required; use search_menu first');
-   if(!['add','set','remove'].includes(body.operation??''))throw new ToolError(400,'Invalid operation');
-   const qty=body.operation==='remove'?0:body.quantity;
-   if(body.operation!=='remove'&&(typeof qty!=='number'||!Number.isInteger(qty)||qty<1||qty>20))throw new ToolError(400,'Quantity must be 1–20');
-   const [item]=await tx`SELECT id,name,is_available,archived,stock_qty,special,special_starts_at,special_ends_at FROM menu_items WHERE id=${body.item_id} AND restaurant_id=${rid} FOR SHARE`;
+   const itemId=body.item_id;
+   if(typeof itemId!=='string'||!uuid(itemId))throw new ToolError(400,'Valid item_id required; use search_menu first');
+   const operation=body.operation;
+   if(operation!=='add'&&operation!=='set'&&operation!=='remove')throw new ToolError(400,'Invalid operation');
+   let requestedQuantity=0;
+   if(operation!=='remove'){
+    const quantity=body.quantity;
+    if(typeof quantity!=='number'||!Number.isInteger(quantity)||quantity<1||quantity>20)throw new ToolError(400,'Quantity must be 1–20');
+    requestedQuantity=quantity;
+   }
+   const [item]=await tx`SELECT id,name,is_available,archived,stock_qty,special,special_starts_at,special_ends_at FROM menu_items WHERE id=${itemId} AND restaurant_id=${rid} FOR SHARE`;
    if(!item)throw new ToolError(404,'Item unavailable');
    const canSell=item.is_available&&!item.archived&&(!item.special||((!item.special_starts_at||new Date(item.special_starts_at)<=new Date())&&(!item.special_ends_at||new Date(item.special_ends_at)>new Date())));
-   if(body.operation!=='remove'&&!canSell)throw new ToolError(409,'Item unavailable');
-   const old=state.items.filter((l:Line)=>l.menuItemId!==body.item_id);
-   const previous=state.items.find((l:Line)=>l.menuItemId===body.item_id)?.quantity??0;
-   const next=body.operation==='remove'?0:body.operation==='set'?qty!:previous+qty!;
+   if(operation!=='remove'&&!canSell)throw new ToolError(409,'Item unavailable');
+   const old=state.items.filter((l:Line)=>l.menuItemId!==itemId);
+   const previous=state.items.find((l:Line)=>l.menuItemId===itemId)?.quantity??0;
+   const next=operation==='remove'?0:operation==='set'?requestedQuantity:previous+requestedQuantity;
    if(next>20||next<0||(item.stock_qty!==null&&next>item.stock_qty))throw new ToolError(409,'Requested quantity is unavailable');
-   state.items=next?normalizeLines([...old,{menuItemId:body.item_id!,quantity:next}]):old;
+   state.items=next?normalizeLines([...old,{menuItemId:itemId,quantity:next}]):old;
    state.phase='ordering';state.quoteKey=undefined;
    await save();return {ok:true,cart:state.items,message:`Cart updated: ${item.name} quantity ${next}`};
   }
   if(body.tool==='set_customer_details'){
-   if(!safeText(body.customer_name??'',120))throw new ToolError(400,'Customer name required');
-   if(body.customer_phone!==undefined&&!e164(body.customer_phone))throw new ToolError(400,'Invalid callback number');
-   state.customerName=body.customer_name!.trim();state.nameConfirmed=body.name_confirmed===true;
-   if(body.customer_phone)state.customerPhone=body.customer_phone;
+   const customerName=body.customer_name;
+   if(typeof customerName!=='string'||!safeText(customerName,120))throw new ToolError(400,'Customer name required');
+   const customerPhone=body.customer_phone;
+   if(customerPhone!==undefined&&(typeof customerPhone!=='string'||!e164(customerPhone)))throw new ToolError(400,'Invalid callback number');
+   state.customerName=customerName.trim();state.nameConfirmed=body.name_confirmed===true;
+   if(customerPhone)state.customerPhone=customerPhone;
    await save();return {ok:true,customerName:state.customerName,nameConfirmed:state.nameConfirmed,hasCallbackNumber:!!state.customerPhone};
   }
   if(body.tool==='set_notification_preference'){
-   if(!['none','sms','call'].includes(body.channel??''))throw new ToolError(400,'Invalid notification channel');
-   if(body.channel!=='none'&&(body.consent!==true||!e164(state.customerPhone??'')))throw new ToolError(409,'Explicit consent and confirmed callback number required');
-   state.notificationChannel=body.channel;state.notificationConsent=body.channel!=='none'&&body.consent===true;
+   const channel=body.channel;
+   if(channel!=='none'&&channel!=='sms'&&channel!=='call')throw new ToolError(400,'Invalid notification channel');
+   if(channel!=='none'&&(body.consent!==true||!e164(state.customerPhone??'')))throw new ToolError(409,'Explicit consent and confirmed callback number required');
+   state.notificationChannel=channel;state.notificationConsent=channel!=='none'&&body.consent===true;
    // Model-supplied consent is provisional; do not dispatch until separately validated in checkout.
    state.notificationConsentVerified=false;
    await save();return {ok:true,channel:state.notificationChannel,consentRecordedProvisionally:state.notificationConsent,deliveryEnabled:false};
