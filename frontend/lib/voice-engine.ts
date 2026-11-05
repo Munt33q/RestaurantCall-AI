@@ -117,6 +117,7 @@ export function decideTurn(current:CartState,speech:string,menu:MenuEntry[],taxR
   state.customerName=name;state.nameConfirmed=false;state.awaitingNameConfirmation=true;return reply(phasePrompt(state));
  }
  if(state.phase==='payment'){
+  if(process.env.CASH_ONLY_CHECKOUT_ENABLED==='true'&&!/\bcash\b/.test(text))return reply('Payment is due in cash at pickup. Please say cash to continue.');
   if(/\bcash\b/.test(text))state.paymentMethod='cash';else if(/\b(card|credit|debit|stripe)\b/.test(text))state.paymentMethod='stripe';else return reply(t('payment'));
   state.phase=state.paymentMethod==='stripe'?'payment_link':'notification';return reply(phasePrompt(state));
  }

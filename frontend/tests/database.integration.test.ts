@@ -33,13 +33,13 @@ test('database: concurrent callbacks, kitchen contract, payment and expiry lifec
  // Missing provider credentials preserve a retryable job, never a false paid status.
  delete process.env.STRIPE_SECRET_KEY;await runPaymentJobs(pending.id);
  const [job]=await sql`SELECT * FROM payment_jobs WHERE order_id=${pending.id}`;assert.equal(job.attempts,1);assert.ok(job.last_error);
- await sql`UPDATE orders SET checkout_session_id='cs_fixture' WHERE id=${pending.id}`;
- const event={id:'evt_'+crypto.randomUUID(),type:'checkout.session.completed',data:{object:{id:'cs_fixture',metadata:{orderId:pending.id},amount_total:pending.totalCents,currency:'usd',payment_status:'paid'}}} as unknown as Stripe.Event;
+ const checkoutId='cs_fixture_'+crypto.randomUUID();await sql`UPDATE orders SET checkout_session_id=${checkoutId} WHERE id=${pending.id}`;
+ const event={id:'evt_'+crypto.randomUUID(),type:'checkout.session.completed',data:{object:{id:checkoutId,metadata:{orderId:pending.id},amount_total:pending.totalCents,currency:'usd',payment_status:'paid'}}} as unknown as Stripe.Event;
  await Promise.all([applyStripeEvent(event),applyStripeEvent(event)]);
  const paid=(await listOrders()).find(o=>o.id===pending.id)!;assert.equal(paid.paymentStatus,'paid');assert.equal(paid.status,'confirmed');await updateOrderStatus(paid.id,'preparing');
  const expired=await call('card');await processVoiceTurn({providerCallId:expired.id,speech:'confirm',turn:expired.turn,base});
- const last=(await listOrders()).find(o=>o.status==='awaiting_payment')!;await sql`UPDATE orders SET checkout_session_id='cs_expiry' WHERE id=${last.id}`;
- const expiry={id:'evt_'+crypto.randomUUID(),type:'checkout.session.expired',data:{object:{id:'cs_expiry',metadata:{orderId:last.id},amount_total:last.totalCents,currency:'usd',payment_status:'unpaid'}}} as unknown as Stripe.Event;
+ const last=(await listOrders()).find(o=>o.status==='awaiting_payment')!,expiryId='cs_expiry_'+crypto.randomUUID();await sql`UPDATE orders SET checkout_session_id=${expiryId} WHERE id=${last.id}`;
+ const expiry={id:'evt_'+crypto.randomUUID(),type:'checkout.session.expired',data:{object:{id:expiryId,metadata:{orderId:last.id},amount_total:last.totalCents,currency:'usd',payment_status:'unpaid'}}} as unknown as Stripe.Event;
  await applyStripeEvent(expiry);await applyStripeEvent(expiry);
  const [after]=await sql`SELECT stock_qty FROM menu_items WHERE id=${item}`;assert.equal(after.stock_qty,16);
  assert.equal((await listOrders()).find(o=>o.id===last.id)!.status,'cancelled');

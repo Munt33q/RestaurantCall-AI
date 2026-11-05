@@ -23,8 +23,8 @@ export async function restaurantTaxRate(){const [r]=await client()`SELECT tax_ra
 export async function listMenu(){return (await client()`SELECT * FROM menu_items WHERE restaurant_id=${restaurantId()} AND archived=false ORDER BY item_number NULLS LAST,name`).map(menuRow);}
 export async function updateMenuAvailability(id:string,available:boolean){return client().begin(async tx=>{await tx`SELECT id FROM restaurants WHERE id=${restaurantId()} FOR UPDATE`;const [row]=await tx`UPDATE menu_items SET is_available=${available},version=version+1 WHERE id=${id} AND restaurant_id=${restaurantId()} RETURNING *`;if(row)await catalogAudit(tx,'availability_updated',row.id,{available});return row?menuRow(row):null;});}
 export async function listOrders(){
- const rows=await client()`SELECT o.*, COALESCE((SELECT json_agg(json_build_object('itemName',i.item_name,'quantity',i.quantity,'lineTotalCents',i.line_total_cents)) FROM order_items i WHERE i.order_id=o.id),'[]'::json) AS items FROM orders o WHERE o.restaurant_id=${restaurantId()} ORDER BY o.created_at DESC LIMIT 100`;
- return rows.map(r=>({...orderRow(r),items:r.items}));
+ const rows=await client()`SELECT o.*, COALESCE((SELECT json_agg(json_build_object('itemName',i.item_name,'quantity',i.quantity,'lineTotalCents',i.line_total_cents)) FROM order_items i WHERE i.order_id=o.id),'[]'::json) AS items,COALESCE((SELECT json_agg(json_build_object('kind',j.kind,'channel',j.channel,'status',j.status) ORDER BY j.created_at) FROM notification_jobs j WHERE j.order_id=o.id),'[]'::json) AS notifications FROM orders o WHERE o.restaurant_id=${restaurantId()} ORDER BY o.created_at DESC LIMIT 100`;
+ return rows.map(r=>({...orderRow(r),items:r.items,notifications:r.notifications}));
 }
 export async function updateOrderStatus(id:string,status:string){
  return client().begin(async tx=>{
@@ -52,8 +52,11 @@ export async function openVoiceSession(providerCallId:string,phone:string|undefi
  });
 }
 export async function insertOrder(tx:any,input:{sessionId:string;customerName:string;customerPhone?:string|null;paymentMethod:'cash'|'stripe';items:Line[];notificationChannel?:'none'|'sms'|'call';notificationConsent?:boolean;paymentLinkSmsConsent?:boolean;notes?:string;expectedQuote?:ReturnType<typeof promotionQuote>;isTest?:boolean}){
+ if(process.env.CASH_ONLY_CHECKOUT_ENABLED==='true'&&input.paymentMethod!=='cash')throw Error('Cash at pickup is the only enabled payment method');
  if(input.isTest&&input.paymentMethod!=='cash')throw Error('ACCEPTANCE_CASH_ONLY');
- const [existing]=await tx`SELECT * FROM orders WHERE session_id=${input.sessionId}`;if(existing)return existing;
+ const [ownedSession]=await tx`SELECT id FROM call_sessions WHERE id=${input.sessionId} AND restaurant_id=${restaurantId()} FOR UPDATE`;
+ if(!ownedSession)throw Error('Order session does not belong to this restaurant');
+ const [existing]=await tx`SELECT * FROM orders WHERE session_id=${input.sessionId} AND restaurant_id=${restaurantId()}`;if(existing)return existing;
  if(!input.customerName?.trim())throw new Error('Customer name is required');
  const items=normalizeLines(input.items);
  const [lockedRestaurant]=await tx`SELECT id FROM restaurants WHERE id=${restaurantId()} FOR UPDATE`;
@@ -67,7 +70,7 @@ export async function insertOrder(tx:any,input:{sessionId:string;customerName:st
  if(input.expectedQuote&&JSON.stringify(input.expectedQuote)!==JSON.stringify(quote))throw Error('QUOTE_CHANGED');
  const cash=input.paymentMethod==='cash',free=quote.totalCents===0;
  if(input.isTest){input={...input,notificationChannel:'none',notificationConsent:false,paymentLinkSmsConsent:false,notes:'CONTROLLED ACCEPTANCE TEST — DO NOT PREPARE. '+(input.notes??'')};}
- const [order]=await tx`INSERT INTO orders(is_test,restaurant_id,session_id,customer_name,customer_phone,payment_method,payment_status,status,subtotal_cents,tax_cents,total_cents,stock_reserved,confirmed_at,notification_channel,notification_consent_at,payment_sms_consent,payment_sms_consent_at,notes) VALUES(${input.isTest===true},${restaurantId()},${input.sessionId},${input.customerName.trim()},${input.customerPhone??null},${input.paymentMethod},${free?'paid':cash?'unpaid':'pending'},${cash||free?'confirmed':'awaiting_payment'},${quote.subtotalCents},${quote.taxCents},${quote.totalCents},true,${cash||free?new Date():null},${input.notificationConsent?input.notificationChannel??'none':'none'},${input.notificationConsent?new Date():null},${input.paymentLinkSmsConsent===true},${input.paymentLinkSmsConsent?new Date():null},${input.notes?.slice(0,500)||null}) RETURNING *`;
+ const [order]=await tx`INSERT INTO orders(is_test,restaurant_id,session_id,customer_name,customer_phone,payment_method,payment_status,status,subtotal_cents,tax_cents,total_cents,stock_reserved,confirmed_at,notification_channel,notification_consent_at,payment_sms_consent,payment_sms_consent_at,notes) VALUES(${input.isTest===true},${restaurantId()},${input.sessionId},${input.customerName.trim()},${input.customerPhone??null},${input.paymentMethod},${cash?'unpaid':free?'paid':'pending'},${cash||free?'confirmed':'awaiting_payment'},${quote.subtotalCents},${quote.taxCents},${quote.totalCents},true,${cash||free?new Date():null},${input.notificationConsent?input.notificationChannel??'none':'none'},${input.notificationConsent?new Date():null},${input.paymentLinkSmsConsent===true},${input.paymentLinkSmsConsent?new Date():null},${input.notes?.slice(0,500)||null}) RETURNING *`;
  for(const {item,quantity} of selected)await tx`INSERT INTO order_items(order_id,menu_item_id,item_name,quantity,unit_price_cents,line_total_cents) VALUES(${order.id},${item.id},${item.name},${quantity},${item.price_cents},${item.price_cents*quantity})`;
  if(!cash&&!free)await tx`INSERT INTO payment_jobs(order_id) VALUES(${order.id}) ON CONFLICT DO NOTHING`;
  await recordOrderEvent(tx,order.id,'created','order_created',{status:order.status,totalCents:order.total_cents});

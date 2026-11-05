@@ -1,0 +1,321 @@
+{
+  "baseline": "037889c8c314cb61651aaca76e5c1ae172589fac",
+  "recoveryCheckpoint": "98ecf05dfe10dc1a39344a64211ff92878190c26",
+  "original6de7172Recovered": false,
+  "preservedOriginalArtifacts": 157,
+  "checkpointBlueprintHashesVerified": 113,
+  "earlierEvidenceUnchanged": true,
+  "knownPrivateValuesScanned": 3,
+  "credentialFindings": 0,
+  "productionCustomerRecordsIncluded": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "e0c90b14c0fb8a8cf55e6eb2cbe2534cd8c250cf9cd4ef676c53920222f0fbe5",
+      "sha256": "c1487240be805c05d1e9aa38a9252c4b6f03d7b2f51bac51eeed17e214cb5988",
+      "bytes": 508
+    },
+    {
+      "path": "config/elevenlabs-webhook-tool-blueprints.json",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "0188c0cfee463e88206369fbcde039d9b60a6c48f964bb31e3850bf48dcfba20",
+      "sha256": "d9347edbca07a827b09ca3d1388a9c5ec3ea898b6b2de05107e593bbb1bc6c25",
+      "bytes": 8256
+    },
+    {
+      "path": "docs/phase6/BRITTANY_INSTRUCTIONS.md",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "78ff6db9fe148e9f3a6ce911429e505cd3214af0961a8a644d5dffdd7024088a",
+      "bytes": 3532
+    },
+    {
+      "path": "docs/phase6/PROVIDER_CONFIGURATION.md",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "ba406cbac46870cf102431cc680a46d371446e62b590bcc49230b4a57473f628",
+      "bytes": 11004
+    },
+    {
+      "path": "docs/phase6/RELEASE_READINESS.md",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "321038bcdb83ae110da9a24337ecb7bf7a82ebefc43805649888d83bad2b7c08",
+      "bytes": 8842
+    },
+    {
+      "path": "docs/phase6/evidence/browser-result.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "24e25fd446ef4fa15d52f0fe35001a41eda0bb1f104cd94481b8c569ab148403",
+      "bytes": 1098
+    },
+    {
+      "path": "docs/phase6/evidence/customer-review.png",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "7e19f2250096515d79c77a6bcb10d1bc122f31670b84f6da48be3f33bf7ad9bc",
+      "bytes": 75620
+    },
+    {
+      "path": "docs/phase6/evidence/database-tests.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "077f485951a61c4c4d0b38f5f9b94e59e37320e052dde694e916c67c72e516d8",
+      "bytes": 1661
+    },
+    {
+      "path": "docs/phase6/evidence/disposable-database.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "e18dc745294e4096fc0c6f0723187c87669adfb6e6ac48bd0a47e4cb3cf3d3f4",
+      "bytes": 191
+    },
+    {
+      "path": "docs/phase6/evidence/local-verification.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "f2473963e1abcdf12905124d71628bc015d273e61211e56f96343c03234334a9",
+      "bytes": 527
+    },
+    {
+      "path": "docs/phase6/evidence/order-detail.png",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "a97675ba290417c29ad186c952e2f05e2655cc6b9b0ce0ae57770dc151e44fdc",
+      "bytes": 111225
+    },
+    {
+      "path": "docs/phase6/evidence/provider-inspection.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "bf3dc8863765b7e17b3a8c27b2383b488e54dfe151acb229be625cb88cb9e2eb",
+      "bytes": 957
+    },
+    {
+      "path": "frontend/.env.example",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "10a799e141dd87308de0870a2ff7a1de7009fe622c4deb2ca57f1002340f45ec",
+      "sha256": "237ddf71adf6e405666374a7e6c58d4754ad21acd94ca07efc46bd95191bdd93",
+      "bytes": 1655
+    },
+    {
+      "path": "frontend/app/api/checkout/confirm/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "46b4913806678eefa8567136473cf9d5143a5981d1bb61f9bdde0231b1e3389b",
+      "bytes": 829
+    },
+    {
+      "path": "frontend/app/api/checkout/review/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "b4b484192acdc6f2a1763b31c363cf7ec7dc4254bc01c11b7af634ef591f03b5",
+      "bytes": 907
+    },
+    {
+      "path": "frontend/app/api/elevenlabs/initiation/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "4cd571c015d19e4b4398cce70c9017f59ebdf06be88825183b65f2785e9b79ab",
+      "bytes": 930
+    },
+    {
+      "path": "frontend/app/api/elevenlabs/post-call/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "6edd927899d89efad159d91db141d46c3be22f57bb17d44ddbe454d49c3e9239",
+      "bytes": 2102
+    },
+    {
+      "path": "frontend/app/api/elevenlabs/tools/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "82d5f0c1b71e31a6b47170ed59774fe5fff163be9d35ea5b3e8ce76118b09862",
+      "sha256": "d2734b4ff2c843cbc0b1223f24ff230bc440b5e590eda041898c883c371fe944",
+      "bytes": 2200
+    },
+    {
+      "path": "frontend/app/api/health/route.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "00a29b723c67da52208ca4dec1a41c77c70873a021fc0b4eb983dc4e39b87af5",
+      "sha256": "3af7770a2fa46384186ea0637e01b705e806e9ea5a0ad2b0c16980b84cc6d536",
+      "bytes": 3283
+    },
+    {
+      "path": "frontend/app/confirm/page.tsx",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "24a92d954cd3dc3e13cee66a25a4b56384e362f49526e46e5ecf2f068778f459",
+      "bytes": 5591
+    },
+    {
+      "path": "frontend/app/dashboard/page.tsx",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "ac8c42bd77e848bdbf2aa32f81387a53b4ad2a86b55d4c75fe9eea3434644e30",
+      "sha256": "311cd5858b40263c9c559015ccb105d01740716817eeb7b36074c3ee7f160e98",
+      "bytes": 12621
+    },
+    {
+      "path": "frontend/drizzle/0010_elevenlabs_checkout.sql",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "c7a41b2674c082068951537fec87233ac78eae63d5c994e139d1c2e9441f9700",
+      "bytes": 613
+    },
+    {
+      "path": "frontend/lib/checkout-http.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "549fa4cd1635b833337e3914a6eccc29049df07193c8bf1a2241c698cbbd3df3",
+      "bytes": 1323
+    },
+    {
+      "path": "frontend/lib/customer-checkout.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "03d3987404664aea2a71f18da661c0c38929616d90d957f5ca706d99116d1370",
+      "bytes": 11385
+    },
+    {
+      "path": "frontend/lib/elevenlabs-initiation.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "c23b84290fadb24c866197f1857ac6c468d9ed2e6617d2291f70ed03f049b360",
+      "bytes": 3006
+    },
+    {
+      "path": "frontend/lib/elevenlabs-security.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": null,
+      "sha256": "8290257d89249c120d8eba6b6c3e9199566a5cda485387730cfcd5037d3b996f",
+      "bytes": 2148
+    },
+    {
+      "path": "frontend/lib/elevenlabs-session.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "905000c65a30ffa90cad7e4da367d98192b0837491f81b6f354ea37cdaad44fb",
+      "sha256": "196b625544ed9338f71988baaa7f9c492f1a5102c760bf66cb8ae81538ead895",
+      "bytes": 1649
+    },
+    {
+      "path": "frontend/lib/elevenlabs-tools.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "b605eba006b7d83fcaf06cf3a9b2dcef19713e482cce85996a403068f7d98f01",
+      "sha256": "59f27a525e767f88d43460b372c392d5f0e3eb2bacfc70f869b04ba8785827e8",
+      "bytes": 11150
+    },
+    {
+      "path": "frontend/lib/notification-contract.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "00937df0b192f54a87a22bfebd5f863499d8fc2ab24a5448aa5d27c7f1d3e106",
+      "sha256": "945b90d75dc3921a0dc16899156b35ca54da81c342048bc6e8e5a0e216ba0318",
+      "bytes": 2990
+    },
+    {
+      "path": "frontend/lib/operations.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "19c378255d4bcd6d8ee153591d9d9946958939ac8cfc3935fadfe5710e4580ac",
+      "sha256": "3bb9898969629cfa5e19af9fa2ec346c006126b41dcb47d74e17dcb3487269e7",
+      "bytes": 17250
+    },
+    {
+      "path": "frontend/lib/repository.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "8327f9abfe3a5493434ecdd4f661dc61af0189f39ea7ff7767d500cba20ed146",
+      "sha256": "41bbdd27d81897f7b0405e31d76da718472af83a13ef6087948dd9701fb06479",
+      "bytes": 22209
+    },
+    {
+      "path": "frontend/lib/voice-engine.ts",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "0938dcc46ed741a1dbbdfeb3af5c6292b70012097165014fdbd7cca95cad08c0",
+      "sha256": "28b6b463d03ddc4972e57be5abbf37b871ef3deb5a5e86486dc62447c81a7a63",
+      "bytes": 16483
+    },
+    {
+      "path": "frontend/next.config.js",
+      "classification": "new or modified Phase 6 engineering source/configuration",
+      "baselineSha256": "486c79d61ccc66322f566c2f7d6a52aebd0ec5edf0f63459ec292196e715e9ca",
+      "sha256": "2d87e0725764ad464524fb2a1fe992819cc365dc5c5069d9198f4dcb961c8f8d",
+      "bytes": 471
+    },
+    {
+      "path": "frontend/tests/customer-checkout-database.phase6.test.ts",
+      "classification": "new or updated regression coverage",
+      "baselineSha256": null,
+      "sha256": "e159ae4b8df5f03db8a65a24abbd8fe3983bb4927599a04cdb8b7451811a5006",
+      "bytes": 15251
+    },
+    {
+      "path": "frontend/tests/customer-checkout.phase6.test.ts",
+      "classification": "new or updated regression coverage",
+      "baselineSha256": null,
+      "sha256": "48e22e5e4ec63543d42a62882242c39413b75e6c1cfd8d6275734212f6983945",
+      "bytes": 6052
+    },
+    {
+      "path": "frontend/tests/database.integration.test.ts",
+      "classification": "new or updated regression coverage",
+      "baselineSha256": "c5e40bb4619721bd1c313f252b4c9c8c01a8e1916f6cbeab73786cc00452c55e",
+      "sha256": "414f5848d4be19477aad6775bdf8a4b34df797f13f2b4253ba576a7a96158e7a",
+      "bytes": 4199
+    },
+    {
+      "path": "frontend/tests/elevenlabs-database.test.ts",
+      "classification": "new or updated regression coverage",
+      "baselineSha256": "32685c1ae541ff9d3f1132734b36344537e598d5118b0d212bd1fe9389f30f8a",
+      "sha256": "89319cce5dce80f0ad23532da636271c79e1372036663c9a30adf0b4db57f713",
+      "bytes": 2176
+    },
+    {
+      "path": "frontend/tests/status-notifications-database.test.ts",
+      "classification": "new or updated regression coverage",
+      "baselineSha256": "9c58ab5a0d88f851d7f83560e004448b62da517b9d281554d31702c0f6567312",
+      "sha256": "f7b8da3321f0365614349e371360669f1ec3a21a662cd3e018aaac2ecb5b58c4",
+      "bytes": 2039
+    },
+    {
+      "path": "recovery/phase6/audit.mjs",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "1ec55ff7144a9d47d95c4191809b58e9815a438e96cb186fc2ba944e2f219d76",
+      "bytes": 3916
+    },
+    {
+      "path": "recovery/phase6/browser.mts",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "9bcb4a35a2226a7426bb2c53abd53f7198b59a617afa8368487bc68c46bed81b",
+      "bytes": 13298
+    },
+    {
+      "path": "recovery/phase6/preview.py",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "a05c889e2314d0c23e49454298f41df7e19da918410ccac19d2f1efe6b9859c6",
+      "bytes": 4624
+    },
+    {
+      "path": "recovery/phase6/provider-inspection.py",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "69d98ac5580ed2c8105c3ab27a83641bd983df70f1302f70c0de89b9630d28c3",
+      "bytes": 2679
+    },
+    {
+      "path": "recovery/phase6/provision-test-db.py",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "ca15212af3185ce4f917798ca4f323d32df3c1e379c80975e647b8785ee28e03",
+      "bytes": 2161
+    },
+    {
+      "path": "recovery/phase6/run-database.mjs",
+      "classification": "new Phase 6 verification/support tooling",
+      "baselineSha256": null,
+      "sha256": "b08a042250f846f727edd2d7f654984097b434aef94438ed6bcf96ecc60f4e13",
+      "bytes": 2668
+    }
+  ]
+}

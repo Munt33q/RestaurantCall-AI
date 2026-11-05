@@ -9,8 +9,9 @@ export function validElevenLabsConversationId(value:string){
 export async function bindElevenLabsConversation(input:{conversationId:string;providerCallId:string}){
  if(!validElevenLabsConversationId(input.conversationId)||!input.providerCallId||input.providerCallId.length>256)throw Error('Invalid conversation binding');
  return client().begin(async tx=>{
-  const [session]=await tx`SELECT id,caller_phone FROM call_sessions WHERE restaurant_id=${restaurantId()} AND provider_call_id=${input.providerCallId} AND state<>'ended' AND expires_at>now() FOR UPDATE`;
+  const [session]=await tx`SELECT id,caller_phone,elevenlabs_conversation_id FROM call_sessions WHERE restaurant_id=${restaurantId()} AND provider_call_id=${input.providerCallId} AND state='active' AND ended_at IS NULL AND expires_at>now() FOR UPDATE`;
   if(!session)throw Error('Active call session not found');
+  if(session.elevenlabs_conversation_id&&session.elevenlabs_conversation_id!==input.conversationId)throw Error('Call already bound to a different conversation');
   const [existing]=await tx`SELECT id FROM call_sessions WHERE restaurant_id=${restaurantId()} AND elevenlabs_conversation_id=${input.conversationId} AND id<>${session.id}`;
   if(existing)throw Error('Conversation is already bound');
   await tx`UPDATE call_sessions SET elevenlabs_conversation_id=${input.conversationId},updated_at=now() WHERE id=${session.id}`;

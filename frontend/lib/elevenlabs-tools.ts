@@ -1,15 +1,14 @@
-/** Preview-only ElevenAgents adapter. Reuses Phase 4 order drafts/menu/pricing.
- * Order commits remain disabled until independently verified playback evidence exists.
- */
+/** ElevenAgents adapter. Cash checkout requires an independent customer web review. */
 import {client} from './db/client';
 import {listMenu,restaurantId} from './repository';
 import {promotionRow} from './catalog-store';
 import {promotionQuote} from './catalog-policy';
 import {normalizeLines,type Line} from './order-contract';
 import {validElevenLabsConversationId} from './elevenlabs-session';
+import {issueCustomerReview} from './customer-checkout';
 
-type ToolName='search_menu'|'get_cart'|'update_cart'|'set_customer_details'|'set_notification_preference'|'review_order'|'confirm_order'|'get_order_status';
-export type ToolInput={tool:ToolName;conversation_id:string;query?:string;item_id?:string;quantity?:number;operation?:'add'|'set'|'remove';customer_name?:string;customer_phone?:string;name_confirmed?:boolean;channel?:'none'|'sms'|'call';consent?:boolean};
+type ToolName='search_menu'|'get_cart'|'update_cart'|'set_customer_details'|'set_order_notes'|'set_notification_preference'|'review_order'|'confirm_order'|'get_order_status';
+export type ToolInput={tool:ToolName;conversation_id:string;query?:string;item_id?:string;quantity?:number;operation?:'add'|'set'|'remove';customer_name?:string;customer_phone?:string;name_confirmed?:boolean;notes?:string;channel?:'none'|'sms'|'call';consent?:boolean};
 export class ToolError extends Error{constructor(public status:number,message:string){super(message);}}
 const e164=(s:string)=>/^\+[1-9]\d{7,14}$/.test(s);
 const conv=(s:string)=>/^[A-Za-z0-9_-]{8,128}$/.test(s);
@@ -21,9 +20,10 @@ export function conversationProviderIds(conversationId:string){return [conversat
 export function validateTool(input:unknown):ToolInput{
  if(!input||typeof input!=='object'||Array.isArray(input))throw new ToolError(400,'Invalid tool payload');
  const b=input as Record<string,unknown>;
- const tools=['search_menu','get_cart','update_cart','set_customer_details','set_notification_preference','review_order','confirm_order','get_order_status'];
+ const tools=['search_menu','get_cart','update_cart','set_customer_details','set_order_notes','set_notification_preference','review_order','confirm_order','get_order_status'];
  if(typeof b.tool!=='string'||!tools.includes(b.tool)||typeof b.conversation_id!=='string'||!conv(b.conversation_id))throw new ToolError(400,'Invalid tool name or conversation identifier');
  if(JSON.stringify(input).length>4096)throw new ToolError(413,'Payload too large');
+ if(Object.keys(b).some(k=>!['tool','conversation_id','query','item_id','quantity','operation','customer_name','customer_phone','name_confirmed','notes','channel','consent'].includes(k)))throw new ToolError(400,'Unknown tool field');
  return input as ToolInput;
 }
 function readItems(state:any):Line[]{const items=state?.items;return Array.isArray(items)?items:[];}
@@ -32,11 +32,9 @@ export async function runElevenLabsTool(body:ToolInput){
  // Never accept restaurant_id from the model. The deployment's configured restaurant is authoritative.
  const rid=restaurantId();
  if(!validElevenLabsConversationId(body.conversation_id))throw new ToolError(400,'Invalid ElevenLabs conversation identifier');
- const ids=conversationProviderIds(body.conversation_id);
- const [bound]=await client()`SELECT provider_call_id FROM call_sessions WHERE restaurant_id=${rid} AND (elevenlabs_conversation_id=${body.conversation_id} OR provider_call_id=ANY(${ids})) AND state<>'ended' AND expires_at>now()`;
+ const [bound]=await client()`SELECT provider_call_id FROM call_sessions WHERE restaurant_id=${rid} AND elevenlabs_conversation_id=${body.conversation_id} AND ((${body.tool==='get_order_status'} AND EXISTS(SELECT 1 FROM orders WHERE session_id=call_sessions.id)) OR (state='active' AND ended_at IS NULL AND expires_at>now()))`;
  if(!bound)throw new ToolError(409,'Conversation is not bound to an active RestaurantCall session');
  const callId=bound.provider_call_id;
- if(body.tool==='confirm_order')return {ok:false,code:'CHECKOUT_DISABLED',message:'Live checkout is disabled until verified ElevenAgents playback acknowledgment and final-confirmation integration is implemented. Never claim an order was placed.'};
  if(body.tool==='search_menu'){
   const q=typeof body.query==='string'?body.query.trim().slice(0,120).toLowerCase():'';
   const menu=await listMenu();
@@ -44,12 +42,16 @@ export async function runElevenLabsTool(body:ToolInput){
   return {ok:true,matches:matching.map(publicItem),truncated:matching.length===20};
  }
  return client().begin(async tx=>{
-  const [session]=await tx`SELECT id,expires_at FROM call_sessions WHERE restaurant_id=${rid} AND provider_call_id=${callId} FOR UPDATE`;
-  if(!session||new Date(session.expires_at).getTime()<=Date.now())throw new ToolError(409,'Session expired or belongs to another restaurant');
+  const [session]=await tx`SELECT * FROM call_sessions WHERE restaurant_id=${rid} AND provider_call_id=${callId} AND elevenlabs_conversation_id=${body.conversation_id} FOR UPDATE`;
+  if(!session)throw new ToolError(409,'Session not found');
+  const [placed]=await tx`SELECT id,status,payment_status FROM orders WHERE restaurant_id=${rid} AND session_id=${session.id}`;
+  if(placed){if(body.tool==='confirm_order'||body.tool==='get_order_status')return {ok:true,orderNumber:placed.id.slice(0,8),status:placed.status,paymentStatus:placed.payment_status,message:'Order is saved. Cash payment is due at pickup.'};throw new ToolError(409,'Order already placed; ask staff to change it');}
+  if(session.state!=='active'||session.ended_at||new Date(session.expires_at).getTime()<=Date.now())throw new ToolError(409,'Session expired or ended');
+  if(body.tool==='confirm_order')return {ok:false,code:'CUSTOMER_REVIEW_REQUIRED',message:'No order has been placed. Use review_order and ask the customer to submit the complete review on the restaurant confirmation page. A verbal confirmation or tool boolean cannot place an order.'};
   await tx`INSERT INTO draft_carts(session_id) VALUES(${session.id}) ON CONFLICT DO NOTHING`;
-  const [draft]=await tx`SELECT state_json,version FROM draft_carts WHERE session_id=${session.id} FOR UPDATE`;
+  const [draft]=await tx`SELECT * FROM draft_carts WHERE session_id=${session.id} FOR UPDATE`;
   const state:any=draft.state_json??{};state.items=readItems(state);
-  const save=async()=>{state.relayReviewReady=false;state.elevenlabsPreviewOnly=true;await tx`UPDATE draft_carts SET state_json=${tx.json(state)},customer_name=${state.customerName||null},customer_phone=${state.customerPhone||null},version=version+1,updated_at=now() WHERE session_id=${session.id}`;};
+  const save=async()=>{state.relayReviewReady=false;delete state.customerReview;delete state.customerReviewHash;await tx`UPDATE draft_carts SET state_json=${tx.json(state)},checkout_code_hash=NULL,checkout_expires_at=NULL,customer_name=${state.customerName||null},customer_phone=${session.caller_phone},version=version+1,updated_at=now() WHERE session_id=${session.id}`;};
   if(body.tool==='update_cart'){
    const itemId=body.item_id;
    if(typeof itemId!=='string'||!uuid(itemId))throw new ToolError(400,'Valid item_id required; use search_menu first');
@@ -77,10 +79,14 @@ export async function runElevenLabsTool(body:ToolInput){
    const customerName=body.customer_name;
    if(typeof customerName!=='string'||!safeText(customerName,120))throw new ToolError(400,'Customer name required');
    const customerPhone=body.customer_phone;
-   if(customerPhone!==undefined&&(typeof customerPhone!=='string'||!e164(customerPhone)))throw new ToolError(400,'Invalid callback number');
+   if(customerPhone!==undefined&&(typeof customerPhone!=='string'||!e164(customerPhone)||customerPhone!==session.caller_phone))throw new ToolError(400,'Callback number must match the verified caller');
    state.customerName=customerName.trim();state.nameConfirmed=body.name_confirmed===true;
-   if(customerPhone)state.customerPhone=customerPhone;
+   state.customerPhone=session.caller_phone;
    await save();return {ok:true,customerName:state.customerName,nameConfirmed:state.nameConfirmed,hasCallbackNumber:!!state.customerPhone};
+  }
+  if(body.tool==='set_order_notes'){
+   if(typeof body.notes!=='string'||body.notes.length>500||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(body.notes))throw new ToolError(400,'Special instructions must be at most 500 characters; use an empty string for none');
+   state.notes=body.notes.trim();state.notesCollected=true;await save();return {ok:true,notes:state.notes};
   }
   if(body.tool==='set_notification_preference'){
    const channel=body.channel;
@@ -92,10 +98,10 @@ export async function runElevenLabsTool(body:ToolInput){
    await save();return {ok:true,channel:state.notificationChannel,consentRecordedProvisionally:state.notificationConsent,deliveryEnabled:false};
   }
   if(body.tool==='get_order_status'){
-   const [order]=await tx`SELECT id,status,payment_status FROM orders WHERE restaurant_id=${rid} AND session_id=${session.id}`;
-   return order?{ok:true,orderNumber:order.id.slice(0,8),status:order.status,paymentStatus:order.payment_status}:{ok:false,code:'NO_PLACED_ORDER',message:'No confirmed order exists for this conversation'};
+   return {ok:false,code:'NO_PLACED_ORDER',message:'No confirmed order exists for this conversation'};
   }
-  if(body.tool==='get_cart')return {ok:true,cart:state.items,customerName:state.customerName??'',notificationChannel:state.notificationChannel??'none'};
+  if(body.tool==='get_cart')return {ok:true,cart:state.items,customerName:state.customerName??'',notes:state.notes??'',notesCollected:state.notesCollected===true,paymentMethod:'cash',notificationChannel:state.notificationChannel??'none'};
+  if(process.env.ELEVENLABS_CHECKOUT_ENABLED==='true')return issueCustomerReview(tx,session,draft);
   // Recalculate using the same menu catalog and promotional policy used by insertOrder.
   if(!state.items.length)return {ok:false,code:'EMPTY_CART',message:'Add an item before reviewing'};
   const items=normalizeLines(state.items);

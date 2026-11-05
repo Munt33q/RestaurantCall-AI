@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-05T04:18:55.333459+00:00",
+  "productionModified": false,
+  "customerConversationsRead": false,
+  "vercelEnvironmentHTTP": 200,
+  "credentialAvailability": {
+    "ELEVENLABS_API_KEY": false,
+    "XI_API_KEY": false,
+    "TELNYX_API_KEY": false,
+    "CUSTOMER_CHECKOUT_SECRET": false,
+    "ELEVENLABS_SESSION_BINDING_KEY": false,
+    "ELEVENLABS_TOOL_API_KEY": false
+  },
+  "featureConfiguration": {
+    "ELEVENLABS_CHECKOUT_ENABLED": "not_readable_or_absent",
+    "RESTAURANT_ORDERING_ENABLED": "not_readable_or_absent",
+    "SMS_DELIVERY_ENABLED": "false",
+    "SMS_REGISTRATION_VERIFIED": "not_readable_or_absent",
+    "SMS_SENDER_VERIFIED": "not_readable_or_absent",
+    "OUTBOUND_UPDATES_ENABLED": "true"
+  },
+  "elevenlabs": {
+    "status": "no_usable_account_key",
+    "actualSIPAcceptance": false
+  },
+  "telnyx": {
+    "status": "no_usable_account_key",
+    "actualSMSSubmission": false
+  }
+}

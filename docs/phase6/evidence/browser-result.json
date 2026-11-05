@@ -1,0 +1,22 @@
+{
+  "source": "Playwright Chromium on production build",
+  "base": "http://localhost:3226",
+  "branch": "br-misty-shadow-b8v5hmz2",
+  "syntheticTenant": "fbebc137-6061-4e97-9f8d-b4454b310669",
+  "providerInitiation": "synthetic authenticated HTTP event; no actual SIP",
+  "providerTraffic": false,
+  "checks": [
+    "staff protection, invalid login rejection and valid staff login",
+    "trusted session, live DB menu, cart, name and notes; model confirmation creates no order",
+    "customer sees authoritative full review; name, final confirmation and optional SMS consent required",
+    "real existing order engine saves cash unpaid once and Brittany retrieves actual saved order number",
+    "same saved order appears through dashboard polling with notes and SMS pending status",
+    "staff kitchen transitions and explicit cash collection persist",
+    "trusted inbound call appears in staff call history",
+    "authorized menu editing and availability",
+    "analytics shows saved order value",
+    "no provider submissions and no uncaught browser errors"
+  ],
+  "errors": [],
+  "ok": true
+}

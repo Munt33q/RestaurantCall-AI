@@ -2,7 +2,7 @@ import {callerOrderHistory} from './caller-history';
 import crypto from 'node:crypto';
 import {client} from './db/client';
 import {trackingUrl,verifyTrackingToken} from './tracking-token';
-import {notificationGate,notificationText,deliveryTransition,canRecordCashPayment} from './notification-contract';
+import {notificationGate,notificationText,deliveryTransition,canRecordCashPayment,smsDeliveryReady} from './notification-contract';
 import {xmlEscape} from './telnyx';
 const rid=()=>{const id=process.env.RESTAURANT_ID?.trim();if(!id)throw new Error('Restaurant not configured');return id;};
 export async function recordOrderEvent(tx:any,orderId:string,key:string,kind:string,data:unknown={},actor='system'){
@@ -42,21 +42,25 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
     if(order.is_test){await tx`UPDATE notification_jobs SET status='suppressed',last_error='Test order: delivery prohibited',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;return;}
     await tx`SELECT pg_advisory_xact_lock(hashtextextended(${`${restaurant}:${order.customer_phone}`},0))`;
     const [pref]=await tx`SELECT sms_opted_out FROM messaging_preferences WHERE restaurant_id=${restaurant} AND phone=${order.customer_phone??''}`;
-    const reason=notificationGate({channel:job.channel,consent:!!job.consent_at&&(job.kind==='payment_link'?order.payment_sms_consent===true&&!!order.payment_sms_consent_at:!!order.notification_consent_at&&order.notification_channel===job.channel),optedOut:pref?.sms_opted_out===true,smsEnabled:process.env.SMS_DELIVERY_ENABLED==='true',callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',phone:order.customer_phone??'',kind:job.kind,orderStatus:order.status});
+    const reason=notificationGate({channel:job.channel,consent:!!job.consent_at&&(job.kind==='payment_link'?order.payment_sms_consent===true&&!!order.payment_sms_consent_at:!!order.notification_consent_at&&order.notification_channel===job.channel),optedOut:pref?.sms_opted_out===true,smsEnabled:smsDeliveryReady(),callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',phone:order.customer_phone??'',kind:job.kind,orderStatus:order.status});
     const [count]=await tx`SELECT count(*)::int AS n FROM notification_jobs j JOIN orders other ON other.id=j.order_id WHERE j.restaurant_id=${restaurant} AND other.customer_phone=${order.customer_phone} AND j.channel=${job.channel} AND j.status IN('dispatching','submitted','delivered','uncertain') AND j.id<>${job.id} AND j.updated_at>now()-interval '1 hour'`;
     const error=reason??(count.n>=(job.channel==='call'?3:10)?'Hourly notification limit reached':null);
-    if(error){const deferred=/disabled|limit/.test(error);await tx`UPDATE notification_jobs SET status=${deferred?'pending':'suppressed'},last_error=${error},locked_until=NULL,next_attempt_at=now()+interval '15 minutes',updated_at=now() WHERE id=${job.id}`;return null;}
+    if(error){const deferred=/disabled|limit/.test(error);await tx`UPDATE notification_jobs SET status=${deferred?'pending':'suppressed'},attempts=GREATEST(attempts-1,0),last_error=${error},locked_until=NULL,next_attempt_at=now()+interval '15 minutes',updated_at=now() WHERE id=${job.id}`;return null;}
     
-   const key=process.env.TELNYX_API_KEY?.trim(),from=process.env.TELNYX_PHONE_NUMBER?.trim(),base=process.env.PUBLIC_APP_URL?.trim();if(!key||!from||!base)throw new Error('Notification provider configuration missing');
+   const key=process.env.TELNYX_API_KEY?.trim(),from=process.env.TELNYX_PHONE_NUMBER?.trim(),base=process.env.PUBLIC_APP_URL?.trim();if(!key||!from||!base||job.channel==='call'&&!process.env.TELNYX_TEXML_APPLICATION_ID?.trim())throw new Error('Notification provider configuration missing');
    const sms=job.channel==='sms';const url=sms?trackingUrl({id:order.id,restaurant_id:order.restaurant_id,tracking_version:order.tracking_version}):undefined;
    
-   const voice=`Hello. This is an automated notification from RestaurantCall AI. Your order ${order.id.slice(0,8)} is ready for pickup. Thank you. Goodbye.`;
-   const body=sms?{from,to:order.customer_phone,text:notificationText({id:order.id,status:order.status,payment_method:order.payment_method,total_cents:order.total_cents},job.kind,url),webhook_url:base+'/api/telnyx/messaging'}:{From:from,To:order.customer_phone,Texml:`<Response><Say voice="Polly.Joanna-Neural">${xmlEscape(voice)}</Say><Hangup/></Response>`};
+   const [restaurantRow]=await tx`SELECT name FROM restaurants WHERE id=${restaurant}`;
+   const restaurantName=restaurantRow?.name??'RestaurantCall AI';
+   const voice=`Hello. This is an automated notification from ${restaurantName}. Your order ${order.id.slice(0,8)} is ready for pickup. Thank you. Goodbye.`;
+   const callback=new URL('/api/telnyx/call-status',base);callback.searchParams.set('job',job.id);callback.searchParams.set('token',callbackMac(job.id));
+   const body=sms?{from,to:order.customer_phone,messaging_profile_id:process.env.TELNYX_MESSAGING_PROFILE_ID?.trim(),text:notificationText({id:order.id,status:order.status,payment_method:order.payment_method,total_cents:order.total_cents,customer_name:order.customer_name,restaurant_name:restaurantName},job.kind,url),webhook_url:base+'/api/telnyx/messaging'}:{From:from,To:order.customer_phone,Texml:`<Response><Say voice="Polly.Joanna-Neural">${xmlEscape(voice)}</Say><Hangup/></Response>`,StatusCallback:callback.toString(),StatusCallbackMethod:'POST',StatusCallbackEvent:'completed'};
    const endpoint=sms?'https://api.telnyx.com/v2/messages':`https://api.telnyx.com/v2/texml/calls/${process.env.TELNYX_TEXML_APPLICATION_ID?.trim()}`;
    // Dispatching is durable before this non-idempotent POST. Ambiguous outcomes are never retried automatically.
+   await tx`UPDATE notification_jobs SET submission_attempted_at=now() WHERE id=${job.id}`;
    let response:Response;try{response=await transport(endpoint,{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(9000)});}catch{await tx`UPDATE notification_jobs SET status='uncertain',locked_until=NULL,last_error='Provider outcome unknown; inspect delivery before a new attempt',updated_at=now() WHERE id=${job.id}`;return;}
    const data=await response.json().catch(()=>null);const providerId=sms?data?.data?.id:data?.call_sid;
-   if(!response.ok||typeof providerId!=='string'){const ambiguous=response.status>=500||response.ok;await tx`UPDATE notification_jobs SET status=${ambiguous?'uncertain':'failed'},locked_until=NULL,last_error=${`Provider submission ${response.status}; ${ambiguous?'outcome uncertain':'rejected'}`},updated_at=now() WHERE id=${job.id}`;return;}
+   if(!response.ok||typeof providerId!=='string'){const retry=response.status===429&&!providerId&&job.attempts<2;const ambiguous=response.status>=500||response.ok||typeof providerId==='string';await tx`UPDATE notification_jobs SET status=${retry?'pending':ambiguous?'uncertain':'failed'},next_attempt_at=now()+interval '1 minute',locked_until=NULL,last_error=${`Provider submission ${response.status}; ${ambiguous?'outcome uncertain':retry?'rate limited; bounded retry':'rejected'}`},updated_at=now() WHERE id=${job.id}`;return;}
     const [current]=await tx`SELECT * FROM notification_jobs WHERE id=${job.id} FOR UPDATE`;
     const status=deliveryTransition(current.status,'submitted');await tx`UPDATE notification_jobs SET provider_id=${providerId},status=${status},locked_until=NULL,last_error=NULL,updated_at=now() WHERE id=${job.id}`;
     if(sms&&job.kind==='payment_link')await tx`UPDATE orders SET sms_status=${status} WHERE id=${order.id}`;
@@ -97,7 +101,7 @@ export async function operationsSummary(){
  sql`SELECT status,channel,count(*)::int AS count FROM notification_jobs WHERE restaurant_id=${restaurant} GROUP BY status,channel`,
  sql`SELECT count(*)::int AS total,count(*) FILTER(WHERE ended_at IS NOT NULL AND state='ended')::int AS ended,round(avg(EXTRACT(EPOCH FROM ended_at-created_at)) FILTER(WHERE state='ended'))::int AS average_recorded_seconds FROM call_sessions WHERE restaurant_id=${restaurant} AND created_at>now()-interval '7 days'`
  ]);
- return {orders:orders[0],volume,notifications,calls:calls[0],delivery:{smsEnabled:process.env.SMS_DELIVERY_ENABLED==='true',callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',recoverySchedule:process.env.JOB_RECOVERY_SCHEDULE??'Not configured'},transcriptVisibilityDays:7};
+ return {orders:orders[0],volume,notifications,calls:calls[0],delivery:{smsEnabled:smsDeliveryReady(),callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',recoverySchedule:process.env.JOB_RECOVERY_SCHEDULE??'Not configured'},transcriptVisibilityDays:7};
 }
 export async function finishCallSession(callId:string,outcome:string){await client()`UPDATE call_sessions SET state='ended',ended_at=COALESCE(ended_at,now()),outcome=COALESCE(outcome,${outcome.slice(0,100)}),updated_at=now() WHERE provider_call_id=${callId} AND restaurant_id=${rid()}`;}
 export async function confirmCashPayment(id:string){

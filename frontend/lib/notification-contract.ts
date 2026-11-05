@@ -6,11 +6,14 @@ export function notificationGate(i:{channel:string;consent:boolean;optedOut:bool
  if(i.channel==='sms'&&i.optedOut)return 'Customer opted out';if(i.channel==='sms'&&!i.smsEnabled)return 'SMS sending disabled pending delivery setup verification';if(i.channel==='call'&&!i.callsEnabled)return 'Outbound updates disabled';
  if(i.kind==='payment_link'?i.orderStatus!=='awaiting_payment':i.orderStatus!==i.kind)return 'Notification outdated for current order status';return null;
 }
-export function notificationText(order:{id:string;status:string;payment_method:string;total_cents:number},kind:string,url?:string){
+export function smsDeliveryReady(){return process.env.SMS_DELIVERY_ENABLED==='true'&&process.env.SMS_REGISTRATION_VERIFIED==='true'&&process.env.SMS_SENDER_VERIFIED==='true'&&/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(process.env.TELNYX_MESSAGING_PROFILE_ID?.trim()??'');}
+export function notificationText(order:{id:string;status:string;payment_method:string;total_cents:number;customer_name?:string;restaurant_name?:string},kind:string,url?:string){
  const label=order.id.slice(0,8);const total='$'+(order.total_cents/100).toFixed(2);
  if(kind==='payment_link')return `RestaurantCall: Order ${label}, ${total}. Pay and track: ${url}. Reply STOP to opt out.`;
- const status=kind==='ready'?'ready for pickup':kind==='preparing'?'being prepared':'confirmed';
- return `RestaurantCall: Order ${label} is ${status}.${url?' Track: '+url+'.':''} Reply STOP to opt out.`;
+ const restaurant=order.restaurant_name??'RestaurantCall';
+ if(kind==='confirmed')return `${restaurant}: Hi ${order.customer_name??'there'}, your order #${label} has been received. Total: ${total}.${order.payment_method==='cash'?' Pay at pickup.':''} Reply STOP to opt out.`;
+ if(kind==='preparing')return `${restaurant}: Your order #${label} is now being prepared. Reply STOP to opt out.`;
+ return `${restaurant}: Your order #${label} is ready for pickup. Thank you! Reply STOP to opt out.`;
 }
 
 export function applyPreferenceEvent(current:{at:number;stopped:boolean}|undefined,incoming:{at:number;stopped:boolean}){return !current||incoming.at>current.at||incoming.at===current.at&&incoming.stopped;}

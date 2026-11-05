@@ -16,3 +16,8 @@ node_modules/
 
 # Local package-manager cache; inherited history is retained unchanged.
 .npm-cache/
+
+# Local Phase 6 diagnostic output; publish only reviewed summaries and synthetic captures.
+/docs/phase6/evidence/*.log
+/docs/phase6/evidence/browser-failure.png
+/docs/phase6/evidence/targeted-database-tests.json
