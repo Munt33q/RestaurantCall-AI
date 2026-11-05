@@ -4,11 +4,11 @@ User decision: **Prepare configuration; keep live testing blocked.** No agent, m
 
 ## ElevenLabs inbound identity
 
-Use a separate owned acceptance agent and owned caller number when real-provider testing is authorized. Preserve the existing Telnyx SIP connection and G711U/PCMU. The requested DeepSeek Flash 4.1 model and Brittany voice are user-reported; their account settings, entitlements, languages and quality were not verified in this phase.
+The configured RestaurantCall AI agent is `agent_3601m6kkzsp3e8c9a9qss7eje1ap` and the restaurant number is `+15044979015`. Preserve the existing Telnyx SIP connection and G711U/PCMU. The requested DeepSeek Flash 4.1 model and Brittany voice are user-reported; their account settings, entitlements, languages and quality were not verified in this phase.
 
 1. In Agents workspace settings, configure the conversation-initiation webhook as `POST https://APPROVED_APP_HOST/api/elevenlabs/initiation`. Add `Authorization: Bearer <ELEVENLABS_SESSION_BINDING_KEY>` through the provider's secret-header setting, and JSON content type.
 2. On the selected agent Security tab, enable **Fetch initiation client data from a webhook**. Do not enable prompt/model/voice overrides for this integration. Define the custom dynamic variable `secret__restaurant_session`. Include any other custom variables that the actual agent requires before enabling it; the current application returns only this secret variable.
-3. Set the application's exact `ELEVENLABS_AGENT_ID`, `ELEVENLABS_INBOUND_NUMBER` and server-side `RESTAURANT_ID`. Preview additionally requires the controlled caller in `ELEVENLABS_ACCEPTANCE_CALLERS`. Unknown agents, destinations and callers outside the Preview allowlist are refused.
+3. Set the application's exact `ELEVENLABS_AGENT_ID`, `ELEVENLABS_INBOUND_NUMBER` and server-side `RESTAURANT_ID`. Preview may use `ELEVENLABS_ACCEPTANCE_CALLERS` for isolated acceptance, but the approved public workflow does not require a manually maintained caller allowlist. Unknown agents and destinations are still refused and provider authentication remains mandatory.
 4. The authenticated provider request must supply `caller_id`, `called_number`, `agent_id`, `call_sid`, `conversation_id`; SIP may also supply `call_id` and `sip_headers`. The backend binds these to existing `call_sessions`/`draft_carts`, verifies retries against the same identities, and returns:
 
 ```json
@@ -64,7 +64,7 @@ Petra Cafe: Your order #[number] is ready for pickup. Thank you! Reply STOP to o
 
 Only definite HTTP 429 without an identifier retries automatically, with a one-minute minimum delay and at most three submissions. Network exceptions, malformed successful responses and server errors stay uncertain for operator reconciliation; they are never blindly resent. Disabled delivery defers without consuming the send-attempt budget. Submitted/delivered jobs are not resubmitted. Rapid kitchen changes suppress obsolete updates rather than sending misleading old status messages.
 
-The optional ready call uses the existing Telnyx TeXML fallback with Polly.Joanna-Neural, the actual saved order reference, recorded per-order call consent and one durable job. It requires `OUTBOUND_UPDATES_ENABLED=true` and `TELNYX_TEXML_APPLICATION_ID`. Each callback includes a per-job HMAC token and also requires Telnyx Ed25519 verification at `/api/telnyx/call-status`. ElevenLabs outbound Brittany SIP was **not** established or accepted here; this fallback must not be described as Brittany. Leave calls disabled until the user approves provider acceptance and chooses/accepts the fallback voice.
+The optional ready call uses the existing Telnyx TeXML fallback with Polly.Joanna-Neural, the actual saved order reference, recorded per-order call consent and one durable job created only when the order reaches `completed`. It requires `OUTBOUND_UPDATES_ENABLED=true` and `TELNYX_TEXML_APPLICATION_ID`. Each callback includes a per-job HMAC token and also requires Telnyx Ed25519 verification at `/api/telnyx/call-status`. ElevenLabs outbound Brittany SIP was **not** established or accepted here; this fallback must not be described as Brittany. Leave calls disabled until the user approves provider acceptance and chooses/accepts the fallback voice.
 
 ## Production activation specification
 

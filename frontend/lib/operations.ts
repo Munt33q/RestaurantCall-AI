@@ -9,8 +9,10 @@ export async function recordOrderEvent(tx:any,orderId:string,key:string,kind:str
  await tx`INSERT INTO order_events(order_id,event_key,kind,data_json,actor) VALUES(${orderId},${key},${kind},${tx.json(data)},${actor}) ON CONFLICT(order_id,event_key) DO NOTHING`;
 }
 export async function enqueueStatus(tx:any,order:any){
- if(order.is_test||!['confirmed','preparing','ready'].includes(order.status)||!order.notification_consent_at||order.notification_channel==='none')return;
- if(order.notification_channel==='call'&&order.status!=='ready')return;
+ if(order.is_test||!['confirmed','preparing','ready','completed'].includes(order.status)||!order.notification_consent_at||order.notification_channel==='none')return;
+ // Ready calls are completion notifications. Never create the durable call job
+ // while the ticket is still pending, preparing, or merely ready for pickup.
+ if(order.notification_channel==='call'&&order.status!=='completed')return;
  await tx`INSERT INTO notification_jobs(restaurant_id,order_id,event_key,kind,channel,consent_at) VALUES(${order.restaurant_id},${order.id},${`${order.id}:status:${order.status}`},${order.status},${order.notification_channel},${order.notification_consent_at}) ON CONFLICT(event_key) DO NOTHING`;
 }
 export async function enqueuePaymentSms(tx:any,order:any){
@@ -40,6 +42,10 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
    await sql.begin(async tx=>{
     const [order]=await tx`SELECT * FROM orders WHERE id=${job.order_id} AND restaurant_id=${restaurant} FOR UPDATE`;if(!order)throw new Error('Unknown order');
     if(order.is_test){await tx`UPDATE notification_jobs SET status='suppressed',last_error='Test order: delivery prohibited',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;return;}
+    if(job.channel==='call'&&order.status!=='completed'){
+     await tx`UPDATE notification_jobs SET status='suppressed',last_error='Ready callbacks require a completed order',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;
+     return;
+    }
     await tx`SELECT pg_advisory_xact_lock(hashtextextended(${`${restaurant}:${order.customer_phone}`},0))`;
     const [pref]=await tx`SELECT sms_opted_out FROM messaging_preferences WHERE restaurant_id=${restaurant} AND phone=${order.customer_phone??''}`;
     const reason=notificationGate({channel:job.channel,consent:!!job.consent_at&&(job.kind==='payment_link'?order.payment_sms_consent===true&&!!order.payment_sms_consent_at:!!order.notification_consent_at&&order.notification_channel===job.channel),optedOut:pref?.sms_opted_out===true,smsEnabled:smsDeliveryReady(),callsEnabled:process.env.OUTBOUND_UPDATES_ENABLED==='true',phone:order.customer_phone??'',kind:job.kind,orderStatus:order.status});

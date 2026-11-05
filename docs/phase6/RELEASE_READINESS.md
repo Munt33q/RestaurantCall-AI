@@ -14,9 +14,9 @@ Implemented:
 - Pickup name and special instructions are collected. The independent customer review page provides final name/complete-order confirmation and optional per-order notification consent. Only its authenticated same-origin browser grant can commit the order, atomically and idempotently.
 - Exact menu/pricing/promotions/stock are revalidated before commit. Changed drafts and prices invalidate prior proofs. A saved receipt provides the actual order reference; the model tool cannot create an order or invent confirmation authority.
 - Cash-only mode blocks card orders. Cash remains unpaid, including zero-total orders, until the existing staff collection action records payment.
-- Existing dashboard polling shows normal saved orders, notes, totals and notification job status. Staff can advance confirmed → preparing → ready → completed and record cash.
+- Existing dashboard polling shows normal saved orders, caller phone, notes, totals and callback job status. Staff can advance confirmed → preparing → ready → completed and record cash; a consented ready-call job is created only at completed.
 - ElevenLabs HMAC terminal callbacks close matching bound sessions without persisting transcripts/audio/analysis. Original relay playback checks remain intact. The web review is the explicitly permitted independent confirmation alternative; no playback acknowledgement is fabricated.
-- SMS requires profile/registration/sender attestations, per-order consent, no suppression, appropriate kitchen status and delivery flags. Definite rate limits have bounded retries; ambiguous submissions remain uncertain for operator review. Signed callbacks cannot downgrade terminal delivery and duplicate events do not resend messages.
+- SMS code remains available for future activation, but the approved public checkout hides SMS choices and delivery is disabled by default. Any legacy SMS job is blocked by the worker's delivery gate and cannot submit while disabled.
 - Optional one-time ready call retains the Telnyx TeXML/Polly fallback and signed per-job callbacks. It is not verified Brittany outbound SIP.
 
 ## Verification evidence
@@ -58,3 +58,9 @@ The disposable Neon branch is retained while an acceptance Preview depends on it
 | Production deployment | Requires explicit approval after all preceding gates, a scoped migration plan and controlled real-order acceptance |
 
 The safe local engineering, publication audit, Preview build and isolated browser verification are complete. Production readiness is **not claimed**. Do not promote the synthetic acceptance Preview to production: its database and credentials are intentionally disposable. Create a separately approved production deployment after activation gates pass.
+
+## Phase 6 completion-only callback hardening
+
+The release workflow now creates a consented callback job only when the internal order reaches `completed`. A `ready` transition cannot enqueue a call, and the worker suppresses any legacy or replayed call job whose order is not completed. The customer review page exposes only the approved cash-at-pickup flow and optional completion call; SMS controls remain hidden while the existing SMS implementation stays disabled behind provider gates. The dashboard order cards now show caller phone and callback preference/status, while order detail retains the full notification timeline.
+
+This change was typechecked and included in a successful production build. A fresh full test-run attempt was blocked by the host's Windows Node startup error `uv_os_get_passwd returned ENOMEM`; the prior disposable Neon evidence remains in `evidence/database-tests.json`, and focused completion-only regression coverage was added in `frontend/tests/release-gates.phase6.test.ts`.

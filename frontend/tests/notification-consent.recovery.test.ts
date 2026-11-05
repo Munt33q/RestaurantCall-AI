@@ -12,8 +12,8 @@ for(const scenario of ['withdrawn consent','changed channel','SMS opt-out'] as c
   process.env.TELNYX_PHONE_NUMBER='+12025550101';
   process.env.PUBLIC_APP_URL='https://example.test';
   const channel=scenario==='SMS opt-out'?'sms':'call';
-  const job={id:'job',order_id:'order',channel,kind:'ready',consent_at:new Date(),status:'dispatching'};
-  const order={id:'order',restaurant_id:'recovery-restaurant',customer_phone:'+12025550123',status:'ready',payment_method:'cash',total_cents:1200,notification_consent_at:scenario==='withdrawn consent'?null:new Date(),notification_channel:scenario==='changed channel'?'none':channel};
+  const job={id:'job',order_id:'order',channel,kind:channel==='call'?'completed':'ready',consent_at:new Date(),status:'dispatching'};
+  const order={id:'order',restaurant_id:'recovery-restaurant',customer_phone:'+12025550123',status:channel==='call'?'completed':'ready',payment_method:'cash',total_cents:1200,notification_consent_at:scenario==='withdrawn consent'?null:new Date(),notification_channel:scenario==='changed channel'?'none':channel};
   let posts=0,suppressed=false;
   const sql:any=async(strings:TemplateStringsArray,...values:unknown[])=>{
    const q=strings.join('?');
