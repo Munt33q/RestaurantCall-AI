@@ -1,0 +1,13 @@
+{
+  "deploymentId": "dpl_815ajSrorq1to7Uzhoj2qtR4Vgv5",
+  "url": "https://restaurant-call-hqq3sk4fb-vercel-1a62.vercel.app",
+  "status": "READY",
+  "target": "preview",
+  "sourceCommit": "5916f52adbbffa4a0d7a2fb313d6884f984f8039",
+  "branch": "feat/elevenlabs-brittany-webhooks",
+  "project": "restaurant-call-ai",
+  "framework": "nextjs",
+  "region": "iad1",
+  "providerBrowserVerification": "not rerun: desktop browser automation transport unavailable in this session",
+  "productionModified": false
+}
