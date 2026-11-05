@@ -1,0 +1,86 @@
+
+> build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/24) ...
+   Generating static pages (6/24) 
+   Generating static pages (12/24) 
+   Generating static pages (18/24) 
+ ✓ Generating static pages (24/24)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    146 B          87.4 kB
+├ ○ /_not-found                          873 B          88.1 kB
+├ ○ /analytics                           1.88 kB        89.1 kB
+├ ƒ /api/analytics                       0 B                0 B
+├ ƒ /api/calls                           0 B                0 B
+├ ƒ /api/calls/[callId]                  0 B                0 B
+├ ƒ /api/catalog-import                  0 B                0 B
+├ ƒ /api/checkout/confirm                0 B                0 B
+├ ƒ /api/checkout/review                 0 B                0 B
+├ ƒ /api/conversation/preview            0 B                0 B
+├ ƒ /api/cron/operations                 0 B                0 B
+├ ƒ /api/demo                            0 B                0 B
+├ ƒ /api/drafts                          0 B                0 B
+├ ƒ /api/elevenlabs/initiation           0 B                0 B
+├ ƒ /api/elevenlabs/post-call            0 B                0 B
+├ ƒ /api/elevenlabs/session              0 B                0 B
+├ ƒ /api/elevenlabs/tools                0 B                0 B
+├ ƒ /api/health                          0 B                0 B
+├ ƒ /api/health/model                    0 B                0 B
+├ ƒ /api/health/model-diagnostic         0 B                0 B
+├ ƒ /api/integrations                    0 B                0 B
+├ ƒ /api/jobs                            0 B                0 B
+├ ƒ /api/login                           0 B                0 B
+├ ƒ /api/menu                            0 B                0 B
+├ ƒ /api/menu/[itemId]                   0 B                0 B
+├ ƒ /api/model-status                    0 B                0 B
+├ ƒ /api/notifications/ready-call        0 B                0 B
+├ ƒ /api/orders                          0 B                0 B
+├ ƒ /api/orders/[orderId]                0 B                0 B
+├ ƒ /api/orders/[orderId]/payment        0 B                0 B
+├ ƒ /api/orders/[orderId]/status         0 B                0 B
+├ ƒ /api/promotions                      0 B                0 B
+├ ƒ /api/recovery/code                   0 B                0 B
+├ ƒ /api/relay/action                    0 B                0 B
+├ ƒ /api/relay/keys                      0 B                0 B
+├ ƒ /api/relay/test                      0 B                0 B
+├ ƒ /api/sip/catalog                     0 B                0 B
+├ ƒ /api/stripe/webhook                  0 B                0 B
+├ ƒ /api/telnyx/call-status              0 B                0 B
+├ ƒ /api/telnyx/gather                   0 B                0 B
+├ ƒ /api/telnyx/live-voice               0 B                0 B
+├ ƒ /api/telnyx/messaging                0 B                0 B
+├ ƒ /api/telnyx/phone-checkout           0 B                0 B
+├ ƒ /api/telnyx/relay-ended              0 B                0 B
+├ ƒ /api/telnyx/voice                    0 B                0 B
+├ ƒ /api/track/[token]                   0 B                0 B
+├ ƒ /api/voice-deployment                0 B                0 B
+├ ○ /calls                               3.94 kB        99.9 kB
+├ ○ /confirm                             1.99 kB        89.3 kB
+├ ○ /dashboard                           4.86 kB         101 kB
+├ ○ /login                               1.93 kB        89.2 kB
+├ ○ /menu                                5.72 kB          93 kB
+├ ƒ /orders/[orderId]                    2.12 kB        98.1 kB
+├ ƒ /pay/[token]                         0 B                0 B
+├ ○ /payment-result                      146 B          87.4 kB
+├ ƒ /recover/[token]                     1.79 kB        89.1 kB
+├ ○ /simulator                           1.33 kB        88.6 kB
+└ ƒ /track/[token]                       1.49 kB        88.8 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-baab43fc83142998.js       31.7 kB
+  ├ chunks/fd9d1056-87da80e0c187477b.js  53.6 kB
+  └ other shared chunks (total)          1.89 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

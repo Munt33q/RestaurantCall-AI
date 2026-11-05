@@ -174,3 +174,18 @@ relay/package.json -text
 /frontend/lib/relay/languages.ts -text
 /docs/VOICE_EXPERIENCE_PHASE4.md -text
 /frontend/.env.example -text
+
+# Telephone checkout: migration checksums and verification manifests must be
+# stable across Windows/Linux checkouts. Preserve reviewed source bytes.
+/docs/telephone/** -text -whitespace
+/recovery/telephone/** -text whitespace=cr-at-eol
+/frontend/drizzle/0011_telephone_checkout.sql -text
+/frontend/drizzle/0012_completed_notification_jobs.sql -text
+/frontend/drizzle/0013_telephone_command_stages.sql -text
+/frontend/lib/telephone-checkout.ts -text
+/frontend/lib/telephone-checkout-config.ts -text
+/frontend/app/api/telnyx/phone-checkout/route.ts -text
+/frontend/lib/customer-checkout.ts -text
+/frontend/lib/elevenlabs-initiation.ts -text
+/frontend/lib/elevenlabs-tools.ts -text
+/config/elevenlabs-webhook-tool-blueprints.json -text

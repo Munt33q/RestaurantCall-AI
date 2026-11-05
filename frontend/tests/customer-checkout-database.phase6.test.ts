@@ -109,9 +109,11 @@ test('Phase 6 actual database engine: provider binding, independent review, atom
   try{const r:any=await d.tools({tool:'review_order'}),v=await exchangeCustomerReview(r.reviewCode),o=await confirmCustomerReview(v.cookie,{...input,csrf:v.csrf,channel:'none',consent:false});assert.equal(o.totalCents,0);assert.equal(o.paymentStatus,'unpaid');assert.equal((await sql`SELECT payment_status FROM orders WHERE id=${o.orderId}`)[0].payment_status,'unpaid');}
   finally{await sql`UPDATE menu_items SET price_cents=1000 WHERE id=${item}`;}
  });
- await t.test('ready-call fallback uses saved order, one submission and authenticated status callback',async()=>{
+ await t.test('completion-call fallback uses saved order, one submission and authenticated status callback',async()=>{
   const d=await make('+12025550127'),r:any=await d.tools({tool:'review_order'}),v=await exchangeCustomerReview(r.reviewCode),o=await confirmCustomerReview(v.cookie,{...input,csrf:v.csrf,channel:'call'});
-  await updateOrderStatus(o.orderId,'preparing');await updateOrderStatus(o.orderId,'ready');Object.assign(process.env,{OUTBOUND_UPDATES_ENABLED:'true',TELNYX_TEXML_APPLICATION_ID:'fixture-app'});
+  await updateOrderStatus(o.orderId,'preparing');await updateOrderStatus(o.orderId,'ready');
+  assert.equal((await sql`SELECT count(*)::int AS n FROM notification_jobs WHERE order_id=${o.orderId}`)[0].n,0,'No callback before completion');
+  await updateOrderStatus(o.orderId,'completed');Object.assign(process.env,{OUTBOUND_UPDATES_ENABLED:'true',TELNYX_TEXML_APPLICATION_ID:'fixture-app'});
   const providerId='phase6-ready-'+crypto.randomUUID();let posts=0,callback='';const transport:typeof fetch=async(url,init)=>{posts++;assert.match(String(url),/texml\/calls\/fixture-app$/);const b=JSON.parse(String(init?.body));assert.match(b.Texml,new RegExp(o.orderNumber));assert.match(b.Texml,/Polly.Joanna-Neural/);callback=b.StatusCallback;return Response.json({call_sid:providerId});};
   await runNotificationJobs(o.orderId,transport,sql);await runNotificationJobs(o.orderId,transport,sql);assert.equal(posts,1);
   const keys=crypto.generateKeyPairSync('ed25519');process.env.TELNYX_PUBLIC_KEY=keys.publicKey.export({format:'pem',type:'spki'}).toString();

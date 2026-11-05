@@ -189,7 +189,7 @@
   },
   {
     "name": "confirm_order",
-    "description": "Retrieve the saved receipt after independent customer web confirmation. This tool never creates an order. CUSTOMER_REVIEW_REQUIRED means no saved order; guide the customer to their review page. Announce an order number only from a successful saved receipt.",
+    "description": "Retrieve the saved receipt or prepare independent customer confirmation. This tool never creates an order. TELEPHONE_TRANSFER_REQUIRED means use only the configured secure SIP REFER transfer; the customer must hear the complete review and then press 1. CUSTOMER_REVIEW_REQUIRED means use the signed web review fallback. If transfer fails, request review_order while the call remains active. Announce an order number only from a successful saved receipt. Never send confirmation digits yourself or claim transfer placed an order.",
     "method": "POST",
     "url": "https://APPROVED_APP_HOST/api/elevenlabs/tools",
     "headers": {

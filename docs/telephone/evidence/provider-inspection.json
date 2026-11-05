@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-11-05T14:23:13.993256+00:00",
+  "mutations": false,
+  "realCallsMade": false,
+  "projectHTTP": 403,
+  "productionDeployment": null,
+  "productionBranch": null,
+  "environmentHTTP": 403,
+  "telnyx": {
+    "credentialAvailable": false
+  },
+  "elevenlabs": {
+    "credentialAvailable": false
+  },
+  "previewPhoneConfiguration": {
+    "TELNYX_CONFIRMATION_APPLICATION_ID": "unknown_access_denied",
+    "TELNYX_CONFIRMATION_DESTINATION": "unknown_access_denied",
+    "TELNYX_CONFIRMATION_SIP_URI": "unknown_access_denied",
+    "TELNYX_VOICE_CONFIRMATION_ENABLED": "unknown_access_denied",
+    "CUSTOMER_CHECKOUT_SECRET": "unknown_access_denied"
+  },
+  "alternativeSavedVercelCredentialProjectHTTP": 403,
+  "officialContract": {
+    "source": "https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json",
+    "sha256": "7e215537097dcdf18198a90cb8683188d59ad27836c2973731ff12c872bf364b",
+    "speakEndedStatuses": [
+      "completed",
+      "call_hangup",
+      "cancelled_amd"
+    ],
+    "gatherEndedStatuses": [
+      "valid",
+      "invalid",
+      "call_hangup",
+      "cancelled",
+      "cancelled_amd",
+      "timeout"
+    ],
+    "initiationIdentityFields": [
+      "call_control_id",
+      "connection_id",
+      "connection_codecs",
+      "offered_codecs",
+      "call_leg_id",
+      "custom_headers",
+      "sip_headers",
+      "shaken_stir_attestation",
+      "shaken_stir_validated",
+      "call_session_id",
+      "client_state",
+      "caller_id_name",
+      "call_screening_result",
+      "from",
+      "to",
+      "direction",
+      "state",
+      "start_time",
+      "tags"
+    ],
+    "gatherRequestFields": [
+      "minimum_digits",
+      "maximum_digits",
+      "timeout_millis",
+      "inter_digit_timeout_millis",
+      "initial_timeout_millis",
+      "terminating_digit",
+      "valid_digits",
+      "gather_id",
+      "client_state",
+      "command_id"
+    ]
+  }
+}

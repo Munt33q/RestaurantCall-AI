@@ -1,0 +1,352 @@
+✔ acceptance card rejection and recovery rejection happen before any database access (1.647ms)
+✔ acceptance orders force cash, no consent/jobs and visible DO NOT PREPARE marking (5676.1397ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'test',
+  ok: false,
+  ms: 0,
+  error: 'provider_http_503',
+  status: 503,
+  requestId: null
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test',
+  ok: false,
+  ms: 1,
+  error: 'provider_http_503'
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test',
+  ok: false,
+  ms: 1,
+  error: 'invalid_model_output'
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test',
+  ok: false,
+  ms: 0,
+  error: 'invalid_model_output'
+}
+✔ real dialogue path sends each reported paraphrase to the model verbatim with live facts (51.9448ms)
+✔ model outage gives an honest fallback instead of a fabricated unavailability answer (1.9377ms)
+✔ invented prices or menu references cannot become spoken answers (2.7034ms)
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test-model',
+  ok: false,
+  ms: 0,
+  error: 'invalid_model_output'
+}
+✔ AI extraction tolerates a provider response after four seconds (4233.1656ms)
+✔ AI never inserts a made-up menu ID (0.7397ms)
+✔ legacy item extractor skips category requests (0.1388ms)
+✔ contextual reasoning resolves quantity changes but never confirms an order (7.1364ms)
+✔ AI classifies an unfamiliar requested food without inventing availability (0.8501ms)
+✔ accepting an offered choice is resolved by the app without AI guessing (0.4036ms)
+✔ only an explicit, unambiguous language preference changes revision (3.9438ms)
+✔ switch preserves checkout fields and unconfirmed language selection is bounded (0.6274ms)
+✔ unheard receipt creates one warning/event; verified playback creates none (7911.9939ms)
+✔ catalog enforces tenant/version/audit, quote rollback, reviewed archive and free-order semantics (9537.3313ms)
+✔ catalog validates trusted fields, integer money and ordered date intervals (2.5418ms)
+✔ discounts never stack, never discount unrelated items and expire at the boundary (11.3057ms)
+✔ precontext explicitly distinguishes unknown history and bounds trusted sales (0.5925ms)
+✔ zero sugar absence is explicit without declaring ordinary cola sugar free (2.4525ms)
+✔ spoken and explicitly spelled names confirm the letters (7.3687ms)
+✔ notes are optional, included in review, and do not mutate cart (1.8217ms)
+✔ slow relay stays silent while preparing and interruption cancels the stale reply (1308.5908ms)
+✔ unrelated waiting speech cannot count as priced review playback (1.3708ms)
+✔ sales context stays under five lines and excludes unavailable menu items (4.5097ms)
+✔ cancel clears kitchen notes and confirm cannot be mistaken for a note (0.2935ms)
+✔ notes stage respects goodbye, repeat, and menu questions without storing them (0.3392ms)
+✔ resumed speech discards partial waiting cue before a fresh review (1253.3272ms)
+▶ Phase 6 actual database engine: provider binding, independent review, atomic cash order, kitchen and durable messaging
+  ✔ duplicate initiation is idempotent; caller/agent/session rebinding fails (1279.4255ms)
+  ✔ valid tool auth alone cannot forge another session; bound secret succeeds (1940.2129ms)
+  ✔ verbal/tool confirmation cannot insert; name, notes, pricing and independent browser review required (1410.8701ms)
+  ✔ browser proof rejects forgery and cross-tenant replay (2.2755ms)
+  ✔ concurrent confirmation commits once, reserves once and keeps cash unpaid (1155.4785ms)
+  ✔ new cart edit invalidates browser proof, and price changes force a fresh review (10599.8713ms)
+  ✔ expired/ended calls and changed stock cannot commit; other-tenant sessions cannot enter order engine (13577.4163ms)
+  ✔ one authoritative SMS per status, signed receipt processing, no duplicate sends and STOP suppression (10248.2947ms)
+  ✔ definite rate limits retry within bounds; ambiguous responses never resend (26655.4695ms)
+  ✔ cash stays unpaid even for a zero-total order until staff records collection (9001.5798ms)
+  ✔ completion-call fallback uses saved order, one submission and authenticated status callback (14359.422ms)
+✔ Phase 6 actual database engine: provider binding, independent review, atomic cash order, kitchen and durable messaging (100293.4655ms)
+✔ provider initiation rejects model identities, unknown agents/destinations and non-allowlisted preview callers (1.7631ms)
+✔ per-conversation tool credentials cannot authorize another conversation or call (0.6978ms)
+✔ ElevenLabs terminal webhooks require raw-body HMAC and a fresh unique timestamp (3.3201ms)
+✔ bounded request reader rejects streamed oversized bodies before using provider input (29.6741ms)
+✔ customer confirmation requires explicit complete review and name confirmation; model fields are refused (0.7111ms)
+✔ customer checkout rejects cross-site requests, missing browser origins and wrong content types (1.2057ms)
+✔ checkout and provider initiation default to disabled; no database or provider request is possible (1.9121ms)
+✔ SMS requires all registration, sender and profile gates; templates use saved references and cash total (0.9205ms)
+✔ database: concurrent callbacks, kitchen contract, payment and expiry lifecycle (52503.4581ms)
+✔ credentials are authenticated, purpose separated and attempt/expiry bound (4.1732ms)
+✔ native numeral recovery codes require exact eight digits and separate consent (0.534ms)
+✔ restored draft revalidates stock and clears payment, consent and review (0.9183ms)
+✔ recovery SMS requires every consent/registration flag and enforces daily cap (0.2253ms)
+✔ ElevenLabs tools require an active bound session and return authoritative menu data (5358.6689ms)
+✔ ElevenLabs tool route fails closed when disabled or unauthorized (24.621ms)
+✔ refuses unknown tool and malformed conversation IDs (1.3665ms)
+✔ accepts valid preview tool input (0.2493ms)
+✔ conversation IDs must resolve to an existing provider session before tools run (0.9212ms)
+✔ assistance needs two uncertain turns or six seconds of proven idle and never interrupts (1.3917ms)
+✔ upsells cap offers, avoid combos/declines and cannot accept an interrupted offer (0.8544ms)
+✔ decline and hesitant filler never change the cart; offered events have durable keys (16.2584ms)
+✔ offer acceptance checks current stock; disabled flags do not create offers (1.1428ms)
+✔ full item names and combo names do not also order similarly named items (15.9604ms)
+✔ spoken and bare item numbers work beyond ten (0.5199ms)
+✔ category browsing never adds items to an order (10.3817ms)
+✔ inbound speech waits for speech and offers a second gather on silence (0.3345ms)
+✔ neural speech and explicit end-of-speech window replace robotic defaults (0.3781ms)
+✔ empty transcripts stop after three attempts instead of repeating forever (0.7669ms)
+✔ repeat replays the previous prompt without changing the cart (2.6758ms)
+✔ contextual quantity correction replaces rather than adds quantities (0.5166ms)
+✔ phase4 en: spoken and keypad selection, stable preference and localized cash checkout (36.9019ms)
+✔ phase4 en: card and notification permissions remain explicit (1.4032ms)
+✔ phase4 es: spoken and keypad selection, stable preference and localized cash checkout (1.6438ms)
+✔ phase4 es: card and notification permissions remain explicit (0.8315ms)
+✔ phase4 ar: spoken and keypad selection, stable preference and localized cash checkout (5.6689ms)
+✔ phase4 ar: card and notification permissions remain explicit (0.7979ms)
+✔ phase4 ur: spoken and keypad selection, stable preference and localized cash checkout (38.8649ms)
+✔ phase4 ur: card and notification permissions remain explicit (1.4488ms)
+✔ phase4 hi: spoken and keypad selection, stable preference and localized cash checkout (1.0113ms)
+✔ phase4 hi: card and notification permissions remain explicit (0.6758ms)
+✔ phase4 Unicode catalog aliases and compound quantities work without a model (4.8642ms)
+✔ phase4 unclear selections are bounded and switches cannot silently select Urdu as Hindi (0.3896ms)
+✔ phase4 unsupported provider languages preserve the cart and prior language (1.0541ms)
+✔ phase4 language profile drives both synthesis and recognition and rejects English Flux for Urdu (0.6055ms)
+✔ phase4 configured Call Control language cannot activate on TeXML, Gather or an unknown transport (0.4597ms)
+✔ phase4 Brittany is never guessed or silently substituted; Bella rollback remains exact (0.5089ms)
+✔ phase4 review metadata is independent of English wording (0.5553ms)
+✔ phase4 native menu and availability questions use verified catalog facts in the chosen language (4.1844ms)
+✔ recovery: directionless answered callback requires the previously admitted session (2.3106ms)
+✔ recovery: foreign application callback cannot open a session or issue a command (0.2157ms)
+✔ recovery: rejected relay start attempts audible outage closure instead of silent continuation (0.7971ms)
+✔ recovery: discounts choose one eligible offer, preserve other lines and floor tax (10.7221ms)
+✔ recovery: catalog rejects negative inventory and extra untrusted price fields (0.4742ms)
+✔ recovery: recovery credentials are purpose-separated, authenticated and expiry-bound (4.3734ms)
+✔ recovery: resumed draft revalidates stock and returns to fresh confirmation (0.358ms)
+✔ recovery: recovery SMS requires registration, current permission and a daily limit (0.1759ms)
+﹣ LIVE model chain must extract both items through validated model output, never apology (0.8067ms) # SKIP
+✔ foreign app, outbound initiated and unadmitted directionless answers issue no commands (1.5522ms)
+✔ accepted relay start uses Bella Flux and omits unsupported events; IDs are retry stable (0.7694ms)
+✔ acceptance filter admits no customer session and outage waits for scoped playback end (0.2314ms)
+✔ health probes select two current available items and reject an insufficient catalog (1.6471ms)
+✔ ordinary deterministic menu command needs no model network (11.3281ms)
+✔ forced health probe cannot pass on deterministic parsing alone (24.1384ms)
+✔ burger availability question lists available burgers without adding one (7.0138ms)
+✔ specific drink questions answer availability without changing an existing cart (1.0869ms)
+✔ missing brand is not falsely equated with a generic drink (0.4331ms)
+✔ sold-out items get an in-stock alternative rather than a substitution (0.3896ms)
+✔ similar drink suggestions prefer the same kind of drink (0.4214ms)
+✔ ordering phrases still add items, while questions during name collection preserve the phase (17.5628ms)
+✔ what burgers do you have lists burger options rather than denying the question (0.833ms)
+✔ yes to a single offered item adds it, while yes to multiple choices asks which (1.0875ms)
+✔ model acceptance rejects ambient production credentials and removes unrelated credentials/data (1.5824ms)
+✔ acceptance endpoints cannot embed credentials or use cleartext, and fallback needs explicit independent credentials (0.5029ms)
+✔ acceptance cannot pass on deterministic parsing, missing HTTP proof, wrong quantity, or premature submission (11.4078ms)
+✔ fallback acceptance needs both controlled primary failure and actual successful fallback provenance (0.2874ms)
+✔ question, safety and language cases reject silent edits or inadequate spoken replies (1.4403ms)
+✔ synthetic acceptance matrix runs through actual interpretation and cart validation (mocked provider, not live acceptance) (55.7201ms)
+✔ three genuine failures in five minutes alert, cancellations and old events do not (0.8256ms)
+✔ provider timeout, caller abort and DNS/TLS failures retain distinct codes (0.2377ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 518,
+  error: 'timeout',
+  requestId: null
+}
+✔ real HTTP timeout uses independent fallback; cancellation never starts fallback (567.9347ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'timeout',
+  requestId: null
+}
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'invalid_model_json',
+  status: 200,
+  requestId: null
+}
+✔ provider deadline failure falls back to an independent validated model (34.062ms)
+✔ invalid JSON from primary can never be committed and uses backup (1.9287ms)
+✔ caller cancellation does not trigger backup work (0.5808ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'synthetic-primary',
+  ok: false,
+  ms: 508,
+  error: 'timeout',
+  requestId: null
+}
+✔ phase4 real loopback HTTP deadline aborts a stalled primary and validates fallback edits (555.0529ms)
+VOICE_PLAYBACK_REJECTED { reason: 'playback_incomplete_or_mismatched' }
+MODEL_WATCH_PROBE { status: 200, invocation: 'fixture-invocation' }
+✔ relay handler verifies JWT, setup identity, duplicate nonce and full review playback (156.838ms)
+✔ monitor requires trusted trigger metadata, matching invocation ID and expected schedule name (7.7379ms)
+✔ recovery: queued notification cannot bypass withdrawn consent (3.0703ms)
+✔ recovery: queued notification cannot bypass changed channel (0.4268ms)
+✔ recovery: queued notification cannot bypass SMS opt-out (0.3101ms)
+✔ tracking grants bind restaurant order version and expiry and reject tampering (1.3117ms)
+✔ templates are deterministic and never claim unpaid card orders are confirmed (0.388ms)
+✔ terminal receipt states cannot be downgraded by out-of-order events (0.1556ms)
+✔ send guards enforce consent opt-out verified SMS current state and caller number (0.3152ms)
+✔ checkout collects separate payment SMS permission and ready-update channel before readback (12.6877ms)
+✔ cash checkout can explicitly decline all notifications (1.3698ms)
+✔ older START cannot clear a newer STOP and STOP wins equal timestamps (0.1398ms)
+✔ provider submission retains consent and order locks in its transaction (18.09ms)
+✔ an unconfirmed terminal delivery receipt stays visibly uncertain (0.1082ms)
+✔ the model can interpret a natural ready-call preference at its consent step (3.2463ms)
+✔ staff cash confirmation cannot mark card or cancelled orders paid (0.184ms)
+✔ recovery database: two distinct items require review and confirmation, concurrent retries reserve once (17189.3239ms)
+✔ normalizes duplicate lines and rejects invalid quantities (1.8273ms)
+✔ kitchen requires paid cards and permits only adjacent transitions (0.1726ms)
+✔ phone order needs name, payment, readback then explicit confirmation (22.0774ms)
+✔ menu numbers work and unavailable items never enter cart (0.7485ms)
+✔ edits after readback invalidate confirmation and unknown speech adds nothing (0.6304ms)
+✔ changed prices require another readback before confirmation (1.6683ms)
+✔ negative spoken quantities cannot be turned into positive orders (0.219ms)
+✔ completed payment jobs do not show an obsolete recovery warning (0.1747ms)
+✔ paid checkout must match order, session, amount and currency (1.6193ms)
+✔ expiry releases reservation once, late events do not revive cancellation (0.219ms)
+✔ unprovisioned card orders expire instead of permanently holding stock (0.8903ms)
+✔ recovered Petra photo catalog preserves 74 items, nine categories and documented prices (1.6697ms)
+✔ different Arabic playback cannot authorize a review or end the call (3.2266ms)
+✔ missing Hindi playback cannot authorize a review (0.4823ms)
+✔ complete Unicode review is acknowledged after playback ends (0.1955ms)
+✔ punctuation-only output cannot authorize checkout (0.1234ms)
+✔ never repeats an uncertain outbound attempt (1.9991ms)
+✔ rejects invalid numbers and XML injection before dialing (0.282ms)
+✔ records provider acceptance without claiming delivery (17.9691ms)
+✔ recovery is tenant/caller bound, consumed once under concurrency and expires safely (16967.9299ms)
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+✔ signed relay claims identity, rejects false Unicode ack and stale reconnect, invalidates interruptions (8029.7112ms)
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'delivery_identity_mismatch' }
+VOICE_CONFIRMATION_REJECTED { reason: 'missing_playback_evidence', turn: 7, phase: 'confirm' }
+VOICE_PLAYBACK_ACK_REJECTED { reason: 'playback_text_mismatch' }
+✔ phase4 actual action route and controller: missing review, late proof, repeated confirmation and one durable receipt (36731.217ms)
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+VOICE_PLAYBACK_REJECTED { reason: 'playback_interrupted' }
+✔ phase4 relay keypad selection sends STT and TTS switch before translated speech (184.0656ms)
+✔ relay credentials are scoped to one call, expire, and cannot be forged (6.1261ms)
+✔ interruption discards a stale reply and partial prompts never commit (5.0629ms)
+✔ a final transcript is processed once and playback acknowledgment follows actual end of speech (2.4301ms)
+✔ an interrupted readback is not acknowledged as completed (0.335ms)
+✔ final submission is blocked until the complete current review was played (38.8391ms)
+✔ relay XML keeps listening during playback and never uses Gather (7.7242ms)
+✔ barge-in dispatches invalidation immediately while commit is pending (1.7131ms)
+✔ a repeated final cannot add twice after a speaker event or delay (0.2419ms)
+✔ old completion cannot end a newer interrupted conversation (2.033ms)
+✔ the same phrase can be retried after preparation fails or is interrupted (15.4848ms)
+✔ ready callbacks are created only after the order reaches completed (1.554ms)
+✔ disabled SMS is blocked at the provider submission gate (0.2924ms)
+✔ total and tax questions use the current quote and preserve checkout phase without AI (16.7802ms)
+✔ name is read back for explicit confirmation and by-card progresses without the model (6.429ms)
+✔ two explicit shorthand items cannot silently lose the second model omission (1.3015ms)
+✔ hello and model failures continue the current checkout prompt instead of a generic greeting (0.8657ms)
+✔ a speaker-start notification alone cannot erase the pending review or prevent hangup (1.6617ms)
+✔ a repeated confirm after an interrupted review can advance after complete playback (0.3594ms)
+✔ answering a menu question at payment keeps the payment follow-up (0.3297ms)
+✔ complete model quantities survive compound-item reconciliation (17.6269ms)
+✔ questions cannot become pickup names and Bill remains a valid name (2.3409ms)
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'test',
+  ok: false,
+  ms: 0,
+  error: 'invalid_model_output'
+}
+✔ a caller can repeat confirm while the played-review acknowledgment is in flight (3.2585ms)
+✔ presence checks cannot be captured as pickup names (0.5811ms)
+✔ an omitted item with an invalid spoken quantity cannot crash reconciliation (1.049ms)
+✔ duplicate speech at name collection repeats the name prompt instead of an item prompt (0.2133ms)
+✔ final review uses discounted server quote and requires explicit confirmation (12.699ms)
+✔ price or inventory version changes force a fresh review before confirmation (2.3255ms)
+✔ Telnyx accepts base64 raw Ed25519 public key and rejects tampering/stale timestamps (6.7581ms)
+✔ staff sessions reject forged cookies and expiry (0.4807ms)
+✔ missing staff credentials fail closed (0.3572ms)
+✔ shared checkout starts without prior customer consent or payment authority (1.258ms)
+✔ shared quiet-call handling stops after bounded attempts without submission (2.6991ms)
+✔ explicit multilingual confirmation is phase bound and never substring matched (2.0203ms)
+✔ native payment and no-notes choices normalize only in their relevant phase (0.2024ms)
+✔ shared relay checkout blocks unplayed confirmation and preserves explicit review (1.1662ms)
+✔ completed callback jobs deduplicate, honor revoked consent and reconcile provider delivery without resend (6165.5925ms)
+▶ telephone checkout secure state machine, transactional order, receipt and dashboard
+  ✔ signature, secret headers and full call identity required; arbitrary early digits are ignored (16363.4345ms)
+  ✔ review ending because of hangup or cancellation cannot open gather (22647.3343ms)
+  ✔ completed review and separate prompt precede valid keypad confirmation; concurrent retries commit once (24603.9852ms)
+  ✔ only valid 1 confirms; timeout, invalid, cancellation and model-like status do not (73406.0933ms)
+  ✔ price, inventory and cart changes invalidate review; no partial reservation survives (49581.8025ms)
+  ✔ prepared cart edits invalidate handoff, old secret cannot attach a second leg, immutable snapshots cannot change (18967.8799ms)
+TELEPHONE_CHECKOUT_UNAVAILABLE
+  ✔ failed command dispatch retries the same command ID without advancing or losing work (9471.9212ms)
+  ✔ expiry, cross-call stage tokens and explicit decline cannot create orders (30749.0276ms)
+TELEPHONE_CHECKOUT_UNAVAILABLE
+  ✔ receipt persistence failure rolls back the order and inventory; exact retry succeeds without callback consent (22939.2296ms)
+  ✔ incomplete telephone configuration retains signed web-review fallback (7918.5319ms)
+  ✔ terminal call event blocks delayed confirmation; tenant switch cannot commit (28500.2826ms)
+✔ telephone checkout secure state machine, transactional order, receipt and dashboard (306104.7598ms)
+✔ telephone checkout defaults closed and cannot activate in Production or with SMS (16.0106ms)
+✔ full review includes item prices and all totals; oversized reviews cannot be truncated (0.268ms)
+✔ provider field diagnostics retain pointers but scrub credentials, bodies and URLs (16.5394ms)
+✔ invalid diagnostic token retains URL length without granting authentication (4.7758ms)
+✔ done events stay done; only safe recent failures retry; stale work requires reconciliation (2833.9981ms)
+✔ phase4: repeated affirmative advances after full review without clientSpeaking event (3.5339ms)
+✔ phase4: final playback tokens arriving after speaker-off still acknowledge the review (0.7537ms)
+✔ phase4: speaker-off without complete tokens never acknowledges a review (0.1473ms)
+✔ phase4: explicit final affirmatives are phase-bound and negations stay blocked (1.3332ms)
+✔ phase4: duplicate simultaneous confirmations consume only one acknowledged review boundary (0.2731ms)
+✔ phase4: failed backend acknowledgement cannot end a call or grant readiness (0.792ms)
+✔ phase4: missing and mismatched playback receive distinct non-sensitive diagnostics (0.2896ms)
+✔ phase4: interrupted review cannot be revived by delayed playback tokens (0.1841ms)
+✔ phase4: unavailable playback evidence triggers a new tracked review on caller retry (0.2445ms)
+✔ phase4: missing review and unrecognized intent have separate rejection reasons (5.5724ms)
+✔ phase4: completed-order retries preserve the original receipt after an interrupted receipt (0.1355ms)
+✔ phase4: a queued final from before interruption cannot commit after the pending write (2.643ms)
+MODEL_CALL_FAILURE {
+  provider: 'flatrouter',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'truncated_response',
+  status: 200,
+  requestId: null
+}
+MODEL_CALL_FAILURE {
+  provider: 'ordering',
+  model: 'gpt-6-luna',
+  ok: false,
+  ms: 0,
+  error: 'truncated_response'
+}
+✔ voice requests explicitly select low reasoning without incompatible temperature (19.3604ms)
+✔ short model references are mapped back to real menu IDs (1.3187ms)
+✔ voice payload keeps menu facts and state with smaller prompt and bounded recent context (2.0907ms)
+✔ truncated provider output cannot become a spoken answer or cart edit (1.094ms)
+✔ explicit compound add bypasses model but ambiguity and modifiers still use reasoning (9.2055ms)
+✔ unowned destination and unprepared application cause zero provider traffic (0.8902ms)
+✔ owned-line probe uses preview authority and always hangs up after a relay failure (3.4984ms)
+ℹ tests 235
+ℹ suites 0
+ℹ pass 234
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 307427.2747

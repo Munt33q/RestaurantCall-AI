@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-05T14:41:55.648Z",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/team-telnyx/openapi/master/openapi/spec3.json",
+      "sha256": "7e215537097dcdf18198a90cb8683188d59ad27836c2973731ff12c872bf364b"
+    },
+    {
+      "url": "https://elevenlabs.io/docs/eleven-agents/customization/tools/system-tools/transfer-to-number.md",
+      "sha256": "9ea5911fdd52b29889317395ecb42a28249473112d58bd50ab5f2c7145ee815d"
+    },
+    {
+      "url": "https://elevenlabs.io/docs/eleven-agents/customization/personalization/dynamic-variables.md",
+      "sha256": "d171d9db4970b5246cf126f7f0ffaaec44d69283760f4283f56811bd3dfbc80b"
+    }
+  ],
+  "accountInterfacesTested": false,
+  "actualSipTransferTested": false,
+  "secretSipReferHeaderCombinationTested": false
+}

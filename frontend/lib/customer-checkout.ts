@@ -11,7 +11,7 @@ export const digest=(value:string)=>crypto.createHash('sha256').update(value).di
 export const normalizeReviewCode=(value:string)=>value.replace(/[\s-]/g,'').toLowerCase();
 export const checkoutEnabled=()=>process.env.ELEVENLABS_CHECKOUT_ENABLED==='true'&&process.env.RESTAURANT_ORDERING_ENABLED==='true';
 function signingKey(){const k=process.env.CUSTOMER_CHECKOUT_SECRET?.trim();if(!k||k.length<32)throw new CheckoutError(503,'Customer confirmation is not configured');return k;}
-type Review={restaurantName:string;customerName:string;customerPhone:string;notes:string;paymentMethod:'cash';items:{itemId:string;name:string;priceCents:number;quantity:number}[];quote:ReturnType<typeof promotionQuote>};
+export type Review={restaurantName:string;customerName:string;customerPhone:string;notes:string;paymentMethod:'cash';items:{itemId:string;name:string;priceCents:number;quantity:number}[];quote:ReturnType<typeof promotionQuote>};
 type BrowserGrant={aud:'customer-review-v1';restaurantId:string;sessionId:string;codeHash:string;reviewHash:string;version:number;csrf:string;exp:number};
 export function sealReviewGrant(grant:BrowserGrant){const body=Buffer.from(JSON.stringify(grant)).toString('base64url');return body+'.'+crypto.createHmac('sha256',signingKey()).update(body).digest('base64url');}
 export function openReviewGrant(token:string):BrowserGrant{
@@ -23,7 +23,7 @@ export function openReviewGrant(token:string):BrowserGrant{
   return g;
  }catch{throw new CheckoutError(401,'Review expired. Ask Brittany for a new review code.');}
 }
-async function snapshot(tx:any,session:any,state:any):Promise<Review>{
+export async function snapshot(tx:any,session:any,state:any):Promise<Review>{
  if(typeof state.customerName!=='string'||!state.customerName.trim()||state.customerName.length>120||state.notesCollected!==true)throw new CheckoutError(409,'Confirm your pickup name and special instructions with Brittany first.');
  if(!/^\+[1-9]\d{7,14}$/.test(session.caller_phone??''))throw new CheckoutError(409,'Verified caller number required');
  const lines=normalizeLines(state.items),rid=restaurantId();

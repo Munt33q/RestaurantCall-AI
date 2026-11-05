@@ -1,0 +1,18 @@
+{
+  "source": "Playwright Chromium; local Next production build; disposable Neon",
+  "base": "http://localhost:3238",
+  "branch": "br-misty-shadow-b8v5hmz2",
+  "syntheticProviderEvents": true,
+  "realProviderAcceptance": false,
+  "providerTraffic": false,
+  "checks": [
+    "protected dashboard and real staff login",
+    "authenticated Brittany tools prepare immutable review without placing an order",
+    "local signed contract: complete review, separate instruction, valid DTMF, atomic save and saved-number receipt",
+    "dashboard polling displays actual telephone order number, authoritative total and notes",
+    "kitchen completes same cash-unpaid order; exactly one consented completion callback queued without submission"
+  ],
+  "errors": [],
+  "orderNumber": "30120326",
+  "ok": true
+}

@@ -2,6 +2,7 @@ import {client} from './db/client';
 import {restaurantId} from './repository';
 import {validElevenLabsConversationId} from './elevenlabs-session';
 import {callToolKey} from './elevenlabs-security';
+import {telephoneEnabled,telephoneHandoffSecret} from './telephone-checkout-config';
 
 export type Initiation={conversation_id:string;agent_id:string;caller_id:string;called_number:string;call_sid:string;call_id?:string};
 export function validateInitiation(body:unknown):Initiation{
@@ -25,5 +26,9 @@ export async function initiateElevenLabsCall(body:Initiation){
   if(!s||s.restaurant_id!==rid||s.caller_phone!==body.caller_id||s.elevenlabs_conversation_id!==body.conversation_id||s.elevenlabs_agent_id!==body.agent_id||s.elevenlabs_called_number!==body.called_number||s.elevenlabs_binding_source!=='provider_initiation'||s.state!=='active'||s.ended_at||new Date(s.expires_at).getTime()<=Date.now())throw Error('Call identity conflict or expired call');
   await tx`INSERT INTO draft_carts(session_id) VALUES(${s.id}) ON CONFLICT DO NOTHING`;
  });
- return {type:'conversation_initiation_client_data',dynamic_variables:{secret__restaurant_session:key}};
+ const dynamic_variables:Record<string,string>={secret__restaurant_session:key};
+ if(telephoneEnabled()){
+  try{dynamic_variables.secret__restaurant_handoff=telephoneHandoffSecret(body.conversation_id,body.call_sid);}catch{/* Unconfigured telephone handoff retains the web fallback. */}
+ }
+ return {type:'conversation_initiation_client_data',dynamic_variables};
 }

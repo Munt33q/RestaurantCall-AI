@@ -1,0 +1,199 @@
+{
+  "baseline": "72d4731daf4895ab51d105b7912835bfe8e7b0a5",
+  "recoveryCheckpoint": "98ecf05dfe10dc1a39344a64211ff92878190c26",
+  "original6de7172Recovered": false,
+  "preservedOriginalArtifacts": 157,
+  "checkpointBlueprintHashesVerified": 113,
+  "earlierEvidenceUnchanged": true,
+  "knownPrivateValuesScanned": 15,
+  "credentialFindings": 0,
+  "productionCustomerRecordsIncluded": false,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "1721ad24d74da7e4110c38252cb96e34157c5d265d6d8b1a40f91d743138dd36",
+      "bytes": 8116
+    },
+    {
+      "path": "config/elevenlabs-webhook-tool-blueprints.json",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "6528bfb4d605d62569104c4f0f926cc410b6a93cddefb0f3183d74e234852596",
+      "bytes": 8528
+    },
+    {
+      "path": "docs/telephone/PROVIDER_SETUP.md",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "61d00a85e632985b5865a28ad759a5b50ec8bccb35fb33279e6cb82a1b3ae2db",
+      "bytes": 10671
+    },
+    {
+      "path": "docs/telephone/READINESS.md",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "31396ecf159871332719433deb3d13a80a412572b1d24bfdc533af0d66fc3e85",
+      "bytes": 8722
+    },
+    {
+      "path": "docs/telephone/evidence/browser-result.json",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "4374fca2e0c3980adbfdcb63fc09e13aaffb8612a863ebfdd88ab98dc4d38cb1",
+      "bytes": 798
+    },
+    {
+      "path": "docs/telephone/evidence/browser-server.log",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "ee37f8b9b49b823dff72ff6f5dc6dc756e99edc0b05653455a5409248694ceb8",
+      "bytes": 136
+    },
+    {
+      "path": "docs/telephone/evidence/build.log",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "383b5c22545c49830b3b32057627261219ad4839711defab08f07a418717f811",
+      "bytes": 4781
+    },
+    {
+      "path": "docs/telephone/evidence/dashboard-telephone-order.png",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "f9ee560a01a835524a1eef6f6c51332558409f43ffa2a2efb09dec6d71334afb",
+      "bytes": 86925
+    },
+    {
+      "path": "docs/telephone/evidence/documentation-contract.json",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "eec7cace6855de52aecefe49160a87f4e3d516c93b5aac85aca06c274ce1be55",
+      "bytes": 791
+    },
+    {
+      "path": "docs/telephone/evidence/migrations.log",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "7e48a99a5169b9dc14c6b5eba9d2679458753cb93868f96718bae3ed9d6b7be4",
+      "bytes": 298
+    },
+    {
+      "path": "docs/telephone/evidence/provider-inspection.json",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "39ddcbe05515c99aead53da144e6d5b29602b375e0e2d7ba88ff736cfe6e7f30",
+      "bytes": 1997
+    },
+    {
+      "path": "docs/telephone/evidence/regression-tests.json",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "ea860f910a40a3561435dd9eb7a5100e2b10b3e27c1ef3597ffe7cc29fa6c836",
+      "bytes": 2132
+    },
+    {
+      "path": "docs/telephone/evidence/regression-tests.log",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "c4e57edd4222d9832b4452101c0e4a3e5bf1463dad08ede1f4659acbef0bbfc4",
+      "bytes": 24522
+    },
+    {
+      "path": "docs/telephone/evidence/typecheck.log",
+      "classification": "authored report or synthetic verification evidence",
+      "sha256": "e5046545a3a9fcc0cf6950c9402c78a2b227f07a6a658d2a0c1fbc5f4a194da0",
+      "bytes": 33
+    },
+    {
+      "path": "frontend/.env.example",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "6d4394d5b83bddcb68c577868a4a84673902a154fd87ee4348a34671d74dc3ac",
+      "bytes": 2285
+    },
+    {
+      "path": "frontend/app/api/telnyx/phone-checkout/route.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "a769b559eee39bf1215544b6f5078b1bc4b365ac3d7d565ab841c400e8b5ea2d",
+      "bytes": 1233
+    },
+    {
+      "path": "frontend/drizzle/0011_telephone_checkout.sql",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "058b2c1c3189ef7fbf10de7b2e21aa278241e3518f4a10feeb97a00096b3acbb",
+      "bytes": 2543
+    },
+    {
+      "path": "frontend/drizzle/0012_completed_notification_jobs.sql",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "3752a53c4e14a0c55525bd28828d04f2bfceb9bd8ff3a67f5b5a8758fe436c19",
+      "bytes": 404
+    },
+    {
+      "path": "frontend/drizzle/0013_telephone_command_stages.sql",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "8e63afe18a23e090c336bd79ef8da9491ac3a8da0c46ed50caa6a7b69cc92d5a",
+      "bytes": 463
+    },
+    {
+      "path": "frontend/lib/customer-checkout.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "329b1b5a86cdd89e6db1c7b6ee345e35c40b8d8bc0edfdc82527a4bc9d9da33b",
+      "bytes": 11399
+    },
+    {
+      "path": "frontend/lib/elevenlabs-initiation.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "55c6174efde9ac7235bf387e5b69d6ef05a722d61f253d3bd22a7df87b0f109f",
+      "bytes": 3348
+    },
+    {
+      "path": "frontend/lib/elevenlabs-tools.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "f88443e83e04dc7e52c191452c9abc3abcac6b5a69a818b099be382ebd29c3ef",
+      "bytes": 12064
+    },
+    {
+      "path": "frontend/lib/telephone-checkout-config.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "02241d5b8ded61c1b5eee00b2c27b8e793c6679d749ff7d394770288d4241f1b",
+      "bytes": 1481
+    },
+    {
+      "path": "frontend/lib/telephone-checkout.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "b8489c9090e6001d8b6cd9d32ecba824704d803bfc208d2c309758ec5fa46fc3",
+      "bytes": 16308
+    },
+    {
+      "path": "frontend/tests/customer-checkout-database.phase6.test.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "834d2d62809a3de25d90fd0b89609b9809bf414fa06cc4243e32d00c5be07769",
+      "bytes": 15641
+    },
+    {
+      "path": "frontend/tests/telephone-checkout-database.test.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "c4d923a6bae48966bf7fadc9446e4f84edbf0f1ec3e3118c7f7d8c2479e4d3fd",
+      "bytes": 15746
+    },
+    {
+      "path": "frontend/tests/telephone-checkout.test.ts",
+      "classification": "new or modified engineering source; not recovered original",
+      "sha256": "9433acbb404be05ce3810fdb4da21b9c595804540724d39662ddbd98ab7843cb",
+      "bytes": 2385
+    },
+    {
+      "path": "recovery/telephone/audit.mjs",
+      "classification": "new verification tooling",
+      "sha256": "10bd4abe3e29089e67bc7cff8638e11575f3a465bf943cddc67a035e64f65216",
+      "bytes": 4000
+    },
+    {
+      "path": "recovery/telephone/browser.mts",
+      "classification": "new verification tooling",
+      "sha256": "c5240f98b4a2fffaeda3f9dedefeb3e233dcd7f565746bab7f0bc9d1ddafe407",
+      "bytes": 10935
+    },
+    {
+      "path": "recovery/telephone/provider-inspect.py",
+      "classification": "new verification tooling",
+      "sha256": "9b317d5948db5f8f9b5cb281fe2530cf512e16dab872e6e161d03f4f1ee55686",
+      "bytes": 4552
+    },
+    {
+      "path": "recovery/telephone/run-database.mjs",
+      "classification": "new verification tooling",
+      "sha256": "2cef95861170a50cda529d73c79b39e67bb709cfc255ba9d74da219a0e274680",
+      "bytes": 3162
+    }
+  ]
+}

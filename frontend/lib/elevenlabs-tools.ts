@@ -1,4 +1,4 @@
-/** ElevenAgents adapter. Cash checkout requires an independent customer web review. */
+/** ElevenAgents adapter. Cash checkout requires independent customer confirmation. */
 import {client} from './db/client';
 import {listMenu,restaurantId} from './repository';
 import {promotionRow} from './catalog-store';
@@ -6,6 +6,8 @@ import {promotionQuote} from './catalog-policy';
 import {normalizeLines,type Line} from './order-contract';
 import {validElevenLabsConversationId} from './elevenlabs-session';
 import {checkoutEnabled,issueCustomerReview} from './customer-checkout';
+import {telephoneEnabled} from './telephone-checkout-config';
+import {prepareTelephoneCheckout} from './telephone-checkout';
 
 type ToolName='search_menu'|'get_cart'|'update_cart'|'set_customer_details'|'set_order_notes'|'set_notification_preference'|'review_order'|'confirm_order'|'get_order_status';
 export type ToolInput={tool:ToolName;conversation_id:string;query?:string;item_id?:string;quantity?:number;operation?:'add'|'set'|'remove';customer_name?:string;customer_phone?:string;name_confirmed?:boolean;notes?:string;channel?:'none'|'sms'|'call';consent?:boolean};
@@ -50,6 +52,10 @@ export async function runElevenLabsTool(body:ToolInput){
   await tx`INSERT INTO draft_carts(session_id) VALUES(${session.id}) ON CONFLICT DO NOTHING`;
   const [draft]=await tx`SELECT * FROM draft_carts WHERE session_id=${session.id} FOR UPDATE`;
   if(body.tool==='confirm_order'){
+   if(telephoneEnabled()){
+    try{return await tx.savepoint(stx=>prepareTelephoneCheckout(stx,session,draft));}
+    catch{/* Preparation cannot bypass review. Existing signed web checkout remains available. */}
+   }
    if(checkoutEnabled()){
     const review=await issueCustomerReview(tx,session,draft);
     return {...review,ok:false,code:'CUSTOMER_REVIEW_REQUIRED',message:'No order has been placed. The complete review must still be submitted on the signed restaurant confirmation page. A verbal confirmation, transcript, DTMF digit, or tool boolean cannot place an order.'};
@@ -57,7 +63,9 @@ export async function runElevenLabsTool(body:ToolInput){
    return {ok:false,code:'CUSTOMER_REVIEW_REQUIRED',message:'No order has been placed. Use review_order and ask the customer to submit the complete review on the restaurant confirmation page. A verbal confirmation, transcript, DTMF digit, or tool boolean cannot place an order.'};
   }
   const state:any=draft.state_json??{};state.items=readItems(state);
-  const save=async()=>{state.relayReviewReady=false;delete state.customerReview;delete state.customerReviewHash;await tx`UPDATE draft_carts SET state_json=${tx.json(state)},checkout_code_hash=NULL,checkout_expires_at=NULL,customer_name=${state.customerName||null},customer_phone=${session.caller_phone},version=version+1,updated_at=now() WHERE session_id=${session.id}`;};
+  const save=async()=>{state.relayReviewReady=false;delete state.customerReview;delete state.customerReviewHash;await tx`UPDATE draft_carts SET state_json=${tx.json(state)},checkout_code_hash=NULL,checkout_expires_at=NULL,customer_name=${state.customerName||null},customer_phone=${session.caller_phone},version=version+1,updated_at=now() WHERE session_id=${session.id}`;
+   if(telephoneEnabled())await tx`UPDATE telephone_checkouts SET state='aborted',updated_at=now() WHERE session_id=${session.id} AND state='prepared'`;
+  };
   if(body.tool==='update_cart'){
    const itemId=body.item_id;
    if(typeof itemId!=='string'||!uuid(itemId))throw new ToolError(400,'Valid item_id required; use search_menu first');

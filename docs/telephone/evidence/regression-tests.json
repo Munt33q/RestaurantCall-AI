@@ -1,0 +1,66 @@
+{
+  "branch": "br-misty-shadow-b8v5hmz2",
+  "database": "recovery_phase6_1793852368",
+  "exitCode": 0,
+  "tests": 235,
+  "pass": 234,
+  "fail": 0,
+  "skipped": 1,
+  "migrations": [
+    {
+      "name": "0001_initial.sql",
+      "sha256": "848441b56341c8931f89946cfd21079fcf17dafe5e6b5e888f2574c5464cc77b"
+    },
+    {
+      "name": "0002_call_sessions.sql",
+      "sha256": "d40acd90dc2be0ed3a2d2566cd3c933fb55d93750236a68e9f6ff5c50e8a06ef"
+    },
+    {
+      "name": "0003_ordering_flow.sql",
+      "sha256": "7b31f614586fa876855912e743641d5928f1ff33c44edf19e5edf8ed25af4624"
+    },
+    {
+      "name": "0004_restaurant_operations.sql",
+      "sha256": "ef1decede835cabada1a473fd4049bd3535c14062c7173a2298168abede06ffd"
+    },
+    {
+      "name": "0005_model_monitoring.sql",
+      "sha256": "dc7335d6c38a537fd2a176340e63d6038dc377523a5bebcc29f728537efa3228"
+    },
+    {
+      "name": "0006_engagement_recovery.sql",
+      "sha256": "5f833af4bb45f1d40d5bcfca705c50b89a72f12d0f0064d7ca103a932846caf0"
+    },
+    {
+      "name": "0007_recovery_dispatch_attempt.sql",
+      "sha256": "a56a2523e298bdb6af8d7f4848ec0e47ceaeb413c66e84879746227daf6f1af9"
+    },
+    {
+      "name": "0008_catalog_sales.sql",
+      "sha256": "0420f8657e782bd8bb3368b841f14725ed3b481802d9cdb39e111e2d4fb5a225"
+    },
+    {
+      "name": "0009_elevenlabs_integration.sql",
+      "sha256": "4d61b37a271fb2ec06c9633ebfb299cbd08087fa931ca2ff3bd4f8c559e934fc"
+    },
+    {
+      "name": "0010_elevenlabs_checkout.sql",
+      "sha256": "c7a41b2674c082068951537fec87233ac78eae63d5c994e139d1c2e9441f9700"
+    },
+    {
+      "name": "0011_telephone_checkout.sql",
+      "sha256": "058b2c1c3189ef7fbf10de7b2e21aa278241e3518f4a10feeb97a00096b3acbb"
+    },
+    {
+      "name": "0012_completed_notification_jobs.sql",
+      "sha256": "3752a53c4e14a0c55525bd28828d04f2bfceb9bd8ff3a67f5b5a8758fe436c19"
+    },
+    {
+      "name": "0013_telephone_command_stages.sql",
+      "sha256": "8e63afe18a23e090c336bd79ef8da9491ac3a8da0c46ed50caa6a7b69cc92d5a"
+    }
+  ],
+  "productionDataCopied": false,
+  "syntheticProviderContractTests": true,
+  "realProviderAcceptance": false
+}
