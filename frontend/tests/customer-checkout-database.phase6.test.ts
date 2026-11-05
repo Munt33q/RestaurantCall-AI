@@ -34,7 +34,11 @@ test('Phase 6 actual database engine: provider binding, independent review, atom
   await assert.rejects(()=>c.tools({tool:'set_customer_details',customer_name:'Alex',customer_phone:'+12025550188'}),/verified caller/);
  });
  await t.test('verbal/tool confirmation cannot insert; name, notes, pricing and independent browser review required',async()=>{
-  assert.equal((await c.tools({tool:'confirm_order'}) as any).code,'CUSTOMER_REVIEW_REQUIRED');
+  const blocked:any=await c.tools({tool:'confirm_order'});
+  assert.equal(blocked.code,'CUSTOMER_REVIEW_REQUIRED');
+  assert.match(blocked.confirmationUrl,/\/confirm$/);
+  assert.match(blocked.reviewCode,/^[a-f0-9]{4}(?:-[a-f0-9]{4}){4}$/);
+  assert.equal(blocked.orderCreated,false);
   assert.equal((await sql`SELECT count(*)::int AS n FROM orders WHERE restaurant_id=${restaurant}`)[0].n,0);
  });
  const issued:any=await c.tools({tool:'review_order'}),browser=await exchangeCustomerReview(issued.reviewCode);
