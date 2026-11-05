@@ -6,7 +6,7 @@ let input='';for await(const part of process.stdin)input+=part;const state=JSON.
 const root=path.resolve('..'),evidence=path.join(root,'docs/phase6/evidence'),base=process.env.PHASE6_BROWSER_BASE??'http://localhost:3226',remote=process.env.PHASE6_BROWSER_REMOTE==='true';
 assert.equal(new URL(base).protocol,remote?'https:':'http:');
 const protectionHeaders:Record<string,string>=state.protectionBypass?{'x-vercel-protection-bypass':state.protectionBypass}:{};
-const appFetch=(url:string,init:RequestInit={})=>fetch(url,{...init,headers:{...protectionHeaders,...init.headers}});
+const appFetch=(url:string,init:RequestInit={})=>fetch(url,{...init,headers:{...protectionHeaders,...(state.protectionCookies?.length?{cookie:state.protectionCookies.map((c:any)=>c.name+'='+c.value).join('; ')}:{}),...init.headers}});
 // Explicitly replace any local provider credentials that Next may otherwise load from ignored env files.
 for(const k of ['AI_API_KEY','DEEPSEEK_API_KEY','TELNYX_API_KEY','TELNYX_PUBLIC_KEY','TELNYX_PHONE_NUMBER','TELNYX_TEXML_APPLICATION_ID','TELNYX_MESSAGING_PROFILE_ID','XI_API_KEY','ELEVENLABS_API_KEY','STRIPE_SECRET_KEY','STRIPE_WEBHOOK_SECRET'])process.env[k]='';
 const runtime=state.previewEnv??{};
@@ -14,7 +14,8 @@ Object.assign(process.env,{NODE_ENV:'test',DATABASE_URL:state.uri,DIRECT_DATABAS
 assert.equal(process.env.DATABASE_URL,state.uri);assert.equal(process.env.SMS_DELIVERY_ENABLED,'false');assert.equal(process.env.OUTBOUND_UPDATES_ENABLED,'false');
 const {client}=await import('../../frontend/lib/db/client');const sql=client(),restaurant=process.env.RESTAURANT_ID!;
 await sql`INSERT INTO restaurants(id,name,tax_rate_bps) VALUES(${restaurant},'Phase6 browser synthetic',825) ON CONFLICT DO NOTHING`;
-const item=crypto.randomUUID();await sql`INSERT INTO menu_items(id,restaurant_id,name,category,item_number,price_cents,stock_qty) VALUES(${item},${restaurant},'Classic Burger','Mains',1,1000,20)`;
+const [existingItem]=await sql`SELECT id FROM menu_items WHERE restaurant_id=${restaurant} AND item_number=1`;
+const item=existingItem?.id??crypto.randomUUID();if(!existingItem)await sql`INSERT INTO menu_items(id,restaurant_id,name,category,item_number,price_cents,stock_qty) VALUES(${item},${restaurant},'Classic Burger','Mains',1,1000,20)`;
 const log=remote?null:createWriteStream(path.join(evidence,'browser-server.log'));
 const server=remote?null:spawn(process.execPath,['node_modules/next/dist/bin/next','start','-p',String(new URL(base).port),'-H','localhost'],{cwd:process.cwd(),env:{...process.env,NODE_ENV:'production'},windowsHide:true,stdio:['ignore','pipe','pipe']});
 if(server&&log){server.stdout!.pipe(log);server.stderr!.pipe(log);}
@@ -25,7 +26,7 @@ let sessionCredential='';const conversation='conv_browser'+crypto.randomBytes(12
 const tool=async(input:any,expected=200)=>{const r=await appFetch(base+'/api/elevenlabs/tools',{method:'POST',headers:{...headers,'x-restaurant-session':sessionCredential},body:JSON.stringify({...input,conversation_id:conversation})});assert.equal(r.status,expected,'Tool '+input.tool+' returned an unexpected status');return r.json();};
 try{
  for(let i=0;i<60;i++){try{if((await appFetch(base+'/api/orders')).status===401)break;}catch{}if(i===59)throw Error('Application not ready');await new Promise(r=>setTimeout(r,500));}
- browser=await chromium.launch({headless:true,executablePath:path.join(process.env.LOCALAPPDATA!,'ms-playwright/chromium-1248/chrome-win64/chrome.exe')});const customer=await browser.newContext({viewport:{width:1440,height:1000}}),staff=await browser.newContext({viewport:{width:1440,height:1000}});for(const context of [customer,staff])await context.route('**/*',(route:any)=>route.continue(new URL(route.request().url()).origin===base?{headers:{...route.request().headers(),...protectionHeaders}}:{}));page=await customer.newPage();const kitchen=await staff.newPage();for(const p of [page,kitchen])p.on('pageerror',(e:any)=>result.errors.push(e.message));
+ browser=await chromium.launch({headless:true,executablePath:path.join(process.env.LOCALAPPDATA!,'ms-playwright/chromium-1248/chrome-win64/chrome.exe')});const customer=await browser.newContext({viewport:{width:1440,height:1000}}),staff=await browser.newContext({viewport:{width:1440,height:1000}});for(const context of [customer,staff]){if(state.protectionCookies?.length)await context.addCookies(state.protectionCookies);else await context.route('**/*',(route:any)=>route.continue(new URL(route.request().url()).origin===base?{headers:{...route.request().headers(),...protectionHeaders}}:{}));}page=await customer.newPage();const kitchen=await staff.newPage();for(const p of [page,kitchen])p.on('pageerror',(e:any)=>result.errors.push(e.message));
  await kitchen.goto(base+'/dashboard');await kitchen.waitForURL('**/login');
  await kitchen.getByLabel('Username',{exact:true}).fill(process.env.DEMO_STAFF_USERNAME);await kitchen.getByLabel('Password',{exact:true}).fill('wrong');await kitchen.getByRole('button',{name:'Sign in to your workspace'}).click();await kitchen.getByRole('alert').filter({hasText:'not recognized'}).waitFor();
  await kitchen.getByLabel('Password',{exact:true}).fill(process.env.DEMO_STAFF_PASSWORD);await kitchen.getByRole('button',{name:'Sign in to your workspace'}).click();await kitchen.waitForURL('**/dashboard');await kitchen.getByRole('heading',{name:'Kitchen overview'}).waitFor();check('staff protection, invalid login rejection and valid staff login');

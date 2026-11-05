@@ -12,7 +12,8 @@ const names=new Set([...git('diff','--name-only',base).toString().trim().split(/
 const privateValues=[];
 for(const p of [path.join(process.env.TEMP,'restaurant-phase6-private.json'),path.join(process.env.APPDATA,'com.vercel.cli/Data/auth.json')]){
  if(!fs.existsSync(p))continue;const s=JSON.parse(fs.readFileSync(p,'utf8').replace(/^\uFEFF/,''));
- for(const x of [s.uri,s.token,s.protectionBypass,...Object.values(s.previewEnv??{})])if(typeof x==='string'&&x.length>=24)privateValues.push(x);
+ const configuredSecrets=Object.entries(s.previewEnv??{}).filter(([k])=>/(?:SECRET|PASSWORD|API_KEY|BINDING_KEY|DATABASE_URL)$/.test(k)).map(([,v])=>v);
+ for(const x of [s.uri,s.token,s.protectionBypass,...(s.protectionCookies??[]).map(c=>c.value),...configuredSecrets])if(typeof x==='string'&&x.length>=24)privateValues.push(x);
  if(s.uri)privateValues.push(new URL(s.uri).password);
 }
 const patterns=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/g,/\b(?:ghp_|github_pat_|sk_live_|sk_test_|sk-proj-|sk-or-v1-|napi_|whsec_|xox[baprs]-)[A-Za-z0-9_-]{20,}/g,/postgres(?:ql)?:\/\/[^\s"']+/g,/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]{20,}/g,/\bAKIA[A-Z0-9]{16}\b/g];

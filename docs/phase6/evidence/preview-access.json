@@ -1,0 +1,8 @@
+{
+  "deploymentId": "dpl_8PhNyNLHCpBa5KpiNzcPHdwoYwbY",
+  "scope": "one isolated Preview",
+  "ttlSeconds": 3600,
+  "temporaryShareRevoked": true,
+  "authenticationNeverDisabled": true,
+  "credentialsPublished": false
+}

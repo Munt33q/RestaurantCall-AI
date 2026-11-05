@@ -1,0 +1,15 @@
+{
+  "deploymentId": "dpl_8PhNyNLHCpBa5KpiNzcPHdwoYwbY",
+  "url": "https://restaurant-call-amrafmqo5-vercel-1a62.vercel.app",
+  "status": "READY",
+  "target": "preview",
+  "sourceCommit": "4572bf88d6c43a4530604a03af0e8d6ec821e171",
+  "databaseBranch": "br-misty-shadow-b8v5hmz2",
+  "isolatedDatabase": true,
+  "productionDeploymentBefore": "dpl_hd9smpaeniTkgHT5TmBn2LtNqLzg",
+  "productionDeploymentAfter": "dpl_hd9smpaeniTkgHT5TmBn2LtNqLzg",
+  "productionModified": false,
+  "providerTrafficEnabled": false,
+  "sharedEnvironmentEdited": false,
+  "protectionDisabled": false
+}

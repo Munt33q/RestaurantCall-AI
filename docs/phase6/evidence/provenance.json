@@ -5,7 +5,7 @@
   "preservedOriginalArtifacts": 157,
   "checkpointBlueprintHashesVerified": 113,
   "earlierEvidenceUnchanged": true,
-  "knownPrivateValuesScanned": 3,
+  "knownPrivateValuesScanned": 14,
   "credentialFindings": 0,
   "productionCustomerRecordsIncluded": false,
   "files": [
@@ -41,8 +41,8 @@
       "path": "docs/phase6/RELEASE_READINESS.md",
       "classification": "authored report or synthetic acceptance evidence",
       "baselineSha256": null,
-      "sha256": "321038bcdb83ae110da9a24337ecb7bf7a82ebefc43805649888d83bad2b7c08",
-      "bytes": 8842
+      "sha256": "fb3c707e07e6d8fb28a6da5a6ac853d7464d928150b87b20a71986008aa6e4bd",
+      "bytes": 9645
     },
     {
       "path": "docs/phase6/evidence/browser-result.json",
@@ -85,6 +85,41 @@
       "baselineSha256": null,
       "sha256": "a97675ba290417c29ad186c952e2f05e2655cc6b9b0ce0ae57770dc151e44fdc",
       "bytes": 111225
+    },
+    {
+      "path": "docs/phase6/evidence/preview-access.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "633a8b14290a0b53cae6dd3064ab02d6e597582793ae6cfd8ec98dd874168ee5",
+      "bytes": 227
+    },
+    {
+      "path": "docs/phase6/evidence/preview-browser-result.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "c9c4ece9eed4d3ef168055eec69ba2dc88e758e75c737dc213427af9d04724ca",
+      "bytes": 1133
+    },
+    {
+      "path": "docs/phase6/evidence/preview-customer-review.png",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "7e19f2250096515d79c77a6bcb10d1bc122f31670b84f6da48be3f33bf7ad9bc",
+      "bytes": 75620
+    },
+    {
+      "path": "docs/phase6/evidence/preview-deployment.json",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "d28599d0f83778c22b4a751e6fa2e5c6b0fb90a4f607b78a32b971abe99a7dec",
+      "bytes": 591
+    },
+    {
+      "path": "docs/phase6/evidence/preview-order-detail.png",
+      "classification": "authored report or synthetic acceptance evidence",
+      "baselineSha256": null,
+      "sha256": "82d3041cca9ebbd0732bef5347e6650d5aa09439c47edf2e4cf9a3779241d208",
+      "bytes": 110370
     },
     {
       "path": "docs/phase6/evidence/provider-inspection.json",
@@ -279,15 +314,15 @@
       "path": "recovery/phase6/audit.mjs",
       "classification": "new Phase 6 verification/support tooling",
       "baselineSha256": null,
-      "sha256": "1ec55ff7144a9d47d95c4191809b58e9815a438e96cb186fc2ba944e2f219d76",
-      "bytes": 3916
+      "sha256": "17c15a2ed2633ec8e236ea0dc9475d7f998ab15a83e5010abaf0ef4386b58916",
+      "bytes": 4100
     },
     {
       "path": "recovery/phase6/browser.mts",
       "classification": "new Phase 6 verification/support tooling",
       "baselineSha256": null,
-      "sha256": "9bcb4a35a2226a7426bb2c53abd53f7198b59a617afa8368487bc68c46bed81b",
-      "bytes": 13298
+      "sha256": "0a6b8d16173ec2c2e71725ed78cca5798387e97392731a1502ecd3fddb7398f8",
+      "bytes": 13653
     },
     {
       "path": "recovery/phase6/preview.py",
