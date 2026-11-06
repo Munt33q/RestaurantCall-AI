@@ -1,3 +1,4 @@
+import {callbackStages} from './callback-policy';
 import crypto from 'node:crypto';
 import {client} from './db/client';
 import {restaurantId,insertOrder} from './repository';
@@ -11,7 +12,7 @@ export const digest=(value:string)=>crypto.createHash('sha256').update(value).di
 export const normalizeReviewCode=(value:string)=>value.replace(/[\s-]/g,'').toLowerCase();
 export const checkoutEnabled=()=>process.env.ELEVENLABS_CHECKOUT_ENABLED==='true'&&process.env.RESTAURANT_ORDERING_ENABLED==='true';
 function signingKey(){const k=process.env.CUSTOMER_CHECKOUT_SECRET?.trim();if(!k||k.length<32)throw new CheckoutError(503,'Customer confirmation is not configured');return k;}
-export type Review={restaurantName:string;customerName:string;customerPhone:string;notes:string;paymentMethod:'cash';items:{itemId:string;name:string;priceCents:number;quantity:number}[];quote:ReturnType<typeof promotionQuote>};
+export type Review={callbackStages:('accepted'|'ready')[];restaurantName:string;customerName:string;customerPhone:string;notes:string;paymentMethod:'cash';items:{itemId:string;name:string;category?:string;priceCents:number;quantity:number}[];quote:ReturnType<typeof promotionQuote>};
 type BrowserGrant={aud:'customer-review-v1';restaurantId:string;sessionId:string;codeHash:string;reviewHash:string;version:number;csrf:string;exp:number};
 export function sealReviewGrant(grant:BrowserGrant){const body=Buffer.from(JSON.stringify(grant)).toString('base64url');return body+'.'+crypto.createHmac('sha256',signingKey()).update(body).digest('base64url');}
 export function openReviewGrant(token:string):BrowserGrant{
@@ -31,9 +32,9 @@ export async function snapshot(tx:any,session:any,state:any):Promise<Review>{
  if(!restaurant)throw new CheckoutError(409,'Restaurant unavailable');
  const rows=await tx`SELECT * FROM menu_items WHERE restaurant_id=${rid} ORDER BY id FOR UPDATE`;
  const now=Date.now();
- const items=lines.map(l=>{const m=rows.find((x:any)=>x.id===l.menuItemId);if(!m||m.archived||!m.is_available||(m.stock_qty!==null&&m.stock_qty<l.quantity)||(m.special&&((m.special_starts_at&&new Date(m.special_starts_at).getTime()>now)||(m.special_ends_at&&new Date(m.special_ends_at).getTime()<=now))))throw new CheckoutError(409,'An item is no longer available. Update the order with Brittany.');return {itemId:m.id,name:m.name,priceCents:m.price_cents,quantity:l.quantity};});
+ const items=lines.map(l=>{const m=rows.find((x:any)=>x.id===l.menuItemId);if(!m||m.archived||!m.is_available||(m.stock_qty!==null&&m.stock_qty<l.quantity)||(m.special&&((m.special_starts_at&&new Date(m.special_starts_at).getTime()>now)||(m.special_ends_at&&new Date(m.special_ends_at).getTime()<=now))))throw new CheckoutError(409,'An item is no longer available. Update the order with Brittany.');return {itemId:m.id,name:m.name,category:m.category,priceCents:m.price_cents,quantity:l.quantity};});
  const promotions=(await tx`SELECT * FROM promotions WHERE restaurant_id=${rid}`).map(promotionRow);
- return {restaurantName:restaurant.name,customerName:state.customerName.trim(),customerPhone:session.caller_phone,notes:state.notes??'',paymentMethod:'cash',items,quote:promotionQuote(items,restaurant.tax_rate_bps,promotions)};
+ return {callbackStages:process.env.ELEVENLABS_CALLBACK_PREFERENCES_ENABLED==='true'&&state.notificationConsent===true&&state.notificationChannel==='call'?callbackStages(state.callbackStages??[]):[],restaurantName:restaurant.name,customerName:state.customerName.trim(),customerPhone:session.caller_phone,notes:state.notes??'',paymentMethod:'cash',items,quote:promotionQuote(items,restaurant.tax_rate_bps,promotions)};
 }
 function active(session:any){if(session.elevenlabs_binding_source!=='provider_initiation'||session.state!=='active'||session.ended_at||new Date(session.expires_at).getTime()<=Date.now())throw new CheckoutError(409,'The call is no longer active. Please call again.');}
 export async function issueCustomerReview(tx:any,session:any,draft:any){

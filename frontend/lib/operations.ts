@@ -1,3 +1,4 @@
+import {callbackEvent,callbackWanted,callbackMessage,callbackRetryLimit,previewCallbackAllowed} from './callback-policy';
 import {callerOrderHistory} from './caller-history';
 import crypto from 'node:crypto';
 import {client} from './db/client';
@@ -10,10 +11,9 @@ export async function recordOrderEvent(tx:any,orderId:string,key:string,kind:str
 }
 export async function enqueueStatus(tx:any,order:any){
  if(order.is_test||!['confirmed','preparing','ready','completed'].includes(order.status)||!order.notification_consent_at||order.notification_channel==='none')return;
- // Ready calls are completion notifications. Never create the durable call job
- // while the ticket is still pending, preparing, or merely ready for pickup.
- if(order.notification_channel==='call'&&order.status!=='completed')return;
- await tx`INSERT INTO notification_jobs(restaurant_id,order_id,event_key,kind,channel,consent_at) VALUES(${order.restaurant_id},${order.id},${`${order.id}:status:${order.status}`},${order.status},${order.notification_channel},${order.notification_consent_at}) ON CONFLICT(event_key) DO NOTHING`;
+ const event=order.notification_channel==='call'?callbackEvent(order.status):order.status;
+ if(!event||order.notification_channel==='call'&&!callbackWanted(order,event))return;
+ await tx`INSERT INTO notification_jobs(restaurant_id,order_id,event_key,kind,channel,consent_at) VALUES(${order.restaurant_id},${order.id},${`${order.id}:status:${event}`},${event},${order.notification_channel},${order.notification_consent_at}) ON CONFLICT(event_key) DO NOTHING`;
 }
 export async function enqueuePaymentSms(tx:any,order:any){
  if(order.is_test||!order.payment_sms_consent||!order.payment_sms_consent_at)return;
@@ -42,8 +42,8 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
    await sql.begin(async tx=>{
     const [order]=await tx`SELECT * FROM orders WHERE id=${job.order_id} AND restaurant_id=${restaurant} FOR UPDATE`;if(!order)throw new Error('Unknown order');
     if(order.is_test){await tx`UPDATE notification_jobs SET status='suppressed',last_error='Test order: delivery prohibited',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;return;}
-    if(job.channel==='call'&&order.status!=='completed'){
-     await tx`UPDATE notification_jobs SET status='suppressed',last_error='Ready callbacks require a completed order',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;
+    if(job.channel==='call'&&(!callbackWanted(order,job.kind)||!previewCallbackAllowed(order.customer_phone??''))){
+     await tx`UPDATE notification_jobs SET status='suppressed',last_error='Callback consent, selected stage, active status or preview recipient no longer eligible',locked_until=NULL,updated_at=now() WHERE id=${job.id}`;
      return;
     }
     await tx`SELECT pg_advisory_xact_lock(hashtextextended(${`${restaurant}:${order.customer_phone}`},0))`;
@@ -58,20 +58,20 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
    
    const [restaurantRow]=await tx`SELECT name FROM restaurants WHERE id=${restaurant}`;
    const restaurantName=restaurantRow?.name??'RestaurantCall AI';
-   const voice=`Hello. This is an automated notification from ${restaurantName}. Your order ${order.id.slice(0,8)} is ready for pickup. Thank you. Goodbye.`;
+   const voice=callbackMessage({id:String(order.id)},job.kind,restaurantName);
    const callback=new URL('/api/telnyx/call-status',base);callback.searchParams.set('job',job.id);callback.searchParams.set('token',callbackMac(job.id));
-   const body=sms?{from,to:order.customer_phone,messaging_profile_id:process.env.TELNYX_MESSAGING_PROFILE_ID?.trim(),text:notificationText({id:order.id,status:order.status,payment_method:order.payment_method,total_cents:order.total_cents,customer_name:order.customer_name,restaurant_name:restaurantName},job.kind,url),webhook_url:base+'/api/telnyx/messaging'}:{From:from,To:order.customer_phone,Texml:`<Response><Say voice="Polly.Joanna-Neural">${xmlEscape(voice)}</Say><Hangup/></Response>`,StatusCallback:callback.toString(),StatusCallbackMethod:'POST',StatusCallbackEvent:'completed'};
+   const body=sms?{from,to:order.customer_phone,messaging_profile_id:process.env.TELNYX_MESSAGING_PROFILE_ID?.trim(),text:notificationText({id:order.id,status:order.status,payment_method:order.payment_method,total_cents:order.total_cents,customer_name:order.customer_name,restaurant_name:restaurantName},job.kind,url),webhook_url:base+'/api/telnyx/messaging'}:{From:from,To:order.customer_phone,Timeout:30,TimeLimit:60,Texml:`<Response><Say voice="Polly.Joanna-Neural">${xmlEscape(voice)}</Say><Hangup/></Response>`,StatusCallback:callback.toString(),StatusCallbackMethod:'POST',StatusCallbackEvent:'completed'};
    const endpoint=sms?'https://api.telnyx.com/v2/messages':`https://api.telnyx.com/v2/texml/calls/${process.env.TELNYX_TEXML_APPLICATION_ID?.trim()}`;
    // Dispatching is durable before this non-idempotent POST. Ambiguous outcomes are never retried automatically.
    await tx`UPDATE notification_jobs SET submission_attempted_at=now() WHERE id=${job.id}`;
    let response:Response;try{response=await transport(endpoint,{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(9000)});}catch{await tx`UPDATE notification_jobs SET status='uncertain',locked_until=NULL,last_error='Provider outcome unknown; inspect delivery before a new attempt',updated_at=now() WHERE id=${job.id}`;return;}
    const data=await response.json().catch(()=>null);const providerId=sms?data?.data?.id:data?.call_sid;
-   if(!response.ok||typeof providerId!=='string'){const retry=response.status===429&&!providerId&&job.attempts<2;const ambiguous=response.status>=500||response.ok||typeof providerId==='string';await tx`UPDATE notification_jobs SET status=${retry?'pending':ambiguous?'uncertain':'failed'},next_attempt_at=now()+interval '1 minute',locked_until=NULL,last_error=${`Provider submission ${response.status}; ${ambiguous?'outcome uncertain':retry?'rate limited; bounded retry':'rejected'}`},updated_at=now() WHERE id=${job.id}`;return;}
+   if(!response.ok||typeof providerId!=='string'){const retry=response.status===429&&!providerId&&job.attempts+1<callbackRetryLimit();const ambiguous=response.status>=500||response.ok||typeof providerId==='string';await tx`UPDATE notification_jobs SET status=${retry?'pending':ambiguous?'uncertain':'failed'},next_attempt_at=now()+interval '1 minute',locked_until=NULL,last_error=${`Provider submission ${response.status}; ${ambiguous?'outcome uncertain':retry?'rate limited; bounded retry':'rejected'}`},updated_at=now() WHERE id=${job.id}`;return;}
     const [current]=await tx`SELECT * FROM notification_jobs WHERE id=${job.id} FOR UPDATE`;
     const status=deliveryTransition(current.status,'submitted');await tx`UPDATE notification_jobs SET provider_id=${providerId},status=${status},locked_until=NULL,last_error=NULL,updated_at=now() WHERE id=${job.id}`;
     if(sms&&job.kind==='payment_link')await tx`UPDATE orders SET sms_status=${status} WHERE id=${order.id}`;
     if(!sms)await tx`INSERT INTO calls(restaurant_id,telnyx_call_id,caller_phone,status) VALUES(${restaurant},${providerId},${order.customer_phone},'outbound-submitted') ON CONFLICT(telnyx_call_id) DO NOTHING`;
-    await recordOrderEvent(tx,order.id,`notification:${job.id}:submitted`,'notification_submitted',{channel:job.channel,kind:job.kind});
+    await recordOrderEvent(tx,order.id,`notification:${job.id}:submitted`,'notification_submitted',{channel:job.channel,kind:job.kind,providerId});
     await reconcileReceipts(tx,{...current,status,provider_id:providerId});
    });
   }catch(error){console.error('Notification worker operation failed');await sql`UPDATE notification_jobs SET status='uncertain',locked_until=NULL,last_error=${(error instanceof Error?error.message:'Worker error').slice(0,180)},updated_at=now() WHERE id=${job.id} AND status='dispatching'`;}

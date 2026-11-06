@@ -52,7 +52,7 @@ export function menuReply(speech:string,menu:MenuEntry[],language='en'):string|n
  const selected=available.filter(m=>m.category?.toLowerCase().replace(/s$/,'')===category).sort((a,b)=>(a.itemNumber??999)-(b.itemNumber??999));
  return selected.length?selected.map(m=>t('option',m.name,String(m.itemNumber??''),'$'+(m.priceCents/100).toFixed(2))).join('. ')+'. '+t('start'):t('noCategory');
 }
-export function cartQuote(state:CartState,menu:MenuEntry[],tax:number){return promotionQuote(state.items.map(l=>({itemId:l.menuItemId,priceCents:menu.find(m=>m.id===l.menuItemId)?.priceCents??0,quantity:l.quantity})),tax,state.promotions??[]);}
+export function cartQuote(state:CartState,menu:MenuEntry[],tax:number){return promotionQuote(state.items.map(l=>({itemId:l.menuItemId,category:menu.find(m=>m.id===l.menuItemId)?.category,priceCents:menu.find(m=>m.id===l.menuItemId)?.priceCents??0,quantity:l.quantity})),tax,state.promotions??[]);}
 function quoteKey(state:CartState,menu:MenuEntry[],tax:number){return JSON.stringify([state.catalogRevision??0,cartQuote(state,menu,tax),state.items.map(l=>[l.menuItemId,l.quantity,menu.find(m=>m.id===l.menuItemId)?.priceCents,menu.find(m=>m.id===l.menuItemId)?.version,menu.find(m=>m.id===l.menuItemId)?.isAvailable,menu.find(m=>m.id===l.menuItemId)?.stockQty])]);}
 export function readback(state:CartState,menu:MenuEntry[],taxRateBps:number):string {
  const t=(key:Parameters<typeof voiceCopy>[1],...values:string[])=>voiceCopy(state.languagePreference?.language,key,...values);

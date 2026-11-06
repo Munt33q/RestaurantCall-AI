@@ -1,3 +1,4 @@
+import {callbackStages} from './callback-policy';
 import {voiceCopy} from './voice-copy';
 import {languageQuestion} from './call-language';
 import {callerOrderHistory} from './caller-history';import {callPrecontext} from './call-precontext';import {listPromotions} from './catalog-store';
@@ -18,7 +19,7 @@ import {paymentDecision} from './payment-contract';
 import type Stripe from 'stripe';
 export function restaurantId(){const id=process.env.RESTAURANT_ID?.trim();if(!id)throw new Error('RESTAURANT_ID is required');return id;}
 function menuRow(r:any){const m=catalogRow(r);const now=Date.now();return {...m,isAvailable:m.isAvailable&&!m.archived&&(!m.special||((!m.specialStartsAt||Date.parse(m.specialStartsAt)<=now)&&(!m.specialEndsAt||Date.parse(m.specialEndsAt)>now)))};}
-function orderRow(r:any){return {id:r.id,isTest:r.is_test===true,customerName:r.customer_name,customerPhone:r.customer_phone,status:r.status,totalCents:r.total_cents,paymentMethod:r.payment_method,paymentStatus:r.payment_status,createdAt:new Date(r.created_at).toISOString(),updatedAt:r.updated_at?new Date(r.updated_at).toISOString():null,checkoutUrl:r.checkout_url,smsStatus:r.sms_status,notificationChannel:r.notification_channel,notificationConsent:!!r.notification_consent_at,notes:r.notes};}
+function orderRow(r:any){return {id:r.id,isTest:r.is_test===true,customerName:r.customer_name,customerPhone:r.customer_phone,status:r.status,totalCents:r.total_cents,paymentMethod:r.payment_method,paymentStatus:r.payment_status,createdAt:new Date(r.created_at).toISOString(),updatedAt:r.updated_at?new Date(r.updated_at).toISOString():null,checkoutUrl:r.checkout_url,smsStatus:r.sms_status,notificationChannel:r.notification_channel,notificationConsent:!!r.notification_consent_at,callbackStages:r.callback_stages??[],restaurantAcceptedAt:r.restaurant_accepted_at??null,notes:r.notes};}
 export async function restaurantTaxRate(){const [r]=await client()`SELECT tax_rate_bps FROM restaurants WHERE id=${restaurantId()}`;if(!r)throw new Error('Restaurant not found');return r.tax_rate_bps as number;}
 export async function listMenu(){return (await client()`SELECT * FROM menu_items WHERE restaurant_id=${restaurantId()} AND archived=false ORDER BY item_number NULLS LAST,name`).map(menuRow);}
 export async function updateMenuAvailability(id:string,available:boolean){return client().begin(async tx=>{await tx`SELECT id FROM restaurants WHERE id=${restaurantId()} FOR UPDATE`;const [row]=await tx`UPDATE menu_items SET is_available=${available},version=version+1 WHERE id=${id} AND restaurant_id=${restaurantId()} RETURNING *`;if(row)await catalogAudit(tx,'availability_updated',row.id,{available});return row?menuRow(row):null;});}
@@ -32,7 +33,7 @@ export async function updateOrderStatus(id:string,status:string){
   if(!row)return null;
   if(row.status===status)return orderRow(row);
   if(!nextKitchenStatus(orderRow(row),status))throw new Error('Invalid order transition or payment not received');
-  const [changed]=await tx`UPDATE orders SET status=${status} WHERE id=${id} RETURNING *`;await recordOrderEvent(tx,id,`status:${status}`,'status_changed',{from:row.status,to:status},process.env.DEMO_STAFF_USERNAME?.trim()||'staff');await enqueueStatus(tx,changed);return orderRow(changed);
+  const [changed]=await tx`UPDATE orders SET status=${status},restaurant_accepted_at=CASE WHEN ${status}='preparing' THEN COALESCE(restaurant_accepted_at,now()) ELSE restaurant_accepted_at END WHERE id=${id} RETURNING *`;await recordOrderEvent(tx,id,`status:${status}`,'status_changed',{from:row.status,to:status},process.env.DEMO_STAFF_USERNAME?.trim()||'staff');await enqueueStatus(tx,changed);return orderRow(changed);
  });
 }
 export async function voiceContext(providerCallId:string){
@@ -51,7 +52,7 @@ export async function openVoiceSession(providerCallId:string,phone:string|undefi
   return voiceXml(complete?'Your order has already been placed. Thank you.':(process.env.LANGUAGE_PREFERENCE_ENABLED==='true'?languageQuestion:'RestaurantCall AI. How can I help you today? How are you doing?'),base,cart.version,complete);
  });
 }
-export async function insertOrder(tx:any,input:{sessionId:string;customerName:string;customerPhone?:string|null;paymentMethod:'cash'|'stripe';items:Line[];notificationChannel?:'none'|'sms'|'call';notificationConsent?:boolean;paymentLinkSmsConsent?:boolean;notes?:string;expectedQuote?:ReturnType<typeof promotionQuote>;isTest?:boolean}){
+export async function insertOrder(tx:any,input:{sessionId:string;customerName:string;customerPhone?:string|null;paymentMethod:'cash'|'stripe';items:Line[];notificationChannel?:'none'|'sms'|'call';notificationConsent?:boolean;callbackStages?:('accepted'|'ready')[];paymentLinkSmsConsent?:boolean;notes?:string;expectedQuote?:ReturnType<typeof promotionQuote>;isTest?:boolean}){
  if(process.env.CASH_ONLY_CHECKOUT_ENABLED==='true'&&input.paymentMethod!=='cash')throw Error('Cash at pickup is the only enabled payment method');
  if(input.isTest&&input.paymentMethod!=='cash')throw Error('ACCEPTANCE_CASH_ONLY');
  const [ownedSession]=await tx`SELECT id FROM call_sessions WHERE id=${input.sessionId} AND restaurant_id=${restaurantId()} FOR UPDATE`;
@@ -65,7 +66,7 @@ export async function insertOrder(tx:any,input:{sessionId:string;customerName:st
  if(!restaurant)throw new Error('Restaurant not found');
  const selected=items.map(line=>{const item=rows.find((r:any)=>r.id===line.menuItemId);if(!item||!menuRow(item).isAvailable||(item.stock_qty!==null&&item.stock_qty<line.quantity))throw new Error(`${item?.name??'Item'} is unavailable`);return {item,quantity:line.quantity};});
  const promotions=(await tx`SELECT * FROM promotions WHERE restaurant_id=${restaurantId()}`).map(promotionRow);
- const quote=promotionQuote(selected.map(({item,quantity})=>({itemId:item.id,priceCents:item.price_cents,quantity})),restaurant.tax_rate_bps,promotions);
+ const quote=promotionQuote(selected.map(({item,quantity})=>({itemId:item.id,category:item.category,priceCents:item.price_cents,quantity})),restaurant.tax_rate_bps,promotions);
  for(const {item,quantity} of selected)if(item.stock_qty!==null)await tx`UPDATE menu_items SET stock_qty=stock_qty-${quantity},version=version+1 WHERE id=${item.id}`;
  if(input.expectedQuote&&JSON.stringify(input.expectedQuote)!==JSON.stringify(quote))throw Error('QUOTE_CHANGED');
  const cash=input.paymentMethod==='cash',free=quote.totalCents===0;
@@ -76,8 +77,11 @@ export async function insertOrder(tx:any,input:{sessionId:string;customerName:st
  await recordOrderEvent(tx,order.id,'created','order_created',{status:order.status,totalCents:order.total_cents});
  await recordOrderEvent(tx,order.id,'consent','consent_recorded',{channel:order.notification_channel,paymentSms:order.payment_sms_consent});
  await tx`UPDATE orders SET discount_cents=${quote.discountCents},pricing_snapshot=${tx.json(quote)} WHERE id=${order.id}`;
- await enqueueStatus(tx,order);
- return order;
+ const stages=input.notificationConsent&&input.notificationChannel==='call'?callbackStages(input.callbackStages??['ready']):[];
+ await tx`UPDATE orders SET callback_stages=${tx.json(stages)} WHERE id=${order.id}`;
+ await recordOrderEvent(tx,order.id,'callback_preference','callback_preference_recorded',{stages,consent:stages.length>0});
+ await enqueueStatus(tx,{...order,callback_stages:stages});
+ return {...order,callback_stages:stages};
 }
 export async function processVoiceTurn(input:{providerCallId:string;phone?:string;speech:string;turn:number;base:string;extracted?:Line[];interpretedSpeech?:string;operation?:'set';menuCategory?:string;assistantReply?:string;offeredItemIds?:string[];relay?:{revision:number;requestId:string;nonce:string}}):Promise<{xml:string;orderId:string|null;reply?:string;turn?:number;deliveryId?:string;finished?:boolean;phase?:string;requiresReadback?:boolean;languagePreference?:CartState['languagePreference'];languageSelectionRequired?:boolean}>{
  return client().begin(async tx=>{

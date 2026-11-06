@@ -9,16 +9,16 @@ function recorder(){
  return {tx,queries};
 }
 
-test('ready callbacks are created only after the order reaches completed',async()=>{
+test('Ready and Completed enqueue the same deduplicated readiness callback',async()=>{
  process.env.SMS_DELIVERY_ENABLED='false';
- const base={is_test:false,restaurant_id:'restaurant',id:'order',notification_consent_at:new Date(),notification_channel:'call'};
+ const base={is_test:false,restaurant_id:'restaurant',id:'order',notification_consent_at:new Date(),notification_channel:'call',callback_stages:['ready']};
  const ready=recorder();
  await enqueueStatus(ready.tx,{...base,status:'ready'});
- assert.equal(ready.queries.length,0);
+ assert.equal(ready.queries.length,1);
  const completed=recorder();
  await enqueueStatus(completed.tx,{...base,status:'completed'});
  assert.equal(completed.queries.length,1);
- assert.match(completed.queries[0],/notification_jobs/);
+ assert.match(ready.queries[0],/notification_jobs/);
 });
 
 test('disabled SMS is blocked at the provider submission gate',async()=>{

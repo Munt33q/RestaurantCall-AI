@@ -5,14 +5,14 @@ import {callToolKey} from './elevenlabs-security';
 import {telephoneEnabled,telephoneHandoffSecret} from './telephone-checkout-config';
 
 export type Initiation={conversation_id:string;agent_id:string;caller_id:string;called_number:string;call_sid:string;call_id?:string};
-export function validateInitiation(body:unknown):Initiation{
+export function validateInitiation(body:unknown,controlledOnly=true):Initiation{
  if(!body||typeof body!=='object'||Array.isArray(body))throw Error('Invalid initiation');
  const b=body as Record<string,unknown>;
  if(typeof b.conversation_id!=='string'||!validElevenLabsConversationId(b.conversation_id))throw Error('Invalid conversation');
  if(typeof b.agent_id!=='string'||b.agent_id!==process.env.ELEVENLABS_AGENT_ID?.trim())throw Error('Unexpected agent');
  if(typeof b.called_number!=='string'||b.called_number!==process.env.ELEVENLABS_INBOUND_NUMBER?.trim()||!/^\+[1-9]\d{7,14}$/.test(b.called_number))throw Error('Unexpected destination');
  if(typeof b.caller_id!=='string'||!/^\+[1-9]\d{7,14}$/.test(b.caller_id)||b.caller_id===b.called_number)throw Error('Valid inbound caller required');
- if(process.env.VERCEL_ENV==='preview'&&!process.env.ELEVENLABS_ACCEPTANCE_CALLERS?.split(',').map(x=>x.trim()).includes(b.caller_id))throw Error('Preview accepts only controlled caller numbers');
+ if(controlledOnly&&process.env.VERCEL_ENV==='preview'&&!process.env.ELEVENLABS_ACCEPTANCE_CALLERS?.split(',').map(x=>x.trim()).includes(b.caller_id))throw Error('Preview accepts only controlled caller numbers');
  if(typeof b.call_sid!=='string'||!b.call_sid.trim()||b.call_sid.length>256||/[\x00-\x20]/.test(b.call_sid))throw Error('Provider call identifier required');
  if(b.call_id!==undefined&&(typeof b.call_id!=='string'||!b.call_id||b.call_id.length>256||/[\x00-\x20]/.test(b.call_id)))throw Error('Invalid SIP call identifier');
  return b as Initiation;

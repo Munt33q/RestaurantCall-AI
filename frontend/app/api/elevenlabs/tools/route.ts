@@ -1,3 +1,4 @@
+import {kickMenuSync} from '@/lib/menu-sync';
 import crypto from 'node:crypto';
 import {runElevenLabsTool,ToolError,validateTool} from '@/lib/elevenlabs-tools';
 import {client} from '@/lib/db/client';
@@ -17,7 +18,7 @@ export async function POST(request:Request){
   const input=validateTool(await boundedJson(request));
   const [s]=await client()`SELECT provider_call_id,elevenlabs_binding_source FROM call_sessions WHERE restaurant_id=${restaurantId()} AND elevenlabs_conversation_id=${input.conversation_id}`;
   if(!s||s.elevenlabs_binding_source!=='provider_initiation'||!equalSecret(request.headers.get('x-restaurant-session'),callToolKey(input.conversation_id,s.provider_call_id)))return Response.json({ok:false,error:'Untrusted conversation session'},{status:401,headers:noStore});
-  const result=await runElevenLabsTool(input);
+  const result=await runElevenLabsTool(input);kickMenuSync();
   return Response.json(result,{status:result.ok?200:409,headers:noStore});
  }catch(error){
   if(error instanceof ToolError||error instanceof CheckoutError)return Response.json({ok:false,error:error.message},{status:error.status,headers:noStore});

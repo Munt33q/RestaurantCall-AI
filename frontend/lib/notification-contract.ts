@@ -4,7 +4,7 @@ export function optOutKeyword(text:string){const s=text.trim().toUpperCase();ret
 export function notificationGate(i:{channel:string;consent:boolean;optedOut:boolean;smsEnabled:boolean;callsEnabled:boolean;phone:string;kind:string;orderStatus:string}){
  if(!i.consent)return 'No channel consent';if(!/^\+[1-9]\d{7,14}$/.test(i.phone))return 'Invalid customer number';
  if(i.channel==='sms'&&i.optedOut)return 'Customer opted out';if(i.channel==='sms'&&!i.smsEnabled)return 'SMS sending disabled pending delivery setup verification';if(i.channel==='call'&&!i.callsEnabled)return 'Outbound updates disabled';
- if(i.kind==='payment_link'?i.orderStatus!=='awaiting_payment':i.orderStatus!==i.kind)return 'Notification outdated for current order status';return null;
+ if(i.kind==='payment_link'?i.orderStatus!=='awaiting_payment':i.kind==='accepted'?i.orderStatus!=='preparing':i.channel==='call'&&i.kind==='ready'?!['ready','completed'].includes(i.orderStatus):i.orderStatus!==i.kind)return 'Notification outdated for current order status';return null;
 }
 export function smsDeliveryReady(){return process.env.SMS_DELIVERY_ENABLED==='true'&&process.env.SMS_REGISTRATION_VERIFIED==='true'&&process.env.SMS_SENDER_VERIFIED==='true'&&/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(process.env.TELNYX_MESSAGING_PROFILE_ID?.trim()??'');}
 export function notificationText(order:{id:string;status:string;payment_method:string;total_cents:number;customer_name?:string;restaurant_name?:string},kind:string,url?:string){

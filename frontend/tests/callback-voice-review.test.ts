@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID} from 'node:crypto';import {PGlite} from '@electric-sql/pglite';import {readFileSync,readdirSync} from 'node:fs';
+import {issueVoiceReview,placeVoiceOrder} from '../lib/elevenlabs-order';import {validateTool} from '../lib/elevenlabs-tools';
+test('voice checkout binds callback choice to the customer review and persists affirmative consent',async t=>{
+ const db=new PGlite();t.after(()=>db.close());for(const f of readdirSync('drizzle').filter(f=>f.endsWith('.sql')).sort())await db.exec(readFileSync('drizzle/'+f,'utf8').replace(/CREATE EXTENSION[^;]*;/gi,''));let conn:any=db;const tx:any=async(s:TemplateStringsArray,...v:any[])=>(await conn.query(s.reduce((a,x,i)=>a+(i?'$'+i:'')+x,''),v)).rows;tx.json=(x:any)=>JSON.stringify(x);
+ const rid=randomUUID(),sid=randomUUID(),mid=randomUUID();Object.assign(process.env,{RESTAURANT_ID:rid,RESTAURANT_ORDERING_ENABLED:'true',ELEVENLABS_DIRECT_ORDERING_ENABLED:'true',ELEVENLABS_CALLBACK_PREFERENCES_ENABLED:'true',CASH_ONLY_CHECKOUT_ENABLED:'true'});
+ await tx`INSERT INTO restaurants(id,name,tax_rate_bps) VALUES(${rid},'Fixture',825)`;await tx`INSERT INTO menu_items(id,restaurant_id,name,category,price_cents) VALUES(${mid},${rid},'Burger','Mains',1000)`;
+ await tx`INSERT INTO call_sessions(id,restaurant_id,provider_call_id,caller_phone,elevenlabs_binding_source,expires_at) VALUES(${sid},${rid},${sid},'+12025550123','provider_initiation',now()+interval '30 minutes')`;const [session]=await tx`SELECT * FROM call_sessions WHERE id=${sid}`;
+ let state:any={items:[{menuItemId:mid,quantity:1}],customerName:'Fixture',nameConfirmed:true,notesCollected:true,notes:''};await tx`INSERT INTO draft_carts(session_id,state_json) VALUES(${sid},${tx.json(state)})`;const draft=async()=> (await tx`SELECT * FROM draft_carts WHERE session_id=${sid}`)[0];
+ await assert.rejects(async()=>issueVoiceReview(tx,session,await draft()),/callback|preference|Ask/);
+ state={...state,callbackPreferenceCollected:true,notificationChannel:'call',notificationConsent:true,callbackStages:['accepted','ready']};await tx`UPDATE draft_carts SET state_json=${tx.json(state)} WHERE session_id=${sid}`;
+ const review=await issueVoiceReview(tx,session,await draft());assert.deepEqual(review.review.callbackStages,['accepted','ready']);
+ const changed=await draft();changed.state_json.callbackStages=['ready'];await assert.rejects(()=>placeVoiceOrder(tx,session,changed,{customer_confirmed:true,review_id:review.review_id}),/changed/);assert.equal((await tx`SELECT count(*)::int AS n FROM orders`)[0].n,0);
+ const receipt=await db.transaction(async c=>{conn=c;try{return await placeVoiceOrder(tx,session,await draft(),{customer_confirmed:true,review_id:review.review_id});}finally{conn=db;}});
+ const [order]=await tx`SELECT * FROM orders WHERE id=${receipt.orderId}`;assert.deepEqual(order.callback_stages,['accepted','ready']);assert.equal(order.notification_channel,'call');assert.ok(order.notification_consent_at);assert.equal(order.status,'confirmed');assert.equal((await tx`SELECT count(*)::int AS n FROM notification_jobs`)[0].n,0);
+ assert.throws(()=>validateTool({tool:'set_notification_preference',conversation_id:'conv_fixture12345',callback_preference:'maybe',consent:true}),/preference/);
+});
