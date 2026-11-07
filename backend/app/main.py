@@ -14,19 +14,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-
 from app.flatr_router import chat
 
 load_dotenv()
-
 app = FastAPI(title="RestaurantCall AI API", version="0.1.0")
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:3000")],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.add_middleware(CORSMiddleware, allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:3000")], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 MENU: list[dict[str, Any]] = [
     {"id": "burger", "name": "Classic Burger", "category": "Mains", "description": "Grilled beef, cheddar, lettuce, tomato", "price_cents": 1299, "is_available": True, "stock_qty": 20},
@@ -39,11 +31,9 @@ CALL_SESSIONS: dict[str, dict[str, Any]] = {}
 WEBHOOK_EVENTS: set[str] = set()
 DEFAULT_TAX_RATE_BPS = 825
 
-
 class OrderItem(BaseModel):
     item_id: str
     quantity: int = Field(gt=0)
-
 
 class OrderCreate(BaseModel):
     customer_name: str = "Phone guest"
@@ -52,14 +42,11 @@ class OrderCreate(BaseModel):
     items: list[OrderItem]
     notes: str | None = None
 
-
 class StatusUpdate(BaseModel):
     status: str
 
-
 def get_menu() -> list[dict[str, Any]]:
     return [item.copy() for item in MENU]
-
 
 def check_availability(item_id: str, qty: int) -> dict[str, Any]:
     item = next((i for i in MENU if i["id"] == item_id), None)
@@ -69,13 +56,11 @@ def check_availability(item_id: str, qty: int) -> dict[str, Any]:
     alternatives = [i["name"] for i in MENU if i["category"] == item["category"] and i["id"] != item_id and i["is_available"]]
     return {"available": available, "item": item["name"], "alternatives": alternatives}
 
-
 def _tax_rate_bps(tax_rate_bps: int | None = None) -> int:
     rate = DEFAULT_TAX_RATE_BPS if tax_rate_bps is None else tax_rate_bps
     if not 0 <= rate <= 10000:
         raise ValueError("tax_rate_bps must be between 0 and 10000")
     return rate
-
 
 def quote_order(items: list[OrderItem], tax_rate_bps: int | None = None) -> dict[str, int]:
     subtotal = 0
@@ -84,34 +69,50 @@ def quote_order(items: list[OrderItem], tax_rate_bps: int | None = None) -> dict
         if not item:
             raise ValueError(f"Unknown menu item: {requested.item_id}")
         subtotal += item["price_cents"] * requested.quantity
-    # The MVP policy is to floor fractional tax cents. Using Decimal avoids
-    # binary-float drift while keeping the configured rate in basis points.
+    # Preserve the existing floor-to-whole-cents tax policy.
     tax = int((Decimal(subtotal) * Decimal(_tax_rate_bps(tax_rate_bps)) / Decimal(10000)).to_integral_value(rounding=ROUND_FLOOR))
     return {"subtotal_cents": subtotal, "tax_cents": tax, "total_cents": subtotal + tax}
 
-
-def place_order(payload: OrderCreate) -> dict[str, Any]:    # Validate the entire basket, including duplicate lines, before mutating stock.    # This is process-local only; production needs a database transaction.    if not payload.items:        raise ValueError("Order must contain at least one item")    quote = quote_order(payload.items)    quantities: dict[str, int] = {}    for requested in payload.items:        quantities[requested.item_id] = quantities.get(requested.item_id, 0) + requested.quantity    for item_id, quantity in quantities.items():        availability = check_availability(item_id, quantity)        if not availability["available"]:            raise ValueError(f"{availability['item']} is unavailable; offer a substitution before placing the order")    resolved_items = []    for requested in payload.items:        item = next(i for i in MENU if i["id"] == requested.item_id)        resolved_items.append({"item_id": item["id"], "item_name": item["name"], "quantity": requested.quantity, "unit_price_cents": item["price_cents"], "line_total_cents": item["price_cents"] * requested.quantity})    order = {"id": str(uuid.uuid4()), "customer_name": payload.customer_name, "customer_phone": payload.customer_phone, "payment_method": payload.payment_method, "payment_status": "unpaid" if payload.payment_method == "cash" else "pending", "status": "confirmed" if payload.payment_method == "cash" else "awaiting_payment", "items": resolved_items, "notes": payload.notes, **quote, "created_at": datetime.now(timezone.utc).isoformat()}    for item_id, quantity in quantities.items():        item = next(i for i in MENU if i["id"] == item_id)        if item["stock_qty"] is not None:            item["stock_qty"] -= quantity    ORDERS.insert(0, order)    return order
-
+def place_order(payload: OrderCreate) -> dict[str, Any]:
+    # Validate the entire basket before changing process-local stock.
+    # Durable cross-worker concurrency still requires a database transaction.
+    if not payload.items:
+        raise ValueError("Order must contain at least one item")
+    quote = quote_order(payload.items)
+    quantities: dict[str, int] = {}
+    for requested in payload.items:
+        quantities[requested.item_id] = quantities.get(requested.item_id, 0) + requested.quantity
+    for item_id, quantity in quantities.items():
+        availability = check_availability(item_id, quantity)
+        if not availability["available"]:
+            raise ValueError(f"{availability['item']} is unavailable; offer a substitution before placing the order")
+    resolved_items = []
+    for requested in payload.items:
+        item = next(i for i in MENU if i["id"] == requested.item_id)
+        resolved_items.append({"item_id": item["id"], "item_name": item["name"], "quantity": requested.quantity, "unit_price_cents": item["price_cents"], "line_total_cents": item["price_cents"] * requested.quantity})
+    order = {"id": str(uuid.uuid4()), "customer_name": payload.customer_name, "customer_phone": payload.customer_phone, "payment_method": payload.payment_method, "payment_status": "unpaid" if payload.payment_method == "cash" else "pending", "status": "confirmed" if payload.payment_method == "cash" else "awaiting_payment", "items": resolved_items, "notes": payload.notes, **quote, "created_at": datetime.now(timezone.utc).isoformat()}
+    for item_id, quantity in quantities.items():
+        item = next(i for i in MENU if i["id"] == item_id)
+        if item["stock_qty"] is not None:
+            item["stock_qty"] -= quantity
+    ORDERS.insert(0, order)
+    return order
 
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
-
 @app.get("/")
 def root() -> dict[str, str]:
     return {"service": "RestaurantCall AI API", "status": "ok", "health": "/health"}
-
 
 @app.get("/config/public")
 def public_config() -> dict[str, str | None]:
     return {"twilio_phone_number": os.getenv("TWILIO_PHONE_NUMBER") or None}
 
-
 @app.get("/menu")
 def menu() -> list[dict[str, Any]]:
     return get_menu()
-
 
 @app.patch("/menu/{item_id}")
 def update_menu(item_id: str, available: bool | None = None) -> dict[str, Any]:
@@ -122,11 +123,9 @@ def update_menu(item_id: str, available: bool | None = None) -> dict[str, Any]:
         item["is_available"] = available
     return item
 
-
 @app.get("/orders")
 def orders() -> list[dict[str, Any]]:
     return ORDERS
-
 
 @app.post("/orders")
 def create_order(payload: OrderCreate) -> dict[str, Any]:
@@ -134,7 +133,6 @@ def create_order(payload: OrderCreate) -> dict[str, Any]:
         return place_order(payload)
     except ValueError as exc:
         raise HTTPException(400, str(exc)) from exc
-
 
 @app.patch("/orders/{order_id}/status")
 def update_order_status(order_id: str, payload: StatusUpdate) -> dict[str, Any]:
@@ -147,7 +145,6 @@ def update_order_status(order_id: str, payload: StatusUpdate) -> dict[str, Any]:
     order["status"] = payload.status
     return order
 
-
 def _twilio_signature_valid(request_url: str, params: dict[str, list[str]], signature: str | None) -> bool:
     token = os.getenv("TWILIO_AUTH_TOKEN", "")
     if not token:
@@ -159,11 +156,9 @@ def _twilio_signature_valid(request_url: str, params: dict[str, list[str]], sign
     import base64
     return hmac.compare_digest(base64.b64encode(expected).decode(), signature)
 
-
 def _public_request_url(request: Request) -> str:
     configured = os.getenv("PUBLIC_BACKEND_URL", "").rstrip("/")
     return f"{configured}{request.url.path}" if configured else str(request.url)
-
 
 @app.post("/twilio/voice")
 async def twilio_voice(request: Request, x_twilio_signature: str | None = Header(default=None)) -> Response:
@@ -176,44 +171,11 @@ async def twilio_voice(request: Request, x_twilio_signature: str | None = Header
     xml = f'<Response><Gather input="speech" action="{escape(base)}/twilio/gather" method="POST" speechTimeout="auto" timeout="5"><Say>Welcome to RestaurantCall AI. Please state your order after the beep.</Say></Gather><Say>I did not hear anything. Goodbye.</Say></Response>'
     return Response(content=xml, media_type="application/xml")
 
-
 def _voice_tools() -> list[dict[str, Any]]:
     return [
-        {
-            "type": "function",
-            "function": {
-                "name": "get_menu",
-                "description": "Return the current menu.",
-                "parameters": {"type": "object", "properties": {}},
-            },
-        },
-        {
-            "type": "function",
-            "function": {
-                "name": "place_order",
-                "description": "Place a confirmed cash order.",
-                "parameters": {
-                    "type": "object",
-                    "required": ["items"],
-                    "properties": {
-                        "items": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "required": ["item_id", "quantity"],
-                                "properties": {
-                                    "item_id": {"type": "string"},
-                                    "quantity": {"type": "integer"},
-                                },
-                            },
-                        },
-                        "customer_name": {"type": "string"},
-                    },
-                },
-            },
-        },
+        {"type": "function", "function": {"name": "get_menu", "description": "Return the current menu.", "parameters": {"type": "object", "properties": {}}}},
+        {"type": "function", "function": {"name": "place_order", "description": "Place a confirmed cash order.", "parameters": {"type": "object", "required": ["items"], "properties": {"items": {"type": "array", "items": {"type": "object", "required": ["item_id", "quantity"], "properties": {"item_id": {"type": "string"}, "quantity": {"type": "integer"}}}}, "customer_name": {"type": "string"}}}}},
     ]
-
 
 def _run_voice_turn(call_sid: str, transcript: str) -> str:
     session = CALL_SESSIONS.setdefault(call_sid, {"messages": [], "updated_at": datetime.now(timezone.utc)})
@@ -244,7 +206,6 @@ def _run_voice_turn(call_sid: str, transcript: str) -> str:
     messages.append({"role": "assistant", "content": reply})
     return reply
 
-
 @app.post("/twilio/gather")
 async def twilio_gather(request: Request) -> Response:
     form = parse_qs((await request.body()).decode("utf-8"))
@@ -259,11 +220,10 @@ async def twilio_gather(request: Request) -> Response:
         try:
             reply = _run_voice_turn(call_sid, transcript)
         except Exception:
-            reply = "I am having trouble reaching the order assistant. Please try again shortly."
+            reply = "I am having trouble reaching the order assistant. Please try again."
     base = os.getenv("PUBLIC_BACKEND_URL", "http://localhost:8000").rstrip("/")
     xml = f'<Response><Gather input="speech" action="{escape(base)}/twilio/gather" method="POST" speechTimeout="auto" timeout="5"><Say>{escape(reply)}</Say></Gather><Say>Thank you. Goodbye.</Say></Response>'
     return Response(content=xml, media_type="application/xml")
-
 
 @app.websocket("/twilio/stream")
 async def twilio_stream(websocket: WebSocket) -> None:
@@ -275,7 +235,6 @@ async def twilio_stream(websocket: WebSocket) -> None:
             await websocket.receive_text()
     except Exception:
         await websocket.close()
-
 
 @app.post("/stripe/webhook")
 async def stripe_webhook(request: Request, stripe_signature: str | None = Header(default=None, alias="Stripe-Signature")) -> dict[str, bool]:
@@ -301,7 +260,6 @@ async def stripe_webhook(request: Request, stripe_signature: str | None = Header
             order["payment_status"] = "paid"
             order["status"] = "confirmed"
     return {"received": True}
-
 
 def _stripe_signature_valid(body: bytes, header: str, secret: str) -> bool:
     values: dict[str, list[str]] = {}
