@@ -90,20 +90,7 @@ def quote_order(items: list[OrderItem], tax_rate_bps: int | None = None) -> dict
     return {"subtotal_cents": subtotal, "tax_cents": tax, "total_cents": subtotal + tax}
 
 
-def place_order(payload: OrderCreate) -> dict[str, Any]:
-    quote = quote_order(payload.items)
-    resolved_items = []
-    for requested in payload.items:
-        item = next(i for i in MENU if i["id"] == requested.item_id)
-        availability = check_availability(requested.item_id, requested.quantity)
-        if not availability["available"]:
-            raise ValueError(f"{item['name']} is unavailable; offer a substitution before placing the order")
-        if item["stock_qty"] is not None:
-            item["stock_qty"] -= requested.quantity
-        resolved_items.append({"item_id": item["id"], "item_name": item["name"], "quantity": requested.quantity, "unit_price_cents": item["price_cents"], "line_total_cents": item["price_cents"] * requested.quantity})
-    order = {"id": str(uuid.uuid4()), "customer_name": payload.customer_name, "customer_phone": payload.customer_phone, "payment_method": payload.payment_method, "payment_status": "unpaid" if payload.payment_method == "cash" else "pending", "status": "confirmed" if payload.payment_method == "cash" else "awaiting_payment", "items": resolved_items, "notes": payload.notes, **quote, "created_at": datetime.now(timezone.utc).isoformat()}
-    ORDERS.insert(0, order)
-    return order
+def place_order(payload: OrderCreate) -> dict[str, Any]:    # Validate the entire basket, including duplicate lines, before mutating stock.    # This is process-local only; production needs a database transaction.    if not payload.items:        raise ValueError("Order must contain at least one item")    quote = quote_order(payload.items)    quantities: dict[str, int] = {}    for requested in payload.items:        quantities[requested.item_id] = quantities.get(requested.item_id, 0) + requested.quantity    for item_id, quantity in quantities.items():        availability = check_availability(item_id, quantity)        if not availability["available"]:            raise ValueError(f"{availability['item']} is unavailable; offer a substitution before placing the order")    resolved_items = []    for requested in payload.items:        item = next(i for i in MENU if i["id"] == requested.item_id)        resolved_items.append({"item_id": item["id"], "item_name": item["name"], "quantity": requested.quantity, "unit_price_cents": item["price_cents"], "line_total_cents": item["price_cents"] * requested.quantity})    order = {"id": str(uuid.uuid4()), "customer_name": payload.customer_name, "customer_phone": payload.customer_phone, "payment_method": payload.payment_method, "payment_status": "unpaid" if payload.payment_method == "cash" else "pending", "status": "confirmed" if payload.payment_method == "cash" else "awaiting_payment", "items": resolved_items, "notes": payload.notes, **quote, "created_at": datetime.now(timezone.utc).isoformat()}    for item_id, quantity in quantities.items():        item = next(i for i in MENU if i["id"] == item_id)        if item["stock_qty"] is not None:            item["stock_qty"] -= quantity    ORDERS.insert(0, order)    return order
 
 
 @app.get("/health")
