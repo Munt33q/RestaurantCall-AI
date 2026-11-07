@@ -5,6 +5,7 @@ import {client} from './db/client';
 import {trackingUrl,verifyTrackingToken} from './tracking-token';
 import {notificationGate,notificationText,deliveryTransition,canRecordCashPayment,smsDeliveryReady} from './notification-contract';
 import {xmlEscape} from './telnyx';
+import {sendTextBeeSms} from './textbee';
 const rid=()=>{const id=process.env.RESTAURANT_ID?.trim();if(!id)throw new Error('Restaurant not configured');return id;};
 export async function recordOrderEvent(tx:any,orderId:string,key:string,kind:string,data:unknown={},actor='system'){
  await tx`INSERT INTO order_events(order_id,event_key,kind,data_json,actor) VALUES(${orderId},${key},${kind},${tx.json(data)},${actor}) ON CONFLICT(order_id,event_key) DO NOTHING`;
@@ -53,7 +54,7 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
     const error=reason??(count.n>=(job.channel==='call'?3:10)?'Hourly notification limit reached':null);
     if(error){const deferred=/disabled|limit/.test(error);await tx`UPDATE notification_jobs SET status=${deferred?'pending':'suppressed'},attempts=GREATEST(attempts-1,0),last_error=${error},locked_until=NULL,next_attempt_at=now()+interval '15 minutes',updated_at=now() WHERE id=${job.id}`;return null;}
     
-   const key=process.env.TELNYX_API_KEY?.trim(),from=process.env.TELNYX_PHONE_NUMBER?.trim(),base=process.env.PUBLIC_APP_URL?.trim();if(!key||!from||!base||job.channel==='call'&&!process.env.TELNYX_TEXML_APPLICATION_ID?.trim())throw new Error('Notification provider configuration missing');
+   const key=process.env.TELNYX_API_KEY?.trim(),from=process.env.TELNYX_PHONE_NUMBER?.trim(),base=process.env.PUBLIC_APP_URL?.trim();if(!base||job.channel==='call'&&(!key||!from||!process.env.TELNYX_TEXML_APPLICATION_ID?.trim())||job.channel==='sms'&&!((process.env.TEXTBEE_API_KEY?.trim()&&process.env.TEXTBEE_DEVICE_ID?.trim())||(key&&from)))throw new Error('Notification provider configuration missing');
    const sms=job.channel==='sms';const url=sms?trackingUrl({id:order.id,restaurant_id:order.restaurant_id,tracking_version:order.tracking_version}):undefined;
    
    const [restaurantRow]=await tx`SELECT name FROM restaurants WHERE id=${restaurant}`;
@@ -61,11 +62,13 @@ export async function runNotificationJobs(orderId?:string,transport:typeof fetch
    const voice=callbackMessage({id:String(order.id)},job.kind,restaurantName);
    const callback=new URL('/api/telnyx/call-status',base);callback.searchParams.set('job',job.id);callback.searchParams.set('token',callbackMac(job.id));
    const body=sms?{from,to:order.customer_phone,messaging_profile_id:process.env.TELNYX_MESSAGING_PROFILE_ID?.trim(),text:notificationText({id:order.id,status:order.status,payment_method:order.payment_method,total_cents:order.total_cents,customer_name:order.customer_name,restaurant_name:restaurantName},job.kind,url),webhook_url:base+'/api/telnyx/messaging'}:{From:from,To:order.customer_phone,Timeout:30,TimeLimit:60,Texml:`<Response><Say voice="Polly.Joanna-Neural">${xmlEscape(voice)}</Say><Hangup/></Response>`,StatusCallback:callback.toString(),StatusCallbackMethod:'POST',StatusCallbackEvent:'completed'};
-   const endpoint=sms?'https://api.telnyx.com/v2/messages':`https://api.telnyx.com/v2/texml/calls/${process.env.TELNYX_TEXML_APPLICATION_ID?.trim()}`;
+   const useTextBee=sms&&!!process.env.TEXTBEE_API_KEY?.trim()&&!!process.env.TEXTBEE_DEVICE_ID?.trim();
+   const endpoint=useTextBee?'https://api.textbee.dev/api/v1/gateway/send-sms':sms?'https://api.telnyx.com/v2/messages':`https://api.telnyx.com/v2/texml/calls/${process.env.TELNYX_TEXML_APPLICATION_ID?.trim()}`;
+   const requestBody=useTextBee?{recipients:[order.customer_phone],message:body.text,deviceId:process.env.TEXTBEE_DEVICE_ID?.trim()}:body;
    // Dispatching is durable before this non-idempotent POST. Ambiguous outcomes are never retried automatically.
    await tx`UPDATE notification_jobs SET submission_attempted_at=now() WHERE id=${job.id}`;
-   let response:Response;try{response=await transport(endpoint,{method:'POST',headers:{Authorization:`Bearer ${key}`,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(9000)});}catch{await tx`UPDATE notification_jobs SET status='uncertain',locked_until=NULL,last_error='Provider outcome unknown; inspect delivery before a new attempt',updated_at=now() WHERE id=${job.id}`;return;}
-   const data=await response.json().catch(()=>null);const providerId=sms?data?.data?.id:data?.call_sid;
+   let response:Response;try{response=await transport(endpoint,{method:'POST',headers:useTextBee?{'x-api-key':process.env.TEXTBEE_API_KEY!.trim(),'Content-Type':'application/json'}:{Authorization:`Bearer ${key}`,'Content-Type':'application/json'},body:JSON.stringify(requestBody),signal:AbortSignal.timeout(9000)});}catch{await tx`UPDATE notification_jobs SET status='uncertain',locked_until=NULL,last_error='Provider outcome unknown; inspect delivery before a new attempt',updated_at=now() WHERE id=${job.id}`;return;}
+   const data=await response.json().catch(()=>null);const providerId=useTextBee?data?.data?.smsBatchId:sms?data?.data?.id:data?.call_sid;
    if(!response.ok||typeof providerId!=='string'){const retry=response.status===429&&!providerId&&job.attempts+1<callbackRetryLimit();const ambiguous=response.status>=500||response.ok||typeof providerId==='string';await tx`UPDATE notification_jobs SET status=${retry?'pending':ambiguous?'uncertain':'failed'},next_attempt_at=now()+interval '1 minute',locked_until=NULL,last_error=${`Provider submission ${response.status}; ${ambiguous?'outcome uncertain':retry?'rate limited; bounded retry':'rejected'}`},updated_at=now() WHERE id=${job.id}`;return;}
     const [current]=await tx`SELECT * FROM notification_jobs WHERE id=${job.id} FOR UPDATE`;
     const status=deliveryTransition(current.status,'submitted');await tx`UPDATE notification_jobs SET provider_id=${providerId},status=${status},locked_until=NULL,last_error=NULL,updated_at=now() WHERE id=${job.id}`;

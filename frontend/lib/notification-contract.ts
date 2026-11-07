@@ -6,7 +6,10 @@ export function notificationGate(i:{channel:string;consent:boolean;optedOut:bool
  if(i.channel==='sms'&&i.optedOut)return 'Customer opted out';if(i.channel==='sms'&&!i.smsEnabled)return 'SMS sending disabled pending delivery setup verification';if(i.channel==='call'&&!i.callsEnabled)return 'Outbound updates disabled';
  if(i.kind==='payment_link'?i.orderStatus!=='awaiting_payment':i.kind==='accepted'?i.orderStatus!=='preparing':i.channel==='call'&&i.kind==='ready'?!['ready','completed'].includes(i.orderStatus):i.orderStatus!==i.kind)return 'Notification outdated for current order status';return null;
 }
-export function smsDeliveryReady(){return process.env.SMS_DELIVERY_ENABLED==='true'&&process.env.SMS_REGISTRATION_VERIFIED==='true'&&process.env.SMS_SENDER_VERIFIED==='true'&&/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(process.env.TELNYX_MESSAGING_PROFILE_ID?.trim()??'');}
+export function smsDeliveryReady(){
+ if(process.env.TEXTBEE_API_KEY?.trim()&&process.env.TEXTBEE_DEVICE_ID?.trim())return true;
+ return process.env.SMS_DELIVERY_ENABLED==='true'&&process.env.SMS_REGISTRATION_VERIFIED==='true'&&process.env.SMS_SENDER_VERIFIED==='true'&&/^[\da-f]{8}-(?:[\da-f]{4}-){3}[\da-f]{12}$/i.test(process.env.TELNYX_MESSAGING_PROFILE_ID?.trim()??'');
+}
 export function notificationText(order:{id:string;status:string;payment_method:string;total_cents:number;customer_name?:string;restaurant_name?:string},kind:string,url?:string){
  const label=order.id.slice(0,8);const total='$'+(order.total_cents/100).toFixed(2);
  if(kind==='payment_link')return `RestaurantCall: Order ${label}, ${total}. Pay and track: ${url}. Reply STOP to opt out.`;
