@@ -21,8 +21,10 @@ jobs:
       - name: Dependency vulnerability audit
         run: npm audit --audit-level=high
       - name: TypeScript compatibility
+        if: success() || failure()
         run: npx tsc --noEmit
       - name: Production compilation
+        if: success() || failure()
         run: npm run build
   backend:
     runs-on: ubuntu-latest
@@ -39,6 +41,7 @@ jobs:
       - name: Dependency vulnerability audit
         run: pip-audit -r requirements.txt
       - name: Compile and regressions
+        if: success() || failure()
         run: |
           python -m compileall -q app tests
           python -m unittest discover -s tests -p 'test_*.py' -v
