@@ -15,6 +15,6 @@ export function normalizeOrderLines(lines: OrderLine[]): OrderLine[] {
     if (!Number.isSafeInteger(total)) throw new Error("Order quantity overflow");
     quantities.set(line.menuItemId, total);
   }
-  return [...quantities].sort(([a], [b]) => a.localeCompare(b))
+  return Array.from(quantities.entries()).sort(([a], [b]) => a.localeCompare(b))
     .map(([menuItemId, quantity]) => ({ menuItemId, quantity }));
 }
