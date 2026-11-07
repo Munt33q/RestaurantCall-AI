@@ -20,6 +20,9 @@ jobs:
         run: npm ci
       - name: Dependency vulnerability audit
         run: npm audit --audit-level=high
+      - name: Order validation regression tests
+        if: success() || failure()
+        run: node --test tests/order-validation.test.cjs
       - name: TypeScript compatibility
         if: success() || failure()
         run: npx tsc --noEmit
